@@ -157,9 +157,10 @@ namespace ShinobiBox
         {
             WorldTile destination = pTarget?.current_tile ?? pTile;
             if (destination == null) return false;
-            if (pSelf.current_tile == null || pSelf.hasStatus("status_ability_cooldown")) return false;
+            if (pSelf == null || pSelf.a == null || pSelf.current_tile == null) return false;
+            if (!ShinobiJutsu.IsReady(pSelf.a, "paper_bomb")) return false;
 
-            pSelf.addStatusEffect("status_ability_cooldown", 5f);
+            ShinobiJutsu.StartCooldown(pSelf.a, "paper_bomb", 5f);
             EffectsLibrary.spawnAtTile("fx_explosion_small", destination, 0.3f);
             MapBox.instance.drop_manager.spawn(destination, "fire");
             return true;
@@ -285,9 +286,9 @@ namespace ShinobiBox
             }
 
             if (destination == null) return false;
-            if (pSelf.current_tile == null || pSelf.hasStatus("status_ability_cooldown")) return false;
+            if (pSelf.current_tile == null || !ShinobiJutsu.IsReady(pSelf.a, "flying_raijin")) return false;
 
-            pSelf.addStatusEffect("status_ability_cooldown", 4f);
+            ShinobiJutsu.StartCooldown(pSelf.a, "flying_raijin", 4f);
             EffectsLibrary.spawnAtTile("fx_teleport_yellow", pSelf.current_tile, 0.1f);
 
             pSelf.a.spawnOn(destination);

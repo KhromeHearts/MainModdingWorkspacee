@@ -31,6 +31,7 @@ namespace ShinobiBox
             ShinobiTab.Init();
             ShinobiStatus.Init();
             Shikotsumyaku.Init();
+            ShinobiJutsu.Init();
             ShinobiEffects.Init();
             ShinobiKingdoms.Init();
 
@@ -48,6 +49,7 @@ namespace ShinobiBox
         private float timer = 0f;
         private float regenTimer = 0f;
         private float progressionTimer = 0f;
+        private float combatTimer = 0f;
         private bool startupChecksDone = false;
 
         void Update()
@@ -78,6 +80,10 @@ namespace ShinobiBox
             bool doProgression = progressionTimer >= 3f;
             if (doProgression) progressionTimer = 0f;
 
+            combatTimer += elapsed;
+            bool doCombat = combatTimer >= 0.5f;
+            if (doCombat) combatTimer = 0f;
+
             int akatsukiMembers = 0;
 
             foreach (Actor actor in MapBox.instance.units)
@@ -92,6 +98,11 @@ namespace ShinobiBox
                 if (ChakraSystem.CanUseChakra(actor))
                 {
                     ChakraSystem.Tick(actor, elapsed);
+
+                    if (doCombat && actor.has_attack_target)
+                    {
+                        ShinobiJutsu.TryCast(actor, actor.attack_target, JutsuTrigger.Combat);
+                    }
                 }
 
                 if (doRegen)

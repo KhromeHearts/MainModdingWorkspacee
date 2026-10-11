@@ -319,10 +319,22 @@ namespace ShinobiBox
             return Mathf.Clamp(baseRate, 0.15f, 12f);
         }
 
+        public static float GetJutsuCost(Actor actor, float cost)
+        {
+            return Mathf.Max(0f, cost * GetAbilityCostMultiplier(actor));
+        }
+
         public static float GetAbilityCostMultiplier(Actor actor)
         {
             if (actor == null) return 1f;
 
+            float multiplier = GetRankCostMultiplier(actor);
+            if (actor.hasTrait("07_indra_chakra")) multiplier *= 0.4f;
+            return multiplier;
+        }
+
+        private static float GetRankCostMultiplier(Actor actor)
+        {
             if (actor.hasTrait("09rank_god_of_shinobi")) return 0.84f;
             if (actor.hasTrait("08rank_ghost_of_uchiha")) return 0.88f;
             if (actor.hasTrait("07rank_sannin")) return 0.90f;
@@ -354,12 +366,6 @@ namespace ShinobiBox
             if (actor.hasStatus("chakra_exhaustion")) return false;
             if (cost <= 0f) return true;
 
-            if (actor.hasTrait("07_indra_chakra"))
-            {
-                cost *= 0.4f;
-            }
-
-            cost = Mathf.Max(0f, cost);
             float current = GetCurrent(actor);
 
             if (current + 0.001f < cost) return false;

@@ -1369,7 +1369,6 @@ namespace ShinobiBox
             sixPathsSenjutsu.is_animated_in_pause = true;
             sixPathsSenjutsu.can_be_flipped = true;
             sixPathsSenjutsu.action_get_hit = (GetHitAction)Delegate.Combine(sixPathsSenjutsu.action_get_hit, new GetHitAction(TruthSeekingOrbShield));
-            sixPathsSenjutsu.action = (WorldAction)Delegate.Combine(sixPathsSenjutsu.action, new WorldAction(JutsuLibrary.AutoTruthSeekingOrbAtTarget));
             sixPathsSenjutsu.action = (WorldAction)Delegate.Combine(sixPathsSenjutsu.action, new WorldAction(SixPathsFlightAction));
             sixPathsSenjutsu.action_interval = 5.5f;
 
@@ -1802,8 +1801,6 @@ namespace ShinobiBox
 
             initialReleaseForm.locale_id = "status_title_jinchuriki_initial_release";
             initialReleaseForm.locale_description = "status_description_jinchuriki_initial_release";
-            initialReleaseForm.action = (WorldAction)Delegate.Combine(initialReleaseForm.action, new WorldAction(JutsuLibrary.NineTailsStatusMoves));
-            initialReleaseForm.action_interval = 1.6f;
             AssetManager.status.add(initialReleaseForm);
             #endregion
 
@@ -1836,8 +1833,6 @@ namespace ShinobiBox
 
             v1CloakForm.locale_id = "status_title_jinchuriki_v1_cloak";
             v1CloakForm.locale_description = "status_description_jinchuriki_v1_cloak";
-            v1CloakForm.action = (WorldAction)Delegate.Combine(v1CloakForm.action, new WorldAction(JutsuLibrary.NineTailsStatusMoves));
-            v1CloakForm.action_interval = 1.5f;
             AssetManager.status.add(v1CloakForm);
             #endregion
 
@@ -1872,8 +1867,6 @@ namespace ShinobiBox
 
             v2CloakForm.locale_id = "status_title_jinchuriki_v2_cloak";
             v2CloakForm.locale_description = "status_description_jinchuriki_v2_cloak";
-            v2CloakForm.action = (WorldAction)Delegate.Combine(v2CloakForm.action, new WorldAction(JutsuLibrary.NineTailsStatusMoves));
-            v2CloakForm.action_interval = 1.4f;
             AssetManager.status.add(v2CloakForm);
             #endregion
 
@@ -1896,8 +1889,6 @@ namespace ShinobiBox
             incompleteBeastForm.base_stats.set("chakra", 108f);
             incompleteBeastForm.locale_id = "status_title_jinchuriki_incomplete_beast";
             incompleteBeastForm.locale_description = "status_description_jinchuriki_incomplete_beast";
-            incompleteBeastForm.action = (WorldAction)Delegate.Combine(incompleteBeastForm.action, new WorldAction(JutsuLibrary.NineTailsStatusMoves));
-            incompleteBeastForm.action_interval = 1.3f;
             AssetManager.status.add(incompleteBeastForm);
             #endregion
 
@@ -1933,8 +1924,6 @@ namespace ShinobiBox
 
             kcm1Form.locale_id = "status_title_jinchuriki_kcm1";
             kcm1Form.locale_description = "status_description_jinchuriki_kcm1";
-            kcm1Form.action = (WorldAction)Delegate.Combine(kcm1Form.action, new WorldAction(JutsuLibrary.NineTailsStatusMoves));
-            kcm1Form.action_interval = 1.25f;
             AssetManager.status.add(kcm1Form);
             #endregion
 
@@ -1970,8 +1959,6 @@ namespace ShinobiBox
 
             kcm2Form.locale_id = "status_title_jinchuriki_kcm2";
             kcm2Form.locale_description = "status_description_jinchuriki_kcm2";
-            kcm2Form.action = (WorldAction)Delegate.Combine(kcm2Form.action, new WorldAction(JutsuLibrary.NineTailsStatusMoves));
-            kcm2Form.action_interval = 1.2f;
             AssetManager.status.add(kcm2Form);
             #endregion
 
@@ -2031,8 +2018,6 @@ namespace ShinobiBox
 
             baryonModeForm.locale_id = "status_title_jinchuriki_baryon_mode";
             baryonModeForm.locale_description = "status_description_jinchuriki_baryon_mode";
-            baryonModeForm.action = (WorldAction)Delegate.Combine(baryonModeForm.action, new WorldAction(JutsuLibrary.NineTailsStatusMoves));
-            baryonModeForm.action_interval = 1f;
             baryonModeForm.action_finish = (WorldAction)Delegate.Combine(baryonModeForm.action_finish, new WorldAction(BaryonModeEnded));
             AssetManager.status.add(baryonModeForm);
             #endregion

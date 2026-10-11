@@ -57,7 +57,7 @@ namespace ShinobiBox
                 return false;
             }
 
-            if (removechakra > 0f && !JutsuLibrary.CheckAndConsumeChakra(a, removechakra))
+            if (removechakra > 0f && !ChakraSystem.TryConsume(a, ChakraSystem.GetJutsuCost(a, removechakra)))
             {
                 return false;
             }

@@ -7,7 +7,6 @@ namespace ShinobiBox
         private const int MeditationsToBecomeSage = 5;
         private const float PerfectSageChance = 0.35f;
         private const float ToadFailureChance = 0.015f;
-        private const float SignatureSageChakraCost = 15f;
 
         private static readonly string[] SageTraits = { "frog_sage_mode", "slug_sage_mode", "snake_sage_mode", "wood_sage_mode" };
         private static readonly string[] SageStatuses = { "status_frog_sage", "status_slug_sage", "status_snake_sage", "status_wood_sage" };
@@ -201,25 +200,17 @@ namespace ShinobiBox
         public static bool SageAttack(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
             if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
-            if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
-            Actor a = pSelf.a;
+            if (IsInSageMode(pSelf.a)) return false;
 
-            if (!IsInSageMode(a))
-            {
-                return EnterSageMode(pSelf, pTarget, pTile);
-            }
-
-            if (a.hasStatus("status_frog_sage")) return FrogKumite(a, pTarget.a);
-            if (a.hasStatus("status_snake_sage")) return SnakeBite(a, pTarget.a);
-            if (a.hasStatus("status_wood_sage")) return WoodBind(a, pTarget.a);
-
-            return false;
+            return EnterSageMode(pSelf, pTarget, pTile);
         }
 
-        private static bool FrogKumite(Actor a, Actor target)
+        public static bool FrogKumite(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
-            if (!Randy.randomChance(0.25f)) return false;
-            if (!ChakraSystem.TryConsumeSageChakra(a, SignatureSageChakraCost)) return false;
+            if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
+            if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
+            Actor a = pSelf.a;
+            Actor target = pTarget.a;
 
             target.getHit(a.stats["damage"] * 0.5f, true, AttackType.Other, a, true);
             if (target.current_tile != null)
@@ -229,21 +220,21 @@ namespace ShinobiBox
             return true;
         }
 
-        private static bool SnakeBite(Actor a, Actor target)
+        public static bool SnakeBite(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
-            if (!Randy.randomChance(0.20f)) return false;
-            if (target.hasStatus("poisoned")) return false;
-            if (!ChakraSystem.TryConsumeSageChakra(a, SignatureSageChakraCost)) return false;
+            if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
+            if (pTarget.a.hasStatus("poisoned")) return false;
 
-            target.addStatusEffect("poisoned", 6f);
+            pTarget.a.addStatusEffect("poisoned", 6f);
             return true;
         }
 
-        private static bool WoodBind(Actor a, Actor target)
+        public static bool WoodBind(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
-            if (!Randy.randomChance(0.15f)) return false;
-            if (target.current_tile == null) return false;
-            if (!ChakraSystem.TryConsumeSageChakra(a, SignatureSageChakraCost)) return false;
+            if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
+            if (pTarget == null || pTarget.a == null || pTarget.current_tile == null) return false;
+            Actor a = pSelf.a;
+            Actor target = pTarget.a;
 
             foreach (Actor unit in Finder.getUnitsFromChunk(target.current_tile, 1, 3f))
             {

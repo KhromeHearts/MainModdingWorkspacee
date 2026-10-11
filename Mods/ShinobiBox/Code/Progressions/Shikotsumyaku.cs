@@ -50,17 +50,11 @@ namespace ShinobiBox
         }
         public static bool ShikoDefense(BaseSimObject pSelf, BaseSimObject pAttackedBy = null, WorldTile pTile = null)
         {
-            if (pSelf == null || !pSelf.isAlive()) return false;
+            if (pSelf == null || pSelf.a == null || !pSelf.isAlive()) return false;
+            if (pSelf.a.hasStatus("shiko_defense")) return false;
 
-            if (Randy.randomChance(0.35f))
-            {
-                if (!JutsuLibrary.CheckAndConsumeChakra(pSelf.a, 45f)) return false;
-                Actor a = pSelf.a;
-
-                a.addStatusEffect("shiko_defense", 6f);
-                return true;
-            }
-            return false;
+            pSelf.a.addStatusEffect("shiko_defense", 6f);
+            return true;
         }
 
         public static bool BoneShot(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
@@ -69,30 +63,23 @@ namespace ShinobiBox
             if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
             if (pSelf.current_tile == null || pTarget.current_tile == null) return false;
 
-            if (Randy.randomChance(0.35f))
-            {
-                if (!JutsuLibrary.CheckAndConsumeChakra(pSelf.a, 25f)) return false;
+            World.world.projectiles.spawn(
+                pSelf,
+                pTarget,
+                "arrow",
+                pSelf.current_tile.posV3,
+                pTarget.current_tile.posV3
+            );
 
-                World.world.projectiles.spawn(
-                    pSelf,
-                    pTarget,
-                    "arrow",
-                    pSelf.current_tile.posV3,
-                    pTarget.current_tile.posV3
-                );
-
-                return true;
-            }
-
-            return false;
+            return true;
         }
 
         public static bool thornsEffect(BaseSimObject pSelf, BaseSimObject pAttackedBy, WorldTile pTile = null)
         {
             if (pSelf.a == null || !pSelf.isAlive()) return false;
             if (pAttackedBy == null || !pAttackedBy.isAlive()) return false;
-            Actor a = pSelf.a;
             Actor b = pAttackedBy.a;
+            if (b == null) return false;
 
             if (Randy.randomChance(0.35f))
             {

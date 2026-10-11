@@ -9,7 +9,6 @@ namespace ShinobiBox
         {
             if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
             Actor a = pSelf.a;
-            if (!JutsuLibrary.CheckAndConsumeChakra(a, 50f)) return false;
 
             if (!a.hasStatus("status_ketsuryugan") && a.data.level >= 2)
             {
@@ -25,13 +24,10 @@ namespace ShinobiBox
             if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
             if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
 
-
-            Actor a = pSelf.a;
             Actor b = pTarget.a;
 
-            if (!b.hasStatus("status_ketsuryuganEHT") && Randy.randomChance(0.10f))
+            if (!b.hasStatus("status_ketsuryuganEHT"))
             {
-                if (!JutsuLibrary.CheckAndConsumeChakra(pSelf.a, 75f)) return false;
                 b.addStatusEffect("status_ketsuryuganEHT", 30f);
                 return true;
             }
