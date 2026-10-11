@@ -11,8 +11,6 @@ namespace ShinobiBox
             WorldLogLibrary lib = AssetManager.world_log_library;
             if (lib.get(logId) == null)
             {
-                ShinobiSelfCheck.CheckWorldLog(localeId, iconPath);
-
                 WorldLogAsset asset = new WorldLogAsset
                 {
                     id = logId,

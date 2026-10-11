@@ -12,12 +12,8 @@ public static class BurningEffectPatch
 
     private const float DamageMultiplier = 0.05f; // Vanilla is 0.25f, change this to however you feel fits.
 
-    // Harmony id used by the standalone Nerf Fire Damage mod (Mods/NerfFireDamage).
     private const string StandaloneModHarmonyId = "raytracerx.nerf_fire_damage";
 
-    // If the standalone Nerf Fire Damage mod is installed too, it already does exactly this,
-    // so remove ShinobiBox's copy of the patch and let that mod handle fire.
-    // Called once after loading (from ShinobiLoop), so it works whichever mod loads first.
     public static void SkipIfStandaloneModLoaded()
     {
         MethodInfo burning = AccessTools.Method(typeof(StatusLibrary), nameof(StatusLibrary.burningEffect));
@@ -45,7 +41,7 @@ public static class BurningEffectPatch
 
         if (pTarget.isActor() && pTarget.a.asset.has_skin && Randy.randomBool())
         {
-            pTarget.a.addInjuryTrait(TraitIds.SkinBurns);
+            pTarget.a.addInjuryTrait("skin_burns");
         }
 
         int damage = Mathf.Max(1, pTarget.getMaxHealthPercent(BurnPercentPerTick));

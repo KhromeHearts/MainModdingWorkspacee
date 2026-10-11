@@ -16,7 +16,7 @@ namespace ShinobiBox
         {
             AddProjectile(new ProjectileAsset
             {
-                id = ProjectileIds.FtgKunai,
+                id = "projectile_ftg_kunai",
                 speed = 30f,
                 texture = "projectile_ftg",
                 look_at_target = true,
@@ -35,7 +35,7 @@ namespace ShinobiBox
 
             AddProjectile(new ProjectileAsset
             {
-                id = ProjectileIds.BasicKunai,
+                id = "projectile_basic_kunai",
                 speed = 25f,
                 texture = "projectile_kunai",
                 look_at_target = true,
@@ -51,12 +51,12 @@ namespace ShinobiBox
 
             AddProjectile(new ProjectileAsset
             {
-                id = ProjectileIds.PaperBombKunai,
+                id = "projectile_paper_bomb_kunai",
                 speed = 24f,
                 texture = "projectile_bomb_kunai",
                 look_at_target = true,
                 texture_shadow = "shadows/projectiles/shadow_arrow",
-                end_effect = EffectIds.ExplosionSmall,
+                end_effect = "fx_explosion_small",
                 hit_shake = true,
                 scale_start = 0.075f,
                 scale_target = 0.075f,
@@ -69,12 +69,12 @@ namespace ShinobiBox
 
             AddProjectile(new ProjectileAsset
             {
-                id = ProjectileIds.Rasenshuriken,
+                id = "projectile_rasenshuriken",
                 speed = 20f,
-                texture = ProjectileIds.Rasenshuriken,
+                texture = "projectile_rasenshuriken",
                 look_at_target = true,
                 texture_shadow = "shadows/projectiles/shadow_arrow",
-                end_effect = EffectIds.ShinobiAntimatter,
+                end_effect = "fx_shinobi_antimatter",
                 hit_shake = true,
                 scale_start = 0.05f,
                 scale_target = 0.05f,
@@ -90,7 +90,7 @@ namespace ShinobiBox
 
             AddProjectile(new ProjectileAsset
             {
-                id = ProjectileIds.WindCutter,
+                id = "projectile_wind_cutter",
                 speed = 28f,
                 texture = "projectile_windcutter",
                 look_at_target = true,
@@ -107,12 +107,12 @@ namespace ShinobiBox
 
             AddProjectile(new ProjectileAsset
             {
-                id = ProjectileIds.TailedBeastBomb,
+                id = "projectile_tailed_beast_bomb",
                 speed = 28f,
                 texture = "projectile_TBB",
                 look_at_target = false,
                 texture_shadow = "shadows/projectiles/shadow_arrow",
-                end_effect = EffectIds.ShinobiAntimatter,
+                end_effect = "fx_shinobi_antimatter",
                 hit_shake = true,
                 scale_start = 0.16f,
                 draw_light_area = true,
@@ -127,12 +127,12 @@ namespace ShinobiBox
 
             AddProjectile(new ProjectileAsset
             {
-                id = ProjectileIds.TruthSeekingOrb,
+                id = "projectile_truth_seeking_orb",
                 speed = 24f,
                 texture = "projectile_tsorbs",
                 look_at_target = true,
                 texture_shadow = "shadows/projectiles/shadow_arrow",
-                end_effect = EffectIds.ShinobiAntimatter,
+                end_effect = "fx_shinobi_antimatter",
                 hit_shake = true,
                 scale_start = 0.045f,
                 scale_target = 0.13f,
@@ -157,10 +157,10 @@ namespace ShinobiBox
         {
             WorldTile destination = pTarget?.current_tile ?? pTile;
             if (destination == null) return false;
-            if (pSelf.current_tile == null || pSelf.hasStatus(StatusIds.AbilityCooldown)) return false;
+            if (pSelf.current_tile == null || pSelf.hasStatus("status_ability_cooldown")) return false;
 
-            pSelf.addStatusEffect(StatusIds.AbilityCooldown, 5f);
-            EffectsLibrary.spawnAtTile(EffectIds.ExplosionSmall, destination, 0.3f);
+            pSelf.addStatusEffect("status_ability_cooldown", 5f);
+            EffectsLibrary.spawnAtTile("fx_explosion_small", destination, 0.3f);
             MapBox.instance.drop_manager.spawn(destination, "fire");
             return true;
         }
@@ -170,14 +170,14 @@ namespace ShinobiBox
             WorldTile destination = pTarget?.current_tile ?? pTile;
             if (destination == null) return false;
 
-            EffectsLibrary.spawnAtTile(EffectIds.ExplosionSmall, destination, 0.2f);
+            EffectsLibrary.spawnAtTile("fx_explosion_small", destination, 0.2f);
 
             float directDamage = 200f;
             if (pTarget?.a != null && pTarget.a.isAlive())
             {
                 pTarget.a.getHit(directDamage, true, AttackType.Other, pSelf?.a, true);
-                pTarget.a.addTrait(TraitIds.Crippled);
-                pTarget.a.addStatusEffect(StatusIds.Slowness, 4f);
+                pTarget.a.addTrait("crippled");
+                pTarget.a.addStatusEffect("slowness", 4f);
             }
 
             var nearbyUnits = Finder.getUnitsFromChunk(destination, 1);
@@ -188,7 +188,7 @@ namespace ShinobiBox
                 if (unit.current_tile == null || unit.current_tile.distanceTo(destination) > 2f) continue;
 
                 unit.a.getHit(90f, true, AttackType.Other, pSelf?.a, true);
-                unit.a.addStatusEffect(StatusIds.Slowness, 2f);
+                unit.a.addStatusEffect("slowness", 2f);
             }
 
             return true;
@@ -202,7 +202,7 @@ namespace ShinobiBox
             if (pTarget?.a != null && pTarget.a.isAlive())
             {
                 pTarget.a.getHit(75f, true, AttackType.Other, pSelf?.a, true);
-                pTarget.a.addStatusEffect(StatusIds.Slowness, 1.5f);
+                pTarget.a.addStatusEffect("slowness", 1.5f);
             }
 
             var nearbyUnits = Finder.getUnitsFromChunk(destination, 1);
@@ -285,15 +285,15 @@ namespace ShinobiBox
             }
 
             if (destination == null) return false;
-            if (pSelf.current_tile == null || pSelf.hasStatus(StatusIds.AbilityCooldown)) return false;
+            if (pSelf.current_tile == null || pSelf.hasStatus("status_ability_cooldown")) return false;
 
-            pSelf.addStatusEffect(StatusIds.AbilityCooldown, 4f);
-            EffectsLibrary.spawnAtTile(EffectIds.TeleportYellow, pSelf.current_tile, 0.1f);
+            pSelf.addStatusEffect("status_ability_cooldown", 4f);
+            EffectsLibrary.spawnAtTile("fx_teleport_yellow", pSelf.current_tile, 0.1f);
 
             pSelf.a.spawnOn(destination);
             pSelf.a.cancelAllBeh();
 
-            EffectsLibrary.spawnAtTile(EffectIds.TeleportYellow, destination, 0.01f);
+            EffectsLibrary.spawnAtTile("fx_teleport_yellow", destination, 0.01f);
 
             return true;
         }

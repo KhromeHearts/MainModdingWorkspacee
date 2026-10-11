@@ -60,8 +60,8 @@ namespace ShinobiBox
         private static void loadCustomItems()
         {
             #region Hidan's Scythe
-            EquipmentAsset scythe = AssetManager.items.clone(ItemIds.TripleScythe, "$weapon");
-            scythe.id = ItemIds.TripleScythe;
+            EquipmentAsset scythe = AssetManager.items.clone("weapon_triple_scythe", "$weapon");
+            scythe.id = "weapon_triple_scythe";
             scythe.translation_key = scythe.id;
             scythe.material = "basic";
             scythe.equipment_subtype = "scythe";
@@ -91,8 +91,8 @@ namespace ShinobiBox
             #endregion
 
             #region Kusanagi
-            EquipmentAsset kusanagi = AssetManager.items.clone(ItemIds.Kusanagi, "$weapon");
-            kusanagi.id = ItemIds.Kusanagi;
+            EquipmentAsset kusanagi = AssetManager.items.clone("weapon_kusanagi", "$weapon");
+            kusanagi.id = "weapon_kusanagi";
             kusanagi.translation_key = kusanagi.id;
             kusanagi.material = "basic";
             kusanagi.equipment_subtype = "sword";
@@ -119,11 +119,11 @@ namespace ShinobiBox
             #endregion
 
             #region Basic Kunai
-            EquipmentAsset basicKunai = AssetManager.items.clone(ItemIds.BasicKunai, "$range");
-            basicKunai.id = ItemIds.BasicKunai;
+            EquipmentAsset basicKunai = AssetManager.items.clone("weapon_basic_kunai", "$range");
+            basicKunai.id = "weapon_basic_kunai";
             basicKunai.translation_key = basicKunai.id;
             basicKunai.material = "basic";
-            basicKunai.projectile = ProjectileIds.BasicKunai;
+            basicKunai.projectile = "projectile_basic_kunai";
             basicKunai.equipment_subtype = "kunai";
             basicKunai.group_id = GroupId_ShinobiEquipment;
             basicKunai.quality = Rarity.R1_Rare;
@@ -154,8 +154,8 @@ namespace ShinobiBox
             #endregion
 
             #region Gunbai
-            EquipmentAsset gunbai = AssetManager.items.clone(ItemIds.Gunbai, "$weapon");
-            gunbai.id = ItemIds.Gunbai;
+            EquipmentAsset gunbai = AssetManager.items.clone("weapon_gunbai", "$weapon");
+            gunbai.id = "weapon_gunbai";
             gunbai.translation_key = gunbai.id;
             gunbai.material = "basic";
             gunbai.equipment_subtype = "hammer";
@@ -185,11 +185,11 @@ namespace ShinobiBox
             #endregion
 
             #region Paper Bomb Kunai
-            EquipmentAsset paperBombKunai = AssetManager.items.clone(ItemIds.PaperBombKunai, "$range");
-            paperBombKunai.id = ItemIds.PaperBombKunai;
+            EquipmentAsset paperBombKunai = AssetManager.items.clone("weapon_bomb_kunai", "$range");
+            paperBombKunai.id = "weapon_bomb_kunai";
             paperBombKunai.translation_key = paperBombKunai.id;
             paperBombKunai.material = "basic";
-            paperBombKunai.projectile = ProjectileIds.PaperBombKunai;
+            paperBombKunai.projectile = "projectile_paper_bomb_kunai";
             paperBombKunai.equipment_subtype = "kunai";
             paperBombKunai.group_id = GroupId_ShinobiEquipment;
             paperBombKunai.quality = Rarity.R2_Epic;
@@ -219,8 +219,8 @@ namespace ShinobiBox
             #endregion
 
             #region Executioner's Blade
-            EquipmentAsset executioner = AssetManager.items.clone(ItemIds.ExecutionerBlade, "$weapon");
-            executioner.id = ItemIds.ExecutionerBlade;
+            EquipmentAsset executioner = AssetManager.items.clone("weapon_executioner_blade", "$weapon");
+            executioner.id = "weapon_executioner_blade";
             executioner.translation_key = executioner.id;
             executioner.material = "basic";
             executioner.equipment_subtype = "greatsword";
@@ -251,8 +251,8 @@ namespace ShinobiBox
             #endregion
 
             #region Hagoromo Staff
-            EquipmentAsset hagoromoStaff = AssetManager.items.clone(ItemIds.HagoromoStaff, "$weapon");
-            hagoromoStaff.id = ItemIds.HagoromoStaff;
+            EquipmentAsset hagoromoStaff = AssetManager.items.clone("weapon_hagoromo_staff", "$weapon");
+            hagoromoStaff.id = "weapon_hagoromo_staff";
             hagoromoStaff.translation_key = hagoromoStaff.id;
             hagoromoStaff.material = "basic";
             hagoromoStaff.equipment_subtype = "staff";
@@ -283,8 +283,8 @@ namespace ShinobiBox
             #endregion
 
             #region Yin Staff
-            EquipmentAsset yinStaff = AssetManager.items.clone(ItemIds.YinStaff, "$weapon");
-            yinStaff.id = ItemIds.YinStaff;
+            EquipmentAsset yinStaff = AssetManager.items.clone("weapon_yin_staff", "$weapon");
+            yinStaff.id = "weapon_yin_staff";
             yinStaff.translation_key = yinStaff.id;
             yinStaff.material = "basic";
             yinStaff.equipment_subtype = "staff";
@@ -313,8 +313,8 @@ namespace ShinobiBox
             #endregion
 
             #region Yang Staff
-            EquipmentAsset yangStaff = AssetManager.items.clone(ItemIds.YangStaff, "$weapon");
-            yangStaff.id = ItemIds.YangStaff;
+            EquipmentAsset yangStaff = AssetManager.items.clone("weapon_yang_staff", "$weapon");
+            yangStaff.id = "weapon_yang_staff";
             yangStaff.translation_key = yangStaff.id;
             yangStaff.material = "basic";
             yangStaff.equipment_subtype = "staff";
@@ -343,11 +343,11 @@ namespace ShinobiBox
             #endregion
 
             #region Flying Thunder God Kunai (Item)
-            EquipmentAsset ftgItem = AssetManager.items.clone(ItemIds.FtgKunai, "$range");
-            ftgItem.id = ItemIds.FtgKunai;
+            EquipmentAsset ftgItem = AssetManager.items.clone("weapon_ftg_kunai", "$range");
+            ftgItem.id = "weapon_ftg_kunai";
             ftgItem.translation_key = ftgItem.id;
             ftgItem.material = "basic";
-            ftgItem.projectile = ProjectileIds.FtgKunai;
+            ftgItem.projectile = "projectile_ftg_kunai";
             ftgItem.equipment_subtype = "kunai";
             ftgItem.group_id = GroupId_ShinobiEquipment;
             ftgItem.quality = Rarity.R3_Legendary;
@@ -380,8 +380,8 @@ namespace ShinobiBox
             #endregion
 
             #region Shinobi Flak Jacket
-            EquipmentAsset flakJacket = AssetManager.items.clone(ItemIds.FlakJacket, "$armor");
-            flakJacket.id = ItemIds.FlakJacket;
+            EquipmentAsset flakJacket = AssetManager.items.clone("armor_shinobi_flak_jacket", "$armor");
+            flakJacket.id = "armor_shinobi_flak_jacket";
             flakJacket.translation_key = flakJacket.id;
             flakJacket.material = "basic";
             flakJacket.group_id = GroupId_ShinobiEquipment;
@@ -406,8 +406,8 @@ namespace ShinobiBox
             #endregion
 
             #region Warring States Armor
-            EquipmentAsset warringArmor = AssetManager.items.clone(ItemIds.WarringStatesArmor, "$armor");
-            warringArmor.id = ItemIds.WarringStatesArmor;
+            EquipmentAsset warringArmor = AssetManager.items.clone("armor_warring_states", "$armor");
+            warringArmor.id = "armor_warring_states";
             warringArmor.translation_key = warringArmor.id;
             warringArmor.material = "basic";
             warringArmor.group_id = GroupId_ShinobiEquipment;
@@ -431,8 +431,8 @@ namespace ShinobiBox
             #endregion
 
             #region Madara's Six Paths Chakra Cloak
-            EquipmentAsset madaraSixPathsCloak = AssetManager.items.clone(ItemIds.MadaraSixPathsCloak, "$armor");
-            madaraSixPathsCloak.id = ItemIds.MadaraSixPathsCloak;
+            EquipmentAsset madaraSixPathsCloak = AssetManager.items.clone("armor_madara_sixpaths_cloak", "$armor");
+            madaraSixPathsCloak.id = "armor_madara_sixpaths_cloak";
             madaraSixPathsCloak.translation_key = madaraSixPathsCloak.id;
             madaraSixPathsCloak.material = "basic";
             madaraSixPathsCloak.group_id = GroupId_ShinobiEquipment;

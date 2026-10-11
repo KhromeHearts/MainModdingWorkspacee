@@ -6,20 +6,17 @@ namespace ShinobiBox
     {
         private static readonly string[] Gates =
         {
-            StatusIds.InnerGate1, StatusIds.InnerGate2, StatusIds.InnerGate3, StatusIds.InnerGate4,
-            StatusIds.InnerGate5, StatusIds.InnerGate6, StatusIds.InnerGate7, StatusIds.InnerGate8
+            "inner_gate_1", "inner_gate_2", "inner_gate_3", "inner_gate_4",
+            "inner_gate_5", "inner_gate_6", "inner_gate_7", "inner_gate_8"
         };
 
-        // Hooked on the Eight Inner Gates trait (action_get_hit).
-        // Below 70% health, each hit has a 20% chance to open the NEXT gate. A unit can open one gate per level (max 8).
         public static bool EightInnerGates(BaseSimObject pSelf, BaseSimObject pAttackedBy = null, WorldTile pTile = null)
         {
             if (pSelf == null || !pSelf.isAlive()) return false;
             Actor actor = pSelf.a;
 
-            if (!actor.hasTrait(TraitIds.EightInnerGates)) return false;
-            // The body has to recover after a high gate closes before it can open them again.
-            if (actor.hasStatus(StatusIds.EightGateStrain)) return false;
+            if (!actor.hasTrait("eight_inner_gates")) return false;
+            if (actor.hasStatus("eight_gate_strain")) return false;
 
             float maxHealth = actor.getMaxHealth();
             if (actor.data.health > maxHealth * 0.70f) return false;
@@ -34,7 +31,6 @@ namespace ShinobiBox
             removeAllGates(actor);
             actor.addStatusEffect(Gates[nextGate - 1]);
 
-            // Gate 2: Gate of Healing
             if (nextGate == 2)
             {
                 actor.restoreHealth((int)(maxHealth * 0.20f));
@@ -48,7 +44,6 @@ namespace ShinobiBox
             return true;
         }
 
-        // 0 = no gate open, otherwise 1-8.
         public static int GetOpenGate(Actor actor)
         {
             for (int i = Gates.Length; i >= 1; i--)
@@ -58,7 +53,6 @@ namespace ShinobiBox
             return 0;
         }
 
-        // Status action on gates 4-8, once per second: the body tears itself apart while the gate is open.
         public static bool InnerGatesStrain(BaseSimObject pSelf, WorldTile pTile = null)
         {
             if (pSelf == null || !pSelf.isAlive()) return false;
@@ -80,16 +74,14 @@ namespace ShinobiBox
             return true;
         }
 
-        // Status action_finish on gates 5-7: when the gate closes on its own, the body pays for it.
         public static bool HighGateClosed(BaseSimObject pSelf, WorldTile pTile = null)
         {
             if (pSelf == null || !pSelf.isAlive()) return false;
 
-            pSelf.a.addStatusEffect(StatusIds.EightGateStrain, 30f);
+            pSelf.a.addStatusEffect("eight_gate_strain", 30f);
             return true;
         }
 
-        // Status action_finish on gate 8: the Gate of Death leaves the user barely alive.
         public static bool DeathGateClosed(BaseSimObject pSelf, WorldTile pTile = null)
         {
             if (pSelf == null || !pSelf.isAlive()) return false;
@@ -98,7 +90,7 @@ namespace ShinobiBox
             int barelyAlive = Mathf.Max(1, (int)(actor.getMaxHealth() * 0.10f));
             if (actor.data.health > barelyAlive) actor.data.health = barelyAlive;
 
-            actor.addStatusEffect(StatusIds.EightGateStrain, 90f);
+            actor.addStatusEffect("eight_gate_strain", 90f);
             return true;
         }
 

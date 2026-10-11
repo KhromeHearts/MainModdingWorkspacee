@@ -15,8 +15,8 @@ namespace ShinobiBox
             if (pSelf?.a == null || !pSelf.a.isAlive()) return false;
 
             Actor actor = pSelf.a;
-            if (!actor.hasTrait(TraitIds.NineTailsJinchuriki)) return false;
-            if (actor.hasStatus(StatusIds.NineTailsBaryon)) return false;
+            if (!actor.hasTrait("nine_tails_jinchuriki")) return false;
+            if (actor.hasStatus("status_jinchuriki_baryon_mode")) return false;
 
             int level = actor.data.level;
             bool hasAttackTarget = actor.has_attack_target;
@@ -26,17 +26,17 @@ namespace ShinobiBox
             string bestStatus = "";
 
             if (level >= 9 && (actor.intelligence >= 20f || actor.diplomacy >= 20f))
-                bestStatus = StatusIds.NineTailsKcm2;
+                bestStatus = "status_jinchuriki_kcm2";
             else if (level >= 7 && (actor.intelligence >= 20f || actor.diplomacy >= 20f))
-                bestStatus = StatusIds.NineTailsKcm1;
+                bestStatus = "status_jinchuriki_kcm1";
             else if (level >= 5)
-                bestStatus = StatusIds.NineTailsIncompleteBeast;
+                bestStatus = "status_jinchuriki_incomplete_beast";
             else if (level >= 4)
-                bestStatus = StatusIds.NineTailsV2Cloak;
+                bestStatus = "status_jinchuriki_v2_cloak";
             else if (level >= 3)
-                bestStatus = StatusIds.NineTailsV1Cloak;
+                bestStatus = "status_jinchuriki_v1_cloak";
             else if (level >= 2)
-                bestStatus = StatusIds.NineTailsInitialRelease;
+                bestStatus = "status_jinchuriki_initial_release";
 
             if (string.IsNullOrEmpty(bestStatus)) return false;
             if (actor.hasStatus(bestStatus)) return false;
@@ -50,12 +50,12 @@ namespace ShinobiBox
 
         private static void ClearNineTailsStatuses(Actor actor)
         {
-            actor.finishStatusEffect(StatusIds.NineTailsKcm2);
-            actor.finishStatusEffect(StatusIds.NineTailsKcm1);
-            actor.finishStatusEffect(StatusIds.NineTailsIncompleteBeast);
-            actor.finishStatusEffect(StatusIds.NineTailsV2Cloak);
-            actor.finishStatusEffect(StatusIds.NineTailsV1Cloak);
-            actor.finishStatusEffect(StatusIds.NineTailsInitialRelease);
+            actor.finishStatusEffect("status_jinchuriki_kcm2");
+            actor.finishStatusEffect("status_jinchuriki_kcm1");
+            actor.finishStatusEffect("status_jinchuriki_incomplete_beast");
+            actor.finishStatusEffect("status_jinchuriki_v2_cloak");
+            actor.finishStatusEffect("status_jinchuriki_v1_cloak");
+            actor.finishStatusEffect("status_jinchuriki_initial_release");
         }
 
         private static void HandleJinchurikiWorldLogs(Actor actor, string appliedStatus)
@@ -63,7 +63,7 @@ namespace ShinobiBox
             if (!ShinobiConfig.EnableWorldTips) return;
             if (actor.isClone()) return;
 
-            if (appliedStatus == StatusIds.NineTailsKcm2)
+            if (appliedStatus == "status_jinchuriki_kcm2")
             {
                 actor.data.get("kcm2_done", out bool doneKCM2, false);
                 if (!doneKCM2)
@@ -72,7 +72,7 @@ namespace ShinobiBox
                     actor.data.set("kcm2_done", true);
                 }
             }
-            else if (appliedStatus == StatusIds.NineTailsKcm1)
+            else if (appliedStatus == "status_jinchuriki_kcm1")
             {
                 actor.data.get("kcm1_done", out bool doneKCM1, false);
                 if (!doneKCM1)
@@ -81,17 +81,17 @@ namespace ShinobiBox
                     actor.data.set("kcm1_done", true);
                 }
             }
-            else if (appliedStatus == StatusIds.NineTailsV2Cloak || appliedStatus == StatusIds.NineTailsIncompleteBeast)
+            else if (appliedStatus == "status_jinchuriki_v2_cloak" || appliedStatus == "status_jinchuriki_incomplete_beast")
             {
                 actor.data.get("beast_awakens_done", out bool doneBeast, false);
                 if (!doneBeast)
                 {
-                    string icon = appliedStatus == StatusIds.NineTailsV2Cloak ? "ui/icons/v2" : "ui/icons/incomplete";
+                    string icon = appliedStatus == "status_jinchuriki_v2_cloak" ? "ui/icons/v2" : "ui/icons/incomplete";
                     ShinobiWorldLogs.AddWorldLog("log_beast_awakens", "worldlog_beast_awakens", icon, actor);
                     actor.data.set("beast_awakens_done", true);
                 }
             }
-            else if (appliedStatus == StatusIds.NineTailsV1Cloak)
+            else if (appliedStatus == "status_jinchuriki_v1_cloak")
             {
                 actor.data.get("v1_done", out bool doneV1, false);
                 if (!doneV1)
@@ -100,7 +100,7 @@ namespace ShinobiBox
                     actor.data.set("v1_done", true);
                 }
             }
-            else if (appliedStatus == StatusIds.NineTailsInitialRelease)
+            else if (appliedStatus == "status_jinchuriki_initial_release")
             {
                 actor.data.get("sealbroken_done", out bool doneSealBroken, false);
                 if (!doneSealBroken)
@@ -120,7 +120,7 @@ namespace ShinobiBox
 
             if (actor.asset.id == "juubi" || actor.asset.id == "kurama") return false;
             if (actor.data.level < 7) return false;
-            if (actor.hasStatus(StatusIds.NineTailsBaryon)) return false;
+            if (actor.hasStatus("status_jinchuriki_baryon_mode")) return false;
             if (UnityEngine.Random.value > 0.45f) return false;
             //Actor baryonUnit = World.world.units.createNewUnit(actor.asset.id, actor.current_tile, true, 1f);
 
@@ -143,7 +143,7 @@ namespace ShinobiBox
             */
 
             actor.restoreHealth((int)(actor.getMaxHealth() * 0.5f));
-            actor.addStatusEffect(StatusIds.NineTailsBaryon, 60f);
+            actor.addStatusEffect("status_jinchuriki_baryon_mode", 60f);
 
             if (ShinobiConfig.EnableWorldTips && !actor.isClone())
             { 
@@ -157,11 +157,11 @@ namespace ShinobiBox
         {
             if (actor == null || !actor.isAlive()) return;
 
-            if (actor.hasTrait(TraitIds.NineTailsJinchuriki))
+            if (actor.hasTrait("nine_tails_jinchuriki"))
             {
-                actor.removeTrait(TraitIds.NineTailsJinchuriki);
-                actor.addStatusEffect(StatusIds.ChakraExhaustion, 120f);
-                actor.addStatusEffect(StatusIds.AbilityCooldown, 300f);
+                actor.removeTrait("nine_tails_jinchuriki");
+                actor.addStatusEffect("chakra_exhaustion", 120f);
+                actor.addStatusEffect("status_ability_cooldown", 300f);
             }
         }
         #endregion
@@ -180,32 +180,32 @@ namespace ShinobiBox
             float healthPct = actor.data.health / maxHealth;
             int level = actor.data.level;
 
-            bool hasJuubi1 = actor.hasStatus(StatusIds.Juubi1);
-            bool hasJuubi2 = actor.hasStatus(StatusIds.Juubi2);
-            bool hasSps = actor.hasStatus(StatusIds.SixPathsSenjutsu);
+            bool hasJuubi1 = actor.hasStatus("juubi1");
+            bool hasJuubi2 = actor.hasStatus("juubi2");
+            bool hasSps = actor.hasStatus("status_six_paths_senjutsu");
 
             if (!hasJuubi2 && level >= 5 && hasJuubi1)
             {
-                actor.finishStatusEffect(StatusIds.Juubi1);
-                actor.addStatusEffect(StatusIds.Juubi2, 60f);
+                actor.finishStatusEffect("juubi1");
+                actor.addStatusEffect("juubi2", 60f);
                 actor.restoreHealth(actor.getMaxHealth());
                 hasJuubi2 = true;
             }
             else if (!hasJuubi1 && !hasJuubi2)
             {
-                actor.addStatusEffect(StatusIds.Juubi1, 60f);
+                actor.addStatusEffect("juubi1", 60f);
                 hasJuubi1 = true;
             }
 
             if ((hasJuubi1 || hasJuubi2) && !hasSps)
             {
-                actor.addStatusEffect(StatusIds.SixPathsSenjutsu, 60f);
+                actor.addStatusEffect("status_six_paths_senjutsu", 60f);
                 actor.setFlying(true);
             }
 
-            if (!actor.hasTrait(TraitIds.Regeneration) && (hasJuubi1 || hasJuubi2))
+            if (!actor.hasTrait("regeneration") && (hasJuubi1 || hasJuubi2))
             {
-                actor.addTrait(TraitIds.Regeneration);
+                actor.addTrait("regeneration");
             }
 
             return hasJuubi1 || hasJuubi2;

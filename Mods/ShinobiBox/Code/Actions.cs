@@ -15,9 +15,9 @@ namespace ShinobiBox
             if (Randy.randomChance(1f))
             {
                 a.restoreHealth((int)(a.getMaxHealth() * 0.01f));
-                a.removeTrait(TraitIds.SkinBurns);
-                a.removeTrait(TraitIds.Eyepatch);
-                a.removeTrait(TraitIds.Crippled);
+                a.removeTrait("skin_burns");
+                a.removeTrait("eyepatch");
+                a.removeTrait("crippled");
                 return true;
             }
             return false;
@@ -30,11 +30,11 @@ namespace ShinobiBox
             if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
             Actor a = pSelf.a;
 
-            if (a.hasTrait(TraitIds.SlugSage))
+            if (a.hasTrait("slug_sage_mode"))
             {
-                if (!a.hasStatus(StatusIds.HundredSeals) && Randy.randomChance(0.07f))
+                if (!a.hasStatus("status_100_sealings") && Randy.randomChance(0.07f))
                 {
-                    addShinobiStatus(a, StatusIds.HundredSeals, 0.6f, 0, 0);
+                    addShinobiStatus(a, "status_100_sealings", 0.6f, 0, 0);
                 }
             }
 
@@ -51,9 +51,9 @@ namespace ShinobiBox
                 a.restoreHealth((int)(10 + a.data.level * a.getMaxHealth() * 0.07f));
                 if (Randy.randomChance(0.6f))
                 {
-                    a.removeTrait(TraitIds.SkinBurns);
-                    a.removeTrait(TraitIds.Eyepatch);
-                    a.removeTrait(TraitIds.Crippled);
+                    a.removeTrait("skin_burns");
+                    a.removeTrait("eyepatch");
+                    a.removeTrait("crippled");
                 }
             }
             return true;

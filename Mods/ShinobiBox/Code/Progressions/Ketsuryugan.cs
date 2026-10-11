@@ -11,9 +11,9 @@ namespace ShinobiBox
             Actor a = pSelf.a;
             if (!JutsuLibrary.CheckAndConsumeChakra(a, 50f)) return false;
 
-            if (!a.hasStatus(StatusIds.Ketsuryugan) && a.data.level >= 2)
+            if (!a.hasStatus("status_ketsuryugan") && a.data.level >= 2)
             {
-                a.addStatusEffect(StatusIds.Ketsuryugan, 45f);
+                a.addStatusEffect("status_ketsuryugan", 45f);
                 return true;
             }
 
@@ -29,10 +29,10 @@ namespace ShinobiBox
             Actor a = pSelf.a;
             Actor b = pTarget.a;
 
-            if (!b.hasStatus(StatusIds.KetsuryuganExplodingHuman) && Randy.randomChance(0.10f))
+            if (!b.hasStatus("status_ketsuryuganEHT") && Randy.randomChance(0.10f))
             {
                 if (!JutsuLibrary.CheckAndConsumeChakra(pSelf.a, 75f)) return false;
-                b.addStatusEffect(StatusIds.KetsuryuganExplodingHuman, 30f);
+                b.addStatusEffect("status_ketsuryuganEHT", 30f);
                 return true;
             }
 
@@ -47,7 +47,7 @@ namespace ShinobiBox
             {
                 float damage = pTarget.a.getMaxHealth() * 0.40f;
                 MapAction.damageWorld(pTarget.current_tile, 3, AssetManager.terraform.get("grenade"), null);
-                EffectsLibrary.spawnAtTileRandomScale(EffectIds.ExplosionSmall, pTarget.current_tile, 0.5f, 0.7f);
+                EffectsLibrary.spawnAtTileRandomScale("fx_explosion_small", pTarget.current_tile, 0.5f, 0.7f);
                 pTarget.a.getHit(damage, true, AttackType.Explosion, pTarget.a, true);
                 return true;
             }

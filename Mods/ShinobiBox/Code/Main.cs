@@ -55,11 +55,9 @@ namespace ShinobiBox
         {
             if (!Config.game_loaded) return;
 
-            // Runs once, after every mod and the game itself have finished loading.
             if (!startupChecksDone)
             {
                 startupChecksDone = true;
-                ShinobiSelfCheck.Run();
                 BurningEffectPatch.SkipIfStandaloneModLoaded();
             }
 
@@ -74,10 +72,9 @@ namespace ShinobiBox
                 {
                     if (actor == null || !actor.isAlive()) continue;
 
-                    // Anti-stun (same as the AntiStun mod): stuns can chain forever and decide a fight on the first hit.
                     if (actor.hasStatusStunned())
                     {
-                        actor.finishStatusEffect(StatusIds.Stunned);
+                        actor.finishStatusEffect("stunned");
                     }
 
                     if (!ChakraSystem.IsChakraUser(actor)) continue;
@@ -86,7 +83,7 @@ namespace ShinobiBox
                     ChakraSystem.ProcessDrain(actor, 0.1f);
                     ChakraSystem.UpdateSpecialResources(actor, 0.1f);
 
-                    // Chakra Regen. Exhaustion only slows it down (see GetRegenRate), so a unit always recovers.
+                    // Chakra Regen
                     if (!ShinobiProgression.IsModeActive(actor))
                     {
                         ChakraSystem.AddChakra(actor, ChakraSystem.GetRegenRate(actor) * 0.1f);
@@ -102,10 +99,10 @@ namespace ShinobiBox
                 {
                     if (a.isAlive())
                     {
-                        if (a.hasTrait(TraitIds.UzumakiClan) && a.data.health < a.getMaxHealth()) a.restoreHealth(4);
-                        if (a.hasTrait(TraitIds.SenjuClan) && a.data.health < a.getMaxHealth()) a.restoreHealth(1);
-                        if (a.hasTrait(TraitIds.HashiramaCells) && a.data.health < a.getMaxHealth()) a.restoreHealth(5);
-                        if (a.hasTrait(TraitIds.Kage) && a.data.health < a.getMaxHealth()) a.restoreHealth(1);
+                        if (a.hasTrait("uzumaki_clan") && a.data.health < a.getMaxHealth()) a.restoreHealth(4);
+                        if (a.hasTrait("senju_clan") && a.data.health < a.getMaxHealth()) a.restoreHealth(1);
+                        if (a.hasTrait("hashi_cells") && a.data.health < a.getMaxHealth()) a.restoreHealth(5);
+                        if (a.hasTrait("06rank_kage") && a.data.health < a.getMaxHealth()) a.restoreHealth(1);
                     }
                 }
                 regenTimer = 0f;
@@ -120,7 +117,7 @@ namespace ShinobiBox
                     if (a.isAlive())
                     {
                         ShinobiProgression.CheckProgression(a);
-                        if (a.hasTrait(TraitIds.Akatsuki)) akatsukiMembers++;
+                        if (a.hasTrait("trait_akatsuki")) akatsukiMembers++;
                     }
                 }
                 ShinobiProgression.AkatsukiMembers = akatsukiMembers;

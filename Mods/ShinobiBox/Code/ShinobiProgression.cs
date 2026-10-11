@@ -24,19 +24,18 @@ namespace ShinobiBox
 {
     public class ShinobiProgression
     {
-        // Living Akatsuki members, counted by ShinobiLoop on every progression pass.
         public static int AkatsukiMembers = 0;
         private const int MaxAkatsukiMembers = 10;
 
         private static readonly string[] JinchurikiFormStatuses =
         {
-            StatusIds.NineTailsInitialRelease,
-            StatusIds.NineTailsV1Cloak,
-            StatusIds.NineTailsV2Cloak,
-            StatusIds.NineTailsIncompleteBeast,
-            StatusIds.NineTailsKcm1,
-            StatusIds.NineTailsKcm2,
-            StatusIds.NineTailsBaryon
+            "status_jinchuriki_initial_release",
+            "status_jinchuriki_v1_cloak",
+            "status_jinchuriki_v2_cloak",
+            "status_jinchuriki_incomplete_beast",
+            "status_jinchuriki_kcm1",
+            "status_jinchuriki_kcm2",
+            "status_jinchuriki_baryon_mode"
         };
 
         #region IsModeActive
@@ -70,12 +69,12 @@ namespace ShinobiBox
             RemoveFormsIfNoTrait(actor);
 
             // Rinnegan Awakening
-            bool hasIndra = actor.hasTrait(TraitIds.IndraChakra);
-            bool hasAsura = actor.hasTrait(TraitIds.AsuraChakra);
-            bool hasHagoromo = actor.hasTrait(TraitIds.HagoromoChakra);
-            bool hasMangekyo = actor.hasTrait(TraitIds.Mangekyo) || actor.hasTrait(TraitIds.MadaraEternalMangekyo);
-            bool hasHashirama = actor.hasTrait(TraitIds.HashiramaCells);
-            bool hasAnySenjutsu = actor.hasTrait(TraitIds.FrogSage) || actor.hasTrait(TraitIds.SlugSage) || actor.hasTrait(TraitIds.SnakeSage) || actor.hasTrait(TraitIds.WoodSage);
+            bool hasIndra = actor.hasTrait("07_indra_chakra");
+            bool hasAsura = actor.hasTrait("08_asura_chakra");
+            bool hasHagoromo = actor.hasTrait("05_hagoromo_chakra");
+            bool hasMangekyo = actor.hasTrait("mangekyo_sharingan") || actor.hasTrait("madara_eternal_mangekyo");
+            bool hasHashirama = actor.hasTrait("hashi_cells");
+            bool hasAnySenjutsu = actor.hasTrait("frog_sage_mode") || actor.hasTrait("slug_sage_mode") || actor.hasTrait("snake_sage_mode") || actor.hasTrait("wood_sage_mode");
             string currentName = actor.data.name ?? string.Empty;
             bool hasKageInName = currentName.IndexOf("kage", StringComparison.OrdinalIgnoreCase) >= 0;
 
@@ -85,19 +84,19 @@ namespace ShinobiBox
                 (hasAsura && hasMangekyo) ||
                 (hasIndra && hasAsura);
 
-            if (canAwakenRinnegan && GiveOnce(actor, TraitIds.Rinnegan))
+            if (canAwakenRinnegan && GiveOnce(actor, "rinnegan"))
             {
-                actor.removeTrait(TraitIds.Blind);
+                actor.removeTrait("trait_blind");
                 actor.restoreHealth(actor.getMaxHealth());
                 ShinobiWorldLogs.AddWorldLog("log_awaken_rinnegan", "worldlog_awaken_rinnegan", "ui/icons/rinnegan", actor);
             }
 
-            if (actor.hasTrait(TraitIds.Kage) || hasKageInName)
+            if (actor.hasTrait("06rank_kage") || hasKageInName)
             {
                 actor.data.set("was_kage", 1);
             }
 
-            if (level >= 10 && hasAnySenjutsu && actor.isSapient() && GiveOnce(actor, TraitIds.Sannin))
+            if (level >= 10 && hasAnySenjutsu && actor.isSapient() && GiveOnce(actor, "07rank_sannin"))
             {
                 if (ShinobiConfig.EnableWorldTips)
                 {
@@ -106,8 +105,8 @@ namespace ShinobiBox
             }
 
             // Ghost Of Uchiha Giver thingy thangy
-            bool hasEternalEyes = actor.hasTrait(TraitIds.MadaraEternalMangekyo) || actor.hasTrait(TraitIds.EternalMangekyo);
-            if (level >= 7 && actor.hasTrait(TraitIds.UchihaClan) && hasEternalEyes && GiveOnce(actor, TraitIds.GhostOfUchiha))
+            bool hasEternalEyes = actor.hasTrait("madara_eternal_mangekyo") || actor.hasTrait("eternal_mangekyo");
+            if (level >= 7 && actor.hasTrait("uchiha_clan") && hasEternalEyes && GiveOnce(actor, "08rank_ghost_of_uchiha"))
             {
                 if (ShinobiConfig.EnableWorldTips)
                 {
@@ -117,11 +116,11 @@ namespace ShinobiBox
 
 
             // god Of Shinobi Giver thingy thangy
-            bool hasAllFiveNatures = actor.hasTrait(TraitIds.FireNature) && actor.hasTrait(TraitIds.WaterNature) && actor.hasTrait(TraitIds.EarthNature) && actor.hasTrait(TraitIds.LightningNature) && actor.hasTrait(TraitIds.WindNature);
+            bool hasAllFiveNatures = actor.hasTrait("fireN") && actor.hasTrait("waterN") && actor.hasTrait("earthN") && actor.hasTrait("lightningN") && actor.hasTrait("windN");
             int wasKage = 0;
             actor.data.get("was_kage", out wasKage);
-            bool qualifiesPastKage = actor.hasTrait(TraitIds.Kage) || hasKageInName || wasKage > 0;
-            if (qualifiesPastKage && level >= 5 && hasAllFiveNatures && GiveOnce(actor, TraitIds.GodOfShinobi))
+            bool qualifiesPastKage = actor.hasTrait("06rank_kage") || hasKageInName || wasKage > 0;
+            if (qualifiesPastKage && level >= 5 && hasAllFiveNatures && GiveOnce(actor, "09rank_god_of_shinobi"))
             {
                 if (ShinobiConfig.EnableWorldTips)
                 {
@@ -129,16 +128,16 @@ namespace ShinobiBox
                 }
             }
 
-            if (actor.hasTrait(TraitIds.HagoromoChakra) && !actor.hasStatus(StatusIds.SixPathsSenjutsu))
+            if (actor.hasTrait("05_hagoromo_chakra") && !actor.hasStatus("status_six_paths_senjutsu"))
             {
-                actor.addStatusEffect(StatusIds.SixPathsSenjutsu, 30f);
+                actor.addStatusEffect("status_six_paths_senjutsu", 30f);
             }
 
-            if (actor.hasTrait(TraitIds.TenTailsJinchuriki) && actor.hasTrait(TraitIds.Rinnegan) && GiveOnce(actor, TraitIds.RinneSharingan))
+            if (actor.hasTrait("ten_tails_jinchuriki") && actor.hasTrait("rinnegan") && GiveOnce(actor, "rinnesharingan"))
             {
-                if (!actor.hasStatus(StatusIds.SixPathsSenjutsu))
+                if (!actor.hasStatus("status_six_paths_senjutsu"))
                 {
-                    actor.addStatusEffect(StatusIds.SixPathsSenjutsu, -1f);
+                    actor.addStatusEffect("status_six_paths_senjutsu", -1f);
                 }
                 if (ShinobiConfig.EnableWorldTips)
                 {
@@ -147,7 +146,7 @@ namespace ShinobiBox
             }
 
             // If unit is an anbu or jonin, they are automatically in the military
-            if (actor.hasTrait(TraitIds.Anbu) || actor.hasTrait(TraitIds.Jonin))
+            if (actor.hasTrait("05rank_anbu") || actor.hasTrait("04rank_jonin"))
             {
                 actor.setProfession(UnitProfession.Warrior);
             }
@@ -157,41 +156,40 @@ namespace ShinobiBox
                 actor.data.favorite = false;
             }
 
-            if (actor.isClone() && !actor.hasStatus(StatusIds.ShadowClone))
+            if (actor.isClone() && !actor.hasStatus("shadow_clone"))
             {
-                actor.addStatusEffect(StatusIds.ShadowClone, 5f);
+                actor.addStatusEffect("shadow_clone", 5f);
             }
 
             //SageProgression.HandleSageProgression(actor, level);
 
             // Sharingan Progression
-            if (actor.hasTrait(TraitIds.UchihaClan))
+            if (actor.hasTrait("uchiha_clan"))
             {
-                bool hasThreeTomoe = actor.hasStatus(StatusIds.Sharingan3Tomoe);
+                bool hasThreeTomoe = actor.hasStatus("status_sharingan_3t");
 
                 // Mangekyo Awakening
-                if (!actor.hasTrait(TraitIds.Mangekyo) && !actor.hasTrait(TraitIds.Blind) && !hasEternalEyes && hasThreeTomoe)
+                if (!actor.hasTrait("mangekyo_sharingan") && !actor.hasTrait("trait_blind") && !hasEternalEyes && hasThreeTomoe)
                 {
-                    if (HasTrauma(actor) && GiveOnce(actor, TraitIds.Mangekyo))
+                    if (HasTrauma(actor) && GiveOnce(actor, "mangekyo_sharingan"))
                     {
                         JutsuLibrary.ClearSharinganTomoeStatuses(actor);
 
-                        actor.addStatusEffect(StatusIds.WillOfFireBuff);
+                        actor.addStatusEffect("power_up");
                         ShinobiWorldLogs.AddWorldLog("log_mangekyo_awakened", "worldlog_mangekyo_awakened", "ui/icons/mangekyo", actor);
                     }
                 }
 
-                if (!actor.hasTrait(TraitIds.Sharingan) && !HasBetterEye(actor, 1))
+                if (!actor.hasTrait("sharingan") && !HasBetterEye(actor, 1))
                 {
-                    if (kills >= 1 || (age >= 12 && UnityEngine.Random.value < 0.001f)) GiveOnce(actor, TraitIds.Sharingan);
+                    if (kills >= 1 || (age >= 12 && UnityEngine.Random.value < 0.001f)) GiveOnce(actor, "sharingan");
                 }
 
             }
 
-            // Akatsuki recruitment: evil, experienced adults. The organisation never has more than 10 living members.
-            if (age >= 28 && level >= 5 && actor.isSapient() && actor.hasTrait(TraitIds.Evil) &&
+            if (age >= 28 && level >= 5 && actor.isSapient() && actor.hasTrait("evil") &&
                 AkatsukiMembers < MaxAkatsukiMembers && UnityEngine.Random.value < 0.0015f &&
-                GiveOnce(actor, TraitIds.Akatsuki))
+                GiveOnce(actor, "trait_akatsuki"))
             {
                 AkatsukiMembers++;
                 if (ShinobiConfig.EnableWorldTips)
@@ -202,12 +200,12 @@ namespace ShinobiBox
 
             #region Ten Tails Progression Stuff
             
-            bool hasTen = actor.hasTrait(TraitIds.TenTailsJinchuriki);
-            bool hasSPS = actor.hasStatus(StatusIds.SixPathsSenjutsu);
+            bool hasTen = actor.hasTrait("ten_tails_jinchuriki");
+            bool hasSPS = actor.hasStatus("status_six_paths_senjutsu");
 
-            if (hasSPS && !hasTen && !actor.hasTrait(TraitIds.HagoromoChakra))
+            if (hasSPS && !hasTen && !actor.hasTrait("05_hagoromo_chakra"))
             {
-                actor.finishStatusEffect(StatusIds.SixPathsSenjutsu);
+                actor.finishStatusEffect("status_six_paths_senjutsu");
             }
             
             #endregion
@@ -216,8 +214,6 @@ namespace ShinobiBox
         #endregion
 
         #region GiveOnce
-        // Gives a progression trait only once per unit. If the player removes it by hand, it stays removed.
-        // Returns true only when the trait was actually given just now.
         public static bool GiveOnce(Actor actor, string traitId)
         {
             string key = "given_" + traitId;
@@ -237,19 +233,19 @@ namespace ShinobiBox
         {
             if (!ShinobiConfig.EnableClanNames) return;
 
-            if (actor.hasTrait(TraitIds.UchihaClan)) ApplyClanName(actor, "Uchiha");
-            else if (actor.hasTrait(TraitIds.HyugaClan)) ApplyClanName(actor, "Hyuga");
-            else if (actor.hasTrait(TraitIds.UzumakiClan)) ApplyClanName(actor, "Uzumaki");
-            else if (actor.hasTrait(TraitIds.SenjuClan)) ApplyClanName(actor, "Senju");
-            else if (actor.hasTrait(TraitIds.AkimichiClan)) ApplyClanName
+            if (actor.hasTrait("uchiha_clan")) ApplyClanName(actor, "Uchiha");
+            else if (actor.hasTrait("hyuga_clan")) ApplyClanName(actor, "Hyuga");
+            else if (actor.hasTrait("uzumaki_clan")) ApplyClanName(actor, "Uzumaki");
+            else if (actor.hasTrait("senju_clan")) ApplyClanName(actor, "Senju");
+            else if (actor.hasTrait("akimichi_clan")) ApplyClanName
             (actor, "Akimichi");
-            else if (actor.hasTrait(TraitIds.LeeClan)) ApplyClanName(actor, "Lee");
-            else if (actor.hasTrait(TraitIds.KaguyaClan)) ApplyClanName(actor, "Kaguya");
-            else if (actor.hasTrait(TraitIds.OtsutsukiClan)) ApplyClanName(actor, "Otsutsuki");
-            else if (actor.hasTrait(TraitIds.ChinoikeClan)) ApplyClanName(actor, "Chinoike");
-            else if (actor.hasTrait(TraitIds.AburameClan)) ApplyClanName(actor, "Aburame");
+            else if (actor.hasTrait("lee_clan")) ApplyClanName(actor, "Lee");
+            else if (actor.hasTrait("kaguya_clan")) ApplyClanName(actor, "Kaguya");
+            else if (actor.hasTrait("otsutsuki_clan")) ApplyClanName(actor, "Otsutsuki");
+            else if (actor.hasTrait("chinoike_clan")) ApplyClanName(actor, "Chinoike");
+            else if (actor.hasTrait("aburame_clan")) ApplyClanName(actor, "Aburame");
 
-            if (actor.hasTrait(TraitIds.Kage))
+            if (actor.hasTrait("06rank_kage"))
             {
                 ApplyKageName(actor, "Kage");
             }
@@ -273,12 +269,12 @@ namespace ShinobiBox
 
             if (actor.data.favorite) return;
 
-            bool hasAnySenjutsu = actor.hasTrait(TraitIds.FrogSage) || actor.hasTrait(TraitIds.SlugSage) || actor.hasTrait(TraitIds.SnakeSage) || actor.hasTrait(TraitIds.WoodSage);
+            bool hasAnySenjutsu = actor.hasTrait("frog_sage_mode") || actor.hasTrait("slug_sage_mode") || actor.hasTrait("snake_sage_mode") || actor.hasTrait("wood_sage_mode");
 
-            if (actor.hasTrait(TraitIds.IndraChakra) || actor.hasTrait(TraitIds.AsuraChakra) ||
-                actor.hasTrait(TraitIds.Mangekyo) || actor.hasTrait(TraitIds.MadaraEternalMangekyo) || actor.hasTrait(TraitIds.EternalMangekyo) ||
-                actor.hasTrait(TraitIds.Rinnegan) || actor.hasTrait(TraitIds.NineTailsJinchuriki) || actor.hasTrait(TraitIds.RinneSharingan) ||
-                actor.hasTrait(TraitIds.HagoromoChakra) || actor.hasTrait(TraitIds.TenTailsJinchuriki) || hasAnySenjutsu)
+            if (actor.hasTrait("07_indra_chakra") || actor.hasTrait("08_asura_chakra") ||
+                actor.hasTrait("mangekyo_sharingan") || actor.hasTrait("madara_eternal_mangekyo") || actor.hasTrait("eternal_mangekyo") ||
+                actor.hasTrait("rinnegan") || actor.hasTrait("nine_tails_jinchuriki") || actor.hasTrait("rinnesharingan") ||
+                actor.hasTrait("05_hagoromo_chakra") || actor.hasTrait("ten_tails_jinchuriki") || hasAnySenjutsu)
             {
                 actor.data.favorite = true;
                 actor.data.set("auto_favorited_once", 1);
@@ -287,10 +283,10 @@ namespace ShinobiBox
 
         private static void ApplyPassives(Actor actor)
         {
-            if (actor.hasTrait(TraitIds.HashiramaCells))
+            if (actor.hasTrait("hashi_cells"))
             {
-                if (actor.hasTrait(TraitIds.Crippled)) actor.removeTrait(TraitIds.Crippled);
-                if (actor.hasTrait(TraitIds.Eyepatch)) actor.removeTrait(TraitIds.Eyepatch);
+                if (actor.hasTrait("crippled")) actor.removeTrait("crippled");
+                if (actor.hasTrait("eyepatch")) actor.removeTrait("eyepatch");
             }
         }
         #endregion
@@ -351,9 +347,9 @@ namespace ShinobiBox
         #region HasBetterEye
         private static bool HasBetterEye(Actor a, int currentTier)
         {
-            if (currentTier < 2 && (a.hasStatus(StatusIds.Sharingan2Tomoe) || a.hasStatus(StatusIds.Sharingan3Tomoe) || a.hasTrait(TraitIds.Mangekyo) || a.hasTrait(TraitIds.Blind))) return true;
-            if (currentTier < 3 && (a.hasStatus(StatusIds.Sharingan3Tomoe) || a.hasTrait(TraitIds.Mangekyo) || a.hasTrait(TraitIds.Blind))) return true;
-            if (currentTier < 4 && (a.hasTrait(TraitIds.Mangekyo) || a.hasTrait(TraitIds.Blind))) return true;
+            if (currentTier < 2 && (a.hasStatus("status_sharingan_2t") || a.hasStatus("status_sharingan_3t") || a.hasTrait("mangekyo_sharingan") || a.hasTrait("trait_blind"))) return true;
+            if (currentTier < 3 && (a.hasStatus("status_sharingan_3t") || a.hasTrait("mangekyo_sharingan") || a.hasTrait("trait_blind"))) return true;
+            if (currentTier < 4 && (a.hasTrait("mangekyo_sharingan") || a.hasTrait("trait_blind"))) return true;
             return false;
         }
         #endregion
@@ -361,7 +357,7 @@ namespace ShinobiBox
         #region removeWeapon
         public static void removeWeapon(Actor actor)
         {
-            if (actor.hasTrait(TraitIds.TaijutsuMaster) && actor.hasWeapon())
+            if (actor.hasTrait("taijutsu_master") && actor.hasWeapon())
             {
                 actor.takeAwayItems();
             }
@@ -381,7 +377,7 @@ namespace ShinobiBox
 
         public static void RemoveFormsIfNoTrait(Actor a)
         {
-            if (a != null && !a.hasTrait(TraitIds.NineTailsJinchuriki)) RemoveLowerForms(a);
+            if (a != null && !a.hasTrait("nine_tails_jinchuriki")) RemoveLowerForms(a);
         }
         #endregion
     

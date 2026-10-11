@@ -17,7 +17,7 @@ namespace ShinobiBox
 
             #region Shikotsumyaku Defense
             StatusAsset shikodef = new StatusAsset();
-            shikodef.id = StatusIds.ShikotsumyakuDefense;
+            shikodef.id = "shiko_defense";
             shikodef.path_icon = "effects/shikotsumyaku";
             shikodef.duration = 60f;
 
@@ -57,7 +57,7 @@ namespace ShinobiBox
                 if (!JutsuLibrary.CheckAndConsumeChakra(pSelf.a, 45f)) return false;
                 Actor a = pSelf.a;
 
-                a.addStatusEffect(StatusIds.ShikotsumyakuDefense, 6f);
+                a.addStatusEffect("shiko_defense", 6f);
                 return true;
             }
             return false;
@@ -76,7 +76,7 @@ namespace ShinobiBox
                 World.world.projectiles.spawn(
                     pSelf,
                     pTarget,
-                    ProjectileIds.Arrow,
+                    "arrow",
                     pSelf.current_tile.posV3,
                     pTarget.current_tile.posV3
                 );

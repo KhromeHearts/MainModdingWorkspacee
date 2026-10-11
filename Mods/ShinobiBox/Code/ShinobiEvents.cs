@@ -29,9 +29,9 @@ namespace ShinobiBox
     {
         static void Postfix(Actor __instance, BaseSimObject pAttacker)
         {
-            if (pAttacker != null && pAttacker.a != null && pAttacker.a.hasStatus(StatusIds.Rasengan))
+            if (pAttacker != null && pAttacker.a != null && pAttacker.a.hasStatus("status_rasengan"))
             {
-                pAttacker.a.finishStatusEffect(StatusIds.Rasengan);
+                pAttacker.a.finishStatusEffect("status_rasengan");
             }
         }
     }
@@ -43,21 +43,21 @@ namespace ShinobiBox
         public static void Postfix(Actor __result, Actor pParent1, Actor pParent2)
         {
             if (__result == null || __result.asset == null || __result.asset.id != "human") return;
-            if (__result.hasTrait(TraitIds.IndraChakra) || __result.hasTrait(TraitIds.AsuraChakra)) return;
+            if (__result.hasTrait("07_indra_chakra") || __result.hasTrait("08_asura_chakra")) return;
 
             bool parentHasHagoromo =
-                (pParent1 != null && pParent1.hasTrait(TraitIds.HagoromoChakra)) ||
-                (pParent2 != null && pParent2.hasTrait(TraitIds.HagoromoChakra));
+                (pParent1 != null && pParent1.hasTrait("05_hagoromo_chakra")) ||
+                (pParent2 != null && pParent2.hasTrait("05_hagoromo_chakra"));
 
             if (!parentHasHagoromo) return;
 
             if (UnityEngine.Random.value < 0.5f)
             {
-                __result.addTrait(TraitIds.IndraChakra);
+                __result.addTrait("07_indra_chakra");
             }
             else
             {
-                __result.addTrait(TraitIds.AsuraChakra);
+                __result.addTrait("08_asura_chakra");
             }
         }
     }
@@ -73,82 +73,74 @@ namespace ShinobiBox
             ApplyGuaranteedTraitsFromParent(__result, pParent1);
             ApplyGuaranteedTraitsFromParent(__result, pParent2);
 
-            if (__result.hasTrait(TraitIds.OtsutsukiClan) && !__result.hasTrait(TraitIds.HamuraChakra) && !__result.hasTrait(TraitIds.HagoromoChakra))
+            if (__result.hasTrait("otsutsuki_clan") && !__result.hasTrait("06_hamura_chakra") && !__result.hasTrait("05_hagoromo_chakra"))
             {
                 if (Randy.randomChance(0.01f))
                 {
-                    __result.addTrait(TraitIds.HagoromoChakra);
+                    __result.addTrait("05_hagoromo_chakra");
                 }
                 else if (Randy.randomChance(0.01f))
                 {
-                    __result.addTrait(TraitIds.HamuraChakra);
+                    __result.addTrait("06_hamura_chakra");
                 }
             }
 
-            if (__result.hasTrait(TraitIds.OtsutsukiClan))
+            if (__result.hasTrait("otsutsuki_clan"))
             {
                 float roll = UnityEngine.Random.value;
 
                 if (roll < 0.05f)
                 {
-                    __result.addTrait(TraitIds.Rinnegan);
+                    __result.addTrait("rinnegan");
                 }
                 else if (roll < 0.20f)
                 {
-                    __result.addTrait(TraitIds.GoldenByakugan);
+                    __result.addTrait("golden_byakugan");
                 }
-                else if (roll < 0.30f && __result.hasTrait(TraitIds.HamuraChakra))
+                else if (roll < 0.30f && __result.hasTrait("06_hamura_chakra"))
                 {
-                    __result.addTrait(TraitIds.Tenseigan);
+                    __result.addTrait("tenseigan");
                 }
                 else
                 {
-                    __result.addTrait(TraitIds.Byakugan);
+                    __result.addTrait("byakugan");
                 }
             }
 
-            // NOTE: the clan birth rules below used to be nested INSIDE the Otsutsuki check above.
-            // Clans are mutually exclusive, so an Otsutsuki baby could never also be Chinoike/Hyuga/Lee/etc.
-            // and none of these rules could ever run. They now run for the matching clan.
-            //
-            // The old Senju block (5% wood_release / 0.1% hashi_cells) was removed from here on purpose:
-            // BirthTraits.ApplyTraitsOnBirth already gives Senju babies a 1% chance of each,
-            // and moving the old block out would have quietly made Senju stronger.
-
-            if (!__result.hasTrait(TraitIds.Ketsuryugan) && __result.hasTrait(TraitIds.ChinoikeClan))
+            if (!__result.hasTrait("ketsuryugan") && __result.hasTrait("chinoike_clan"))
             {
                 if (Randy.randomChance(0.50f))
                 {
-                    __result.addTrait(TraitIds.Ketsuryugan);
+                    __result.addTrait("ketsuryugan");
                 }
             }
 
-            if (!__result.hasTrait(TraitIds.Byakugan) && __result.hasTrait(TraitIds.HyugaClan))
+            if (!__result.hasTrait("byakugan") && __result.hasTrait("hyuga_clan"))
             {
-                __result.addTrait(TraitIds.Byakugan);
+                __result.addTrait("byakugan");
             }
 
-            if (!__result.hasTrait(TraitIds.EightInnerGates) && __result.hasTrait(TraitIds.LeeClan))
+            if (!__result.hasTrait("eight_inner_gates") && __result.hasTrait("lee_clan"))
             {
                 if (Randy.randomChance(0.20f))
                 {
-                    __result.addTrait(TraitIds.EightInnerGates);
+                    __result.addTrait("eight_inner_gates");
                 }
             }
 
-            if (!__result.hasTrait(TraitIds.Shikotsumyaku) && __result.hasTrait(TraitIds.KaguyaClan))
+            if (!__result.hasTrait("shikotsumyaku") && __result.hasTrait("kaguya_clan"))
             {
                 if (Randy.randomChance(0.05f))
                 {
-                    __result.addTrait(TraitIds.Shikotsumyaku);
+                    __result.addTrait("shikotsumyaku");
                 }
             }
 
-            if (!__result.hasTrait(TraitIds.Sharingan) && __result.hasTrait(TraitIds.UchihaClan))
+            if (!__result.hasTrait("sharingan") && __result.hasTrait("uchiha_clan"))
             {
                 if (Randy.randomChance(0.01f))
                 {
-                    __result.addTrait(TraitIds.Sharingan);
+                    __result.addTrait("sharingan");
                 }
             }
         }
@@ -178,13 +170,13 @@ namespace ShinobiBox
         {
             if (__instance == null || !__instance.isAlive()) return;
 
-            if (!__instance.hasTrait(TraitIds.NineTailsJinchuriki)) return;
+            if (!__instance.hasTrait("nine_tails_jinchuriki")) return;
 
-            if ((__instance.hasStatus(StatusIds.NineTailsInitialRelease) || __instance.hasStatus(StatusIds.NineTailsV1Cloak) ||
-                __instance.hasStatus(StatusIds.NineTailsV2Cloak) || __instance.hasStatus(StatusIds.NineTailsIncompleteBeast)) &&
-                UnityEngine.Random.value < 0.15f && !__instance.hasStatus(StatusIds.Angry))
+            if ((__instance.hasStatus("status_jinchuriki_initial_release") || __instance.hasStatus("status_jinchuriki_v1_cloak") ||
+                __instance.hasStatus("status_jinchuriki_v2_cloak") || __instance.hasStatus("status_jinchuriki_incomplete_beast")) &&
+                UnityEngine.Random.value < 0.15f && !__instance.hasStatus("angry"))
             {
-                __instance.addStatusEffect(StatusIds.Angry, 10f);
+                __instance.addStatusEffect("angry", 10f);
             }
         }
     }
@@ -213,31 +205,31 @@ namespace ShinobiBox
                         RemoveAllSharinganTiers(pAttacker.a);
                         pAttacker.a.addTrait(stolenSharinganTier);
 
-                        pAttacker.a.removeTrait(TraitIds.Blind);
+                        pAttacker.a.removeTrait("trait_blind");
                         pAttacker.a.data.set("stolen_sharingan_eye", 1);
-                        pAttacker.a.addStatusEffect(StatusIds.WeakEye, 450f);
+                        pAttacker.a.addStatusEffect("weak_eye", 450f);
                     }
                 }
 
-                if (UnityEngine.Random.value < EyeStealChance && __instance.hasTrait(TraitIds.Byakugan))
+                if (UnityEngine.Random.value < EyeStealChance && __instance.hasTrait("byakugan"))
                 {
-                    if (!pAttacker.a.hasTrait(TraitIds.Byakugan))
+                    if (!pAttacker.a.hasTrait("byakugan"))
                     {
-                        pAttacker.a.addTrait(TraitIds.Byakugan);
+                        pAttacker.a.addTrait("byakugan");
                     }
                     pAttacker.a.data.set("stolen_byakugan_eye", 1);
-                    pAttacker.a.addStatusEffect(StatusIds.WeakEye, 450f);
+                    pAttacker.a.addStatusEffect("weak_eye", 450f);
                 }
 
                 // EMS Awaken.
-                if (__instance.hasTrait(TraitIds.Mangekyo) || __instance.hasTrait(TraitIds.Blind))
+                if (__instance.hasTrait("mangekyo_sharingan") || __instance.hasTrait("trait_blind"))
                 {
-                    if (pAttacker.a.hasTrait(TraitIds.Mangekyo) || pAttacker.a.hasTrait(TraitIds.Blind))
+                    if (pAttacker.a.hasTrait("mangekyo_sharingan") || pAttacker.a.hasTrait("trait_blind"))
                     {
-                        pAttacker.a.removeTrait(TraitIds.Mangekyo);
-                        pAttacker.a.removeTrait(TraitIds.Blind);
+                        pAttacker.a.removeTrait("mangekyo_sharingan");
+                        pAttacker.a.removeTrait("trait_blind");
 
-                        pAttacker.a.addTrait(TraitIds.EternalMangekyo);
+                        pAttacker.a.addTrait("eternal_mangekyo");
                         pAttacker.a.restoreHealth(pAttacker.a.getMaxHealth());
 
                         ShinobiWorldLogs.AddWorldLog("log_awaken_ems", "worldlog_awaken_ems", "ui/icons/ems", pAttacker.a);
@@ -251,11 +243,11 @@ namespace ShinobiBox
         {
             if (victim == null) return null;
 
-            if (victim.hasTrait(TraitIds.MadaraEternalMangekyo)) return TraitIds.MadaraEternalMangekyo;
-            if (victim.hasTrait(TraitIds.EternalMangekyo)) return TraitIds.EternalMangekyo;
-            if (victim.hasTrait(TraitIds.Mangekyo)) return TraitIds.Mangekyo;
-            if (victim.hasStatus(StatusIds.Sharingan3Tomoe) || victim.hasStatus(StatusIds.Sharingan2Tomoe) || victim.hasStatus(StatusIds.Sharingan1Tomoe)) return TraitIds.Sharingan;
-            if (victim.hasTrait(TraitIds.Sharingan)) return TraitIds.Sharingan;
+            if (victim.hasTrait("madara_eternal_mangekyo")) return "madara_eternal_mangekyo";
+            if (victim.hasTrait("eternal_mangekyo")) return "eternal_mangekyo";
+            if (victim.hasTrait("mangekyo_sharingan")) return "mangekyo_sharingan";
+            if (victim.hasStatus("status_sharingan_3t") || victim.hasStatus("status_sharingan_2t") || victim.hasStatus("status_sharingan_1t")) return "sharingan";
+            if (victim.hasTrait("sharingan")) return "sharingan";
 
             return null;
         }
@@ -264,13 +256,13 @@ namespace ShinobiBox
         {
             if (actor == null) return;
 
-            actor.finishStatusEffect(StatusIds.Sharingan1Tomoe);
-            actor.finishStatusEffect(StatusIds.Sharingan2Tomoe);
-            actor.finishStatusEffect(StatusIds.Sharingan3Tomoe);
+            actor.finishStatusEffect("status_sharingan_1t");
+            actor.finishStatusEffect("status_sharingan_2t");
+            actor.finishStatusEffect("status_sharingan_3t");
 
-            actor.removeTrait(TraitIds.Mangekyo);
-            actor.removeTrait(TraitIds.MadaraEternalMangekyo);
-            actor.removeTrait(TraitIds.EternalMangekyo);
+            actor.removeTrait("mangekyo_sharingan");
+            actor.removeTrait("madara_eternal_mangekyo");
+            actor.removeTrait("eternal_mangekyo");
         }
 
     }
@@ -284,14 +276,14 @@ namespace ShinobiBox
         [HarmonyPostfix]
         public static void generatePersonality_Postfix(Actor __instance)
         {
-            if (__instance.hasTrait(TraitIds.WindNature) && !__instance.hasTrait(TraitIds.Rasengan) && Randy.randomChance(0.15f))
-                __instance.addTrait(TraitIds.Rasengan);
+            if (__instance.hasTrait("windN") && !__instance.hasTrait("rasenganJ") && Randy.randomChance(0.15f))
+                __instance.addTrait("rasenganJ");
 
-            if (__instance.hasTrait(TraitIds.LightningNature))
+            if (__instance.hasTrait("lightningN"))
             {
-                if (!__instance.hasTrait(TraitIds.Chidori) && Randy.randomChance(0.15f))
+                if (!__instance.hasTrait("chidoriJ") && Randy.randomChance(0.15f))
                 {
-                    __instance.addTrait(TraitIds.Chidori);
+                    __instance.addTrait("chidoriJ");
                 }
             }
 
@@ -311,10 +303,10 @@ namespace ShinobiBox
     {
         private static readonly string[] ChakraReserveTraits =
         {
-            TraitIds.LowChakraReserve,
-            TraitIds.HighChakraReserve,
-            TraitIds.GreaterChakraReserve,
-            TraitIds.VastChakraReserve
+            "01_low_chakra_reserve",
+            "02_high_chakra_reserve",
+            "03_greater_chakra_reserve",
+            "04_vast_chakra_reserve"
         };
 
         public static void AssignChakraTrait(Actor actor)
@@ -328,10 +320,10 @@ namespace ShinobiBox
 
             float roll = UnityEngine.Random.value;
             string selectedTrait = null;
-            if (roll < 0.10f) selectedTrait = TraitIds.VastChakraReserve;
-            else if (roll < 0.30f) selectedTrait = TraitIds.GreaterChakraReserve;
-            else if (roll < 0.65f) selectedTrait = TraitIds.HighChakraReserve;
-            else if (roll < 0.90f) selectedTrait = TraitIds.LowChakraReserve;
+            if (roll < 0.10f) selectedTrait = "04_vast_chakra_reserve";
+            else if (roll < 0.30f) selectedTrait = "03_greater_chakra_reserve";
+            else if (roll < 0.65f) selectedTrait = "02_high_chakra_reserve";
+            else if (roll < 0.90f) selectedTrait = "01_low_chakra_reserve";
 
             if (!string.IsNullOrEmpty(selectedTrait)) actor.addTrait(selectedTrait);
         }
@@ -340,7 +332,7 @@ namespace ShinobiBox
         {
             if (!actor.isSapient()) return;
 
-            string[] commonElements = { TraitIds.FireNature, TraitIds.EarthNature, TraitIds.WaterNature, TraitIds.WindNature, TraitIds.LightningNature };
+            string[] commonElements = { "fireN", "earthN", "waterN", "windN", "lightningN" };
             int elementCount = 0;
             foreach (var element in commonElements)
             {
@@ -353,32 +345,32 @@ namespace ShinobiBox
                 }
             }
 
-            if (!actor.hasTrait(TraitIds.StormRelease))
+            if (!actor.hasTrait("stormR"))
             {
                 float stormChance = elementCount >= 3 ? 0.02f : 0.10f;
                 if (Randy.randomChance(stormChance))
-                    actor.addTrait(TraitIds.StormRelease);
+                    actor.addTrait("stormR");
             }
 
             if (Randy.randomChance(0.15f))
             {
-                actor.addTrait(TraitIds.AcademyStudent);
+                actor.addTrait("01rank_academy_student");
             }
 
-            if (actor.hasTrait(TraitIds.SenjuClan))
+            if (actor.hasTrait("senju_clan"))
             {
-                if (!actor.hasTrait(TraitIds.HashiramaCells) && Randy.randomChance(0.01f))
+                if (!actor.hasTrait("hashi_cells") && Randy.randomChance(0.01f))
                 {
-                    actor.addTrait(TraitIds.HashiramaCells);
+                    actor.addTrait("hashi_cells");
                     if (ShinobiConfig.EnableWorldTips)
                     {
                         ShinobiWorldLogs.AddWorldLog("log_hashi_cells", "worldlog_hashi_cells", "ui/icons/hashirama_cells", actor, "spawn");
                     }
                 }
 
-                if (!actor.hasTrait(TraitIds.WoodRelease) && Randy.randomChance(0.01f))
+                if (!actor.hasTrait("wood_release") && Randy.randomChance(0.01f))
                 {
-                    actor.addTrait(TraitIds.WoodRelease);
+                    actor.addTrait("wood_release");
                     if (ShinobiConfig.EnableWorldTips)
                     {
                         ShinobiWorldLogs.AddWorldLog("log_wood_release", "worldlog_wood_release", "ui/icons/wood_release", actor, "spawn");
@@ -387,16 +379,16 @@ namespace ShinobiBox
             }
 
 
-            if (actor.hasTrait(TraitIds.OtsutsukiClan))
+            if (actor.hasTrait("otsutsuki_clan"))
             {
-                if (!actor.hasTrait(TraitIds.HagoromoChakra) && !actor.hasTrait(TraitIds.HamuraChakra))
+                if (!actor.hasTrait("05_hagoromo_chakra") && !actor.hasTrait("06_hamura_chakra"))
                 {
-                    actor.addTrait(UnityEngine.Random.value < 0.5f ? TraitIds.HagoromoChakra : TraitIds.HamuraChakra);
+                    actor.addTrait(UnityEngine.Random.value < 0.5f ? "05_hagoromo_chakra" : "06_hamura_chakra");
                 }
 
-                if (!actor.hasTrait(TraitIds.Byakugan) && !actor.hasTrait(TraitIds.Rinnegan) && Randy.randomChance(0.35f))
+                if (!actor.hasTrait("byakugan") && !actor.hasTrait("rinnegan") && Randy.randomChance(0.35f))
                 {
-                    actor.addTrait(actor.hasTrait(TraitIds.HamuraChakra) ? TraitIds.Byakugan : TraitIds.Rinnegan);
+                    actor.addTrait(actor.hasTrait("06_hamura_chakra") ? "byakugan" : "rinnegan");
                 }
             }
         }

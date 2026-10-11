@@ -136,7 +136,7 @@ namespace ShinobiBox
             // Hyuga Clan
             ActorTrait hyuga = new ActorTrait
             {
-                id = TraitIds.HyugaClan,
+                id = "hyuga_clan",
                 group_id = GroupId_Bloodlines,
                 path_icon = "ui/icons/hyuga",
                 can_be_given = true,
@@ -161,7 +161,7 @@ namespace ShinobiBox
             // Uzumaki Clan
             ActorTrait uzumaki = new ActorTrait
             {
-                id = TraitIds.UzumakiClan,
+                id = "uzumaki_clan",
                 group_id = GroupId_Bloodlines,
                 path_icon = "ui/icons/uzumaki",
                 can_be_given = true,
@@ -186,7 +186,7 @@ namespace ShinobiBox
             #region Kaguya Clan
             ActorTrait kaguya = new ActorTrait
             {
-                id = TraitIds.KaguyaClan,
+                id = "kaguya_clan",
                 group_id = GroupId_Bloodlines,
                 path_icon = "ui/icons/kaguya_clan",
                 can_be_given = true,
@@ -210,7 +210,7 @@ namespace ShinobiBox
             #region Otsutsuki Clan
             ActorTrait otsutsuki = new ActorTrait
             {
-                id = TraitIds.OtsutsukiClan,
+                id = "otsutsuki_clan",
                 group_id = GroupId_Bloodlines,
                 path_icon = "ui/icons/otsutsuki_clan",
                 can_be_given = true,
@@ -237,7 +237,7 @@ namespace ShinobiBox
             // Senju Clan
             ActorTrait senju = new ActorTrait
             {
-                id = TraitIds.SenjuClan,
+                id = "senju_clan",
                 group_id = GroupId_Bloodlines,
                 path_icon = "ui/icons/senju",
                 can_be_given = true,
@@ -262,7 +262,7 @@ namespace ShinobiBox
             // Uchiha Clan
             ActorTrait uchiha_clan = new ActorTrait
             {
-                id = TraitIds.UchihaClan,
+                id = "uchiha_clan",
                 group_id = GroupId_Bloodlines,
                 path_icon = "ui/icons/uchiha_fan",
                 can_be_given = true,
@@ -287,7 +287,7 @@ namespace ShinobiBox
             // Akimichi Clan
             ActorTrait akimichi_clan = new ActorTrait
             {
-                id = TraitIds.AkimichiClan,
+                id = "akimichi_clan",
                 group_id = GroupId_Bloodlines,
                 path_icon = "ui/icons/akimichi_clan",
                 can_be_given = true,
@@ -312,7 +312,7 @@ namespace ShinobiBox
             // Lee Clan
             ActorTrait lee_clan = new ActorTrait
             {
-                id = TraitIds.LeeClan,
+                id = "lee_clan",
                 group_id = GroupId_Bloodlines,
                 path_icon = "ui/icons/lee_clan",
                 can_be_given = true,
@@ -331,8 +331,6 @@ namespace ShinobiBox
             lee_clan.base_stats.set("multiplier_chakra", -99f);
             lee_clan.base_stats.set("experience", 12f);
 
-            // ClanProgression.Lee already existed but was never attached, so Lee units never got
-            // Taijutsu Master (level 3) or their chance at the Eight Inner Gates.
             lee_clan.special_effect_interval = effectInt;
             lee_clan.action_special_effect = new WorldAction(ClanProgression.Lee);
 
@@ -342,7 +340,7 @@ namespace ShinobiBox
             #region Chinoike Clan
             ActorTrait chinoike_clan = new ActorTrait
             {
-                id = TraitIds.ChinoikeClan,
+                id = "chinoike_clan",
                 group_id = GroupId_Bloodlines,
                 path_icon = "ui/icons/chinoike_clan",
                 can_be_given = true,
@@ -366,7 +364,7 @@ namespace ShinobiBox
             #region Aburame Clan
             ActorTrait aburame_clan = new ActorTrait
             {
-                id = TraitIds.AburameClan,
+                id = "aburame_clan",
                 group_id = GroupId_Bloodlines,
                 path_icon = "ui/icons/aburame_clan",
                 can_be_given = true,
@@ -393,7 +391,7 @@ namespace ShinobiBox
             // Byakugan
             ActorTrait byakugan = new ActorTrait
             {
-                id = TraitIds.Byakugan,
+                id = "byakugan",
                 group_id = GroupId_Dojutsu,
                 path_icon = "ui/icons/byakugan",
                 can_be_given = true,
@@ -419,7 +417,7 @@ namespace ShinobiBox
             // Byakugan
             ActorTrait byakuganG = new ActorTrait
             {
-                id = TraitIds.GoldenByakugan,
+                id = "golden_byakugan",
                 group_id = GroupId_Dojutsu,
                 path_icon = "ui/icons/gold_byakugan",
                 can_be_given = true,
@@ -444,7 +442,7 @@ namespace ShinobiBox
             #region Rinnegan
             ActorTrait rinnegan = new ActorTrait
             {
-                id = TraitIds.Rinnegan,
+                id = "rinnegan",
                 group_id = GroupId_Dojutsu,
                 path_icon = "ui/icons/rinnegan",
                 can_be_given = true,
@@ -475,7 +473,7 @@ namespace ShinobiBox
             #region Rinne Sharingan
             ActorTrait rinnesharingan = new ActorTrait
             {
-                id = TraitIds.RinneSharingan,
+                id = "rinnesharingan",
                 group_id = GroupId_Dojutsu,
                 path_icon = "ui/icons/rinne_sharingan",
                 can_be_given = true,
@@ -503,7 +501,7 @@ namespace ShinobiBox
             #region Sharingan
             ActorTrait sharingan = new ActorTrait
             {
-                id = TraitIds.Sharingan,
+                id = "sharingan",
                 group_id = GroupId_Dojutsu,
                 path_icon = "ui/icons/sharingan_3t",
                 can_be_given = true,
@@ -521,7 +519,7 @@ namespace ShinobiBox
             #region Mangekyo
             ActorTrait mangekyo = new ActorTrait
             {
-                id = TraitIds.Mangekyo,
+                id = "mangekyo_sharingan",
                 group_id = GroupId_Dojutsu,
                 path_icon = "ui/icons/mangekyo",
                 can_be_given = true,
@@ -541,10 +539,6 @@ namespace ShinobiBox
             mangekyo.base_stats.set("accuracy", 2.5f);
             mangekyo.base_stats.set("chakra", 120f);
 
-            // Mangekyo always gets its abilities. (This used to be a 50% coin flip made once at mod load,
-            // which meant roughly half of all game launches gave Mangekyo no abilities at all.)
-            // The Itachi variant (Yasaka Magatama + Itachi's Susanoo) was never finished; if it comes back
-            // it should be its own trait, like Madara's Eternal Mangekyo.
             mangekyo.action_attack_target = new AttackAction(JutsuLibrary.AmaterasuAction);
             mangekyo.action_special_effect = (WorldAction)Delegate.Combine(mangekyo.action_special_effect, new WorldAction(JutsuLibrary.SusanooRibcage));
             mangekyo.action_attack_target = (AttackAction)Delegate.Combine(mangekyo.action_attack_target, new AttackAction(JutsuLibrary.BaseSusanooAction));
@@ -557,7 +551,7 @@ namespace ShinobiBox
             #region Madara Eternal Mangekyo
             ActorTrait madaraEternalMangekyo = new ActorTrait
             {
-                id = TraitIds.MadaraEternalMangekyo,
+                id = "madara_eternal_mangekyo",
                 group_id = GroupId_Dojutsu,
                 path_icon = "ui/icons/madara_ems",
                 can_be_given = true,
@@ -589,7 +583,7 @@ namespace ShinobiBox
             #region Eternal Mangekyo
             ActorTrait ems = new ActorTrait
             {
-                id = TraitIds.EternalMangekyo,
+                id = "eternal_mangekyo",
                 group_id = GroupId_Dojutsu,
                 path_icon = "ui/icons/ems",
                 can_be_given = true,
@@ -623,7 +617,7 @@ namespace ShinobiBox
             // sasukes rinnegan has the same abilities as rinnegan and eternal mangekyo, but with different stats and a unique icon
             ActorTrait sasukeRinnegan = new ActorTrait
             {
-                id = TraitIds.SasukeRinnegan,
+                id = "sasuke_rinnegan",
                 group_id = GroupId_Dojutsu,
                 path_icon = "ui/icons/sasuke_rinnegan",
                 can_be_given = true,
@@ -693,7 +687,7 @@ namespace ShinobiBox
             // Tenseigan
             ActorTrait tenseigan = new ActorTrait
             {
-                id = TraitIds.Tenseigan,
+                id = "tenseigan",
                 group_id = GroupId_Dojutsu,
                 path_icon = "ui/icons/tenseigan",
                 can_be_given = true,
@@ -714,7 +708,7 @@ namespace ShinobiBox
             #region Ketsuryugan
             ActorTrait ketsuryugan = new ActorTrait
             {
-                id = TraitIds.Ketsuryugan,
+                id = "ketsuryugan",
                 group_id = GroupId_Dojutsu,
                 path_icon = "ui/icons/ketsuryugan",
                 can_be_given = true,
@@ -740,7 +734,7 @@ namespace ShinobiBox
             #region Academy Student
             ActorTrait student = new ActorTrait
             {
-                id = TraitIds.AcademyStudent,
+                id = "01rank_academy_student",
                 group_id = GroupId_Ranks,
                 path_icon = "ui/icons/rank_student",
                 can_be_given = true,
@@ -758,7 +752,7 @@ namespace ShinobiBox
             #region Genin
             ActorTrait genin = new ActorTrait
             {
-                id = TraitIds.Genin,
+                id = "02rank_genin",
                 group_id = GroupId_Ranks,
                 path_icon = "ui/icons/rank_genin",
                 can_be_given = true,
@@ -781,7 +775,7 @@ namespace ShinobiBox
             #region Chunin
             ActorTrait chunin = new ActorTrait
             {
-                id = TraitIds.Chunin,
+                id = "03rank_chunin",
                 group_id = GroupId_Ranks,
                 path_icon = "ui/icons/rank_chunin",
                 can_be_given = true,
@@ -806,7 +800,7 @@ namespace ShinobiBox
             #region Jonin
             ActorTrait jonin = new ActorTrait
             {
-                id = TraitIds.Jonin,
+                id = "04rank_jonin",
                 group_id = GroupId_Ranks,
                 path_icon = "ui/icons/rank_jonin",
                 can_be_given = true,
@@ -830,7 +824,7 @@ namespace ShinobiBox
             #region Anbu
             ActorTrait anbu = new ActorTrait
             {
-                id = TraitIds.Anbu,
+                id = "05rank_anbu",
                 group_id = GroupId_Ranks,
                 path_icon = "ui/icons/rank_anbu",
                 can_be_given = true,
@@ -855,7 +849,7 @@ namespace ShinobiBox
             #region Kage
             ActorTrait kage = new ActorTrait
             {
-                id = TraitIds.Kage,
+                id = "06rank_kage",
                 group_id = GroupId_Ranks,
                 path_icon = "ui/icons/rank_kage",
                 can_be_given = true,
@@ -887,7 +881,7 @@ namespace ShinobiBox
             #region Sannin
             ActorTrait sannin = new ActorTrait
             {
-                id = TraitIds.Sannin,
+                id = "07rank_sannin",
                 group_id = GroupId_Ranks,
                 path_icon = "ui/icons/rank_sannin",
                 can_be_given = true,
@@ -910,7 +904,7 @@ namespace ShinobiBox
             #region Ghost Of Uchiha
             ActorTrait ghostOfUchiha = new ActorTrait
             {
-                id = TraitIds.GhostOfUchiha,
+                id = "08rank_ghost_of_uchiha",
                 group_id = GroupId_Ranks,
                 path_icon = "ui/icons/ghostofuchiha",
                 can_be_given = true,
@@ -935,7 +929,7 @@ namespace ShinobiBox
             #region God Of Shinobi
             ActorTrait godOfShinobi = new ActorTrait
             {
-                id = TraitIds.GodOfShinobi,
+                id = "09rank_god_of_shinobi",
                 group_id = GroupId_Ranks,
                 path_icon = "ui/icons/godofshinobi",
                 can_be_given = true,
@@ -964,7 +958,7 @@ namespace ShinobiBox
             #region Low Chakra Reserves
             ActorTrait low_chakra = new ActorTrait
             {
-                id = TraitIds.LowChakraReserve,
+                id = "01_low_chakra_reserve",
                 group_id = GroupId_SpecialChakra,
                 path_icon = "ui/icons/LowChakraReserve",
                 can_be_given = true,
@@ -980,7 +974,7 @@ namespace ShinobiBox
             #region High Chakra Reserves
             ActorTrait high_chakra = new ActorTrait
             {
-                id = TraitIds.HighChakraReserve,
+                id = "02_high_chakra_reserve",
                 group_id = GroupId_SpecialChakra,
                 path_icon = "ui/icons/HighChakraReserve",
                 can_be_given = true,
@@ -997,7 +991,7 @@ namespace ShinobiBox
             #region Greater Chakra Reserves
             ActorTrait greater_chakra = new ActorTrait
             {
-                id = TraitIds.GreaterChakraReserve,
+                id = "03_greater_chakra_reserve",
                 group_id = GroupId_SpecialChakra,
                 path_icon = "ui/icons/GreaterChakraReserve",
                 can_be_given = true,
@@ -1014,7 +1008,7 @@ namespace ShinobiBox
             #region Vast Chakra Reserves
             ActorTrait vast_chakra = new ActorTrait
             {
-                id = TraitIds.VastChakraReserve,
+                id = "04_vast_chakra_reserve",
                 group_id = GroupId_SpecialChakra,
                 path_icon = "ui/icons/VastChakraReserve",
                 can_be_given = true,
@@ -1031,7 +1025,7 @@ namespace ShinobiBox
             #region Hagoromo Chakra
             ActorTrait hagoromo = new ActorTrait
             {
-                id = TraitIds.HagoromoChakra,
+                id = "05_hagoromo_chakra",
                 group_id = GroupId_SpecialChakra,
                 path_icon = "ui/icons/sixpathssenjutsu",
                 can_be_given = true,
@@ -1055,7 +1049,7 @@ namespace ShinobiBox
             #region Hamura's Chakra
             ActorTrait hamura = new ActorTrait
             {
-                id = TraitIds.HamuraChakra,
+                id = "06_hamura_chakra",
                 group_id = GroupId_SpecialChakra,
                 path_icon = "ui/icons/sixpathssenjutsu",
                 can_be_given = true,
@@ -1080,7 +1074,7 @@ namespace ShinobiBox
             // Indra's Chakra
             ActorTrait indra = new ActorTrait
             {
-                id = TraitIds.IndraChakra,
+                id = "07_indra_chakra",
                 group_id = GroupId_SpecialChakra,
                 path_icon = "ui/icons/indra_chakra",
                 can_be_given = true,
@@ -1107,7 +1101,7 @@ namespace ShinobiBox
             // Asura's Chakra
             ActorTrait asura = new ActorTrait
             {
-                id = TraitIds.AsuraChakra,
+                id = "08_asura_chakra",
                 group_id = GroupId_SpecialChakra,
                 path_icon = "ui/icons/asura_chakra",
                 can_be_given = true,
@@ -1138,7 +1132,7 @@ namespace ShinobiBox
             #region Will of Fire
             ActorTrait will_of_fire = new ActorTrait
             {
-                id = TraitIds.WillOfFire,
+                id = "will_of_fire",
                 group_id = GroupId_Abilities,
                 path_icon = "ui/icons/will_of_fire",
                 can_be_given = true,
@@ -1161,7 +1155,7 @@ namespace ShinobiBox
             #region Curse Of Hatred
             ActorTrait curse_of_hatred = new ActorTrait
             {
-                id = TraitIds.CurseOfHatred,
+                id = "curse_of_hatred",
                 group_id = GroupId_Abilities,
                 path_icon = "ui/icons/curse_of_hatred",
                 can_be_given = true,
@@ -1187,13 +1181,12 @@ namespace ShinobiBox
             // Blindness
             ActorTrait blind = new ActorTrait
             {
-                id = TraitIds.Blind,
+                id = "trait_blind",
                 group_id = GroupId_Dojutsu,
                 path_icon = "ui/icons/blind",
                 can_be_given = true,
                 type = TraitType.Negative,
                 needs_to_be_explored = false,
-                // The id already starts with "trait_", so the game would look for "trait_trait_blind".
                 special_locale_id = "trait_blind",
                 special_locale_description = "trait_blind_info",
                 special_locale_description_2 = "trait_blind_info_2"
@@ -1208,7 +1201,7 @@ namespace ShinobiBox
             // Hashirama Cells
             ActorTrait hashirama = new ActorTrait
             {
-                id = TraitIds.HashiramaCells,
+                id = "hashi_cells",
                 group_id = GroupId_Abilities,
                 path_icon = "ui/icons/hashirama_cells",
                 can_be_given = true,
@@ -1230,7 +1223,7 @@ namespace ShinobiBox
             #region Fire Nature
             ActorTrait fire = new ActorTrait
             {
-                id = TraitIds.FireNature,
+                id = "fireN",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/fire_nature",
                 can_be_given = true,
@@ -1254,7 +1247,7 @@ namespace ShinobiBox
             #region Earth Nature
             ActorTrait earth = new ActorTrait
             {
-                id = TraitIds.EarthNature,
+                id = "earthN",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/earth_nature",
                 can_be_given = true,
@@ -1278,7 +1271,7 @@ namespace ShinobiBox
             #region Water Nature
             ActorTrait water = new ActorTrait
             {
-                id = TraitIds.WaterNature,
+                id = "waterN",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/water_nature",
                 can_be_given = true,
@@ -1302,7 +1295,7 @@ namespace ShinobiBox
             #region Wind Nature
             ActorTrait wind = new ActorTrait
             {
-                id = TraitIds.WindNature,
+                id = "windN",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/wind_nature",
                 can_be_given = true,
@@ -1325,7 +1318,7 @@ namespace ShinobiBox
             #region Lightning Nature
             ActorTrait lightning = new ActorTrait
             {
-                id = TraitIds.LightningNature,
+                id = "lightningN",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/lightning_nature",
                 can_be_given = true,
@@ -1347,7 +1340,7 @@ namespace ShinobiBox
             #region Storm Release
             ActorTrait stormR = new ActorTrait
             {
-                id = TraitIds.StormRelease,
+                id = "stormR",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/storm_release",
                 can_be_given = true,
@@ -1372,7 +1365,7 @@ namespace ShinobiBox
             #region Wood Release Trait
             ActorTrait wood = new ActorTrait
             {
-                id = TraitIds.WoodRelease,
+                id = "wood_release",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/wood_release",
                 can_be_given = true,
@@ -1398,7 +1391,7 @@ namespace ShinobiBox
             #region Yin Release Trait
             ActorTrait yin = new ActorTrait
             {
-                id = TraitIds.YinRelease,
+                id = "yin_release",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/yin_release",
                 can_be_given = true,
@@ -1424,7 +1417,7 @@ namespace ShinobiBox
             #region Yang Release Trait
             ActorTrait yang = new ActorTrait
             {
-                id = TraitIds.YangRelease,
+                id = "yang_release",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/yang_release",
                 can_be_given = true,
@@ -1451,7 +1444,7 @@ namespace ShinobiBox
             #region YinYang Release Trait
             ActorTrait yinyang = new ActorTrait
             {
-                id = TraitIds.YinYangRelease,
+                id = "yinyang_release",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/yinyang_release",
                 can_be_given = true,
@@ -1479,7 +1472,7 @@ namespace ShinobiBox
             #region Nine-Tails Jinchuriki
             ActorTrait ninetailsjinchuriki = new ActorTrait
             {
-                id = TraitIds.NineTailsJinchuriki,
+                id = "nine_tails_jinchuriki",
                 group_id = GroupId_Jinchuriki,
                 path_icon = "ui/icons/9Tails",
                 can_be_given = true,
@@ -1506,7 +1499,7 @@ namespace ShinobiBox
             #region Ten Tails Jinchuriki
             ActorTrait tentailsjinchuriki = new ActorTrait
             {
-                id = TraitIds.TenTailsJinchuriki,
+                id = "ten_tails_jinchuriki",
                 group_id = GroupId_Jinchuriki,
                 path_icon = "ui/icons/10Tails",
                 can_be_given = true,
@@ -1529,7 +1522,7 @@ namespace ShinobiBox
             #region Taijutsu Master
             ActorTrait taijutsu_master = new ActorTrait
             {
-                id = TraitIds.TaijutsuMaster,
+                id = "taijutsu_master",
                 group_id = GroupId_Abilities,
                 path_icon = "ui/icons/taijutsu_fist",
                 can_be_given = true,
@@ -1553,7 +1546,7 @@ namespace ShinobiBox
             #region Eight Inner Gates Trait
             ActorTrait eight_inner_gates = new ActorTrait
             {
-                id = TraitIds.EightInnerGates,
+                id = "eight_inner_gates",
                 group_id = GroupId_TransformationTraits,
                 path_icon = "ui/icons/eight_gates",
                 can_be_given = true,
@@ -1575,7 +1568,7 @@ namespace ShinobiBox
             #region Shikotsumyaku Trait
             ActorTrait shikotsumyaku = new ActorTrait
             {
-                id = TraitIds.Shikotsumyaku,
+                id = "shikotsumyaku",
                 group_id = GroupId_Jutsus,
                 path_icon = "ui/icons/shikotsumyakuj",
                 can_be_given = true,
@@ -1636,7 +1629,7 @@ namespace ShinobiBox
             #region Cursed Mark Trait
             ActorTrait cursed_mark = new ActorTrait
             {
-                id = TraitIds.CursedMark,
+                id = "cursed_mark",
                 group_id = GroupId_TransformationTraits,
                 path_icon = "ui/icons/curse",
                 can_be_given = true,
@@ -1661,12 +1654,11 @@ namespace ShinobiBox
             #region Akatsuki Member Trait
             ActorTrait akatsuki = new ActorTrait
             {
-                id = TraitIds.Akatsuki,
+                id = "trait_akatsuki",
                 group_id = GroupId_Abilities,
                 path_icon = "ui/icons/akatsuki",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                // The id already starts with "trait_", so the game would look for "trait_trait_akatsuki".
                 special_locale_id = "trait_akatsuki",
                 special_locale_description = "trait_akatsuki_info",
                 special_locale_description_2 = "trait_akatsuki_info_2"
@@ -1683,7 +1675,6 @@ namespace ShinobiBox
             akatsuki.base_stats.set("diplomacy", -100f);
             akatsuki.base_stats.set("loyalty_traits", -100f);
             akatsuki.base_stats.set("stewardship", -50f);
-            // Recruitment happens in ShinobiProgression.CheckProgression.
 
             addTraitToGame(akatsuki);
             #endregion
@@ -1696,7 +1687,7 @@ namespace ShinobiBox
             #region Rasengan
             ActorTrait rasenganJ = new ActorTrait
             {
-                id = TraitIds.Rasengan,
+                id = "rasenganJ",
                 group_id = GroupId_Jutsus,
                 path_icon = "ui/icons/Rasengan",
                 can_be_given = true,
@@ -1710,7 +1701,7 @@ namespace ShinobiBox
             #region Rasenshuriken
             ActorTrait rasenshurikenJ = new ActorTrait
             {
-                id = TraitIds.Rasenshuriken,
+                id = "rasenshurikenJ",
                 group_id = GroupId_Jutsus,
                 path_icon = "ui/icons/rasenshuriken",
                 can_be_given = true,
@@ -1725,7 +1716,7 @@ namespace ShinobiBox
             #region Chidori 
             ActorTrait chidoriJ = new ActorTrait
             {
-                id = TraitIds.Chidori,
+                id = "chidoriJ",
                 group_id = GroupId_Jutsus,
                 path_icon = "ui/icons/chidori",
                 can_be_given = true,
@@ -1738,7 +1729,7 @@ namespace ShinobiBox
             #region Shadow Clone Jutsu
             ActorTrait shadowCloneJ = new ActorTrait
             {
-                id = TraitIds.ShadowClone,
+                id = "shadow_clonej",
                 group_id = GroupId_Jutsus,
                 path_icon = "ui/icons/shadowclone",
                 can_be_given = true,
@@ -1755,7 +1746,7 @@ namespace ShinobiBox
             #region Frog Sage Mode Trait
             ActorTrait frogSage = new ActorTrait
             {
-                id = TraitIds.FrogSage,
+                id = "frog_sage_mode",
                 group_id = GroupId_Senjutsu,
                 path_icon = "ui/icons/frog_sage",
                 can_be_given = true,
@@ -1775,7 +1766,7 @@ namespace ShinobiBox
             #region Slug Sage Mode Trait
             ActorTrait slugSage = new ActorTrait
             {
-                id = TraitIds.SlugSage,
+                id = "slug_sage_mode",
                 group_id = GroupId_Senjutsu,
                 path_icon = "ui/icons/slug_sage",
                 can_be_given = true,
@@ -1789,7 +1780,7 @@ namespace ShinobiBox
             #region Snake Sage Mode Trait
             ActorTrait snakeSage = new ActorTrait
             {
-                id = TraitIds.SnakeSage,
+                id = "snake_sage_mode",
                 group_id = GroupId_Senjutsu,
                 path_icon = "ui/icons/snake_sage",
                 can_be_given = true,
@@ -1803,7 +1794,7 @@ namespace ShinobiBox
             #region Wood Sage Mode Trait
             ActorTrait woodSage = new ActorTrait
             {
-                id = TraitIds.WoodSage,
+                id = "wood_sage_mode",
                 group_id = GroupId_Senjutsu,
                 path_icon = "ui/icons/wood_sage",
                 can_be_given = true,
@@ -1847,11 +1838,11 @@ namespace ShinobiBox
         {
             if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
 
-            if (pTarget.a.hasTrait(TraitIds.YangRelease))
+            if (pTarget.a.hasTrait("yang_release"))
             {
-                pTarget.a.removeTrait(TraitIds.YangRelease);
-                pTarget.a.removeTrait(TraitIds.YinRelease);
-                pTarget.a.addTrait(TraitIds.YinYangRelease);
+                pTarget.a.removeTrait("yang_release");
+                pTarget.a.removeTrait("yin_release");
+                pTarget.a.addTrait("yinyang_release");
                 return true;
             }
             return false;
@@ -1894,57 +1885,57 @@ namespace ShinobiBox
 
             // Core opposite sets
             string[] chakraReserveIds = {
-            TraitIds.HighChakraReserve, TraitIds.LowChakraReserve, TraitIds.GreaterChakraReserve, TraitIds.VastChakraReserve
+            "02_high_chakra_reserve", "01_low_chakra_reserve", "03_greater_chakra_reserve", "04_vast_chakra_reserve"
             };
             setGroupOpposites(chakraReserveIds);
 
             string[] philosophyIds = {
-            TraitIds.WillOfFire, TraitIds.CurseOfHatred
+            "will_of_fire", "curse_of_hatred"
             };
             setGroupOpposites(philosophyIds);
 
             string[] chakraLineageIds = {
-            TraitIds.IndraChakra, TraitIds.AsuraChakra
+            "07_indra_chakra", "08_asura_chakra"
             };
             setGroupOpposites(chakraLineageIds);
 
             // Dojutsu
             string[] allDojutsu = {
-            TraitIds.Sharingan,
-            TraitIds.Mangekyo, TraitIds.MadaraEternalMangekyo, TraitIds.EternalMangekyo,
-            TraitIds.Byakugan, TraitIds.Blind, TraitIds.SasukeRinnegan, TraitIds.Tenseigan, TraitIds.Ketsuryugan
+            "sharingan",
+            "mangekyo_sharingan", "madara_eternal_mangekyo", "eternal_mangekyo",
+            "byakugan", "trait_blind", "sasuke_rinnegan", "tenseigan", "ketsuryugan"
             };
             setGroupOpposites(allDojutsu);
 
             string[] goldenByakuganOpps = {
-            TraitIds.GoldenByakugan, TraitIds.Sharingan,
-            TraitIds.Mangekyo, TraitIds.MadaraEternalMangekyo, TraitIds.EternalMangekyo, TraitIds.Blind,
-            TraitIds.SasukeRinnegan, TraitIds.Tenseigan, TraitIds.Ketsuryugan
+            "golden_byakugan", "sharingan",
+            "mangekyo_sharingan", "madara_eternal_mangekyo", "eternal_mangekyo", "trait_blind",
+            "sasuke_rinnegan", "tenseigan", "ketsuryugan"
             };
             setGroupOpposites(goldenByakuganOpps);
 
             // Clans
             string[] clanIds =
             {
-                TraitIds.UchihaClan, TraitIds.HyugaClan, TraitIds.UzumakiClan, TraitIds.SenjuClan,
-                TraitIds.AkimichiClan, TraitIds.LeeClan, TraitIds.KaguyaClan, TraitIds.OtsutsukiClan,
-                TraitIds.AburameClan, TraitIds.AkimichiClan, TraitIds.ChinoikeClan
+                "uchiha_clan", "hyuga_clan", "uzumaki_clan", "senju_clan",
+                "akimichi_clan", "lee_clan", "kaguya_clan", "otsutsuki_clan",
+                "aburame_clan", "akimichi_clan", "chinoike_clan"
             };
             setGroupOpposites(clanIds);
 
-            string[] jinchurikiIds = { TraitIds.NineTailsJinchuriki, TraitIds.TenTailsJinchuriki };
+            string[] jinchurikiIds = { "nine_tails_jinchuriki", "ten_tails_jinchuriki" };
             setGroupOpposites(jinchurikiIds);
 
             // Ranks
             string[] rankIds = {
-            TraitIds.AcademyStudent, TraitIds.Genin, TraitIds.Chunin,
-            TraitIds.Jonin, TraitIds.Anbu, TraitIds.Kage
+            "01rank_academy_student", "02rank_genin", "03rank_chunin",
+            "04rank_jonin", "05rank_anbu", "06rank_kage"
             };
             setGroupOpposites(rankIds);
 
             string[] sageModeIds = {
-            TraitIds.FrogSage, TraitIds.SlugSage, TraitIds.SnakeSage,
-            TraitIds.WoodSage
+            "frog_sage_mode", "slug_sage_mode", "snake_sage_mode",
+            "wood_sage_mode"
             };
             setGroupOpposites(sageModeIds);
         }
@@ -1976,14 +1967,14 @@ namespace ShinobiBox
             string traitToPass = "";
             string clanRequirement = "";
 
-            if (pTarget.a.hasTrait(TraitIds.IndraChakra))
+            if (pTarget.a.hasTrait("07_indra_chakra"))
             {
-                traitToPass = TraitIds.IndraChakra;
-                clanRequirement = TraitIds.UchihaClan;
+                traitToPass = "07_indra_chakra";
+                clanRequirement = "uchiha_clan";
             }
-            else if (pTarget.a.hasTrait(TraitIds.AsuraChakra))
+            else if (pTarget.a.hasTrait("08_asura_chakra"))
             {
-                traitToPass = TraitIds.AsuraChakra;
+                traitToPass = "08_asura_chakra";
                 clanRequirement = "senju_uzumaki";
             }
 
@@ -1996,13 +1987,13 @@ namespace ShinobiBox
             {
                 if (a.isAlive() && a.asset.id == "human" && a.data.getAge() <= 24)
                 {
-                    if (!a.hasTrait(TraitIds.IndraChakra) && !a.hasTrait(TraitIds.AsuraChakra))
+                    if (!a.hasTrait("07_indra_chakra") && !a.hasTrait("08_asura_chakra"))
                     {
                         bool isEligible = false;
 
-                        if (clanRequirement == TraitIds.UchihaClan && a.hasTrait(TraitIds.UchihaClan))
+                        if (clanRequirement == "uchiha_clan" && a.hasTrait("uchiha_clan"))
                             isEligible = true;
-                        else if (clanRequirement == "senju_uzumaki" && (a.hasTrait(TraitIds.SenjuClan) || a.hasTrait(TraitIds.UzumakiClan)))
+                        else if (clanRequirement == "senju_uzumaki" && (a.hasTrait("senju_clan") || a.hasTrait("uzumaki_clan")))
                             isEligible = true;
 
                         if (isEligible)
@@ -2018,7 +2009,7 @@ namespace ShinobiBox
                 Actor heir = validHeirs[UnityEngine.Random.Range(0, validHeirs.Count)];
                 heir.addTrait(traitToPass);
 
-                string label = (traitToPass == TraitIds.IndraChakra) ? "Indra" : "Asura";
+                string label = (traitToPass == "07_indra_chakra") ? "Indra" : "Asura";
                 ShinobiWorldLogs.AddWorldLog(
                     "log_" + label.ToLower() + "_reincarnation",
                     "worldlog_" + label.ToLower() + "_reincarnation",
