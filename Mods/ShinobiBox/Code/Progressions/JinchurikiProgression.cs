@@ -118,7 +118,7 @@ namespace ShinobiBox
             if (pSelf?.a == null || !pSelf.a.isAlive()) return false;
             Actor actor = pSelf.a;
 
-            if (actor.asset.id == "juubi" || actor.asset.id == "kurama") return false;
+            if (ShinobiActors.IsTailedBeast(actor)) return false;
             if (actor.data.level < 7) return false;
             if (actor.hasStatus("status_jinchuriki_baryon_mode")) return false;
             if (UnityEngine.Random.value > 0.45f) return false;

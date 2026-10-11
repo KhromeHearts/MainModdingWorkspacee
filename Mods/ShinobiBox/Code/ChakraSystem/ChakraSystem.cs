@@ -88,9 +88,46 @@ namespace ShinobiBox
             }
         }
 
+        public static bool CanUseChakra(Actor actor)
+        {
+            if (actor == null || actor.data == null || !actor.isAlive()) return false;
+            return ShinobiActors.IsShinobi(actor) || ShinobiActors.IsTailedBeast(actor);
+        }
+
         public static float GetMax(Actor actor)
         {
-            return CalculateBaseMaxChakra(actor);
+            if (!CanUseChakra(actor)) return 0f;
+            if (actor.data.custom_data_float != null && actor.data.custom_data_float.TryGetValue("max_chakra", out float max))
+            {
+                return max;
+            }
+            return RefreshMax(actor);
+        }
+
+        public static float RefreshMax(Actor actor)
+        {
+            float max = CalculateBaseMaxChakra(actor);
+            actor.data.set("max_chakra", max);
+            return max;
+        }
+
+        public static void Tick(Actor actor, float deltaTime)
+        {
+            float max = RefreshMax(actor);
+            if (max <= 0f) return;
+
+            if (GetCurrent(actor) > max)
+            {
+                SetCurrent(actor, max);
+            }
+
+            ProcessDrain(actor, deltaTime);
+            UpdateSpecialResources(actor, deltaTime);
+
+            if (!ShinobiProgression.IsModeActive(actor))
+            {
+                AddChakra(actor, GetRegenRate(actor) * deltaTime);
+            }
         }
 
         public static float GetCurrent(Actor actor)
@@ -227,8 +264,7 @@ namespace ShinobiBox
 
         public static bool IsChakraUser(Actor actor)
         {
-            if (actor == null || actor.data == null || !actor.isAlive()) return false;
-            return GetMax(actor) > 0f; 
+            return CanUseChakra(actor) && GetMax(actor) > 0f;
         }
 
         public static float GetRegenRate(Actor actor)
@@ -326,19 +362,6 @@ namespace ShinobiBox
                 SetCurrent(actor, secondWind);
             }
             return true;
-        }
-
-        public static void UpdateMax(Actor actor)
-        {
-            if (actor == null || actor.data == null) return;
-            
-            float max = GetMax(actor);
-            float current = GetCurrent(actor);
-            
-            if (current > max)
-            {
-                SetCurrent(actor, max);
-            }
         }
 
         public static float CalculateBaseMaxChakra(Actor actor)

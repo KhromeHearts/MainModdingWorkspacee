@@ -266,7 +266,7 @@ namespace ShinobiBox
             float bonusMultiplier = affectedCount * 0.001f;
             pSelf.a.data.set("it_bonus_multiplier", bonusMultiplier);
 
-            float max = ChakraSystem.CalculateBaseMaxChakra(pSelf.a);
+            float max = ChakraSystem.RefreshMax(pSelf.a);
             ChakraSystem.SetCurrent(pSelf.a, max);
 
             pSelf.a.restoreHealth(pSelf.a.getMaxHealth());
@@ -818,7 +818,7 @@ namespace ShinobiBox
 
             if (pSelf.a.kingdom == null) return false;
 
-            if (!IsTailedBeastTarget(pTarget.a)) return false;
+            if (!ShinobiActors.IsTailedBeast(pTarget.a)) return false;
             if (pTarget.a.hasStatus("status_madara_tamed")) return false;
 
             if (UnityEngine.Random.value > 0.30f) return false;
@@ -868,16 +868,6 @@ namespace ShinobiBox
                     return true;
                 }
             }
-            return false;
-        }
-
-        private static bool IsTailedBeastTarget(Actor target)
-        {
-            if (target == null || target.asset == null) return false;
-
-            if (target.asset.id == ShinobiActors.KuramaActorId) return true;
-            if (target.asset.id == ShinobiActors.JuubiActorId) return true;
-
             return false;
         }
 

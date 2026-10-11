@@ -96,7 +96,7 @@ namespace ShinobiBox
                 actor.data.set("was_kage", 1);
             }
 
-            if (level >= 10 && hasAnySenjutsu && actor.isSapient() && GiveOnce(actor, "07rank_sannin"))
+            if (level >= 10 && hasAnySenjutsu && ShinobiActors.IsShinobi(actor) && GiveOnce(actor, "07rank_sannin"))
             {
                 if (ShinobiConfig.EnableWorldTips)
                 {

@@ -15,7 +15,7 @@ namespace ShinobiBox
         #region Progression
         public static void HandleSageProgression(Actor actor, int level)
         {
-            if (actor == null || !actor.isAlive() || !actor.isSapient()) return;
+            if (actor == null || !actor.isAlive() || !ShinobiActors.IsShinobi(actor)) return;
 
             if (IsSage(actor))
             {

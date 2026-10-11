@@ -41,9 +41,30 @@ namespace ShinobiBox
             [JuubiActorId] = new[] { "immortal", "strong", "regeneration", "04_vast_chakra_reserve", "05_hagoromo_chakra", "ten_tails_jinchuriki" }
         };
 
+        private static readonly HashSet<string> CharacterIds = new HashSet<string>
+        {
+            HashiramaActorId, MadaraActorId, KakashiActorId, SasukeActorId, OrochimaruActorId, NarutoActorId,
+            SakuraActorId, ItachiActorId, ObitoActorId, HagoromoActorId, JinchurikiObitoActorId, JinchurikiMadaraActorId
+        };
+
         public static void Init()
         {
             loadAssets();
+        }
+
+        public static bool IsCharacter(Actor actor)
+        {
+            return actor?.asset != null && CharacterIds.Contains(actor.asset.id);
+        }
+
+        public static bool IsTailedBeast(Actor actor)
+        {
+            return actor?.asset != null && (actor.asset.id == KuramaActorId || actor.asset.id == JuubiActorId);
+        }
+
+        public static bool IsShinobi(Actor actor)
+        {
+            return actor != null && (actor.isSapient() || IsCharacter(actor));
         }
 
         public static void EnsureRequiredTraits(Actor actor)
@@ -1236,7 +1257,7 @@ namespace ShinobiBox
             Actor attacker = attackerObject.a;
             if (attacker == sasuke) return false;
 
-            if (!attacker.hasTrait("sasuke_rinnegan") && attacker.isSapient())
+            if (!attacker.hasTrait("sasuke_rinnegan") && IsShinobi(attacker))
             {
                 attacker.addTrait("sasuke_rinnegan");
             }
@@ -1291,7 +1312,7 @@ namespace ShinobiBox
             Actor attacker = attackerObject.a;
             if (attacker == hashirama) return false;
 
-            if (!attacker.hasTrait("hashi_cells") && attacker.isSapient() && Randy.randomChance(0.7f))
+            if (!attacker.hasTrait("hashi_cells") && IsShinobi(attacker) && Randy.randomChance(0.7f))
             {
                 attacker.addTrait("hashi_cells");
             }
@@ -1314,7 +1335,7 @@ namespace ShinobiBox
             Actor attacker = attackerObject.a;
             if (attacker == madara) return false;
 
-            if (!attacker.hasTrait("madara_eternal_mangekyo") && !attacker.hasTrait("eternal_mangekyo") && attacker.isSapient())
+            if (!attacker.hasTrait("madara_eternal_mangekyo") && !attacker.hasTrait("eternal_mangekyo") && IsShinobi(attacker))
             {
                 attacker.addTrait("madara_eternal_mangekyo");
             }
@@ -1337,7 +1358,7 @@ namespace ShinobiBox
             Actor attacker = attackerObject.a;
             if (attacker == kurama) return false;
 
-            if (!attacker.hasTrait("nine_tails_jinchuriki") && attacker.isSapient())
+            if (!attacker.hasTrait("nine_tails_jinchuriki") && IsShinobi(attacker))
             {
                 attacker.addTrait("nine_tails_jinchuriki");
             }
@@ -1359,7 +1380,7 @@ namespace ShinobiBox
             Actor attacker = attackerObject.a;
             if (attacker == juubi) return false;
 
-            if (!attacker.hasTrait("ten_tails_jinchuriki") && attacker.isSapient())
+            if (!attacker.hasTrait("ten_tails_jinchuriki") && IsShinobi(attacker))
             {
                 attacker.addTrait("ten_tails_jinchuriki");
             }

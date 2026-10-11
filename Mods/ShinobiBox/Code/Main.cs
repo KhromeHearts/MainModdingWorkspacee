@@ -46,7 +46,6 @@ namespace ShinobiBox
     public class ShinobiLoop : MonoBehaviour
     {
         private float timer = 0f;
-        private float clearTimer = 0f;
         private float regenTimer = 0f;
         private float progressionTimer = 0f;
         private bool startupChecksDone = false;
@@ -66,75 +65,62 @@ namespace ShinobiBox
             JutsuLibrary.TickWorldAgeRevert(Time.deltaTime);
 
             timer += Time.deltaTime;
-            if (timer >= 0.1f)
+            if (timer < 0.1f) return;
+
+            float elapsed = timer;
+            timer = 0f;
+
+            regenTimer += elapsed;
+            bool doRegen = regenTimer >= 1f;
+            if (doRegen) regenTimer = 0f;
+
+            progressionTimer += elapsed;
+            bool doProgression = progressionTimer >= 3f;
+            if (doProgression) progressionTimer = 0f;
+
+            int akatsukiMembers = 0;
+
+            foreach (Actor actor in MapBox.instance.units)
             {
-                foreach (Actor actor in MapBox.instance.units)
+                if (actor == null || !actor.isAlive()) continue;
+
+                if (actor.hasStatusStunned())
                 {
-                    if (actor == null || !actor.isAlive()) continue;
-
-                    if (actor.hasStatusStunned())
-                    {
-                        actor.finishStatusEffect("stunned");
-                    }
-
-                    if (!ChakraSystem.IsChakraUser(actor)) continue;
-
-                    ChakraSystem.UpdateMax(actor);
-                    ChakraSystem.ProcessDrain(actor, 0.1f);
-                    ChakraSystem.UpdateSpecialResources(actor, 0.1f);
-
-                    // Chakra Regen
-                    if (!ShinobiProgression.IsModeActive(actor))
-                    {
-                        ChakraSystem.AddChakra(actor, ChakraSystem.GetRegenRate(actor) * 0.1f);
-                    }
+                    actor.finishStatusEffect("stunned");
                 }
-                timer = 0f;
+
+                if (ChakraSystem.CanUseChakra(actor))
+                {
+                    ChakraSystem.Tick(actor, elapsed);
+                }
+
+                if (doRegen)
+                {
+                    ApplyClanRegeneration(actor);
+                }
+
+                if (doProgression)
+                {
+                    ShinobiProgression.CheckProgression(actor);
+                    ShinobiProgression.removeWeapon(actor);
+                    if (actor.hasTrait("trait_akatsuki")) akatsukiMembers++;
+                }
             }
 
-            regenTimer += Time.deltaTime;
-            if (regenTimer >= 1.0f)
+            if (doProgression)
             {
-                foreach (Actor a in MapBox.instance.units)
-                {
-                    if (a.isAlive())
-                    {
-                        if (a.hasTrait("uzumaki_clan") && a.data.health < a.getMaxHealth()) a.restoreHealth(4);
-                        if (a.hasTrait("senju_clan") && a.data.health < a.getMaxHealth()) a.restoreHealth(1);
-                        if (a.hasTrait("hashi_cells") && a.data.health < a.getMaxHealth()) a.restoreHealth(5);
-                        if (a.hasTrait("06rank_kage") && a.data.health < a.getMaxHealth()) a.restoreHealth(1);
-                    }
-                }
-                regenTimer = 0f;
-            }
-
-            progressionTimer += Time.deltaTime;
-            if (progressionTimer >= 3.0f)
-            {
-                int akatsukiMembers = 0;
-                foreach (Actor a in MapBox.instance.units)
-                {
-                    if (a.isAlive())
-                    {
-                        ShinobiProgression.CheckProgression(a);
-                        if (a.hasTrait("trait_akatsuki")) akatsukiMembers++;
-                    }
-                }
                 ShinobiProgression.AkatsukiMembers = akatsukiMembers;
-                progressionTimer = 0f;
             }
+        }
 
-            clearTimer += Time.deltaTime;
-            if (clearTimer >= 5f)
-            {
-                foreach (Actor a in MapBox.instance.units)
-                {
-                    ShinobiProgression.removeWeapon(a);
-                }
+        private static void ApplyClanRegeneration(Actor a)
+        {
+            if (a.data.health >= a.getMaxHealth()) return;
 
-                clearTimer = 0f;
-            }
-
+            if (a.hasTrait("uzumaki_clan")) a.restoreHealth(4);
+            if (a.hasTrait("senju_clan")) a.restoreHealth(1);
+            if (a.hasTrait("hashi_cells")) a.restoreHealth(5);
+            if (a.hasTrait("06rank_kage")) a.restoreHealth(1);
         }
     }
 }
