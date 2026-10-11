@@ -130,8 +130,9 @@ PART 5 - JUTSU SYSTEM
 JUTSU TABLE (cost is normal chakra unless marked, cooldown in seconds, chance per trigger; * = signature)
   Sharingan genjutsu 1/2/3 ........ 20/30/50, cd 12, 25% (one per tomoe level)
   Amaterasu* ...................... 120, cd 30, 30%
-  Susanoo* (Mangekyo) ............. 100, cd 25, 20%
-  Perfect Susanoo* (EMS, Madara) .. 40, cd 15, 30%
+  Susanoo* (Mangekyo) ............. 100, cd 60, 20% (a 25 s form, see Part 6)
+  Perfect Susanoo* (EMS, Madara) .. 150, cd 60, 25% (a 30 s form, see Part 6)
+  Susanoo Strike .................. free, cd 3, 50% (only while a Susanoo is up)
   Susanoo Ribcage* (below 35% hp) . 75, cd 30, always
   Kamui* .......................... 100, cd 60, 15% when hit
   Amenotejikara* .................. 25, cd 20, when hit while fleeing
@@ -141,7 +142,7 @@ JUTSU TABLE (cost is normal chakra unless marked, cooldown in seconds, chance pe
   Naraka Path* (below 30% hp) ..... 300, cd 90, 50% when hit
   Six Paths technique* ............ 100, cd 20, 20%
   Shinra Tensei* .................. 80, cd 15, 25% when hit
-  Infinite Tsukuyomi* ............. 400, cd 600, 0.5% (still once per user, needs Yin/Yin-Yang)
+  Infinite Tsukuyomi* ............. 400, cd 600, 0.5% (once per Rinne Sharingan user)
   Heavenly Ice Chamber* ........... 200, cd 45, 15%
   Truth-Seeking Orbs .............. free, cd 6, 50%, range 24 (Six Paths Senjutsu)
   Palm Rotation* / 64 Palms* ...... 80, cd 15 / 20, 15% / 20%
@@ -168,6 +169,35 @@ JUTSU TABLE (cost is normal chakra unless marked, cooldown in seconds, chance pe
   Baryon drain .................... free, cd 8, 30%
   Frog Kumite / Snake Bite ........ 15 sage chakra, cd 4 / 6, 25% / 20%
   Wood Sage bind* ................. 15 sage chakra, cd 12, 15%
+
+PART 6 - UCHIHA LINE
+--------------------
+- Mangekyo Sharingan now switches on in fights, like the Sharingan tomoe do. Its big combat stats moved from the
+  trait to the "Mangekyo Sharingan" status, which drains 3 chakra per second (6 for non-Uchiha like Kakashi) and
+  stays on for 10 s after the fight. The trait itself only gives intelligence and chakra.
+- Each Mangekyo has its own power: Amaterasu (70%) or Kamui (30%). Kakashi and Obito always get Kamui, Itachi
+  always gets Amaterasu. Eternal Mangekyo and Sasuke's Rinnegan use Amaterasu (Sasuke no longer has Kamui).
+- Susanoo is a real form now, using the sprites the mod already has:
+  - While it's up, the unit gets the ribcage aura (purple, blue for Madara), extra health, armor, damage and reach.
+    Base Susanoo (Mangekyo) lasts up to 25 s and drains 6 chakra/s. Perfect Susanoo (Eternal Mangekyo, Sasuke's
+    Rinnegan) and Madara's lasts up to 30 s and drains 8 chakra/s. It ends early when chakra runs out.
+  - While it's up, the unit swings the Susanoo (the big Susanoo pictures play as a 1 s attack animation) and hits
+    every enemy around the target for half its damage.
+  - The Susanoo numbers were cut because it lasts 25-30 s instead of 1 s: Base +300 health, +30 armor, +80 damage,
+    3 reach. Perfect +800 health, +50 armor, +200 damage, 6 reach (was +2000 health / +500 damage for 1 second).
+  - Ribcage stays as the emergency defense when health drops low, but not while a full Susanoo is already up.
+  - Starting a Mangekyo Susanoo still counts toward blindness.
+- Genjutsu (Sharingan 1-3 tomoe) can now fail: the user's chakra is compared with the target's, with some luck
+  (idea taken from JinchurikiBox's chakra duel). Jinchuriki add their tailed-beast chakra, so they're hard to put
+  under genjutsu, and Strong Minded units resist better. Ordinary villagers still fall for it every time.
+- Infinite Tsukuyomi stays once per unit: every Rinne Sharingan user can cast it once in their life. It no longer
+  also needs Yin or Yin-Yang Release.
+
+CODE CLEANUP
+- ShinobiJutsu.cs rewritten to be easier to read: each jutsu is one block that lists its traits/statuses, and a
+  Jutsu has a Cast method like in JinchurikiBox. Same behaviour as Part 5.
+- Birth natures are back to a simple loop inside ApplyTraitsOnBirth (same odds as Part 4).
+- Susanoo and Mangekyo use your addShinobiStatus helper, so turning them on doesn't make a unit look hurt.
 
 TEST CHECKLIST [NEEDS IN-GAME TEST]
 1. Spawn Naruto and let him fight. When hit he should enter Frog Sage Mode, the Sage Chakra number in his window
@@ -208,6 +238,15 @@ TEST CHECKLIST [NEEDS IN-GAME TEST]
 22. Throw Paper Bomb and Flying Raijin kunai: they should still work, and the thrower should still use jutsu.
 23. Sounds: zoom out or look away from a big fight. You shouldn't hear jutsu sounds from fights off screen.
 24. A big war with lots of shinobi shouldn't lag more than before.
+25. Spawn Itachi and let him fight: the "Mangekyo Sharingan" status should appear during the fight and his chakra
+    should go down. He should use Amaterasu but never Kamui. Kakashi should use Kamui but never Amaterasu.
+26. Susanoo: watch a Mangekyo user fight for a while. When Susanoo starts, the ribcage aura should stay around them
+    for up to 25 s, the big Susanoo picture should flash when they swing, and enemies around the target take damage.
+    Tell me if the aura looks too big or too small (it's the old ribcage sprite, scaled up a bit).
+27. Spawn Madara: his Susanoo should be blue and use his own swing picture.
+28. Let a Sharingan user fight Naruto: genjutsu should land much less often on Naruto than on normal villagers.
+29. Give a unit Rinnegan + Ten-Tails (Rinne Sharingan) and let it fight for a long time: Infinite Tsukuyomi should
+    happen at most once for that unit.
 
 
 =====================================================================
