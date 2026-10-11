@@ -1,0 +1,464 @@
+using System;
+using NCMS;
+using NCMS.Utils;
+using UnityEngine;
+using UnityEngine.UI;
+using NeoModLoader.General.UI.Tab;
+
+namespace ShinobiBox
+{
+    public static class ShinobiTab
+    {
+        private static PowersTab tab;
+
+        public static void Init()
+        {
+            Sprite tabIcon = SpriteTextureLoader.getSprite("ui/icons/chakra_drain");
+            if (tabIcon == null)
+            {
+                Debug.LogWarning("[ShinobiBox] Tab icon not found, skipping tab creation");
+                return;
+            }
+
+
+            tab = TabManager.CreateTab(
+                "Shinobi",
+                "Button_Tab_Shinobi",
+                "Button_Tab_Shinobi Description",
+                tabIcon,
+                "ShinobiBox"
+            );
+            if (tab == null)
+            {
+                Debug.LogError("[ShinobiBox] Failed to create Shinobi tab");
+                return;
+            }
+
+            LoadButtons();
+        }
+
+        private static void LoadButtons()
+        {
+            if (tab == null) return;
+            try
+            {
+                #region Kurama
+                GodPower kuramaPower = new GodPower();
+                kuramaPower.id = "summon_kurama";
+                kuramaPower.name = "summon_kurama";
+                kuramaPower.actor_asset_id = ShinobiActors.KuramaActorId;
+                kuramaPower.show_spawn_effect = true;
+                kuramaPower.actor_spawn_height = 3f;
+                kuramaPower.sound_event = "spawn";
+                kuramaPower.multiple_spawn_tip = true;
+                kuramaPower.click_action = new PowerActionWithID(CallSpawnUnit);
+                AssetManager.powers.add(kuramaPower);
+
+                Sprite kuramaIcon = SpriteTextureLoader.getSprite("ui/icons/units/9Tails");
+                if (kuramaIcon != null)
+                {
+                    PowerButtons.CreateButton(
+                        "summon_kurama",
+                        kuramaIcon,
+                        "Summon Kurama",
+                        "Spawn the Nine-Tailed Beast",
+                        new Vector2(254f, 18f),
+                        ButtonType.GodPower,
+                        tab.transform,
+                        null
+                    );
+                }
+                #endregion
+
+                #region Ten Tails
+                GodPower tenTailsPower = new GodPower();
+                tenTailsPower.id = "summon_ten_tails";
+                tenTailsPower.name = "summon_ten_tails";
+                tenTailsPower.actor_asset_id = ShinobiActors.JuubiActorId;
+                tenTailsPower.show_spawn_effect = true;
+                tenTailsPower.actor_spawn_height = 3f;
+                tenTailsPower.sound_event = "spawn";
+                tenTailsPower.multiple_spawn_tip = true;
+                tenTailsPower.click_action = new PowerActionWithID(CallSpawnUnit);
+                AssetManager.powers.add(tenTailsPower);
+
+                Sprite tenTailsIcon = SpriteTextureLoader.getSprite("ui/icons/units/10Tails");
+                if (tenTailsIcon != null)
+                {
+                    PowerButtons.CreateButton(
+                        "summon_ten_tails",
+                        tenTailsIcon,
+                        "Summon Ten-Tails",
+                        "Spawn the Ten-Tailed Beast",
+                        new Vector2(290f, 18f),
+                        ButtonType.GodPower,
+                        tab.transform,
+                        null
+                    );
+                }
+                #endregion
+
+                #region Hashirama
+                GodPower hashiramaPower = new GodPower();
+                hashiramaPower.id = "summon_hashirama";
+                hashiramaPower.name = "summon_hashirama";
+                hashiramaPower.actor_asset_id = ShinobiActors.HashiramaActorId;
+                hashiramaPower.show_spawn_effect = true;
+                hashiramaPower.multiple_spawn_tip = true;
+                hashiramaPower.actor_spawn_height = 3f;
+                hashiramaPower.sound_event = "spawn";
+                hashiramaPower.click_action = new PowerActionWithID(CallSpawnUnit);
+                AssetManager.powers.add(hashiramaPower);
+
+                Sprite hashiramaIcon = SpriteTextureLoader.getSprite("ui/icons/units/IconHashirama");
+                if (hashiramaIcon != null)
+                {
+                    PowerButtons.CreateButton(
+                        "summon_hashirama",
+                        hashiramaIcon,
+                        "Summon Hashirama",
+                        "Spawn legendary Hashirama",
+                        new Vector2(326f, 18f),
+                        ButtonType.GodPower,
+                        tab.transform,
+                        null
+                    );
+                }
+                #endregion
+
+                #region Madara
+                GodPower madaraPower = new GodPower();
+                madaraPower.id = "summon_madara";
+                madaraPower.name = "summon_madara";
+                madaraPower.actor_asset_id = ShinobiActors.MadaraActorId;
+                madaraPower.show_spawn_effect = true;
+                madaraPower.actor_spawn_height = 3f;
+                madaraPower.sound_event = "spawn";
+                madaraPower.click_action = new PowerActionWithID(CallSpawnUnit);
+                AssetManager.powers.add(madaraPower);
+
+                Sprite madaraIcon = SpriteTextureLoader.getSprite("ui/icons/units/IconMadara");
+                if (madaraIcon != null)
+                {
+                    PowerButtons.CreateButton(
+                        "summon_madara",
+                        madaraIcon,
+                        "Summon Madara",
+                        "Spawn legendary Madara",
+                        new Vector2(362f, 18f),
+                        ButtonType.GodPower,
+                        tab.transform,
+                        null
+                    );
+                }
+                #endregion
+
+                #region Sasuke
+                GodPower sasukePower = new GodPower();
+                sasukePower.id = "summon_sasuke";
+                sasukePower.name = "summon_sasuke";
+                sasukePower.actor_asset_id = ShinobiActors.SasukeActorId;
+                sasukePower.show_spawn_effect = true;
+                sasukePower.actor_spawn_height = 3f;
+                sasukePower.sound_event = "spawn";
+                sasukePower.click_action = new PowerActionWithID(CallSpawnUnit);
+                AssetManager.powers.add(sasukePower);
+
+                Sprite sasukeIcon = SpriteTextureLoader.getSprite("ui/icons/units/IconSasuke");
+                if (sasukeIcon != null)
+                {
+                    PowerButtons.CreateButton(
+                        "summon_sasuke",
+                        sasukeIcon,
+                        "Summon Sasuke",
+                        "Spawn Sasuke Uchiha",
+                        new Vector2(254f, 54f),
+                        ButtonType.GodPower,
+                        tab.transform,
+                        null
+                    );
+                }
+                #endregion
+
+                #region Itachi
+                GodPower itachiPower = new GodPower();
+                itachiPower.id = "summon_itachi";
+                itachiPower.name = "summon_itachi";
+                itachiPower.actor_asset_id = ShinobiActors.ItachiActorId;
+                itachiPower.show_spawn_effect = true;
+                itachiPower.actor_spawn_height = 3f;
+                itachiPower.sound_event = "spawn";
+                itachiPower.click_action = new PowerActionWithID(CallSpawnUnit);
+                AssetManager.powers.add(itachiPower);
+
+                Sprite itachiIcon = SpriteTextureLoader.getSprite("ui/icons/units/IconItachi");
+                if (itachiIcon != null)
+                {
+                    PowerButtons.CreateButton(
+                        "summon_itachi",
+                        itachiIcon,
+                        "Summon Itachi",
+                        "Spawn Itachi Uchiha",
+                        new Vector2(290f, 54f),
+                        ButtonType.GodPower,
+                        tab.transform,
+                        null
+                    );
+                }
+                #endregion
+
+                #region Naruto
+                GodPower narutoPower = new GodPower();
+                narutoPower.id = "summon_naruto";
+                narutoPower.name = "summon_naruto";
+                narutoPower.actor_asset_id = ShinobiActors.NarutoActorId;
+                narutoPower.show_spawn_effect = true;
+                narutoPower.actor_spawn_height = 3f;
+                narutoPower.sound_event = "spawn";
+                narutoPower.click_action = new PowerActionWithID(CallSpawnUnit);
+                AssetManager.powers.add(narutoPower);
+
+                Sprite narutoIcon = SpriteTextureLoader.getSprite("ui/icons/units/IconNaruto");
+                if (narutoIcon != null)
+                {
+                    PowerButtons.CreateButton(
+                        "summon_naruto",
+                        narutoIcon,
+                        "Summon Naruto",
+                        "Spawn Naruto Uzumaki",
+                        new Vector2(326f, 54f),
+                        ButtonType.GodPower,
+                        tab.transform,
+                        null
+                    );
+                }
+                #endregion
+
+                #region Kakashi
+                GodPower kakashiPower = new GodPower();
+                kakashiPower.id = "summon_kakashi";
+                kakashiPower.name = "summon_kakashi";
+                kakashiPower.actor_asset_id = ShinobiActors.KakashiActorId;
+                kakashiPower.show_spawn_effect = true;
+                kakashiPower.actor_spawn_height = 3f;
+                kakashiPower.sound_event = "spawn";
+                kakashiPower.click_action = new PowerActionWithID(CallSpawnUnit);
+                AssetManager.powers.add(kakashiPower);
+
+                Sprite kakashiIcon = SpriteTextureLoader.getSprite("ui/icons/units/IconKakashi");
+                if (kakashiIcon != null)
+                {
+                    PowerButtons.CreateButton(
+                        "summon_kakashi",
+                        kakashiIcon,
+                        "Summon Kakashi",
+                        "Spawn Kakashi Hatake",
+                        new Vector2(254f, 90f),
+                        ButtonType.GodPower,
+                        tab.transform,
+                        null
+                    );
+                }
+                #endregion
+
+                #region Obito
+                GodPower obitoPower = new GodPower();
+                obitoPower.id = "summon_obito";
+                obitoPower.name = "summon_obito";
+                obitoPower.actor_asset_id = ShinobiActors.ObitoActorId;
+                obitoPower.show_spawn_effect = true;
+                obitoPower.actor_spawn_height = 3f;
+                obitoPower.sound_event = "spawn";
+                obitoPower.click_action = new PowerActionWithID(CallSpawnUnit);
+                AssetManager.powers.add(obitoPower);
+
+                Sprite obitoIcon = SpriteTextureLoader.getSprite("ui/icons/units/IconObito");
+                if (obitoIcon != null)
+                {
+                    PowerButtons.CreateButton(
+                        "summon_obito",
+                        obitoIcon,
+                        "Summon Obito",
+                        "Spawn Obito Uchiha",
+                        new Vector2(290f, 90f),
+                        ButtonType.GodPower,
+                        tab.transform,
+                        null
+                    );
+                }
+                #endregion
+
+                #region Hagoromo
+                GodPower hagoromoPower = new GodPower();
+                hagoromoPower.id = "summon_hagoromo";
+                hagoromoPower.name = "summon_hagoromo";
+                hagoromoPower.actor_asset_id = ShinobiActors.HagoromoActorId;
+                hagoromoPower.show_spawn_effect = true;
+                hagoromoPower.actor_spawn_height = 3f;
+                hagoromoPower.sound_event = "spawn";
+                hagoromoPower.click_action = new PowerActionWithID(CallSpawnUnit);
+                AssetManager.powers.add(hagoromoPower);
+
+                Sprite hagoromoIcon = SpriteTextureLoader.getSprite("ui/icons/units/IconHagoromo");
+                if (hagoromoIcon != null)
+                {
+                    PowerButtons.CreateButton(
+                        "summon_hagoromo",
+                        hagoromoIcon,
+                        "Summon Hagoromo",
+                        "Spawn Hagoromo Otsutsuki",
+                        new Vector2(326f, 90f),
+                        ButtonType.GodPower,
+                        tab.transform,
+                        null
+                    );
+                }
+                #endregion
+
+                #region Orochimaru
+                GodPower orochimaruPower = new GodPower();
+                orochimaruPower.id = "summon_orochimaru";
+                orochimaruPower.name = "summon_orochimaru";
+                orochimaruPower.actor_asset_id = ShinobiActors.OrochimaruActorId;
+                orochimaruPower.show_spawn_effect = true;
+                orochimaruPower.actor_spawn_height = 3f;
+                orochimaruPower.sound_event = "spawn";
+                orochimaruPower.click_action = new PowerActionWithID(CallSpawnUnit);
+                AssetManager.powers.add(orochimaruPower);
+
+                Sprite orochimaruIcon = SpriteTextureLoader.getSprite("ui/icons/units/IconOrochimaru");
+                if (orochimaruIcon != null)
+                {
+                    PowerButtons.CreateButton(
+                        "summon_orochimaru",
+                        orochimaruIcon,
+                        "Summon Orochimaru",
+                        "Spawn Orochimaru",
+                        new Vector2(362f, 90f),
+                        ButtonType.GodPower,
+                        tab.transform,
+                        null
+                    );
+                }
+                #endregion
+
+                #region Sakura Power
+                GodPower sakuraPower = new GodPower();
+                sakuraPower.id = "summon_sakura";
+                sakuraPower.name = "summon_sakura";
+                sakuraPower.actor_asset_id = ShinobiActors.SakuraActorId;
+                sakuraPower.show_spawn_effect = true;
+                sakuraPower.actor_spawn_height = 3f;
+                sakuraPower.sound_event = "spawn";
+                sakuraPower.click_action = new PowerActionWithID(CallSpawnUnit);
+                AssetManager.powers.add(sakuraPower);
+
+                Sprite sakuraIcon = SpriteTextureLoader.getSprite("ui/icons/units/IconSakura");
+                if (sakuraIcon != null)
+                {
+                    PowerButtons.CreateButton(
+                        "summon_sakura",
+                        sakuraIcon,
+                        "Summon Sakura",
+                        "Spawn Sakura Haruno",
+                        new Vector2(362f, 54f),
+                        ButtonType.GodPower,
+                        tab.transform,
+                        null
+                    );
+                }
+                #endregion
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
+        }
+        public static bool CallSpawnUnit(WorldTile pTile, string pPowerID)
+        {
+            if (pTile == null || string.IsNullOrEmpty(pPowerID)) return false;
+            try
+            {
+                var power = AssetManager.powers.get(pPowerID);
+                if (power == null) return false;
+                if (string.IsNullOrEmpty(power.actor_asset_id)) return false;
+                if (AssetManager.actor_library.get(power.actor_asset_id) == null)
+                {
+                    Debug.LogWarning($"[ShinobiBox] Spawn failed: actor asset '{power.actor_asset_id}' is not registered for power '{pPowerID}'.");
+                    return false;
+                }
+
+                float spawnHeight = power.actor_spawn_height > 0f ? power.actor_spawn_height : 3f;
+
+                Actor spawned = World.world.units.spawnNewUnit(
+                    power.actor_asset_id,
+                    pTile,
+                    pSpawnSound: true,
+                    pMiracleSpawn: true,
+                    pSpawnHeight: spawnHeight,
+                    pSubspecies: null,
+                    pGiveOwnerlessItems: false,
+                    pAdultAge: true
+                );
+
+                if (spawned == null)
+                {
+                    spawned = World.world.units.createNewUnit(power.actor_asset_id, pTile, true, spawnHeight);
+                }
+                if (spawned == null) return false;
+
+                ShinobiActors.EnsureRequiredTraits(spawned);
+
+                spawned.data.level = 100;
+
+                if (spawned.kingdom == null)
+                {
+                    Kingdom fallbackKingdom = null;
+                    if (pTile.zone != null && pTile.zone.city != null)
+                    {
+                        fallbackKingdom = pTile.zone.city.kingdom;
+                    }
+                    if (fallbackKingdom == null)
+                    {
+                        fallbackKingdom = World.world?.kingdoms?.getRandom();
+                    }
+                    if (fallbackKingdom != null)
+                    {
+                        spawned.setKingdom(fallbackKingdom);
+                    }
+                }
+
+                string nameToSet = pPowerID switch
+                {
+                    "summon_hashirama" => "Hashirama Senju",
+                    "summon_kurama" => "Kurama",
+                    "summon_madara" => "Madara Uchiha",
+                    "summon_sasuke" => "Sasuke Uchiha",
+                    "summon_itachi" => "Itachi Uchiha",
+                    "summon_naruto" => "Naruto Uzumaki",
+                    "summon_sakura" => "Sakura Haruno",
+                    "summon_orochimaru" => "Orochimaru",
+                    "summon_kakashi" => "Kakashi Hatake",
+                    "summon_obito" => "Obito Uchiha",
+                    "summon_hagoromo" => "Hagoromo Otsutsuki",
+                    "summon_ten_tails" => "Ten-Tails",
+                    _ => null
+                };
+
+                if (!string.IsNullOrEmpty(nameToSet))
+                {
+                    spawned.setName(nameToSet);
+                    spawned.data.name = nameToSet;
+                    spawned.data.custom_name = true;
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                return false;
+            }
+        }
+    }
+}

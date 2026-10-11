@@ -1,0 +1,11 @@
+{
+  "name": "PossessLib Example",
+  "author": "RayTracerX",
+  "version": "0.1.0",
+  "description": "Tiny example mod that depends on PossessLib: a custom item, a recipe, an extra equipment slot, a HUD element and event hooks. Safe to delete.",
+  "iconPath": "icon.png",
+  "GUID": "RAYTRACERX_POSSESSLIB_EXAMPLE",
+  "Dependencies": ["RAYTRACERX_POSSESSLIB"],
+  "OptionalDependencies": [],
+  "IncompatibleWith": []
+}
