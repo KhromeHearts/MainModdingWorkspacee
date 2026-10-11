@@ -111,9 +111,9 @@
   "status_title_inner_gate_7": "Inner Gate 7: Wonder",
   "status_description_inner_gate_7": "The seventh gate unleashes monstrous speed and overwhelming pressure.",
   "status_title_inner_gate_8": "Inner Gate 8: Death",
-  "status_description_inner_gate_8": "The final gate burns through life itself for catastrophic power.",
+  "status_description_inner_gate_8": "The final gate burns through life itself. When it closes, the user is left at 10% health and badly strained.",
   "status_title_eight_gate_strain": "Eight Gates Strain",
-  "status_description_eight_gate_strain": "Post-gate trauma leaves the body slowed, weakened, and fragile.",
+  "status_description_eight_gate_strain": "The body is recovering from the gates: slower, weaker and unable to open them again until this ends.",
   "status_title_koh": "Naraka Path: King of Hell!",
   "status_description_koh": "The King of Hell emerges to judge and restore life.",
   "status_title_adamantite_chains": "Adamantine Sealing Chains",
@@ -258,7 +258,7 @@
   "trait_earthN_info_2": "At 125 Nature Exp, Unit will unlock Added Weight Rock Technique.",
   "trait_eight_inner_gates": "Eight Inner Gates",
   "trait_eight_inner_gates_info": "A forbidden taijutsu art that forcefully opens the body's limiters.",
-  "trait_eight_inner_gates_info_2": "Can open up to 8 gates while under pressure. Massive power with escalating backlash and a chakra-break cooldown.",
+  "trait_eight_inner_gates_info_2": "Below 70% health, each hit has a 20% chance to open the next gate (one gate per level, up to 8). Gates 4+ hurt the user every second. When gate 5 or higher closes, the body is strained for 30 seconds; the Gate of Death leaves the user at 10% health.",
   "trait_eternal_mangekyo": "Eternal Mangekyo Sharingan",
   "trait_eternal_mangekyo_info": "The final stage of the Sharingan that never loses its light.",
   "trait_eternal_mangekyo_info_2": "Awakened by killing another unit with the Mangekyo. Unlocks the Perfect Susanoo.",
@@ -285,7 +285,7 @@
   "trait_ketsuryugan_info_2": "Eye can be activated at level 2+.",
   "trait_lee_clan": "Lee Clan",
   "trait_lee_clan_info": "A taijutsu-focused bloodline that values hard work over flashy ninjutsu.",
-  "trait_lee_clan_info_2": "Members have a small chance to awaken the Eight Inner Gates at the age of 24, and can become taijutsu masters at level 4.",
+  "trait_lee_clan_info_2": "20% of Lee babies can open the Eight Inner Gates; the rest get one more 1% chance at age 18. Every Lee becomes a Taijutsu Master at level 3.",
   "trait_lightningN": "Lightning Nature",
   "trait_lightningN_info": "Chakra affinity for lightning release.",
   "trait_lightningN_info_2": "Electrifies jutsu and enhances speed and piercing damage. At 250 Nature Exp, users have a chance to learn Chidori.",
@@ -493,5 +493,6 @@
   "status_title_kaiten_cooldown": "Palm Rotation Cooldown",
   "status_description_kaiten_cooldown": "This unit's Palm Rotation is recovering.",
   "status_title_ketsuryuganEHT": "Exploding Human Technique",
-  "status_description_ketsuryuganEHT": "Their blood has been turned against them. They take damage over time and may explode when this ends."
+  "status_description_ketsuryuganEHT": "Their blood has been turned against them. They take damage over time and may explode when this ends.",
+  "worldlog_death_gate": "$name$ has opened the Eighth Gate: the Gate of Death!"
 }

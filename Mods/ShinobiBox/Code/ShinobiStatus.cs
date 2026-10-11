@@ -892,7 +892,6 @@ namespace ShinobiBox
 
             gate1.locale_id = "status_title_inner_gate_1";
             gate1.locale_description = "status_description_inner_gate_1";
-            gate1.action_get_hit = new GetHitAction(EightGatesProgression.EightInnerGates);
             AssetManager.status.add(gate1);
 
             StatusAsset gate2 = new StatusAsset();
@@ -919,7 +918,6 @@ namespace ShinobiBox
 
             gate2.locale_id = "status_title_inner_gate_2";
             gate2.locale_description = "status_description_inner_gate_2";
-            gate2.action_get_hit = new GetHitAction(EightGatesProgression.EightInnerGates);
             AssetManager.status.add(gate2);
 
             StatusAsset gate3 = new StatusAsset();
@@ -946,7 +944,6 @@ namespace ShinobiBox
 
             gate3.locale_id = "status_title_inner_gate_3";
             gate3.locale_description = "status_description_inner_gate_3";
-            gate3.action_get_hit = new GetHitAction(EightGatesProgression.EightInnerGates);
             AssetManager.status.add(gate3);
 
             StatusAsset gate4 = new StatusAsset();
@@ -973,7 +970,8 @@ namespace ShinobiBox
 
             gate4.locale_id = "status_title_inner_gate_4";
             gate4.locale_description = "status_description_inner_gate_4";
-            gate4.action_get_hit = new GetHitAction(EightGatesProgression.EightInnerGates);
+            gate4.action_interval = 1f;
+            gate4.action = new WorldAction(EightGatesProgression.InnerGatesStrain);
             AssetManager.status.add(gate4);
 
             StatusAsset gate5 = new StatusAsset();
@@ -1001,7 +999,9 @@ namespace ShinobiBox
 
             gate5.locale_id = "status_title_inner_gate_5";
             gate5.locale_description = "status_description_inner_gate_5";
-            gate5.action_get_hit = new GetHitAction(EightGatesProgression.EightInnerGates);
+            gate5.action_interval = 1f;
+            gate5.action = new WorldAction(EightGatesProgression.InnerGatesStrain);
+            gate5.action_finish = new WorldAction(EightGatesProgression.HighGateClosed);
             AssetManager.status.add(gate5);
 
             StatusAsset gate6 = new StatusAsset();
@@ -1029,7 +1029,9 @@ namespace ShinobiBox
 
             gate6.locale_id = "status_title_inner_gate_6";
             gate6.locale_description = "status_description_inner_gate_6";
-            gate6.action_get_hit = new GetHitAction(EightGatesProgression.EightInnerGates);
+            gate6.action_interval = 1f;
+            gate6.action = new WorldAction(EightGatesProgression.InnerGatesStrain);
+            gate6.action_finish = new WorldAction(EightGatesProgression.HighGateClosed);
             AssetManager.status.add(gate6);
 
             StatusAsset gate7 = new StatusAsset();
@@ -1057,7 +1059,9 @@ namespace ShinobiBox
 
             gate7.locale_id = "status_title_inner_gate_7";
             gate7.locale_description = "status_description_inner_gate_7";
-            gate7.action_get_hit = new GetHitAction(EightGatesProgression.EightInnerGates);
+            gate7.action_interval = 1f;
+            gate7.action = new WorldAction(EightGatesProgression.InnerGatesStrain);
+            gate7.action_finish = new WorldAction(EightGatesProgression.HighGateClosed);
             AssetManager.status.add(gate7);
 
             StatusAsset gate8 = new StatusAsset();
@@ -1067,7 +1071,7 @@ namespace ShinobiBox
             gate8.base_stats.set("multiplier_speed", 0.40f);
             gate8.base_stats.set("multiplier_attack_speed", 0.45f);
             gate8.base_stats.set("armor", 25f);
-            gate8.duration = 60f;
+            gate8.duration = 30f;
             gate8.path_icon = "ui/icons/eight_gates";
             gate8.locale_id = "status_title_inner_gate_8";
 
@@ -1085,7 +1089,9 @@ namespace ShinobiBox
             gate8.scale = 0.6f;
 
             gate8.locale_description = "status_description_inner_gate_8";
-            gate8.action_get_hit = new GetHitAction(EightGatesProgression.EightInnerGates);
+            gate8.action_interval = 1f;
+            gate8.action = new WorldAction(EightGatesProgression.InnerGatesStrain);
+            gate8.action_finish = new WorldAction(EightGatesProgression.DeathGateClosed);
             AssetManager.status.add(gate8);
 
             StatusAsset gateStrain = new StatusAsset();

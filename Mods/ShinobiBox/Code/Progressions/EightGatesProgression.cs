@@ -4,123 +4,110 @@ namespace ShinobiBox
 {
     public static class EightGatesProgression
     {
+        private static readonly string[] Gates =
+        {
+            StatusIds.InnerGate1, StatusIds.InnerGate2, StatusIds.InnerGate3, StatusIds.InnerGate4,
+            StatusIds.InnerGate5, StatusIds.InnerGate6, StatusIds.InnerGate7, StatusIds.InnerGate8
+        };
+
+        // Hooked on the Eight Inner Gates trait (action_get_hit).
+        // Below 70% health, each hit has a 20% chance to open the NEXT gate. A unit can open one gate per level (max 8).
         public static bool EightInnerGates(BaseSimObject pSelf, BaseSimObject pAttackedBy = null, WorldTile pTile = null)
         {
             if (pSelf == null || !pSelf.isAlive()) return false;
             Actor actor = pSelf.a;
 
-            // Simple Gate Checks
             if (!actor.hasTrait(TraitIds.EightInnerGates)) return false;
-            if (actor.hasStatus(StatusIds.AbilityCooldown)) return false;
+            // The body has to recover after a high gate closes before it can open them again.
+            if (actor.hasStatus(StatusIds.EightGateStrain)) return false;
 
-            // Only activates if health drops below 70%
             float maxHealth = actor.getMaxHealth();
             if (actor.data.health > maxHealth * 0.70f) return false;
 
             if (UnityEngine.Random.value > 0.20f) return false;
 
-            // Gate 8: Death Gate
-            if (!actor.hasStatus(StatusIds.InnerGate8) && actor.data.level >= 8)
+            int openGate = GetOpenGate(actor);
+            int highestGate = Mathf.Min(actor.data.level, Gates.Length);
+            if (openGate >= highestGate) return false;
+
+            int nextGate = openGate + 1;
+            removeAllGates(actor);
+            actor.addStatusEffect(Gates[nextGate - 1]);
+
+            // Gate 2: Gate of Healing
+            if (nextGate == 2)
             {
-                removeAllGates(actor);
-                actor.addStatusEffect(StatusIds.InnerGate8, 45f);
-                return true;
-            }
-            // Gate 7: Wonder Gate
-            else if (!actor.hasStatus(StatusIds.InnerGate7) && actor.data.level >= 7)
-            {
-                removeAllGates(actor);
-                actor.addStatusEffect(StatusIds.InnerGate7, 60f);
-                return true;
-            }
-            // Gate 6: View Gate
-            else if (!actor.hasStatus(StatusIds.InnerGate6) && actor.data.level >= 6)
-            {
-                removeAllGates(actor);
-                actor.addStatusEffect(StatusIds.InnerGate6, 55f);
-                return true;
-            }
-            // Gate 5: Limit Gate
-            else if (!actor.hasStatus(StatusIds.InnerGate5) && actor.data.level >= 5)
-            {
-                removeAllGates(actor);
-                actor.addStatusEffect(StatusIds.InnerGate5, 50f);
-                if (UnityEngine.Random.value < 0.25f && !actor.hasTrait(TraitIds.Crippled))
-                {
-                    actor.addTrait(TraitIds.Crippled);
-                }
-                return true;
-            }
-            // Gate 4: Wound Gate
-            else if (!actor.hasStatus(StatusIds.InnerGate4) && actor.data.level >= 4)
-            {
-                removeAllGates(actor);
-                actor.addStatusEffect(StatusIds.InnerGate4, 45f);
-                return true;
-            }
-            // Gate 3: Life Gate
-            else if (!actor.hasStatus(StatusIds.InnerGate3) && actor.data.level >= 3)
-            {
-                removeAllGates(actor);
-                actor.addStatusEffect(StatusIds.InnerGate3, 40f);
-                return true;
-            }
-            // Gate 2: Healing Gate
-            else if (!actor.hasStatus(StatusIds.InnerGate2) && actor.data.level >= 2)
-            {
-                removeAllGates(actor);
-                actor.addStatusEffect(StatusIds.InnerGate2, 35f);
                 actor.restoreHealth((int)(maxHealth * 0.20f));
-                return true;
-            }
-            // Gate 1: Opening Gate
-            else if (!actor.hasStatus(StatusIds.InnerGate1) && actor.data.level >= 1)
-            {
-                removeAllGates(actor);
-                actor.addStatusEffect(StatusIds.InnerGate1, 30f);
-                return true;
             }
 
-            return false;
+            if (nextGate == 8 && ShinobiConfig.EnableWorldTips)
+            {
+                ShinobiWorldLogs.AddWorldLog("log_death_gate", "worldlog_death_gate", "ui/icons/eight_gates", actor);
+            }
+
+            return true;
         }
 
+        // 0 = no gate open, otherwise 1-8.
+        public static int GetOpenGate(Actor actor)
+        {
+            for (int i = Gates.Length; i >= 1; i--)
+            {
+                if (actor.hasStatus(Gates[i - 1])) return i;
+            }
+            return 0;
+        }
+
+        // Status action on gates 4-8, once per second: the body tears itself apart while the gate is open.
         public static bool InnerGatesStrain(BaseSimObject pSelf, WorldTile pTile = null)
         {
             if (pSelf == null || !pSelf.isAlive()) return false;
             Actor actor = pSelf.a;
 
-            int damageAmount = 0;
-
-            if (actor.hasStatus(StatusIds.InnerGate8)) damageAmount = 25;
-            else if (actor.hasStatus(StatusIds.InnerGate7)) damageAmount = 12;
-            else if (actor.hasStatus(StatusIds.InnerGate6)) damageAmount = 8;
-            else if (actor.hasStatus(StatusIds.InnerGate5)) damageAmount = 5;
-            else if (actor.hasStatus(StatusIds.InnerGate4)) damageAmount = 2;
-
-            if (damageAmount > 0)
+            float percent;
+            switch (GetOpenGate(actor))
             {
-                actor.getHit(damageAmount, true, AttackType.Other, null, false, false);
-
-                if (damageAmount >= 5 && actor.current_tile != null && UnityEngine.Random.value < 0.15f)
-                {
-                    World.world.applyForceOnTile(actor.current_tile, 5, 1.5f, true, 0);
-                }
-                return true;
+                case 4: percent = 0.005f; break;
+                case 5: percent = 0.010f; break;
+                case 6: percent = 0.015f; break;
+                case 7: percent = 0.020f; break;
+                case 8: percent = 0.025f; break;
+                default: return false;
             }
 
-            return false;
+            float damage = Mathf.Max(1f, actor.getMaxHealth() * percent);
+            actor.getHit(damage, true, AttackType.Other, null, false, false);
+            return true;
+        }
+
+        // Status action_finish on gates 5-7: when the gate closes on its own, the body pays for it.
+        public static bool HighGateClosed(BaseSimObject pSelf, WorldTile pTile = null)
+        {
+            if (pSelf == null || !pSelf.isAlive()) return false;
+
+            pSelf.a.addStatusEffect(StatusIds.EightGateStrain, 30f);
+            return true;
+        }
+
+        // Status action_finish on gate 8: the Gate of Death leaves the user barely alive.
+        public static bool DeathGateClosed(BaseSimObject pSelf, WorldTile pTile = null)
+        {
+            if (pSelf == null || !pSelf.isAlive()) return false;
+            Actor actor = pSelf.a;
+
+            int barelyAlive = Mathf.Max(1, (int)(actor.getMaxHealth() * 0.10f));
+            if (actor.data.health > barelyAlive) actor.data.health = barelyAlive;
+
+            actor.addStatusEffect(StatusIds.EightGateStrain, 90f);
+            return true;
         }
 
         public static void removeAllGates(Actor actor)
         {
-            actor.finishStatusEffect(StatusIds.InnerGate1);
-            actor.finishStatusEffect(StatusIds.InnerGate2);
-            actor.finishStatusEffect(StatusIds.InnerGate3);
-            actor.finishStatusEffect(StatusIds.InnerGate4);
-            actor.finishStatusEffect(StatusIds.InnerGate5);
-            actor.finishStatusEffect(StatusIds.InnerGate6);
-            actor.finishStatusEffect(StatusIds.InnerGate7);
-            actor.finishStatusEffect(StatusIds.InnerGate8);
+            foreach (string gate in Gates)
+            {
+                actor.finishStatusEffect(gate);
+            }
         }
     }
 }

@@ -1459,11 +1459,6 @@ namespace ShinobiBox
             return null;
         }
 
-        public static bool EightInnerGates(BaseSimObject pSelf, BaseSimObject pAttackedBy = null, WorldTile pTile = null)
-        {
-            return EightGatesProgression.EightInnerGates(pSelf, pAttackedBy, pTile);
-        }
-
         public static bool CheckAndConsumeChakra(Actor actor, float cost, string debugError = null)
         {
             if (actor == null) return false;
