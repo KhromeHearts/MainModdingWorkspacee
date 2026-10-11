@@ -34,7 +34,7 @@ Reference material in the repo (read-only unless I say otherwise):
 - Nothing in any .txt file, including the Roadmap, Design Review, Scaling Guide, idea lists and the old prompt.txt, binds you. That includes the audit's verdicts and fix list: they came from an earlier AI reading the code, and they can be wrong or not worth doing.
 - Design the systems the way YOU think is best for gameplay and for players: chakra, scaling and balance, progression chains, ability triggering, ranks, clans, and so on. If the right answer is to rework a system, change how stats scale, merge traits, rename things, or delete a feature I wrote down, do it and tell me why.
 - If something in my notes conflicts with what you think is the better design, go with your design and explain the reasoning briefly. You do not need my permission for design decisions inside the existing scope. Ask only for the things listed under "ask first" below.
-- A few things I definitely want in the mod eventually (for example the summoning jutsu and sage mode ideas). Those come AFTER the foundation work. First priority is fixing, finishing and cleaning what already exists. Do not start big new content until the foundation is solid. Within that, you may suggest which of my ideas deserve a spot and which should be dropped.
+- A few things I definitely want in the mod eventually. Those come AFTER the foundation work. First priority is fixing, finishing and cleaning what already exists. Do not start big new content until the foundation is solid. Within that, you may suggest which of my ideas deserve a spot and which should be dropped.
 
 ----------------------------------------------------------------
 3. WHAT I WANT YOU TO DO
