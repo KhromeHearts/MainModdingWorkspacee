@@ -508,17 +508,10 @@ namespace ShinobiBox
                 rarity = Rarity.R3_Legendary
             };
             mangekyo.base_stats = new BaseStats();
-            mangekyo.base_stats.set("damage", 142f);
-            mangekyo.base_stats.set("multiplier_damage", 0.23f);
-            mangekyo.base_stats.set("health", 226f);
-            mangekyo.base_stats.set("multiplier_health", 0.11f);
             mangekyo.base_stats.set("intelligence", 60f);
-            mangekyo.base_stats.set("speed", 15f);
-            mangekyo.base_stats.set("critical_chance", 0.30f);
-            mangekyo.base_stats.set("critical_damage_multiplier", 0.30f);
-            mangekyo.base_stats.set("attack_speed", 0.10f);
-            mangekyo.base_stats.set("accuracy", 2.5f);
             mangekyo.base_stats.set("chakra", 120f);
+            mangekyo.action_special_effect = new WorldAction(JutsuLibrary.MangekyoActivation);
+            mangekyo.special_effect_interval = 1f;
 
             addTraitToGame(mangekyo);
             #endregion

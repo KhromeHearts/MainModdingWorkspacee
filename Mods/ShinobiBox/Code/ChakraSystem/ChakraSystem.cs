@@ -97,10 +97,8 @@ namespace ShinobiBox
         public static float GetMax(Actor actor)
         {
             if (!CanUseChakra(actor)) return 0f;
-            if (actor.data.custom_data_float != null && actor.data.custom_data_float.TryGetValue("max_chakra", out float max))
-            {
-                return max;
-            }
+            actor.data.get("max_chakra", out float max);
+            if (max > 0f) return max;
             return RefreshMax(actor);
         }
 
@@ -473,6 +471,18 @@ namespace ShinobiBox
             catch { return 0f; }
         }
 
+        public static bool WinsChakraDuel(Actor attacker, Actor defender)
+        {
+            float attack = GetCurrent(attacker);
+            float defend = GetCurrent(defender) + GetTailedBeastChakra(defender);
+            if (defender.hasTrait("strong_minded")) defend += 50f;
+
+            float randomness = (attack + defend) * 0.2f;
+            attack += Randy.randomFloat(0f, randomness);
+            defend += Randy.randomFloat(0f, randomness);
+            return attack > defend;
+        }
+
         public static void AddMangekyoUsage(Actor actor, int amount = 1)
         {
             if (actor == null || !actor.hasTrait("mangekyo_sharingan")) return;
@@ -507,6 +517,9 @@ namespace ShinobiBox
             if (actor.hasStatus("status_sharingan_2t")) { eyeDrain += 0.5f; hasActiveEyeStatus = true; }
             if (actor.hasStatus("status_sharingan_3t")) { eyeDrain += 1.0f; hasActiveEyeStatus = true; }
             if (actor.hasStatus("status_mangekyo")) { eyeDrain += 3.0f; hasActiveEyeStatus = true; }
+            if (actor.hasStatus("status_base_susanoo")) { eyeDrain += 6.0f; hasActiveEyeStatus = true; }
+            if (actor.hasStatus("status_perfect_susanoo")) { eyeDrain += 8.0f; hasActiveEyeStatus = true; }
+            if (actor.hasStatus("madara_ps")) { eyeDrain += 8.0f; hasActiveEyeStatus = true; }
             if (actor.hasStatus("byakuganP")) { eyeDrain += 0.8f; hasActiveEyeStatus = true; } 
             if (actor.hasStatus("tenseigan_cm")) { eyeDrain += 10f; hasActiveEyeStatus = true; }
 
@@ -537,6 +550,9 @@ namespace ShinobiBox
                 actor.finishStatusEffect("status_sharingan_2t");
                 actor.finishStatusEffect("status_sharingan_3t");
                 actor.finishStatusEffect("status_mangekyo");
+                actor.finishStatusEffect("status_base_susanoo");
+                actor.finishStatusEffect("status_perfect_susanoo");
+                actor.finishStatusEffect("madara_ps");
                 actor.finishStatusEffect("byakuganP");
                 actor.finishStatusEffect("tenseigan_cm");
             }

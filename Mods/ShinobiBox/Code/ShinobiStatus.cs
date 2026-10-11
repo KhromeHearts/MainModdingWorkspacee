@@ -374,17 +374,16 @@ namespace ShinobiBox
             StatusAsset mangekyo = new StatusAsset();
             mangekyo.id = "status_mangekyo";
             mangekyo.base_stats = new BaseStats();
-            mangekyo.base_stats.set("damage", 150f);
-            mangekyo.base_stats.set("multiplier_damage", 0.20f);
-            mangekyo.base_stats.set("health", 200f);
-            mangekyo.base_stats.set("multiplier_health", 0.15f);
-            mangekyo.base_stats.set("intelligence", 100f);
-            mangekyo.base_stats.set("speed", 20f);
+            mangekyo.base_stats.set("damage", 142f);
+            mangekyo.base_stats.set("multiplier_damage", 0.23f);
+            mangekyo.base_stats.set("health", 226f);
+            mangekyo.base_stats.set("multiplier_health", 0.11f);
+            mangekyo.base_stats.set("speed", 15f);
             mangekyo.base_stats.set("critical_chance", 0.30f);
-            mangekyo.base_stats.set("critical_damage_multiplier", 0.20f);
-            mangekyo.base_stats.set("accuracy", 2.0f);
-            mangekyo.base_stats.set("chakra", 150f);
-            mangekyo.duration = 30f;
+            mangekyo.base_stats.set("critical_damage_multiplier", 0.30f);
+            mangekyo.base_stats.set("attack_speed", 0.10f);
+            mangekyo.base_stats.set("accuracy", 2.5f);
+            mangekyo.duration = 10f;
             mangekyo.path_icon = "ui/icons/mangekyo";
             mangekyo.locale_id = "status_title_mangekyo";
             mangekyo.locale_description = "status_description_mangekyo";
@@ -739,19 +738,19 @@ namespace ShinobiBox
             StatusAsset baseSusanoo = new StatusAsset();
             baseSusanoo.id = "status_base_susanoo";
             baseSusanoo.base_stats = new BaseStats();
-            baseSusanoo.base_stats.set("armor", 35f);
-            baseSusanoo.base_stats.set("damage", 150f);
-            baseSusanoo.base_stats.set("multiplier_damage", 0.20f);
-            baseSusanoo.base_stats.set("health", 500f);
+            baseSusanoo.base_stats.set("armor", 30f);
+            baseSusanoo.base_stats.set("damage", 80f);
+            baseSusanoo.base_stats.set("multiplier_damage", 0.15f);
+            baseSusanoo.base_stats.set("health", 300f);
             baseSusanoo.base_stats.set("scale", 0.05f);
             baseSusanoo.base_stats.set("knockback", 1f);
             baseSusanoo.base_stats.set("area_of_effect", 0.30f);
-            baseSusanoo.base_stats.set("range", 5f);
-            baseSusanoo.duration = 1f;
+            baseSusanoo.base_stats.set("range", 3f);
+            baseSusanoo.duration = 25f;
             baseSusanoo.path_icon = "ui/icons/mangekyo";
 
             baseSusanoo.animated = true;
-            baseSusanoo.texture = "fx_base_susanoo";
+            baseSusanoo.texture = "fx_halfsusa";
             baseSusanoo.sprite_list = SpriteTextureLoader.getSpriteList($"effects/{baseSusanoo.texture}", false);
             baseSusanoo.material = material;
 
@@ -760,28 +759,47 @@ namespace ShinobiBox
             baseSusanoo.removed_on_damage = false;
             baseSusanoo.use_parent_rotation = false;
             baseSusanoo.can_be_flipped = true;
-            baseSusanoo.scale = 0.1f;
+            baseSusanoo.scale = 0.5f;
             baseSusanoo.locale_id = "status_title_base_susanoo";
             baseSusanoo.locale_description = "status_description_base_susanoo";
             AssetManager.status.add(baseSusanoo);
+
+            StatusAsset susanooStrike = new StatusAsset();
+            susanooStrike.id = "susanoo_strike";
+            susanooStrike.duration = 1f;
+            susanooStrike.path_icon = "ui/icons/mangekyo";
+            susanooStrike.animated = true;
+            susanooStrike.texture = "fx_base_susanoo";
+            susanooStrike.sprite_list = SpriteTextureLoader.getSpriteList($"effects/{susanooStrike.texture}", false);
+            susanooStrike.material = material;
+            susanooStrike.need_visual_render = true;
+            susanooStrike.is_animated_in_pause = false;
+            susanooStrike.removed_on_damage = false;
+            susanooStrike.use_parent_rotation = false;
+            susanooStrike.can_be_flipped = true;
+            susanooStrike.scale = 0.1f;
+            susanooStrike.locale_id = "status_title_susanoo_strike";
+            susanooStrike.locale_description = "status_description_susanoo_strike";
+            AssetManager.status.add(susanooStrike);
             #endregion
 
             #region Perfect Susanoo (EMS)
             StatusAsset perfectSusanoo = new StatusAsset();
             perfectSusanoo.id = "status_perfect_susanoo";
             perfectSusanoo.base_stats = new BaseStats();
-            perfectSusanoo.base_stats.set("armor", 75f);
-            perfectSusanoo.base_stats.set("damage", 500f);
-            perfectSusanoo.base_stats.set("multiplier_damage", 0.30f);
-            perfectSusanoo.base_stats.set("health", 2000f);
-            perfectSusanoo.base_stats.set("range", 9f);
+            perfectSusanoo.base_stats.set("armor", 50f);
+            perfectSusanoo.base_stats.set("damage", 200f);
+            perfectSusanoo.base_stats.set("multiplier_damage", 0.25f);
+            perfectSusanoo.base_stats.set("health", 800f);
+            perfectSusanoo.base_stats.set("scale", 0.10f);
+            perfectSusanoo.base_stats.set("range", 6f);
             perfectSusanoo.base_stats.set("knockback", 2f);
-            perfectSusanoo.base_stats.set("area_of_effect", 0.80f);
-            perfectSusanoo.duration = 1f;
+            perfectSusanoo.base_stats.set("area_of_effect", 0.60f);
+            perfectSusanoo.duration = 30f;
             perfectSusanoo.path_icon = "ui/icons/ems";
 
             perfectSusanoo.animated = true;
-            perfectSusanoo.texture = "fx_perfect_susanoo";
+            perfectSusanoo.texture = "fx_halfsusa";
             perfectSusanoo.sprite_list = SpriteTextureLoader.getSpriteList($"effects/{perfectSusanoo.texture}", false);
             perfectSusanoo.material = material;
 
@@ -790,11 +808,29 @@ namespace ShinobiBox
             perfectSusanoo.use_parent_rotation = false;
             perfectSusanoo.is_animated_in_pause = false;
             perfectSusanoo.can_be_flipped = true;
-            perfectSusanoo.scale = 0.4f;
+            perfectSusanoo.scale = 0.6f;
             perfectSusanoo.locale_id = "status_title_perfect_susanoo";
             perfectSusanoo.locale_description = "status_description_perfect_susanoo";
 
             AssetManager.status.add(perfectSusanoo);
+
+            StatusAsset perfectSusanooStrike = new StatusAsset();
+            perfectSusanooStrike.id = "perfect_susanoo_strike";
+            perfectSusanooStrike.duration = 1f;
+            perfectSusanooStrike.path_icon = "ui/icons/ems";
+            perfectSusanooStrike.animated = true;
+            perfectSusanooStrike.texture = "fx_perfect_susanoo";
+            perfectSusanooStrike.sprite_list = SpriteTextureLoader.getSpriteList($"effects/{perfectSusanooStrike.texture}", false);
+            perfectSusanooStrike.material = material;
+            perfectSusanooStrike.need_visual_render = true;
+            perfectSusanooStrike.is_animated_in_pause = false;
+            perfectSusanooStrike.removed_on_damage = false;
+            perfectSusanooStrike.use_parent_rotation = false;
+            perfectSusanooStrike.can_be_flipped = true;
+            perfectSusanooStrike.scale = 0.4f;
+            perfectSusanooStrike.locale_id = "status_title_perfect_susanoo_strike";
+            perfectSusanooStrike.locale_description = "status_description_perfect_susanoo_strike";
+            AssetManager.status.add(perfectSusanooStrike);
             #endregion
 
             #region Kurama Avatar
@@ -1513,10 +1549,10 @@ namespace ShinobiBox
             StatusAsset madaraPS = new StatusAsset();
             madaraPS.id = "madara_ps";
             madaraPS.path_icon = "ui/icons/madara_ems";
-            madaraPS.duration = 1f;
+            madaraPS.duration = 30f;
 
             madaraPS.animated = true;
-            madaraPS.texture = "fx_madara_ps";
+            madaraPS.texture = "fx_bluehalfsusa";
             madaraPS.material = material;
             madaraPS.sprite_list = SpriteTextureLoader.getSpriteList($"effects/{madaraPS.texture}", false);
 
@@ -1525,20 +1561,39 @@ namespace ShinobiBox
             madaraPS.use_parent_rotation = false;
             madaraPS.is_animated_in_pause = false;
             madaraPS.can_be_flipped = true;
-            madaraPS.scale = 0.4f;
+            madaraPS.scale = 0.6f;
 
-            madaraPS.base_stats.set("armor", 75f);
-            madaraPS.base_stats.set("damage", 500f);
-            madaraPS.base_stats.set("multiplier_damage", 0.30f);
-            madaraPS.base_stats.set("health", 2000f);
-            madaraPS.base_stats.set("range", 9f);
+            madaraPS.base_stats.set("armor", 50f);
+            madaraPS.base_stats.set("damage", 200f);
+            madaraPS.base_stats.set("multiplier_damage", 0.25f);
+            madaraPS.base_stats.set("health", 800f);
+            madaraPS.base_stats.set("scale", 0.10f);
+            madaraPS.base_stats.set("range", 6f);
             madaraPS.base_stats.set("knockback", 2f);
-            madaraPS.base_stats.set("area_of_effect", 0.80f);
+            madaraPS.base_stats.set("area_of_effect", 0.60f);
 
             madaraPS.locale_id = "status_title_madara_ps";
             madaraPS.locale_description = "status_description_madara_ps";
 
             AssetManager.status.add(madaraPS);
+
+            StatusAsset madaraSusanooStrike = new StatusAsset();
+            madaraSusanooStrike.id = "madara_susanoo_strike";
+            madaraSusanooStrike.duration = 1f;
+            madaraSusanooStrike.path_icon = "ui/icons/madara_ems";
+            madaraSusanooStrike.animated = true;
+            madaraSusanooStrike.texture = "fx_madara_ps";
+            madaraSusanooStrike.sprite_list = SpriteTextureLoader.getSpriteList($"effects/{madaraSusanooStrike.texture}", false);
+            madaraSusanooStrike.material = material;
+            madaraSusanooStrike.need_visual_render = true;
+            madaraSusanooStrike.is_animated_in_pause = false;
+            madaraSusanooStrike.removed_on_damage = false;
+            madaraSusanooStrike.use_parent_rotation = false;
+            madaraSusanooStrike.can_be_flipped = true;
+            madaraSusanooStrike.scale = 0.4f;
+            madaraSusanooStrike.locale_id = "status_title_madara_susanoo_strike";
+            madaraSusanooStrike.locale_description = "status_description_madara_susanoo_strike";
+            AssetManager.status.add(madaraSusanooStrike);
 
             // TENGAI SHINSEIIII
             StatusAsset tengaiShinsei = new StatusAsset();

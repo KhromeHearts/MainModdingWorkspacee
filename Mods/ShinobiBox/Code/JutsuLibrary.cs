@@ -36,6 +36,7 @@ namespace ShinobiBox
             if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
 
             if (pTarget.a.hasStatus("genjutsu_1")) return false;
+            if (!ChakraSystem.WinsChakraDuel(pSelf.a, pTarget.a)) return false;
 
             pTarget.a.addStatusEffect("genjutsu_1", 3f);
             return true;
@@ -47,6 +48,7 @@ namespace ShinobiBox
             if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
 
             if (pTarget.a.hasStatus("genjutsu_2")) return false;
+            if (!ChakraSystem.WinsChakraDuel(pSelf.a, pTarget.a)) return false;
 
             pTarget.a.addStatusEffect("genjutsu_2", 4f);
             return true;
@@ -58,6 +60,7 @@ namespace ShinobiBox
             if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
 
             if (pTarget.a.hasStatus("genjutsu_3")) return false;
+            if (!ChakraSystem.WinsChakraDuel(pSelf.a, pTarget.a)) return false;
 
             pTarget.a.addStatusEffect("genjutsu_3", 5f);
             return true;
@@ -112,6 +115,39 @@ namespace ShinobiBox
             return false;
         }
 
+        public static bool MangekyoActivation(BaseSimObject pSelf, WorldTile pTile = null)
+        {
+            if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
+            Actor actor = pSelf.a;
+
+            if (!actor.has_attack_target || actor.hasStatus("chakra_exhaustion")) return false;
+
+            if (actor.hasStatus("status_mangekyo"))
+            {
+                actor.addStatusEffect("status_mangekyo", 10f);
+            }
+            else
+            {
+                ShinobiActions.addShinobiStatus(actor, "status_mangekyo");
+            }
+            return true;
+        }
+
+        public static string GetMangekyoPower(Actor actor)
+        {
+            actor.data.get("mangekyo_power", out string power);
+            if (!string.IsNullOrEmpty(power)) return power;
+
+            string unitId = actor.asset.id;
+            if (unitId == "kakashi_hatake" || unitId == "obito_uchiha" || unitId == "jinchuriki_obito") power = "kamui";
+            else if (unitId == "itachi_uchiha") power = "amaterasu";
+            else if (Randy.randomChance(0.30f)) power = "kamui";
+            else power = "amaterasu";
+
+            actor.data.set("mangekyo_power", power);
+            return power;
+        }
+
         public static void ClearSharinganTomoeStatuses(Actor actor)
         {
             if (actor == null) return;
@@ -123,13 +159,13 @@ namespace ShinobiBox
         #endregion
 
         #region Rasengan
-        public static bool RasenganAction(BaseSimObject pTarget, WorldTile pTile)
+        public static bool RasenganAction(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
-            if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
-            if (pTarget.a.hasStatus("status_rasengan")) return false;
-            if (pTarget.a.has_attack_target)
+            if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
+            if (pSelf.a.hasStatus("status_rasengan")) return false;
+            if (pSelf.a.has_attack_target)
             {
-                pTarget.a.addStatusEffect("status_rasengan", 5f);
+                pSelf.a.addStatusEffect("status_rasengan", 5f);
                 return true;
             }
             return false;
@@ -181,7 +217,6 @@ namespace ShinobiBox
         public static bool InfiniteTsukuyomiAction(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
             if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
-            if (!pSelf.a.hasTrait("yin_release") && !pSelf.a.hasTrait("yinyang_release")) return false;
 
             int used = 0;
             pSelf.a.data.get("it_used_once", out used);
@@ -456,6 +491,7 @@ namespace ShinobiBox
         public static bool AmaterasuAction(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
             if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
+            if (pSelf.a.hasTrait("mangekyo_sharingan") && GetMangekyoPower(pSelf.a) != "amaterasu") return false;
 
             if (!pTarget.a.hasStatus("status_amaterasu"))
             {
@@ -470,20 +506,21 @@ namespace ShinobiBox
         }
 
         // Susanoo Ribcage
-        public static bool SusanooRibcage(BaseSimObject pTarget, WorldTile pTile)
+        public static bool SusanooRibcage(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
-            if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
+            if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
+            if (IsInSusanoo(pSelf.a)) return false;
 
             // Only triggers if health below 35%
-            float healthPct = (float)pTarget.a.data.health / (float)pTarget.a.getMaxHealth();
+            float healthPct = (float)pSelf.a.data.health / (float)pSelf.a.getMaxHealth();
             if (healthPct < 0.35f)
             {
-                if (!pTarget.a.hasStatus("susanoo_ribcage"))
+                if (!pSelf.a.hasStatus("susanoo_ribcage"))
                 {
-                    pTarget.a.addStatusEffect("susanoo_ribcage");
+                    pSelf.a.addStatusEffect("susanoo_ribcage");
 
                     // Blindness Logic
-                    ChakraSystem.AddMangekyoUsage(pTarget.a, 1);
+                    ChakraSystem.AddMangekyoUsage(pSelf.a, 1);
 
                     return true;
                 }
@@ -495,17 +532,16 @@ namespace ShinobiBox
         public static bool BaseSusanooAction(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
             if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
+            Actor a = pSelf.a;
+            if (IsInSusanoo(a)) return false;
 
-            if (!pSelf.a.hasStatus("status_base_susanoo"))
-            {
-                pSelf.a.addStatusEffect("status_base_susanoo");
+            a.finishStatusEffect("susanoo_ribcage");
+            ShinobiActions.addShinobiStatus(a, "status_base_susanoo");
 
-                // Blindness Logic
-                ChakraSystem.AddMangekyoUsage(pSelf.a, 1);
-            }
+            // Blindness Logic
+            ChakraSystem.AddMangekyoUsage(a, 1);
 
-            EffectsLibrary.spawnExplosionWave(pSelf.current_tile.posV3, 1f, 1f);
-            World.world.applyForceOnTile(pTile: pTarget.current_tile, pByWho: pSelf);
+            EffectsLibrary.spawnExplosionWave(a.current_tile.posV3, 1f, 1f);
             return true;
         }
 
@@ -513,25 +549,63 @@ namespace ShinobiBox
         public static bool PerfectSusanooAction(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
             if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
+            Actor a = pSelf.a;
+            if (IsInSusanoo(a)) return false;
 
-            if (!pSelf.a.hasStatus("status_perfect_susanoo"))
+            a.finishStatusEffect("susanoo_ribcage");
+            ShinobiActions.addShinobiStatus(a, "status_perfect_susanoo");
+
+            EffectsLibrary.spawnExplosionWave(a.current_tile.posV3, 2f, 1f);
+            return true;
+        }
+
+        // Susanoo Strike (while a Susanoo is up)
+        public static bool SusanooStrikeAction(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
+        {
+            if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
+            if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive() || pTarget.current_tile == null) return false;
+            Actor a = pSelf.a;
+
+            string strike = "susanoo_strike";
+            float radius = 2f;
+            if (a.hasStatus("status_perfect_susanoo"))
             {
-                pSelf.a.addStatusEffect("status_perfect_susanoo");
+                strike = "perfect_susanoo_strike";
+                radius = 3f;
+            }
+            if (a.hasStatus("madara_ps"))
+            {
+                strike = "madara_susanoo_strike";
+                radius = 3f;
             }
 
-            EffectsLibrary.spawnExplosionWave(pSelf.current_tile.posV3, 2f, 1f);
-            World.world.applyForceOnTile(pTile: pTarget.current_tile, pByWho: pSelf);
+            a.addStatusEffect(strike);
 
+            float damage = a.stats["damage"] * 0.5f;
+            foreach (Actor unit in Finder.getUnitsFromChunk(pTarget.current_tile, 1, radius))
+            {
+                if (unit == a || !unit.isAlive()) continue;
+                if (a.kingdom != null && unit.kingdom == a.kingdom) continue;
+
+                unit.getHit(damage, true, AttackType.Other, a, true);
+            }
+
+            World.world.applyForceOnTile(pTarget.current_tile, (int)radius, 1.5f, true, 0, null, a);
             return true;
+        }
+
+        public static bool IsInSusanoo(Actor a)
+        {
+            return a.hasStatus("status_base_susanoo") || a.hasStatus("status_perfect_susanoo") || a.hasStatus("madara_ps");
         }
 
         #region Amenotejikara
 
-        public static bool Amenotejikara(BaseSimObject pTarget, WorldTile pTile = null)
+        public static bool Amenotejikara(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
-            if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
+            if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
 
-            Actor actor = pTarget.a;
+            Actor actor = pSelf.a;
             WorldTile actorTile = actor.current_tile;
             if (actorTile == null) return false;
             if (!actor.isTask("run_away")) return false;
@@ -569,15 +643,13 @@ namespace ShinobiBox
         public static bool MadaraPerfectSusanoo(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
             if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
+            Actor a = pSelf.a;
+            if (IsInSusanoo(a)) return false;
 
-            if (!pSelf.a.hasStatus("madara_ps"))
-            {
-                pSelf.a.addStatusEffect("madara_ps");
-            }
+            a.finishStatusEffect("susanoo_ribcage_madara");
+            ShinobiActions.addShinobiStatus(a, "madara_ps");
 
-            EffectsLibrary.spawnExplosionWave(pSelf.current_tile.posV3, 2f, 1f);
-            // World.world.applyForceOnTile(pTile: pTarget.current_tile, pByWho: pSelf);
-
+            EffectsLibrary.spawnExplosionWave(a.current_tile.posV3, 2f, 1f);
             return true;
         }
 
@@ -636,16 +708,17 @@ namespace ShinobiBox
         }
 
         // Madara Susanoo Ribcage
-        public static bool MadaraSusanooRibcage(BaseSimObject pTarget, WorldTile pTile)
+        public static bool MadaraSusanooRibcage(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
-            if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
+            if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
+            if (IsInSusanoo(pSelf.a)) return false;
 
-            float healthPct = (float)pTarget.a.data.health / (float)pTarget.a.getMaxHealth();
+            float healthPct = (float)pSelf.a.data.health / (float)pSelf.a.getMaxHealth();
             if (healthPct < 0.40f)
             {
-                if (!pTarget.a.hasStatus("susanoo_ribcage_madara"))
+                if (!pSelf.a.hasStatus("susanoo_ribcage_madara"))
                 {
-                    pTarget.a.addStatusEffect("susanoo_ribcage_madara");
+                    pSelf.a.addStatusEffect("susanoo_ribcage_madara");
 
                     return true;
                 }
@@ -1224,6 +1297,7 @@ namespace ShinobiBox
             Actor actor = pSelf.a;
 
             if (actor.current_tile == null) return false;
+            if (GetMangekyoPower(actor) != "kamui") return false;
 
             actor.addStatusEffect("kamui_intangibility", 6f);
             actor.addStatusEffect("invincible", 6f);
