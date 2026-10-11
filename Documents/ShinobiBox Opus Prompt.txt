@@ -11,15 +11,15 @@ You are taking over design and engineering ownership of a WorldBox mod called Sh
 - I am now an early-intermediate C# programmer. I can read and write ordinary code easily. Explain anything clever or unusual, and prefer plain, readable code over cleverness.
 - The deeper problem is design, not typing: BREADTH WITHOUT DEPTH. I kept adding traits, statuses and jutsu without finishing the ones I already had. Updates shipped lackluster, I kept announcing dates and missing them, and my community has been waiting. I burned out the last time I tried to rework things.
 - So the goal is NOT "add more." The goal is fewer things, each one fully finished and actually visible in play. Cutting is allowed and encouraged when something cannot be made good.
-- My .txt files in Documents/ are brain dumps of every idea I ever had, implemented or not. Treat them as a wish list and a record of intent, never as a spec. Do not feel obliged to build any of it.
+- My .txt files in Documents/ are brain dumps. I wrote down every random idea that popped into my head, whether or not I ever wanted it in the mod. Many of those ideas are half-baked, contradictory, outdated, or things I would not choose again. Treat them as raw material and context for my thinking, NEVER as a spec, a to-do list, or a set of rules. You do not have to build, keep, or follow any of it.
 
 ----------------------------------------------------------------
 2. WHAT TO READ FIRST (in this order)
 ----------------------------------------------------------------
-1. Documents/ShinobiBox Roadmap.txt - my "Definition of Fleshed Out" 8-point checklist, the pillar list, and the technical notes. Hold every feature you touch to that checklist.
+1. Documents/ShinobiBox Roadmap.txt - my "Definition of Fleshed Out" 8-point checklist, the pillar list, and the technical notes. The checklist is a good default quality bar, but improve it if you can think of a better one.
 2. Documents/ShinobiBox Design Review.txt - a code-reading audit from an earlier session: confirmed bugs (B1-B13), system-level problems (S1-S7), per-feature verdicts, and a fix list (F1-F12). It was written from reading code only and nothing was playtested. Some items have since been fixed (for example the 05_hagoromo_chakra ids now appear consistent in ShinobiActors.cs and ShinobiEvents.cs), so VERIFY each item against the current code before acting on it.
-3. Documents/Shinobi Box Scaling Guide.txt - four stat tiers (Low/Mid/High/Mythic). Use these when balancing.
-4. Documents/ShinobiBox.txt and ShinobiBoxUpdateLog.txt - raw ideas and the latest patch notes (summoning jutsu, sage mode system, Pirate King/Haki idea, Madara EMS taming tailed beasts, and so on).
+3. Documents/Shinobi Box Scaling Guide.txt - my early attempt at stat tiers (Low/Mid/High/Mythic). This is only a starting sketch of how I was thinking, not a rule. You are free to keep it, change the numbers, or throw it out and design a different scaling system if you think it plays better. Scaling is YOUR call.
+4. Documents/ShinobiBox.txt and ShinobiBoxUpdateLog.txt - raw ideas and patch notes (summoning jutsu, sage mode system, Pirate King/Haki, Madara EMS taming tailed beasts, and so on). Many of these are random thoughts, not commitments. Mine them for inspiration and for hints at the feel I like, but do not treat any of them as required.
 5. Mods/ShinobiBox/Code/prompt.txt - the handoff prompt I gave a previous AI. It lists what I wanted removed and reworked (duplicate code, Nature Exp removal, sage mode rebuild, ClanProgression merged into birth logic, kingdoms so the good-guy characters live with normal humans while villains are separate, en.json cleanup, Mangekyo review). Find out which of those were completed and which were not. Do not blindly redo finished work and do not assume anything in it was done.
 6. Then the code itself. Biggest files: ShinobiStatus.cs (2290 lines), ShinobiTraits.cs (2045), JutsuLibrary.cs (1695), ShinobiActors.cs (1375). Also Main.cs, ChakraSystem/, Progressions/, ShinobiEvents.cs, ShinobiProgression.cs, ShinobiKingdoms.cs, Locales/*.json, GameResources/.
 
@@ -27,6 +27,14 @@ Reference material in the repo (read-only unless I say otherwise):
 - Mods/JinchurikiBox REANIMATED (1)/ - an unreleased update to JinchurikiBox, the mod that inspired ShinobiBox. Its original devs gave it to me as a tester and have stopped working on it. It is good in places and I tried to imitate its systems (chakra, sage modes, Sharingan variants, reincarnation traits, hover tooltips, Otsutsuki blood tiers). It also contains a lot of useless code. Borrow IDEAS and structure, and write the implementation in ShinobiBox's own style. Do not do wholesale copy-paste of their files; if you think copying something large is the right call, ask me first.
 - Worldbox_code/ - the decompiled WorldBox game source. Use it to see how vanilla does things (ActorAsset, traits, statuses, kingdoms/civ rules, projectiles) before inventing your own approach.
 - NeoModLoader/ - the mod loader. Other mods in Mods/ are useful for patterns only (VisibleArmors, PossessLib, EffectsLib-style effects).
+
+----------------------------------------------------------------
+2.5 HOW MUCH FREEDOM YOU HAVE (READ THIS)
+----------------------------------------------------------------
+- Nothing in any .txt file, including the Roadmap, Design Review, Scaling Guide, idea lists and the old prompt.txt, binds you. That includes the audit's verdicts and fix list: they came from an earlier AI reading the code, and they can be wrong or not worth doing.
+- Design the systems the way YOU think is best for gameplay and for players: chakra, scaling and balance, progression chains, ability triggering, ranks, clans, and so on. If the right answer is to rework a system, change how stats scale, merge traits, rename things, or delete a feature I wrote down, do it and tell me why.
+- If something in my notes conflicts with what you think is the better design, go with your design and explain the reasoning briefly. You do not need my permission for design decisions inside the existing scope. Ask only for the things listed under "ask first" below.
+- A few things I definitely want in the mod eventually (for example the summoning jutsu and sage mode ideas). Those come AFTER the foundation work. First priority is fixing, finishing and cleaning what already exists. Do not start big new content until the foundation is solid. Within that, you may suggest which of my ideas deserve a spot and which should be dropped.
 
 ----------------------------------------------------------------
 3. WHAT I WANT YOU TO DO
@@ -56,7 +64,7 @@ Rules for how you work:
 - Be careful with permanent effects and anything that auto-gives traits: manual removal by the player must stick (no auto-give loops).
 - Performance matters: Main.cs loops over every unit on timers. Avoid adding heavy per-unit-per-tick work.
 - Do not touch the other mods in Mods/ or the reference folders, and do not push anywhere except the branch you are given.
-- If you are about to make a call that is hard to reverse, big, or about my lore or balance taste, ask first. Otherwise just make the call, explain it in one or two sentences, and keep going.
+- ASK FIRST only if a call is hard to reverse, would break existing saves, or is about my lore or personal taste in a way you cannot reasonably infer. Everything else (balance, scaling, system design, structure, what to cut) is your call: decide, explain in one or two sentences, and keep going.
 
 ----------------------------------------------------------------
 4. WHAT "DONE" LOOKS LIKE
