@@ -55,6 +55,7 @@ namespace ShinobiBox
             RankProgression.CheckRankProgression(actor);
 
             RemoveFormsIfNoTrait(actor);
+            ShinobiActors.CharacterBehaviour(actor);
 
             // Rinnegan Awakening
             bool hasIndra = actor.hasTrait("07_indra_chakra");
