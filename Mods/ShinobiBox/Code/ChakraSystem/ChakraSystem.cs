@@ -288,6 +288,35 @@ namespace ShinobiBox
             if (current + 0.001f < cost) return false;
 
             SetCurrent(actor, current - cost);
+
+            // Spending the last 10% of your chakra exhausts you.
+            if (current - cost < GetMax(actor) * 0.10f)
+            {
+                Exhaust(actor);
+            }
+            return true;
+        }
+
+        public static void Exhaust(Actor actor)
+        {
+            // Taijutsu masters barely rely on chakra, so they never get exhausted.
+            if (actor.hasTrait(TraitIds.TaijutsuMaster)) return;
+            if (actor.hasStatus(StatusIds.ChakraExhaustion)) return;
+
+            actor.addStatusEffect(StatusIds.ChakraExhaustion);
+        }
+
+        // Status action_finish on Chakra Exhaustion: a second wind, so a unit can't get stuck exhausted forever.
+        public static bool ExhaustionEnded(BaseSimObject pTarget, WorldTile pTile = null)
+        {
+            if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
+            Actor actor = pTarget.a;
+
+            float secondWind = GetMax(actor) * 0.25f;
+            if (GetCurrent(actor) < secondWind)
+            {
+                SetCurrent(actor, secondWind);
+            }
             return true;
         }
 
@@ -450,10 +479,7 @@ namespace ShinobiBox
 
             if (!hasEnoughChakra)
             {
-                if (!actor.hasTrait(TraitIds.TaijutsuMaster) && !actor.hasStatus(StatusIds.ChakraExhaustion))
-                {
-                    actor.addStatusEffect(StatusIds.ChakraExhaustion, 15f);
-                }
+                Exhaust(actor);
 
                 ShinobiProgression.RemoveLowerForms(actor);
                 actor.finishStatusEffect(StatusIds.Sharingan1Tomoe);

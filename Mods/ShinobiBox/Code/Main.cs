@@ -70,29 +70,23 @@ namespace ShinobiBox
                 foreach (Actor actor in MapBox.instance.units)
                 {
                     if (actor == null || !actor.isAlive()) continue;
+
+                    // Anti-stun (same as the AntiStun mod): stuns can chain forever and decide a fight on the first hit.
+                    if (actor.hasStatusStunned())
+                    {
+                        actor.finishStatusEffect(StatusIds.Stunned);
+                    }
+
                     if (!ChakraSystem.IsChakraUser(actor)) continue;
 
                     ChakraSystem.UpdateMax(actor);
                     ChakraSystem.ProcessDrain(actor, 0.1f);
                     ChakraSystem.UpdateSpecialResources(actor, 0.1f);
 
-                    // Chakra Regen
-                    if (!ShinobiProgression.IsModeActive(actor) && !actor.hasStatus(StatusIds.ChakraExhaustion))
+                    // Chakra Regen. Exhaustion only slows it down (see GetRegenRate), so a unit always recovers.
+                    if (!ShinobiProgression.IsModeActive(actor))
                     {
                         ChakraSystem.AddChakra(actor, ChakraSystem.GetRegenRate(actor) * 0.1f);
-                    }
-
-                    float exhaustionThreshold = ChakraSystem.GetMax(actor) * 0.15f;
-                    if (ChakraSystem.GetCurrent(actor) <= exhaustionThreshold &&
-                        !actor.hasTrait(TraitIds.TaijutsuMaster) &&
-                        !actor.hasStatus(StatusIds.ChakraExhaustion))
-                    {
-                        actor.addStatusEffect(StatusIds.ChakraExhaustion, 12f);
-                    }
-
-                    if (actor.hasStatusStunned())
-                    {
-                        actor.finishStatusEffect(StatusIds.Stunned);
                     }
                 }
                 timer = 0f;

@@ -91,6 +91,7 @@ namespace ShinobiBox
             armorBreak.path_icon = "ui/icons/chakra_exhaustion";
             armorBreak.base_stats = new BaseStats();
             armorBreak.base_stats.set("armor", -25f);
+            armorBreak.base_stats.set("multiplier_speed", -0.20f);
             armorBreak.duration = 10f;
             armorBreak.locale_id = "status_title_chakra_armor_break";
             armorBreak.locale_description = "status_description_chakra_armor_break";
@@ -229,6 +230,7 @@ namespace ShinobiBox
             exhaustion.locale_description = "status_description_chakra_exhaustion";
 
             exhaustion.action_on_receive = (WorldAction)Delegate.Combine(exhaustion.action_on_receive, new WorldAction(action_freeze));
+            exhaustion.action_finish = new WorldAction(ChakraSystem.ExhaustionEnded);
             AssetManager.status.add(exhaustion);
             #endregion
 

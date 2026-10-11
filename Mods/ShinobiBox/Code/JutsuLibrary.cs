@@ -959,8 +959,8 @@ namespace ShinobiBox
             // 40 Chakra Cost
             if (!CheckAndConsumeChakra(pSelf.a, 40f)) return false;
 
+            // Timed only. This used to also add the vanilla "crippled" trait, which is permanent.
             pTarget.a.addStatusEffect(StatusIds.ChakraBreak);
-            pTarget.a.addTrait(TraitIds.Crippled);
             return true;
         }
 
