@@ -193,6 +193,22 @@ PART 6 - UCHIHA LINE
 - Infinite Tsukuyomi stays once per unit: every Rinne Sharingan user can cast it once in their life. It no longer
   also needs Yin or Yin-Yang Release.
 
+PART 7 - NINE-TAILS AND TEN-TAILS CHAIN
+---------------------------------------
+- Baryon Mode never worked. WorldBox marks a unit as dead before it runs "on death" effects, so the Baryon check
+  always saw a dead unit and gave up. Now it triggers on the killing blow instead: a level 7+ jinchuriki has a 45%
+  chance to survive at half health and enter Baryon Mode for 60 s. When it ends, Kurama is gone for good (like
+  before: the trait is removed, 120 s of exhaustion, no jutsu for 300 s).
+- When a Nine-Tails jinchuriki dies any other way, Kurama breaks free where it died (world log), at full power.
+  Whoever kills it next becomes the new jinchuriki, so the Nine-Tails keeps moving around the world.
+  Shadow clones never release it, and dying during Baryon Mode doesn't either (Kurama is already burning away).
+- Same for the Ten-Tails: when its jinchuriki dies, the Ten-Tails breaks free.
+- Ten-Tails forms (Uncontrolled / Mastered) now work like the Nine-Tails ones: they need a quarter of the
+  tailed-beast chakra to start, burn it every second (5 / 8 per second out of 1000) and end when it runs out.
+  The Ten-Tails itself no longer goes into jinchuriki forms.
+- Uzumaki jinchuriki hold more tailed-beast chakra (750 instead of 500), so Naruto stays transformed longer.
+- Kurama Avatar is still parked (commented out) until there's art for it.
+
 CODE CLEANUP
 - ShinobiJutsu.cs rewritten to be easier to read: each jutsu is one block that lists its traits/statuses, and a
   Jutsu has a Cast method like in JinchurikiBox. Same behaviour as Part 5.
@@ -247,6 +263,14 @@ TEST CHECKLIST [NEEDS IN-GAME TEST]
 28. Let a Sharingan user fight Naruto: genjutsu should land much less often on Naruto than on normal villagers.
 29. Give a unit Rinnegan + Ten-Tails (Rinne Sharingan) and let it fight for a long time: Infinite Tsukuyomi should
     happen at most once for that unit.
+30. Baryon: give a level 7+ unit Nine Tails Jinchuriki and let it fight something much stronger. When it would
+    die, about half the time it should survive at half health with the "Baryon Mode" world log. After 60 s the
+    Nine-Tails trait should be gone.
+31. Release: let a low-level Nine-Tails jinchuriki die. Kurama should appear where it died, with a world log.
+    Kill Kurama with a shinobi: that shinobi becomes the new jinchuriki.
+32. Shadow clones of Naruto dying should NOT spawn Kurama.
+33. Kill the Ten-Tails with a shinobi, then let that jinchuriki fight: its Ten-Tails form should end when the
+    tailed-beast chakra hits 0. When the jinchuriki dies, the Ten-Tails comes back.
 
 
 =====================================================================

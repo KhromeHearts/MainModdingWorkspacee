@@ -296,7 +296,7 @@
   "trait_mangekyo_sharingan_info_2": "An Uchiha with an active 3-tomoe Sharingan awakens it after losing family, a lover or a best friend, or after 25 kills. Each eye has one power: Amaterasu (most) or Kamui (rarer; Kakashi and Obito). Switches on in fights and drains chakra. Each Amaterasu, Kamui or Susanoo brings them closer to blindness (25 uses).",
   "trait_nine_tails_jinchuriki": "Nine Tails Jinchuriki",
   "trait_nine_tails_jinchuriki_info": "The Vessel! A Tailed Beast is sealed inside this unit.",
-  "trait_nine_tails_jinchuriki_info_2": "Obtained by slaying Kurama. In combat the cloak grows with level: Initial Release (2), V1 (3), V2 (4), Incomplete Beast (5), Kurama Chakra Mode (7, needs 20 intelligence or diplomacy), Kurama Link Mode (9). Every form burns tailed-beast chakra and ends when it runs out; it refills while not transformed. From V2 onward it can fire Tailed Beast Bombs, which cost 140 of it. At level 7+, dying has a 45% chance to trigger Baryon Mode instead, which burns Kurama away when it ends.",
+  "trait_nine_tails_jinchuriki_info_2": "Obtained by slaying Kurama. In combat the cloak grows with level: Initial Release (2), V1 (3), V2 (4), Incomplete Beast (5), Kurama Chakra Mode (7, needs 20 intelligence or diplomacy), Kurama Link Mode (9). Every form burns tailed-beast chakra (500, Uzumaki 750) and ends when it runs out; it refills while not transformed. From V2 onward it can fire Tailed Beast Bombs, which cost 140 of it. At level 7+, a killing blow has a 45% chance to trigger Baryon Mode instead, which burns Kurama away when it ends. If the jinchuriki dies any other way, Kurama breaks free.",
   "trait_otsutsuki_clan": "Otsutsuki Clan",
   "trait_otsutsuki_clan_info": "A celestial bloodline from the highest level of chakra lineage.",
   "trait_otsutsuki_clan_info_2": "Units in this clan have access to a special kind of eyes and chakra...",
@@ -355,7 +355,7 @@
   "trait_taijutsu_master_info_2": "Cannot hold weapons. Hits can block the target's chakra points (-25 armor, -20% speed for 10 seconds), and being hit can knock the attacker back. Never suffers chakra exhaustion.",
   "trait_ten_tails_jinchuriki": "Ten-Tails Jinchuriki",
   "trait_ten_tails_jinchuriki_info": "The Ultimate Vessel! Contains the power of all tailed beasts combined!",
-  "trait_ten_tails_jinchuriki_info_2": "God-like power that can combine with senjutsu for Six Paths Senjutsu. (no natural way to obtain right now)",
+  "trait_ten_tails_jinchuriki_info_2": "Obtained by slaying the Ten-Tails. In fights it takes Ten-Tails forms (the second from level 5) that grant Six Paths power and burn tailed-beast chakra. If the jinchuriki dies, the Ten-Tails breaks free.",
   "trait_tenseigan": "Tenseigan",
   "trait_tenseigan_info": "A powerful evolution of the Byakugan.",
   "trait_tenseigan_info_2": "Awakened by acquiring the chakra of Hamura Otsutsuki, with the Byakugan. Grants powerful chakra reserves.",
@@ -507,5 +507,7 @@
   "status_title_perfect_susanoo_strike": "Perfect Susanoo Strike",
   "status_description_perfect_susanoo_strike": "The Perfect Susanoo's blade cuts through every enemy around the target.",
   "status_title_madara_susanoo_strike": "Madara Susanoo Strike",
-  "status_description_madara_susanoo_strike": "Madara's Susanoo cuts through every enemy around the target."
+  "status_description_madara_susanoo_strike": "Madara's Susanoo cuts through every enemy around the target.",
+  "worldlog_kurama_released": "$name$ has broken free from its dead jinchuriki!",
+  "worldlog_juubi_released": "The $name$ has broken free from its dead jinchuriki!"
 }
