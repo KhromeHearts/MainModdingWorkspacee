@@ -16,6 +16,7 @@ namespace ShinobiBox
 
             Actor actor = pSelf.a;
             if (!actor.hasTrait("nine_tails_jinchuriki")) return false;
+            if (ShinobiActors.IsTailedBeast(actor)) return false;
             if (actor.hasStatus("status_jinchuriki_baryon_mode")) return false;
 
             int level = actor.data.level;
@@ -40,6 +41,7 @@ namespace ShinobiBox
 
             if (string.IsNullOrEmpty(bestStatus)) return false;
             if (actor.hasStatus(bestStatus)) return false;
+            if (ChakraSystem.GetTailedBeastChakra(actor) < ChakraSystem.GetMaxTailedBeastChakra(actor) * 0.25f) return false;
             ClearNineTailsStatuses(actor);
 
             actor.addStatusEffect(bestStatus, 45f);

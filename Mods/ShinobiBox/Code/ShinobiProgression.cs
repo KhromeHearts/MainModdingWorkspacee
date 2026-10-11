@@ -38,19 +38,6 @@ namespace ShinobiBox
             "status_jinchuriki_baryon_mode"
         };
 
-        #region IsModeActive
-        public static bool IsModeActive(Actor a)
-        {
-            if (a == null) return false;
-
-            foreach (string statusId in JinchurikiFormStatuses)
-            {
-                if (a.hasStatus(statusId)) return true;
-            }
-
-            return false;
-        }
-        #endregion
 
         #region CheckProgression
         public static void CheckProgression(Actor actor)

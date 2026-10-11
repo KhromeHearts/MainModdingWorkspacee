@@ -482,7 +482,7 @@ namespace ShinobiBox
             if (UnityEngine.Random.value > 0.05f) return false;
 
             // 70 Chakra Cost
-            if (!CheckAndConsumeChakra(pSelf.a, 70f)) return false;
+            if (!CheckAndConsumeTailedBeastChakra(pSelf.a, 70f)) return false;
 
             if (pTarget.current_tile != null)
             {
@@ -505,7 +505,7 @@ namespace ShinobiBox
             if (distance > 80f) return false;
 
             if (UnityEngine.Random.value > 0.90f) return false;
-            if (!CheckAndConsumeChakra(pSelf.a, 140f)) return false;
+            if (!CheckAndConsumeTailedBeastChakra(pSelf.a, 140f)) return false;
 
             Vector2Int targetPos = pTarget.current_tile.pos;
             float pointDistance = Vector2.Distance(pTarget.current_position, targetPos);
@@ -1459,6 +1459,21 @@ namespace ShinobiBox
 
             if (!string.IsNullOrEmpty(debugError)) Debug.Log(debugError);
 
+            actor.addStatusEffect("status_ability_cooldown", 7f);
+
+            return true;
+        }
+
+        public static bool CheckAndConsumeTailedBeastChakra(Actor actor, float cost)
+        {
+            if (actor == null) return false;
+            if (ChakraSystem.GetMaxTailedBeastChakra(actor) <= 0f) return CheckAndConsumeChakra(actor, cost);
+            if (actor.hasStatus("status_ability_cooldown")) return false;
+
+            if (!ChakraSystem.TryConsumeTailedBeastChakra(actor, cost)) return false;
+
+            PlayWavSound("jutsu_use.wav", actor.current_tile.posV3);
+            actor.addStatusEffect("jutsuuse", 1f);
             actor.addStatusEffect("status_ability_cooldown", 7f);
 
             return true;

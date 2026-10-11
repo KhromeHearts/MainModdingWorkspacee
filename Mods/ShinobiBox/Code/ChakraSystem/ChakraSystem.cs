@@ -124,10 +124,7 @@ namespace ShinobiBox
             ProcessDrain(actor, deltaTime);
             UpdateSpecialResources(actor, deltaTime);
 
-            if (!ShinobiProgression.IsModeActive(actor))
-            {
-                AddChakra(actor, GetRegenRate(actor) * deltaTime);
-            }
+            AddChakra(actor, GetRegenRate(actor) * deltaTime);
         }
 
         public static float GetCurrent(Actor actor)
@@ -154,6 +151,8 @@ namespace ShinobiBox
         public static float GetMaxTailedBeastChakra(Actor actor)
         {
             if (actor == null || !actor.isAlive()) return 0f;
+            if (actor.asset.id == ShinobiActors.JuubiActorId) return 4000f;
+            if (actor.asset.id == ShinobiActors.KuramaActorId) return 2000f;
             if (actor.hasTrait("ten_tails_jinchuriki")) return 1000f;
             if (actor.hasTrait("nine_tails_jinchuriki")) return 500f;
             return 0f;
@@ -172,6 +171,26 @@ namespace ShinobiBox
         public static void AddTailedBeastChakra(Actor actor, float amount)
         {
             SetTailedBeastChakra(actor, GetTailedBeastChakra(actor) + amount);
+        }
+
+        public static bool TryConsumeTailedBeastChakra(Actor actor, float amount)
+        {
+            if (amount <= 0f) return true;
+            float current = GetTailedBeastChakra(actor);
+            if (current < amount) return false;
+            SetTailedBeastChakra(actor, current - amount);
+            return true;
+        }
+
+        private static float GetTailedBeastFormDrain(Actor actor)
+        {
+            if (actor.hasStatus("status_jinchuriki_incomplete_beast")) return 12f;
+            if (actor.hasStatus("status_jinchuriki_v2_cloak")) return 8f;
+            if (actor.hasStatus("status_jinchuriki_v1_cloak")) return 6f;
+            if (actor.hasStatus("status_jinchuriki_kcm1")) return 6f;
+            if (actor.hasStatus("status_jinchuriki_initial_release")) return 4f;
+            if (actor.hasStatus("status_jinchuriki_kcm2")) return 3f;
+            return 0f;
         }
 
         public static float GetMaxSageChakra(Actor actor)
@@ -212,8 +231,19 @@ namespace ShinobiBox
             float tailedBeastMax = GetMaxTailedBeastChakra(actor);
             if (tailedBeastMax > 0f)
             {
-                float regeneration = tailedBeastMax * 0.01f * deltaTime;
-                AddTailedBeastChakra(actor, regeneration);
+                float formDrain = GetTailedBeastFormDrain(actor);
+                if (formDrain > 0f)
+                {
+                    if (!TryConsumeTailedBeastChakra(actor, formDrain * deltaTime))
+                    {
+                        SetTailedBeastChakra(actor, 0f);
+                        ShinobiProgression.RemoveLowerForms(actor);
+                    }
+                }
+                else if (!actor.hasStatus("status_jinchuriki_baryon_mode"))
+                {
+                    AddTailedBeastChakra(actor, tailedBeastMax * 0.01f * deltaTime);
+                }
             }
 
             float sageMax = GetMaxSageChakra(actor);
@@ -463,13 +493,6 @@ namespace ShinobiBox
             bool drainsChakra = false;
             float drainPerSecond = 0f;
 
-            // Nine Tails Jinchuriki
-            if (actor.hasStatus("status_jinchuriki_initial_release")) { drainPerSecond += 1f; drainsChakra = true; }
-            if (actor.hasStatus("status_jinchuriki_v1_cloak")) { drainPerSecond += 2f; drainsChakra = true; }
-            if (actor.hasStatus("status_jinchuriki_v2_cloak")) { drainPerSecond += 4f; drainsChakra = true; }
-            if (actor.hasStatus("status_jinchuriki_incomplete_beast")) { drainPerSecond += 8f; drainsChakra = true; }
-            if (actor.hasStatus("status_jinchuriki_kcm1")) { drainPerSecond += 10f; drainsChakra = true; }
-
             float eyeDrain = 0f;
             bool hasActiveEyeStatus = false;
             
@@ -504,7 +527,6 @@ namespace ShinobiBox
             {
                 Exhaust(actor);
 
-                ShinobiProgression.RemoveLowerForms(actor);
                 actor.finishStatusEffect("status_sharingan_1t");
                 actor.finishStatusEffect("status_sharingan_2t");
                 actor.finishStatusEffect("status_sharingan_3t");

@@ -296,7 +296,7 @@
   "trait_mangekyo_sharingan_info_2": "An Uchiha with an active 3-tomoe Sharingan awakens it after losing family, a lover or a best friend, or after 25 kills. Each Amaterasu, Kamui or Susanoo brings them closer to blindness (25 uses).",
   "trait_nine_tails_jinchuriki": "Nine Tails Jinchuriki",
   "trait_nine_tails_jinchuriki_info": "The Vessel! A Tailed Beast is sealed inside this unit.",
-  "trait_nine_tails_jinchuriki_info_2": "Obtained by slaying Kurama. In combat the cloak grows with level: Initial Release (2), V1 (3), V2 (4), Incomplete Beast (5), Kurama Chakra Mode (7, needs 20 intelligence or diplomacy), Kurama Link Mode (9). At level 7+, dying has a 45% chance to trigger Baryon Mode instead, which burns Kurama away when it ends.",
+  "trait_nine_tails_jinchuriki_info_2": "Obtained by slaying Kurama. In combat the cloak grows with level: Initial Release (2), V1 (3), V2 (4), Incomplete Beast (5), Kurama Chakra Mode (7, needs 20 intelligence or diplomacy), Kurama Link Mode (9). Every form burns tailed-beast chakra and ends when it runs out; it refills while not transformed. Tailed Beast Bombs cost 140 of it. At level 7+, dying has a 45% chance to trigger Baryon Mode instead, which burns Kurama away when it ends.",
   "trait_otsutsuki_clan": "Otsutsuki Clan",
   "trait_otsutsuki_clan_info": "A celestial bloodline from the highest level of chakra lineage.",
   "trait_otsutsuki_clan_info_2": "Units in this clan have access to a special kind of eyes and chakra...",
