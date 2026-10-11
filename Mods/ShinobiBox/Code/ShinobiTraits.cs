@@ -1223,7 +1223,7 @@ namespace ShinobiBox
             #region Fire Nature
             ActorTrait fire = new ActorTrait
             {
-                id = "fireN",
+                id = "fire_release",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/fire_nature",
                 can_be_given = true,
@@ -1247,7 +1247,7 @@ namespace ShinobiBox
             #region Earth Nature
             ActorTrait earth = new ActorTrait
             {
-                id = "earthN",
+                id = "earth_release",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/earth_nature",
                 can_be_given = true,
@@ -1271,7 +1271,7 @@ namespace ShinobiBox
             #region Water Nature
             ActorTrait water = new ActorTrait
             {
-                id = "waterN",
+                id = "water_release",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/water_nature",
                 can_be_given = true,
@@ -1295,7 +1295,7 @@ namespace ShinobiBox
             #region Wind Nature
             ActorTrait wind = new ActorTrait
             {
-                id = "windN",
+                id = "wind_release",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/wind_nature",
                 can_be_given = true,
@@ -1318,7 +1318,7 @@ namespace ShinobiBox
             #region Lightning Nature
             ActorTrait lightning = new ActorTrait
             {
-                id = "lightningN",
+                id = "lightning_release",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/lightning_nature",
                 can_be_given = true,
@@ -1338,9 +1338,9 @@ namespace ShinobiBox
             #endregion
 
             #region Storm Release
-            ActorTrait stormR = new ActorTrait
+            ActorTrait storm = new ActorTrait
             {
-                id = "stormR",
+                id = "storm_release",
                 group_id = GroupId_ChakraN,
                 path_icon = "ui/icons/storm_release",
                 can_be_given = true,
@@ -1349,17 +1349,17 @@ namespace ShinobiBox
                 rate_inherit = alwaysChance
 
             };
-            stormR.base_stats = new BaseStats();
-            stormR.base_stats.set("multiplier_damage", 0.17f);
-            stormR.base_stats.set("multiplier_speed", 0.15f);
-            stormR.base_stats.set("critical_chance", 0.14f);
-            stormR.base_stats.set("critical_damage_multiplier", 0.25f);
-            stormR.base_stats.set("multiplier_speed", 0.15f);
-            stormR.base_stats.set("accuracy", 30f);
-            stormR.base_stats.set("chakra", 20f);
-            stormR.base_stats.set("experience", 7f);
-            stormR.action_attack_target = new AttackAction(JutsuLibrary.StormReleaseAction);
-            addTraitToGame(stormR);
+            storm.base_stats = new BaseStats();
+            storm.base_stats.set("multiplier_damage", 0.17f);
+            storm.base_stats.set("multiplier_speed", 0.15f);
+            storm.base_stats.set("critical_chance", 0.14f);
+            storm.base_stats.set("critical_damage_multiplier", 0.25f);
+            storm.base_stats.set("multiplier_speed", 0.15f);
+            storm.base_stats.set("accuracy", 30f);
+            storm.base_stats.set("chakra", 20f);
+            storm.base_stats.set("experience", 7f);
+            storm.action_attack_target = new AttackAction(JutsuLibrary.StormReleaseAction);
+            addTraitToGame(storm);
             #endregion
 
             #region Wood Release Trait

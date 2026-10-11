@@ -276,10 +276,10 @@ namespace ShinobiBox
         [HarmonyPostfix]
         public static void generatePersonality_Postfix(Actor __instance)
         {
-            if (__instance.hasTrait("windN") && !__instance.hasTrait("rasenganJ") && Randy.randomChance(0.15f))
+            if (__instance.hasTrait("wind_release") && !__instance.hasTrait("rasenganJ") && Randy.randomChance(0.15f))
                 __instance.addTrait("rasenganJ");
 
-            if (__instance.hasTrait("lightningN"))
+            if (__instance.hasTrait("lightning_release"))
             {
                 if (!__instance.hasTrait("chidoriJ") && Randy.randomChance(0.15f))
                 {
@@ -332,7 +332,7 @@ namespace ShinobiBox
         {
             if (!actor.isSapient()) return;
 
-            string[] commonElements = { "fireN", "earthN", "waterN", "windN", "lightningN" };
+            string[] commonElements = { "fire_release", "earth_release", "water_release", "wind_release", "lightning_release" };
             int elementCount = 0;
             foreach (var element in commonElements)
             {
@@ -345,11 +345,11 @@ namespace ShinobiBox
                 }
             }
 
-            if (!actor.hasTrait("stormR"))
+            if (!actor.hasTrait("storm_release"))
             {
                 float stormChance = elementCount >= 3 ? 0.02f : 0.10f;
                 if (Randy.randomChance(stormChance))
-                    actor.addTrait("stormR");
+                    actor.addTrait("storm_release");
             }
 
             if (Randy.randomChance(0.15f))

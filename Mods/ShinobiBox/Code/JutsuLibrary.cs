@@ -1126,8 +1126,8 @@ namespace ShinobiBox
         {
             if (actor == null) return false;
 
-            return actor.hasTrait("fireN") || actor.hasTrait("earthN") || actor.hasTrait("waterN") ||
-                   actor.hasTrait("windN") || actor.hasTrait("lightningN") || actor.hasTrait("stormR") ||
+            return actor.hasTrait("fire_release") || actor.hasTrait("earth_release") || actor.hasTrait("water_release") ||
+                   actor.hasTrait("wind_release") || actor.hasTrait("lightning_release") || actor.hasTrait("storm_release") ||
                    actor.hasTrait("wood_release") || actor.hasTrait("yin_release") ||
                    actor.hasTrait("yang_release") || actor.hasTrait("yinyang_release");
         }

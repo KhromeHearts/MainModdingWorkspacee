@@ -116,7 +116,7 @@ namespace ShinobiBox
 
 
             // god Of Shinobi Giver thingy thangy
-            bool hasAllFiveNatures = actor.hasTrait("fireN") && actor.hasTrait("waterN") && actor.hasTrait("earthN") && actor.hasTrait("lightningN") && actor.hasTrait("windN");
+            bool hasAllFiveNatures = actor.hasTrait("fire_release") && actor.hasTrait("water_release") && actor.hasTrait("earth_release") && actor.hasTrait("lightning_release") && actor.hasTrait("wind_release");
             int wasKage = 0;
             actor.data.get("was_kage", out wasKage);
             bool qualifiesPastKage = actor.hasTrait("06rank_kage") || hasKageInName || wasKage > 0;

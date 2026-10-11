@@ -275,25 +275,25 @@
   "trait_wood_release_info": "木遁",
   "trait_wood_release_info_2": "稀有的查克拉属性，唤醒森林粉碎敌人",
 
-  "trait_fireN": "火属性",
-  "trait_fireN_info": "火遁的查克拉亲和力",
-  "trait_fireN_info_2": "在125属性经验时，将解锁火球术",
+  "trait_fire_release": "火属性",
+  "trait_fire_release_info": "火遁的查克拉亲和力",
+  "trait_fire_release_info_2": "在125属性经验时，将解锁火球术",
 
-  "trait_earthN": "土属性",
-  "trait_earthN_info": "土遁的查克拉亲和力",
-  "trait_earthN_info_2": "在125属性经验时，将解锁加重岩之术",
+  "trait_earth_release": "土属性",
+  "trait_earth_release_info": "土遁的查克拉亲和力",
+  "trait_earth_release_info_2": "在125属性经验时，将解锁加重岩之术",
 
-  "trait_waterN": "水属性",
-  "trait_waterN_info": "水遁的查克拉亲和力",
-  "trait_waterN_info_2": "在125属性经验时，将解锁水牢术",
+  "trait_water_release": "水属性",
+  "trait_water_release_info": "水遁的查克拉亲和力",
+  "trait_water_release_info_2": "在125属性经验时，将解锁水牢术",
 
-  "trait_windN": "风属性",
-  "trait_windN_info": "风遁的查克拉亲和力",
-  "trait_windN_info_2": "在125属性经验时，将解锁风刃术。在250属性经验时，有机会习得螺旋手里剑",
+  "trait_wind_release": "风属性",
+  "trait_wind_release_info": "风遁的查克拉亲和力",
+  "trait_wind_release_info_2": "在125属性经验时，将解锁风刃术。在250属性经验时，有机会习得螺旋手里剑",
 
-  "trait_lightningN": "雷属性",
-  "trait_lightningN_info": "雷遁的查克拉亲和力",
-  "trait_lightningN_info_2": "电击忍术并增强速度和穿透伤害。在250属性经验时，使用者有机会习得千鸟",
+  "trait_lightning_release": "雷属性",
+  "trait_lightning_release_info": "雷遁的查克拉亲和力",
+  "trait_lightning_release_info_2": "电击忍术并增强速度和穿透伤害。在250属性经验时，使用者有机会习得千鸟",
 
   "trait_yin_release": "阴属性",
   "trait_yin_release_info": "用于创造和幻觉的精神查克拉亲和力",
@@ -358,9 +358,9 @@
   "trait_rasenshurikenJ": "螺旋手里剑",
   "trait_rasenshurikenJ_info": "风属性经验≥250时有小概率习得",
 
-  "trait_stormR": "岚遁",
-  "trait_stormR_info": "掌握雷属性。给土地带来雷鸣般的伤害",
-  "trait_stormR_info_2": "开发中，没有招式",
+  "trait_storm_release": "岚遁",
+  "trait_storm_release_info": "掌握雷属性。给土地带来雷鸣般的伤害",
+  "trait_storm_release_info_2": "开发中，没有招式",
 
   "worldlog_kurama_killed": "$name$ 击杀了九尾",
   "worldlog_indra_reincarnation": "因陀罗的灵魂已转世为 $name$",

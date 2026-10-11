@@ -27,16 +27,16 @@ namespace ShinobiBox
 
         private static readonly Dictionary<string, string[]> RequiredTraitsByActor = new Dictionary<string, string[]>
         {
-            [HashiramaActorId] = new[] { "immortal", "fire_proof", "senju_clan", "wood_release", "hashi_cells", "wood_sage_mode", "will_of_fire", "04_vast_chakra_reserve", "fireN", "earthN", "waterN", "lightningN", "windN", "shadow_clonej", "09rank_god_of_shinobi" },
-            [MadaraActorId] = new[] { "immortal", "fire_proof", "uchiha_clan", "madara_eternal_mangekyo", "04_vast_chakra_reserve", "curse_of_hatred", "fireN", "earthN", "waterN", "lightningN", "windN", "08rank_ghost_of_uchiha" },
-            [SasukeActorId] = new[] { "uchiha_clan", "fireN", "lightningN", "cursed_mark", "curse_of_hatred", "sasuke_rinnegan", "chidoriJ", "04_vast_chakra_reserve", "07_indra_chakra" },
+            [HashiramaActorId] = new[] { "immortal", "fire_proof", "senju_clan", "wood_release", "hashi_cells", "wood_sage_mode", "will_of_fire", "04_vast_chakra_reserve", "fire_release", "earth_release", "water_release", "lightning_release", "wind_release", "shadow_clonej", "09rank_god_of_shinobi" },
+            [MadaraActorId] = new[] { "immortal", "fire_proof", "uchiha_clan", "madara_eternal_mangekyo", "04_vast_chakra_reserve", "curse_of_hatred", "fire_release", "earth_release", "water_release", "lightning_release", "wind_release", "08rank_ghost_of_uchiha" },
+            [SasukeActorId] = new[] { "uchiha_clan", "fire_release", "lightning_release", "cursed_mark", "curse_of_hatred", "sasuke_rinnegan", "chidoriJ", "04_vast_chakra_reserve", "07_indra_chakra" },
             [OrochimaruActorId] = new[] { "regeneration", "cursed_mark", "snake_sage_mode", "wood_release", "shikotsumyaku", "04_vast_chakra_reserve", "07rank_sannin" },
-            [KakashiActorId] = new[] { "05rank_anbu", "windN", "lightningN", "earthN", "fireN", "waterN", "rasenganJ", "shadow_clonej", "rasenshurikenJ", "chidoriJ", "mangekyo_sharingan", "04_vast_chakra_reserve" },
+            [KakashiActorId] = new[] { "05rank_anbu", "wind_release", "lightning_release", "earth_release", "fire_release", "water_release", "rasenganJ", "shadow_clonej", "rasenshurikenJ", "chidoriJ", "mangekyo_sharingan", "04_vast_chakra_reserve" },
             [ItachiActorId] = new[] { "regeneration", "uchiha_clan", "curse_of_hatred", "05rank_anbu", "mangekyo_sharingan", "04_vast_chakra_reserve" },
-            [NarutoActorId] = new[] { "regeneration", "uzumaki_clan", "will_of_fire", "windN", "rasenganJ", "rasenshurikenJ", "shadow_clonej", "frog_sage_mode", "nine_tails_jinchuriki", "04_vast_chakra_reserve", "06rank_kage" },
-            [ObitoActorId] = new[] { "ten_tails_jinchuriki", "uchiha_clan", "fireN", "wood_release", "yinyang_release", "04_vast_chakra_reserve", "rinnegan", "mangekyo_sharingan" },
-            [HagoromoActorId] = new[] { "regeneration", "otsutsuki_clan", "rinnegan", "04_vast_chakra_reserve", "05_hagoromo_chakra", "windN", "earthN", "fireN", "waterN", "lightningN", "yinyang_release", "ten_tails_jinchuriki" },
-            [SakuraActorId] = new[] { "slug_sage_mode", "regeneration", "will_of_fire", "04_vast_chakra_reserve", "earthN" },
+            [NarutoActorId] = new[] { "regeneration", "uzumaki_clan", "will_of_fire", "wind_release", "rasenganJ", "rasenshurikenJ", "shadow_clonej", "frog_sage_mode", "nine_tails_jinchuriki", "04_vast_chakra_reserve", "06rank_kage" },
+            [ObitoActorId] = new[] { "ten_tails_jinchuriki", "uchiha_clan", "fire_release", "wood_release", "yinyang_release", "04_vast_chakra_reserve", "rinnegan", "mangekyo_sharingan" },
+            [HagoromoActorId] = new[] { "regeneration", "otsutsuki_clan", "rinnegan", "04_vast_chakra_reserve", "05_hagoromo_chakra", "wind_release", "earth_release", "fire_release", "water_release", "lightning_release", "yinyang_release", "ten_tails_jinchuriki" },
+            [SakuraActorId] = new[] { "slug_sage_mode", "regeneration", "will_of_fire", "04_vast_chakra_reserve", "earth_release" },
             [KuramaActorId] = new[] { "immortal", "strong", "regeneration", "04_vast_chakra_reserve", "nine_tails_jinchuriki" },
             [JuubiActorId] = new[] { "immortal", "strong", "regeneration", "04_vast_chakra_reserve", "05_hagoromo_chakra", "ten_tails_jinchuriki" }
         };
@@ -155,11 +155,11 @@ namespace ShinobiBox
                 hashirama.addTrait("wood_sage_mode");
                 hashirama.addTrait("will_of_fire");
                 hashirama.addTrait("04_vast_chakra_reserve");
-                hashirama.addTrait("fireN");
-                hashirama.addTrait("earthN");
-                hashirama.addTrait("waterN");
-                hashirama.addTrait("lightningN");
-                hashirama.addTrait("windN");
+                hashirama.addTrait("fire_release");
+                hashirama.addTrait("earth_release");
+                hashirama.addTrait("water_release");
+                hashirama.addTrait("lightning_release");
+                hashirama.addTrait("wind_release");
                 hashirama.addTrait("shadow_clonej");
                 hashirama.addTrait("09rank_god_of_shinobi");
 
@@ -256,11 +256,11 @@ namespace ShinobiBox
                 madara.addTrait("madara_eternal_mangekyo");
                 madara.addTrait("04_vast_chakra_reserve");
                 madara.addTrait("curse_of_hatred");
-                madara.addTrait("fireN");
-                madara.addTrait("earthN");
-                madara.addTrait("waterN");
-                madara.addTrait("lightningN");
-                madara.addTrait("windN");
+                madara.addTrait("fire_release");
+                madara.addTrait("earth_release");
+                madara.addTrait("water_release");
+                madara.addTrait("lightning_release");
+                madara.addTrait("wind_release");
                 madara.addTrait("08rank_ghost_of_uchiha");
 
                 madara.action_death = new WorldAction(MadaraOnDeath);
@@ -351,8 +351,8 @@ namespace ShinobiBox
                 sasuke.base_stats["mass_2"] = 40f;
 
                 sasuke.addTrait("uchiha_clan");
-                sasuke.addTrait("fireN");
-                sasuke.addTrait("lightningN");
+                sasuke.addTrait("fire_release");
+                sasuke.addTrait("lightning_release");
                 sasuke.addTrait("cursed_mark");
                 sasuke.addTrait("curse_of_hatred");
                 sasuke.addTrait("sasuke_rinnegan");
@@ -542,11 +542,11 @@ namespace ShinobiBox
                 kakashi.base_stats["mass_2"] = 40f;
 
                 kakashi.addTrait("05rank_anbu");
-                kakashi.addTrait("windN");
-                kakashi.addTrait("lightningN");
-                kakashi.addTrait("earthN");
-                kakashi.addTrait("fireN");
-                kakashi.addTrait("waterN");
+                kakashi.addTrait("wind_release");
+                kakashi.addTrait("lightning_release");
+                kakashi.addTrait("earth_release");
+                kakashi.addTrait("fire_release");
+                kakashi.addTrait("water_release");
                 kakashi.addTrait("rasenganJ");
                 kakashi.addTrait("shadow_clonej");
                 kakashi.addTrait("rasenshurikenJ");
@@ -735,7 +735,7 @@ namespace ShinobiBox
                 naruto.addTrait("regeneration");
                 naruto.addTrait("uzumaki_clan");
                 naruto.addTrait("will_of_fire");
-                naruto.addTrait("windN");
+                naruto.addTrait("wind_release");
                 naruto.addTrait("rasenganJ");
                 naruto.addTrait("rasenshurikenJ");
                 naruto.addTrait("shadow_clonej");
@@ -833,7 +833,7 @@ namespace ShinobiBox
 
                 obito.addTrait("ten_tails_jinchuriki");
                 obito.addTrait("uchiha_clan");
-                obito.addTrait("fireN");
+                obito.addTrait("fire_release");
                 obito.addTrait("wood_release");
                 obito.addTrait("yinyang_release");
                 obito.addTrait("04_vast_chakra_reserve");
@@ -931,11 +931,11 @@ namespace ShinobiBox
                 hagoromo.addTrait("rinnegan");
                 hagoromo.addTrait("04_vast_chakra_reserve");
                 hagoromo.addTrait("05_hagoromo_chakra");
-                hagoromo.addTrait("windN");
-                hagoromo.addTrait("earthN");
-                hagoromo.addTrait("fireN");
-                hagoromo.addTrait("waterN");
-                hagoromo.addTrait("lightningN");
+                hagoromo.addTrait("wind_release");
+                hagoromo.addTrait("earth_release");
+                hagoromo.addTrait("fire_release");
+                hagoromo.addTrait("water_release");
+                hagoromo.addTrait("lightning_release");
                 hagoromo.addTrait("yinyang_release");
                 hagoromo.addTrait("ten_tails_jinchuriki");
 
@@ -1029,7 +1029,7 @@ namespace ShinobiBox
                 sakura.addTrait("regeneration");
                 sakura.addTrait("will_of_fire");
                 sakura.addTrait("04_vast_chakra_reserve");
-                sakura.addTrait("earthN");
+                sakura.addTrait("earth_release");
 
                 sakura.action_death = new WorldAction(SakuraOnDeath);
                 AssetManager.actor_library.loadTexturesAndSprites(sakura);

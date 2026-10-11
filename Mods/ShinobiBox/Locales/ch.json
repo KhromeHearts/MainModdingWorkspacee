@@ -275,25 +275,25 @@
   "trait_wood_release_info": "木遁",
   "trait_wood_release_info_2": "稀有的查克拉屬性，喚醒森林粉碎敵人",
 
-  "trait_fireN": "火屬性",
-  "trait_fireN_info": "火遁的查克拉親和力",
-  "trait_fireN_info_2": "在125屬性經驗時，將解鎖火球術",
+  "trait_fire_release": "火屬性",
+  "trait_fire_release_info": "火遁的查克拉親和力",
+  "trait_fire_release_info_2": "在125屬性經驗時，將解鎖火球術",
 
-  "trait_earthN": "土屬性",
-  "trait_earthN_info": "土遁的查克拉親和力",
-  "trait_earthN_info_2": "在125屬性經驗時，將解鎖加重巖之術",
+  "trait_earth_release": "土屬性",
+  "trait_earth_release_info": "土遁的查克拉親和力",
+  "trait_earth_release_info_2": "在125屬性經驗時，將解鎖加重巖之術",
 
-  "trait_waterN": "水屬性",
-  "trait_waterN_info": "水遁的查克拉親和力",
-  "trait_waterN_info_2": "在125屬性經驗時，將解鎖水牢術",
+  "trait_water_release": "水屬性",
+  "trait_water_release_info": "水遁的查克拉親和力",
+  "trait_water_release_info_2": "在125屬性經驗時，將解鎖水牢術",
 
-  "trait_windN": "風屬性",
-  "trait_windN_info": "風遁的查克拉親和力",
-  "trait_windN_info_2": "在125屬性經驗時，將解鎖風刃術。在250屬性經驗時，有機會習得螺旋手裏劍",
+  "trait_wind_release": "風屬性",
+  "trait_wind_release_info": "風遁的查克拉親和力",
+  "trait_wind_release_info_2": "在125屬性經驗時，將解鎖風刃術。在250屬性經驗時，有機會習得螺旋手裏劍",
 
-  "trait_lightningN": "雷屬性",
-  "trait_lightningN_info": "雷遁的查克拉親和力",
-  "trait_lightningN_info_2": "電擊忍術並增強速度和穿透傷害。在250屬性經驗時，使用者有機會習得千鳥",
+  "trait_lightning_release": "雷屬性",
+  "trait_lightning_release_info": "雷遁的查克拉親和力",
+  "trait_lightning_release_info_2": "電擊忍術並增強速度和穿透傷害。在250屬性經驗時，使用者有機會習得千鳥",
 
   "trait_yin_release": "陰屬性",
   "trait_yin_release_info": "用於創造和幻覺的精神查克拉親和力",
@@ -358,9 +358,9 @@
   "trait_rasenshurikenJ": "螺旋手裏劍",
   "trait_rasenshurikenJ_info": "風屬性經驗≥250時有小概率習得",
 
-  "trait_stormR": "嵐遁",
-  "trait_stormR_info": "掌握雷屬性。給土地帶來雷鳴般的傷害",
-  "trait_stormR_info_2": "開發中，沒有招式",
+  "trait_storm_release": "嵐遁",
+  "trait_storm_release_info": "掌握雷屬性。給土地帶來雷鳴般的傷害",
+  "trait_storm_release_info_2": "開發中，沒有招式",
 
   "worldlog_kurama_killed": "$name$ 擊殺了九尾",
   "worldlog_indra_reincarnation": "因陀羅的靈魂已轉世為 $name$",
