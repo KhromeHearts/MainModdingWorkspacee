@@ -292,19 +292,11 @@ namespace ShinobiBox
             "04_vast_chakra_reserve"
         };
 
-        private static readonly string[] BaseNatures =
-        {
-            "fire_release", "earth_release", "water_release", "wind_release", "lightning_release"
-        };
-
         private static readonly string[] ClanTraits =
         {
             "uchiha_clan", "hyuga_clan", "uzumaki_clan", "senju_clan", "akimichi_clan",
             "lee_clan", "kaguya_clan", "otsutsuki_clan", "chinoike_clan", "aburame_clan"
         };
-
-        private static readonly float[] FirstNatureChance = { 0f, 0.50f, 0.70f, 0.90f, 1.00f };
-        private static readonly float[] ExtraNatureChance = { 0f, 0.10f, 0.20f, 0.35f, 0.50f };
 
         public static void AssignOnce(Actor actor)
         {
@@ -369,7 +361,16 @@ namespace ShinobiBox
             int tier = GetTalentTier(actor);
             if (tier > 0 && !actor.hasTrait("lee_clan"))
             {
-                RollNatures(actor, tier);
+                string[] commonElements = { "fire_release", "earth_release", "water_release", "wind_release", "lightning_release" };
+                float natureChance = 0.30f + tier * 0.175f;
+                for (int i = 0; i < 5; i++)
+                {
+                    if (!Randy.randomChance(natureChance)) break;
+                    actor.addTrait(commonElements[UnityEngine.Random.Range(0, commonElements.Length)]);
+
+                    if (i == 0) natureChance = tier * 0.10f;
+                    else natureChance = natureChance / 2f;
+                }
 
                 if (tier >= 3 && Randy.randomChance(0.03f))
                 {
@@ -415,32 +416,6 @@ namespace ShinobiBox
                 {
                     actor.addTrait(actor.hasTrait("06_hamura_chakra") ? "byakugan" : "rinnegan");
                 }
-            }
-        }
-
-        private static void RollNatures(Actor actor, int tier)
-        {
-            int count = 0;
-            foreach (string nature in BaseNatures)
-            {
-                if (actor.hasTrait(nature)) count++;
-            }
-
-            List<string> missing = new List<string>();
-            foreach (string nature in BaseNatures)
-            {
-                if (!actor.hasTrait(nature)) missing.Add(nature);
-            }
-
-            while (missing.Count > 0)
-            {
-                float chance = count == 0 ? FirstNatureChance[tier] : ExtraNatureChance[tier] / Mathf.Pow(2f, count - 1);
-                if (!Randy.randomChance(chance)) break;
-
-                int index = UnityEngine.Random.Range(0, missing.Count);
-                actor.addTrait(missing[index]);
-                missing.RemoveAt(index);
-                count++;
             }
         }
     }
