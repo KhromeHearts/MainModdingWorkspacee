@@ -4,22 +4,15 @@ Branch: claude/sleepy-euler-hegpj5. Every entry says what changed, why, and what
 [NEEDS IN-GAME TEST] = compiles and was checked against the game code, but nobody has watched it in a world yet.
 
 
-PART 1 - SAFETY NET
--------------------
-- New file Code/ShinobiIds.cs: every trait, status, effect, projectile and item id in one list
-  (TraitIds, StatusIds, EffectIds, ProjectileIds, ItemIds). The code uses these names instead of typing "some_id"
-  by hand, so a typo is now a compile error instead of a feature that silently never works.
-  No id changed, so old saves are not affected.
-- Self-check: a moment after the game loads, ShinobiBox checks that every id in that list exists, and that every
-  ShinobiBox trait/status/item has its name text and icon. It writes the result to the log:
-  "[ShinobiBox] Self-check passed..." or one "[ShinobiBox] Self-check: ..." line per problem.
-  World logs are checked the first time each one appears.
-- Fixed what the check found:
-  - Rasenshuriken and Paper Bomb Kunai had no explosion (their effect ids didn't exist).
-  - Missing icons: tailed-beast chakra, the Hashirama Cells birth log, the Kurama/Juubi sealed logs.
-  - Blind and Akatsuki showed raw text keys instead of their names.
-  - Missing text for the Palm Rotation cooldown and Exploding Human Technique.
-  - Code checked for traits that don't exist (ice/lava/boil/dust release, Jugo, one_eyed, the cut Avatar form).
+PART 1 - BROKEN IDS AND MISSING ASSETS
+--------------------------------------
+- Rasenshuriken and Paper Bomb Kunai had no explosion (their effect ids didn't exist).
+- Missing icons: tailed-beast chakra, the Hashirama Cells birth log, the Kurama/Juubi sealed logs.
+- Blind and Akatsuki showed raw text keys instead of their names.
+- Missing text for the Palm Rotation cooldown and Exploding Human Technique.
+- Code checked for traits that don't exist (ice/lava/boil/dust release, Jugo, one_eyed, the cut Avatar form).
+- Natures renamed to match the other releases: fire_release, water_release, earth_release, wind_release,
+  lightning_release, storm_release (were fireN, waterN, ..., stormR). Old saves lose those traits.
 
 PART 2 - BUG FIXES
 ------------------
@@ -37,7 +30,8 @@ PART 2 - BUG FIXES
   - Gates 4-8 now hurt the user every second (0.5% to 2.5% of max health). This code existed but was never used.
   - When gate 5+ closes on its own: 30 s of Eight Gates Strain (weaker, can't reopen gates).
     The Gate of Death lasts 30 s and leaves the user at 10% health with 90 s of strain, plus a world log.
-  - No more 25% chance of PERMANENT crippling at gate 5.
+  - No more 25% chance of permanent crippling at gate 5. Instead, the Gate of Death (gate 8) cripples for life
+    when it closes, like Might Guy. Hashirama Cells or other healing can still cure it.
 - Chakra exhaustion could lock a unit for a very long time. Now it triggers when you spend your last 10% of chakra,
   chakra still regenerates (slowly) while exhausted, and when it ends you catch a second wind (25% chakra).
 - Armor Break (Taijutsu / Ten-Tails) no longer gives the permanent "crippled" trait. It's now -25 armor and
@@ -57,9 +51,29 @@ NOT CHANGED YET (on purpose)
 - Susanoo still only lasts 1 second (it's a flash, not a form). That's a design change, so it comes with the
   Uchiha rework instead of being patched blindly now.
 
+PART 3 - SAGE MODE
+------------------
+- Becoming a sage: units level 6+, age 16+, with Greater or Vast chakra reserves (or Senju with Wood Release) get
+  one 3% roll per in-game year to become a Sage Apprentice (new trait, world log). The animal is random
+  (toad, slug or snake); Senju wood users always train Wood Sage Mode.
+- Training: apprentices meditate when they aren't fighting (the meditating animation). Being hit breaks it.
+  5 finished meditations = sage. 35% become perfect sages; imperfect sages burn sage chakra twice as fast.
+  Toad apprentices have a 1.5% chance per meditation to take in too much natural energy and turn into a toad.
+  Removing Sage Apprentice by hand cancels the training for good.
+- Sage Mode: switches on in combat when sage chakra is at least half full, and lasts until it runs out
+  (300 sage chakra, 10 per second, imperfect 20). Sage chakra refills slowly outside of fights and fast while
+  meditating, and sages meditate on their own when they're low.
+- The big stats moved from the sage traits to the Sage Mode statuses, so sages are only that strong while the
+  mode is on. Signature moves (cost 15 sage chakra):
+  - Toad: Frog Kumite, an extra hit that knocks the enemy back.
+  - Slug: Strength of a Hundred Healings when the mode starts (3% max health + 2 per level, every second, 20 s).
+  - Snake: regenerates 2% health per second; bites can poison.
+  - Wood: roots the target and enemies within 3 tiles in wood.
+- Characters who already have sage traits (Naruto, Sakura, Orochimaru, Hashirama) are perfect sages.
+
 TEST CHECKLIST [NEEDS IN-GAME TEST]
-1. Launch the game, open the log (NML console or Player.log) and search for "[ShinobiBox] Self-check".
-   Send me every line it prints, even if it says "passed".
+1. Spawn Naruto and let him fight. When hit he should enter Frog Sage Mode, the Sage Chakra number in his window
+   should go down, and the mode should end when it hits 0. Out of combat he should sometimes meditate.
 2. Amaterasu: spawn Itachi near a village and let him fight. A burning unit should lose about 40% health over
    12 seconds, not die instantly. Check that the black-flame animation still shows.
 3. Palm Rotation: give a unit Byakugan (level 3+) and let it fight a group. Only enemies right next to it
@@ -67,7 +81,7 @@ TEST CHECKLIST [NEEDS IN-GAME TEST]
 4. Uzumaki: let an Uzumaki fight Kurama. Kurama should NOT die from the chains.
 5. Eight Gates: give a level 8 unit the Eight Inner Gates trait and let it get hurt. The gate icon should go up
    1 -> 2 -> 3..., health should tick down from gate 4, and when gate 5+ times out the unit gets
-   "Eight Gates Strain". Gate 8 should post a world log and leave the unit at 10% health when it ends.
+   "Eight Gates Strain". Gate 8 should post a world log and leave the unit at 10% health and crippled when it ends.
 6. Exhaustion: give a unit Mangekyo and watch it fight until it runs low on chakra. "Chakra Exhaustion" should
    appear and go away after about 10 seconds, with chakra jumping to 25%.
 7. Remove a unit's Sharingan by hand. Wait 10 seconds. It should NOT come back.
@@ -75,7 +89,10 @@ TEST CHECKLIST [NEEDS IN-GAME TEST]
    never be more than 10 living members.
 9. Sounds: Kamui / Shadow Clone / Amenotejikara should still make their sound.
 10. If you have the Nerf Fire Damage mod installed, the log should say ShinobiBox's fire nerf was turned off.
-11. Old save: load an existing world. Nothing should break (no ids changed).
+11. Give a few level 6+ units "Vast Chakra Reserve" and run the world for some years. A few should become Sage
+    Apprentices (world log), meditate, and eventually become sages. Hit an apprentice while it meditates: the
+    meditation should stop.
+12. Give a unit Fire Release, Water Release, etc. from the trait menu: names and descriptions should show properly.
 
 
 =====================================================================
