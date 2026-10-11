@@ -7,9 +7,11 @@ namespace ShinobiBox
 {
     public class Main : BasicMod<Main>
     {
+        public const string HarmonyId = "com.shinobibox.mod";
+
         protected override void OnModLoad()
         {
-            var harmony = new Harmony("com.shinobibox.mod");
+            var harmony = new Harmony(HarmonyId);
             try
             {
                 harmony.PatchAll();
@@ -58,6 +60,7 @@ namespace ShinobiBox
             {
                 startupChecksDone = true;
                 ShinobiSelfCheck.Run();
+                BurningEffectPatch.SkipIfStandaloneModLoaded();
             }
 
             if (World.world.isPaused()) return;

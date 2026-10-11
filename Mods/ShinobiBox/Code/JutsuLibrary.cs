@@ -1668,7 +1668,9 @@ namespace ShinobiBox
         {
             if (string.IsNullOrWhiteSpace(fileName)) return;
 
-            string soundPath = Application.dataPath.Replace("worldbox_Data", "Mods/ShinobiBox/GameResources/Sounds/" + fileName);
+            // Uses the folder the mod was actually loaded from, so sounds still work from the Steam Workshop
+            // or from a renamed GameBanana folder.
+            string soundPath = Path.Combine(Main.Instance.GetDeclaration().FolderPath, "GameResources", "sounds", fileName);
 
             Isekai.PlayWavDirectly.Instance.PlaySoundAtPosition(soundPath, position);
         }
