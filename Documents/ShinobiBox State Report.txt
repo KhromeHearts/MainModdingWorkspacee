@@ -1,0 +1,241 @@
+ShinobiBox: Reborn - State of the Mod (Step A) and Plan (Step B)
+=================================================================
+Written 2026-10-11 after reading every .cs file in Mods/ShinobiBox/Code, the Locales, the GameResources folder,
+your Documents notes, the old Code/prompt.txt, and the core of JinchurikiBox REANIMATED.
+Game behaviour was checked against Documents/EntireGameCode.txt (the decompiled game; Worldbox_code/ is empty).
+I have NOT played the mod. Anything marked [VERIFY] is strongly suggested by the code but worth seeing in game.
+
+
+-----------------------------------------------------------------
+1. SHORT VERSION
+-----------------------------------------------------------------
+- The mod has a lot of real, good material: ~90 icons, ~25 effect animations, 12 spawnable characters with sprites,
+  12 items, 7 sounds, and several genuinely good mechanics (listed in section 2).
+- The previous session already fixed most of the Design Review's headline bugs (Mangekyo coin flip, clan birth rules,
+  Infinite Tsukuyomi condition, Six Paths roll order, Lee clan hookup, rank-progression typos, Akimichi chakra order).
+- But there is a second layer of silent problems the review did not catch. The worst one: several status effects deal
+  damage EVERY FRAME instead of every second (section 3, item 1). That makes Amaterasu, Kaiten and Adamantite Chains
+  instant kills whose strength depends on your FPS.
+- The deeper design problems are still there: abilities are random rolls behind one shared 7-second cooldown,
+  big eyes give permanent stats instead of being "activated", two chakra bars do nothing, and power stacks with no budget.
+- My recommendation is NOT a rewrite. It is: safety net -> stop-the-bleeding bug pass -> chakra foundation ->
+  a small jutsu framework (the big player-visible win) -> finish Uchiha and Nine-Tails to full quality -> then the rest.
+
+
+-----------------------------------------------------------------
+2. WHAT IS SOLID (keep these)
+-----------------------------------------------------------------
+- Sharingan 1-3 tomoe as COMBAT STATUSES (only on while fighting, drains chakra). This is the right model for every eye.
+- Mangekyo blindness counter (25 uses -> blind), shown in the unit window.
+- Kill-to-claim rewards: kill Kurama -> Jinchuriki, kill Madara -> his EMS, kill Sasuke -> his Rinnegan, kill Hashirama -> cells.
+- Will of Fire / Curse of Hatred: dying buffs or curses your village. Simple, readable, emotional.
+- Indra / Asura reincarnation on death (TransmigrateAction). A great story hook.
+- Nine-Tails form ladder with a world log for each first-time form, and Baryon Mode as a "last stand" on death.
+- Shadow Clone: copies traits and items, shares chakra, poofs with smoke and sound. The most polished jutsu.
+- Rank-based chakra cost discount (Academy pays more, Kage pays less). A real reason ranks matter.
+- Config toggles exist and work (clan names, auto ranks, auto favorite, world tips).
+- Auto-favorite respects the player un-favoriting a unit. That is exactly the right pattern for every auto-give.
+
+
+-----------------------------------------------------------------
+3. SILENTLY BROKEN (verified in the current code)
+-----------------------------------------------------------------
+1. DAMAGE EVERY FRAME. In vanilla WorldBox a status "action" with no action_interval runs every frame.
+   - Amaterasu: 10 fire damage per frame for 60 s (about 600 damage/s at 60 FPS). Landing it = death.   ShinobiStatus.cs 416
+   - Kaiten (Palm Rotation): 40 damage per frame to every non-ally in the chunk for 4 s.               ShinobiStatus.cs 611
+   - Adamantite Chains: 5% of max HP per frame for 5 s. Kills anything, including Kurama, in well under a second. ShinobiStatus.cs 1220
+   Faster PCs = stronger jutsu. Fix: give these statuses an action_interval and retune.
+2. SUSANOO LASTS 1 SECOND. status_base_susanoo, status_perfect_susanoo and madara_ps have duration 1 s, so Susanoo
+   is a 1-second flash (+500 / +2000 health for one second), not a form. Only the 10 s "ribcage" lasts.
+3. EIGHT GATES FLIP-FLOP AND COST NOTHING. A level-8 unit opens Gate 8; the next proc removes it and opens Gate 7;
+   the next one goes back to 8, and so on. InnerGatesStrain is never hooked up and eight_gate_strain is never applied,
+   so the gates have no drawback except a 25% chance of PERMANENT crippling at Gate 5.
+4. AKATSUKI NEVER RECRUITS. The "evil, age 28+, 1% every 20 s" check lives on the Akatsuki trait itself, so it only
+   runs on units that are already Akatsuki. Nobody new ever joins.
+5. MANGEKYO HAS NO "ACTIVE" STATE. status_mangekyo exists and has a drain, but nothing ever applies it. Mangekyo, EMS,
+   Rinnegan and Byakugan give their big stats permanently, unlike the Sharingan.
+6. TWO CHAKRA BARS THAT DO NOTHING. Tailed-Beast Chakra and Sage Chakra regenerate and are displayed, but nothing
+   in the mod ever spends them. Every other unit shows "0/0" for both.
+7. EVERY UNIT IS STUN-IMMUNE. Main.cs removes "stunned" every 0.1 s from any unit with chakra. Because chakra is
+   level x 42, that is almost every unit in the world, animals included. (Maybe intentional, see questions.)
+8. ANIMALS HAVE CHAKRA. IsChakraUser never checks isSapient(), so chickens get birth chakra, level chakra and the
+   regen/drain loop every 0.1 s.
+9. CHAKRA EXHAUSTION LOCK (Design Review B8) is still there: regen is fully blocked while exhausted, and exhaustion
+   re-applies as soon as it ends because chakra is still under 15%. The "x0.35 regen while exhausted" line is dead code.
+10. PERMANENT CRIPPLING (B12) is still there: Armor Break adds the vanilla "crippled" trait on a 5% proc.
+11. AUTO-GIVE LOOPS. If a player removes these by hand, they come back within 3 s: Rinnegan, Sharingan, Sannin,
+    Ghost of Uchiha, God of Shinobi, Rinne Sharingan, Six Paths Senjutsu. (Roadmap rule 5 says removal must stick.)
+12. TYPOS AND MISSING ASSETS (found by an id/asset cross-check script):
+    - Rasenshuriken end effect "fx_shinobiantimatter" (registered as "fx_shinobi_antimatter") -> no explosion.
+    - Paper Bomb Kunai end effect "fx_explosion" does not exist in the game -> no explosion.
+    - World-log / UI icons that don't exist: ui/icons/Seal, ui/icons/hashirama, ui/icons/nine_tails, ui/icons/ten_tails.
+    - trait_akatsuki and trait_blind have no name/description text.
+    - 4 locale keys used in code but missing from en.json (status byakugan, status ketsuryuganEHT).
+    - Code still checks for "status_jinchuriki_avatar", "jugo_transformation", "one_eyed" and five release traits
+      (ice, lava, boil, dust) that do not exist.
+13. SOUND PATH IS HARD-CODED to "<game>/Mods/ShinobiBox/GameResources/Sounds/". If the mod folder has any other name
+    (Workshop copy, renamed zip), every custom sound silently fails.
+14. DESCRIPTIONS DON'T MATCH THE CODE. Examples: Lee clan says "age 24 / level 4", code is age 18 / level 3.
+    Nine-Tails says "below 80% HP", code has no HP check. Mangekyo says "2 or 3 tomoe", code needs active 3 tomoe.
+    Taijutsu Master says "stats scale", they don't. Frog/Slug/Snake Sage say "No way to obtain this yet".
+15. OTSUTSUKI SNOWBALL [VERIFY]. Every Otsutsuki baby gets Hagoromo or Hamura chakra (100%) and an eye (100%).
+    Hagoromo chakra = permanent Six Paths Senjutsu (flight, truth-seeking orbs) and Rinnegan at age 40, and ALL children
+    of a Hagoromo-chakra parent get Indra or Asura chakra. Otsutsuki clan inherits at 100%. One family can fill a world
+    with Rinnegan users.
+16. PERFORMANCE [VERIFY in a big world]. Every 0.1 s, for every unit, max chakra is recalculated about 6 times
+    (each with a try/catch stat lookup), plus three more full passes over all units on other timers.
+    The unit window also recomputes everything every frame.
+17. NerfFireDamage.cs changes fire damage for the WHOLE game, not just shinobi. Worth a conscious decision.
+
+
+-----------------------------------------------------------------
+4. DUPLICATED OR DEAD
+-----------------------------------------------------------------
+Duplicated:
+- ChakraUI.cs: the same 20-line block twice (showContent and Update).
+- Clan awakenings exist in 2-3 places with DIFFERENT odds: Hyuga, Chinoike, Otsutsuki eyes (ShinobiEvents.cs
+  GuaranteedInheritancePatch, BirthTraits.ApplyTraitsOnBirth, and Progressions/ClanProgression.cs).
+  Example: Chinoike get Ketsuryugan 50% at birth AND 100% later from the clan action.
+- Character trait loadouts are written twice (RequiredTraitsByActor list + the addTrait lines in each actor).
+- 12 character definitions of ~100 lines each that differ in ~10 lines.
+- 8 Eight Gates statuses of ~25 identical lines each.
+- "Remove all Sharingan / all Jinchuriki forms / all gates" lists in 4-5 files.
+Dead (never runs, or does nothing):
+- Progressions/SageProgression.cs (whole file commented), Meditating status, imperfect sage statuses, Six Paths Sage trait.
+- Itachi Mangekyo, Drunken Fist, Jugo, Kurama Avatar status, Bijuu Bite, Yin-Yang attack.
+- SmallBijuuBomb, AutoChidoriAtTarget, OrochimaruCursedMarkAttackAction, FrogSummonAction, RemoveChakra, RasenganAA/ChidoriAA.
+- Statuses defined but never applied: kcm_aura, v1_aura, tsballs, kurama_sage_mode, rinne_cooldown, eight_gate_strain,
+  byakugan (the non-P one), status_mangekyo.
+- katon_burn status (no stats, no action, no visual), the 64 Palms per-tick action (empty), the Human Path
+  "+intelligence" (it writes to stats that get recalculated, so it does nothing).
+
+
+-----------------------------------------------------------------
+5. THE OLD prompt.txt: WHAT WAS DONE
+-----------------------------------------------------------------
+Done:       Nature Exp removed from code; census removed from Main.cs; tailed-beast and sage chakra stats added;
+            several Design Review bugs fixed (see section 1).
+Half-done:  Tailed-beast / sage chakra (exist, never spent); en.json (mostly fine, ~25 stale keys, 4 missing);
+            element birth odds (30% each until 3, then 5%; 4 is possible but natures are still on almost everyone).
+Not done:   Duplicate cleanup; ClanProgression merged into birth logic; sage mode rebuild; kingdoms (heroes still spawn as
+            wild mobs, see below); JinchurikiStressPatch still there; Mangekyo review beyond the coin flip;
+            RequiredTraitsByActor question (it IS used, by the spawn button, but it duplicates the asset loadouts).
+
+
+-----------------------------------------------------------------
+6. MY HONEST OPINION: THE BIG DESIGN PROBLEMS
+-----------------------------------------------------------------
+A. Abilities are lottery tickets.
+   Almost every jutsu is "on attack or on hit: roll 1-10% -> spend chakra -> add a status". All of them share ONE
+   7-second lockout, so whichever jutsu wins the roll blocks the others. Players can't tell why anything happened.
+   Fix: a small jutsu framework. Each jutsu is one definition (cost, cooldown, range, a situational condition such as
+   "I'm below 40% HP", "3+ enemies near", "target is stronger than me", its sound, effect and first-use world log).
+   Each unit keeps its OWN cooldown per jutsu (stored as world time, so it respects pause and game speed).
+   A unit in combat simply uses the best available jutsu. JinchurikiBox has the right idea (a Jutsu class with cost,
+   cooldown, cast time, required level), but its cooldown is shared by every unit in the world and runs on real time,
+   so I'd borrow the idea, not the code.
+
+B. Two kinds of power that fight each other.
+   The Sharingan is a trait you own plus a status you activate (drains chakra). Everything else (Mangekyo, EMS, Rinnegan,
+   Byakugan, Tenseigan) just gives permanent stats. One rule for every eye and mode: the TRAIT is what you own, the
+   STATUS is what's switched on in combat, and only the status gives the big stats and drains chakra.
+   JinchurikiBox does it this way too, and it makes fights visibly "power up".
+
+C. Everyone is special, so nobody is.
+   Natures roll 30% each at birth (plus the vanilla birth pool and 40% inheritance), ~4% every 3 s turns gifted adults
+   into Academy Students, kings become Kage, and stacked bonuses have no budget (characters spawn at level 100 with
+   1,000-10,000 base HP before any traits). The scaling guide numbers aren't enforced anywhere.
+   I'd rather make shinobi a talented minority, bloodline powers rare, and clamp stacking with a simple budget
+   (one "power tier" per unit that decides how much its traits can add). This is my call to make under the brief,
+   but it changes how worlds feel, so I want your answer to question 1 first.
+
+D. The named characters are monsters, not people.
+   Every character is cloned from "$mob$" with a "random_move" job and a wild kingdom. Naruto, Kakashi and Sakura sit
+   in a fake "Konoha" WILD kingdom; they never join villages, marry or have kids. Your old prompt asked for heroes to
+   live in villages and villains to be rogues. That's the right goal; it isn't built yet.
+
+E. The code makes typos invisible.
+   There are ~400 hand-typed id strings. A typo never errors, the feature just never happens (sections 3.12, 3.4).
+   One Ids file with constants plus a startup self-check turns these into errors you see immediately.
+
+F. Big files are mostly copy-paste.
+   ShinobiStatus.cs (2,290 lines), ShinobiTraits.cs (2,045) and ShinobiActors.cs (1,375) are mostly repeated blocks.
+   Small helpers (one for "an aura status with a texture", one for "a named character") would cut thousands of lines
+   without making anything clever. Smaller files = less dread when you open them.
+
+What I'd cut or park (pending your answers):
+- Park: Yang / Yin-Yang (no behaviour), Golden Byakugan and Hamura's chakra (copies of other traits), Akatsuki trait
+  (until there is an Akatsuki event), Ten-Tails progression beyond "kill the Juubi".
+- Rebuild small or cut: Sage modes. If rebuilt: Toad, Slug, Snake (and Wood for Hashirama), fuelled by the sage chakra
+  bar, with a clear way to become a sage. JinchurikiBox's version (activate when chakra >= 60%, burns nature energy
+  per second, Toad sage turns into a frog if they mess up) is fun, but it has NO natural way to obtain sage mode either.
+- Keep and finish: chakra, ranks, Uchiha line, Nine-Tails, Hyuga, Uzumaki, the named characters.
+
+
+-----------------------------------------------------------------
+7. RANKED PLAN (Step C), each step is its own small update
+-----------------------------------------------------------------
+Scope: S = a few hours of work and a handful of commits. M = a focused session. L = more than one session.
+
+0. Compile check (S). There is no .NET SDK here, but the needed DLLs are in NeoModLoaderWORKING/assembly-dependencies.
+   I'll install the SDK in this environment and build against them, so every commit at least compiles.
+   The game itself still has to be tested by you.
+1. Safety net (S). Ids.cs with constants for every trait/status/effect/projectile/item id, used everywhere, plus a
+   startup self-check that logs every missing id, locale key and icon. Fix everything it finds (section 3.12).
+   No ids change, so saves are unaffected.
+2. Stop-the-bleeding bug pass (M). Per-frame damage, Susanoo durations, gate flip-flop plus strain, Akatsuki recruiting,
+   exhaustion lock, crippling -> timed status, auto-give loops respect manual removal, descriptions rewritten to
+   match the code with exact numbers. Players feel this immediately.
+3. Chakra foundation (M). Only sapient units get chakra; max chakra cached once per tick; exhaustion slows regen and
+   ends at a set % instead of locking; Tailed-Beast chakra fuels Nine-Tails forms and the Tailed Beast Bomb; Sage chakra
+   fuels sage modes; a chakra bar under the health bar (like JinchurikiBox) instead of three icons showing 0/0.
+   One pass over units instead of four.
+4. Jutsu framework + ability feel (L). The biggest visible change. All existing jutsu move into it, the global 7 s
+   lockout goes, each jutsu gets a purpose/condition, per-unit cooldown, and its own feedback.
+5. Uchiha line to full quality (M), as the quality bar: Sharingan 1-3 -> Mangekyo (active status, drain, blindness)
+   -> EMS -> Rinnegan path. Amaterasu becomes scary but not frame-rate death; Susanoo becomes a real form.
+6. Nine-Tails chain finished (M): forms use tailed-beast chakra; Avatar finished or removed; Baryon verified; Kurama/Juubi
+   behaviour sane (right now Kurama itself goes into KCM forms when hit).
+7. Sage modes rebuilt small, or cut (M), per your answer.
+8. Characters and kingdoms (M): heroes in villages, villains as rogues, one short definition per character
+   (ShinobiActors.cs shrinks by roughly 70%), sane spawn levels.
+9. Cleanup pass, ongoing alongside the others (S-M): dead code removed, duplicates merged, en.json synced,
+   other languages flagged, new config toggles.
+10. Balance pass with a real stat budget, then your "later" ideas (summons, Akatsuki/invasions, more beasts).
+
+Every step ends with: a commit series on claude/sleepy-euler-hegpj5, a plain-language entry in
+Documents/ShinobiBoxUpdateLog.txt (what changed / why / what to test), and an in-game test checklist.
+
+
+-----------------------------------------------------------------
+8. QUESTIONS (answer as many as you like; the starred ones block steps 2-5)
+-----------------------------------------------------------------
+See the chat message. They are repeated here so they live with the report.
+ 1.* World feel: should most sapient units become shinobi (like now), or should shinobi be a talented minority among
+     normal people?
+ 2.* Stun immunity for every chakra user (section 3.7): intentional (you merged your AntiStun mod?) or a bug?
+ 3.* Amaterasu: once landed, should it be a near-guaranteed kill (slow but unstoppable), or strong-but-survivable?
+ 4.* Save compatibility: OK if I keep every existing id as-is (safe), and only rename when there's a real reason, telling
+     you first? Or do you not care about old saves?
+ 5.  Characters: which ones are heroes who should live in villages (I'd guess Naruto, Kakashi, Sakura, Hashirama,
+     Hagoromo), which are rogues (Madara, Orochimaru, Obito), and which are "it depends" (Itachi, Sasuke)?
+     Should Kurama and the Juubi stay hostile monsters?
+ 6.  Spawned characters start at level 100 (instantly max everything). Keep, or spawn them at a set strong level?
+ 7.  Sage modes: rebuild small (which animals?), or cut for now? Should ordinary units ever become sages naturally,
+     and roughly how rare?
+ 8.  Hagoromo / Hamura / Indra / Asura / Otsutsuki chain: keep, simplify, or park?
+ 9.  Infinite Tsukuyomi puts the WHOLE world to sleep for 60 s and switches the age to Chaos. Keep as an ultra-rare
+     world event, make it local, or cut?
+10.  Yang, Yin-Yang, Storm, Golden Byakugan, Tenseigan, Hamura's chakra: which do you care about?
+11.  NerfFireDamage (global fire nerf): keep, make it a config toggle, or remove?
+12.  What do players ask for or complain about most? Any bug reports you remember?
+13.  Which feature do you most enjoy watching? I'll polish that one early.
+14.  How do players install the mod (Steam Workshop, a zip into Mods/ShinobiBox, something else)? Affects the sound path.
+15.  Do players run ShinobiBox together with JinchurikiBox? Both register a "chakra" stat, so they would conflict.
+16.  The ch/cz/ru translations are ~90 keys behind en. Do you have translators, or should I maintain only en and leave
+     the others falling back to English?
+17.  Are you OK with me restructuring files (an Ids file, a Jutsu file, splitting the 2,000-line files by pillar)?
+     Same style, just smaller pieces.
+18.  I can't draw sprites. For features that need new art I'll reuse existing sprites or leave a clear TODO. OK?
+19.  Do you want the generic "jutsu use" seal + sound on every jutsu, or only on bigger ones?
+20.  Anything that's off-limits, or something you want first regardless of my ranking?
