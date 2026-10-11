@@ -74,7 +74,7 @@ namespace ShinobiBox
             bool hasHagoromo = actor.hasTrait("05_hagoromo_chakra");
             bool hasMangekyo = actor.hasTrait("mangekyo_sharingan") || actor.hasTrait("madara_eternal_mangekyo");
             bool hasHashirama = actor.hasTrait("hashi_cells");
-            bool hasAnySenjutsu = actor.hasTrait("frog_sage_mode") || actor.hasTrait("slug_sage_mode") || actor.hasTrait("snake_sage_mode") || actor.hasTrait("wood_sage_mode");
+            bool hasAnySenjutsu = SageProgression.IsSage(actor);
             string currentName = actor.data.name ?? string.Empty;
             bool hasKageInName = currentName.IndexOf("kage", StringComparison.OrdinalIgnoreCase) >= 0;
 
@@ -161,7 +161,7 @@ namespace ShinobiBox
                 actor.addStatusEffect("shadow_clone", 5f);
             }
 
-            //SageProgression.HandleSageProgression(actor, level);
+            SageProgression.HandleSageProgression(actor, level);
 
             // Sharingan Progression
             if (actor.hasTrait("uchiha_clan"))
@@ -269,7 +269,7 @@ namespace ShinobiBox
 
             if (actor.data.favorite) return;
 
-            bool hasAnySenjutsu = actor.hasTrait("frog_sage_mode") || actor.hasTrait("slug_sage_mode") || actor.hasTrait("snake_sage_mode") || actor.hasTrait("wood_sage_mode");
+            bool hasAnySenjutsu = SageProgression.IsSage(actor);
 
             if (actor.hasTrait("07_indra_chakra") || actor.hasTrait("08_asura_chakra") ||
                 actor.hasTrait("mangekyo_sharingan") || actor.hasTrait("madara_eternal_mangekyo") || actor.hasTrait("eternal_mangekyo") ||

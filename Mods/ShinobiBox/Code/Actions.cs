@@ -25,22 +25,6 @@ namespace ShinobiBox
         #endregion
 
         #region Sage Mode Actions
-        public static bool SageMode(BaseSimObject pSelf, BaseSimObject pAttackedBy = null, WorldTile pTile = null)
-        {
-            if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
-            Actor a = pSelf.a;
-
-            if (a.hasTrait("slug_sage_mode"))
-            {
-                if (!a.hasStatus("status_100_sealings") && Randy.randomChance(0.07f))
-                {
-                    addShinobiStatus(a, "status_100_sealings", 0.6f, 0, 0);
-                }
-            }
-
-            return false;
-        }
-
         public static bool OneHundredHealing(BaseSimObject pTarget, WorldTile pTile = null)
         {
             if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
@@ -48,7 +32,7 @@ namespace ShinobiBox
 
             if (Randy.randomChance(0.8f))
             {
-                a.restoreHealth((int)(10 + a.data.level * a.getMaxHealth() * 0.07f));
+                a.restoreHealth((int)(a.getMaxHealth() * 0.03f) + a.data.level * 2);
                 if (Randy.randomChance(0.6f))
                 {
                     a.removeTrait("skin_burns");

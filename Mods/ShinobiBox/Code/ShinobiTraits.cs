@@ -1743,6 +1743,20 @@ namespace ShinobiBox
 
         private static void loadSenjutsu()
         {
+            #region Sage Apprentice Trait
+            ActorTrait sageApprentice = new ActorTrait
+            {
+                id = "sage_apprentice",
+                group_id = GroupId_Senjutsu,
+                path_icon = "ui/icons/senjutsu",
+                can_be_given = true,
+                needs_to_be_explored = false
+            };
+            sageApprentice.base_stats = new BaseStats();
+            sageApprentice.base_stats.set("experience", 5f);
+            addTraitToGame(sageApprentice);
+            #endregion
+
             #region Frog Sage Mode Trait
             ActorTrait frogSage = new ActorTrait
             {
@@ -1753,13 +1767,10 @@ namespace ShinobiBox
                 needs_to_be_explored = false
             };
             frogSage.base_stats = new BaseStats();
-            frogSage.base_stats.set("multiplier_damage", 0.15f);
-            frogSage.base_stats.set("multiplier_health", 0.15f);
-            frogSage.base_stats.set("multiplier_speed", 0.05f);
-            frogSage.base_stats.set("critical_chance", 0.40f);
-
-            //frogSage.action_get_hit = new GetHitAction(SageProgression.SenjutsuStatus);
-
+            frogSage.base_stats.set("chakra", 30f);
+            frogSage.base_stats.set("experience", 10f);
+            frogSage.action_get_hit = new GetHitAction(SageProgression.EnterSageMode);
+            frogSage.action_attack_target = new AttackAction(SageProgression.SageAttack);
             addTraitToGame(frogSage);
             #endregion
 
@@ -1773,7 +1784,10 @@ namespace ShinobiBox
                 needs_to_be_explored = false
             };
             slugSage.base_stats = new BaseStats();
-            slugSage.action_get_hit = new GetHitAction(ShinobiActions.SageMode);
+            slugSage.base_stats.set("chakra", 30f);
+            slugSage.base_stats.set("experience", 10f);
+            slugSage.action_get_hit = new GetHitAction(SageProgression.EnterSageMode);
+            slugSage.action_attack_target = new AttackAction(SageProgression.SageAttack);
             addTraitToGame(slugSage);
             #endregion
 
@@ -1787,7 +1801,10 @@ namespace ShinobiBox
                 needs_to_be_explored = false
             };
             snakeSage.base_stats = new BaseStats();
-            //snakeSage.action_get_hit = new GetHitAction(SageProgression.SenjutsuStatus);
+            snakeSage.base_stats.set("chakra", 30f);
+            snakeSage.base_stats.set("experience", 10f);
+            snakeSage.action_get_hit = new GetHitAction(SageProgression.EnterSageMode);
+            snakeSage.action_attack_target = new AttackAction(SageProgression.SageAttack);
             addTraitToGame(snakeSage);
             #endregion
 
@@ -1801,9 +1818,10 @@ namespace ShinobiBox
                 needs_to_be_explored = false
             };
             woodSage.base_stats = new BaseStats();
-            woodSage.base_stats.set("multiplier_damage", 0.25f);
-            woodSage.base_stats.set("multiplier_health", 0.20f);
-            woodSage.base_stats.set("armor", 20f);
+            woodSage.base_stats.set("chakra", 30f);
+            woodSage.base_stats.set("experience", 10f);
+            woodSage.action_get_hit = new GetHitAction(SageProgression.EnterSageMode);
+            woodSage.action_attack_target = new AttackAction(SageProgression.SageAttack);
             addTraitToGame(woodSage);
             #endregion
 
@@ -1935,7 +1953,7 @@ namespace ShinobiBox
 
             string[] sageModeIds = {
             "frog_sage_mode", "slug_sage_mode", "snake_sage_mode",
-            "wood_sage_mode"
+            "wood_sage_mode", "sage_apprentice"
             };
             setGroupOpposites(sageModeIds);
         }

@@ -1122,7 +1122,7 @@ namespace ShinobiBox
             oneHundredSealings.base_stats.set("sage_chakra", 100f);
             oneHundredSealings.base_stats.set("sage_chakra_regen", 7f);
             oneHundredSealings.base_stats.set("experience", 5);
-            oneHundredSealings.duration = 60f;
+            oneHundredSealings.duration = 20f;
             oneHundredSealings.path_icon = "ui/icons/slug_sage";
             oneHundredSealings.action_interval = 1f;
             oneHundredSealings.action = new WorldAction(ShinobiActions.OneHundredHealing);
@@ -1173,7 +1173,7 @@ namespace ShinobiBox
             perfectFrog.base_stats.set("range", 1f);
             perfectFrog.base_stats.set("accuracy", 1f);
             perfectFrog.base_stats.set("experience", 15);
-            perfectFrog.duration = 45f;
+            perfectFrog.duration = 999f;
             perfectFrog.path_icon = "ui/icons/frog_sage";
             perfectFrog.locale_id = "status_title_frog_sage";
             perfectFrog.locale_description = "status_description_frog_sage";
@@ -1187,7 +1187,7 @@ namespace ShinobiBox
             perfectSlug.base_stats.set("armor", 20f);
             perfectSlug.base_stats.set("multiplier_health", 0.20f);
             perfectSlug.base_stats.set("experience", 15);
-            perfectSlug.duration = 45f;
+            perfectSlug.duration = 999f;
             perfectSlug.path_icon = "ui/icons/slug_sage";
             perfectSlug.locale_id = "status_title_slug_sage";
             perfectSlug.locale_description = "status_description_slug_sage";
@@ -1202,11 +1202,28 @@ namespace ShinobiBox
             perfectSnake.base_stats.set("multiplier_damage", 0.18f);
             perfectSnake.base_stats.set("critical_chance", 0.10f);
             perfectSnake.base_stats.set("experience", 15);
-            perfectSnake.duration = 45f;
+            perfectSnake.duration = 999f;
             perfectSnake.path_icon = "ui/icons/snake_sage";
+            perfectSnake.action_interval = 1f;
+            perfectSnake.action = new WorldAction(SageProgression.SnakeRegeneration);
             perfectSnake.locale_id = "status_title_snake_sage";
             perfectSnake.locale_description = "status_description_snake_sage";
             AssetManager.status.add(perfectSnake);
+            #endregion
+
+            #region Wood Sage
+            StatusAsset woodSage = new StatusAsset();
+            woodSage.id = "status_wood_sage";
+            woodSage.base_stats = new BaseStats();
+            woodSage.base_stats.set("multiplier_damage", 0.25f);
+            woodSage.base_stats.set("multiplier_health", 0.20f);
+            woodSage.base_stats.set("armor", 20f);
+            woodSage.base_stats.set("experience", 15);
+            woodSage.duration = 999f;
+            woodSage.path_icon = "ui/icons/wood_sage";
+            woodSage.locale_id = "status_title_wood_sage";
+            woodSage.locale_description = "status_description_wood_sage";
+            AssetManager.status.add(woodSage);
             #endregion
 
             #region Uzumaki Ability: Adamantite Sealing Chains
@@ -1723,7 +1740,6 @@ namespace ShinobiBox
             #endregion
 
             #region Meditating
-            /*
             StatusAsset meditating = new StatusAsset();
             meditating.id = "status_meditating";
             meditating.path_icon = "ui/icons/natureexp";
@@ -1740,7 +1756,7 @@ namespace ShinobiBox
             meditating.can_be_flipped = true;
 
             meditating.action_interval = 1f;
-            meditating.action_finish = new WorldAction(SageProgression.Senjutsu);
+            meditating.action_finish = new WorldAction(SageProgression.MeditationFinished);
             meditating.action = (WorldAction)Delegate.Combine(meditating.action, new WorldAction(SageProgression.Meditate));
             meditating.action_get_hit = (GetHitAction)Delegate.Combine(meditating.action_get_hit, new GetHitAction(SageProgression.ClearMeditatingStatus));
         
@@ -1748,7 +1764,6 @@ namespace ShinobiBox
             meditating.locale_description = "status_description_meditating";
 
             AssetManager.status.add(meditating);
-            */
             #endregion
         }
 

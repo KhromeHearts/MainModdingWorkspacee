@@ -140,8 +140,7 @@ namespace ShinobiBox
         public static float GetMaxSageChakra(Actor actor)
         {
             if (actor == null || !actor.isAlive()) return 0f;
-            if (actor.hasTrait("frog_sage_mode") || actor.hasTrait("snake_sage_mode") ||
-                actor.hasTrait("slug_sage_mode") || actor.hasTrait("wood_sage_mode")) return 300f;
+            if (SageProgression.IsSage(actor)) return 300f;
             return 0f;
         }
 
@@ -183,14 +182,26 @@ namespace ShinobiBox
             float sageMax = GetMaxSageChakra(actor);
             if (sageMax > 0f)
             {
-                float regenerationRate = GetActorStatValue(actor, "sage_chakra_regen");
-                if (regenerationRate <= 0f)
+                string sageStatus = SageProgression.GetActiveSageStatus(actor);
+                if (sageStatus != null)
                 {
-                    regenerationRate = 6f;
+                    float drain = SageProgression.GetSageModeDrain(actor) * deltaTime;
+                    if (!TryConsumeSageChakra(actor, drain))
+                    {
+                        SetSageChakra(actor, 0f);
+                        actor.finishStatusEffect(sageStatus);
+                    }
                 }
-
-                float regeneration = regenerationRate * deltaTime;
-                AddSageChakra(actor, regeneration);
+                else
+                {
+                    float regenerationRate = 2f + GetActorStatValue(actor, "sage_chakra_regen");
+                    AddSageChakra(actor, regenerationRate * deltaTime);
+                }
+            }
+            else
+            {
+                string sageStatus = SageProgression.GetActiveSageStatus(actor);
+                if (sageStatus != null) actor.finishStatusEffect(sageStatus);
             }
         }
 
@@ -229,7 +240,7 @@ namespace ShinobiBox
             baseRate += Mathf.Min(6f, GetMax(actor) * 0.004f);
             baseRate += GetActorStatValue(actor, "chakra_regen");
 
-            if (actor.hasStatus("status_frog_sage") || actor.hasStatus("status_slug_sage") || actor.hasStatus("status_snake_sage"))
+            if (SageProgression.IsInSageMode(actor))
             {
                 baseRate *= 1.35f;
             }
@@ -458,14 +469,6 @@ namespace ShinobiBox
                 drainsChakra = true;
             }
 
-            // Sage Mode / Senjutsu
-            if (actor.hasStatus("status_frog_sage") || actor.hasStatus("status_snake_sage") || actor.hasStatus("status_slug_sage"))
-            {
-
-                drainPerSecond += 2.0f;
-                drainsChakra = true;
-            }
-
             if (!drainsChakra || drainPerSecond <= 0) return;
 
             float efficiencyMultiplier = GetAbilityCostMultiplier(actor);
@@ -484,9 +487,6 @@ namespace ShinobiBox
                 actor.finishStatusEffect("status_sharingan_3t");
                 actor.finishStatusEffect("status_mangekyo");
                 actor.finishStatusEffect("byakuganP");
-                actor.finishStatusEffect("status_frog_sage");
-                actor.finishStatusEffect("status_snake_sage");
-                actor.finishStatusEffect("status_slug_sage");
                 actor.finishStatusEffect("tenseigan_cm");
             }
         }
