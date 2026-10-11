@@ -1,3 +1,86 @@
+ShinobiBox Rework - Patch Notes (work in progress, not released yet)
+=====================================================================
+Branch: claude/sleepy-euler-hegpj5. Every entry says what changed, why, and what to test in game.
+[NEEDS IN-GAME TEST] = compiles and was checked against the game code, but nobody has watched it in a world yet.
+
+
+PART 1 - SAFETY NET
+-------------------
+- New file Code/ShinobiIds.cs: every trait, status, effect, projectile and item id in one list
+  (TraitIds, StatusIds, EffectIds, ProjectileIds, ItemIds). The code uses these names instead of typing "some_id"
+  by hand, so a typo is now a compile error instead of a feature that silently never works.
+  No id changed, so old saves are not affected.
+- Self-check: a moment after the game loads, ShinobiBox checks that every id in that list exists, and that every
+  ShinobiBox trait/status/item has its name text and icon. It writes the result to the log:
+  "[ShinobiBox] Self-check passed..." or one "[ShinobiBox] Self-check: ..." line per problem.
+  World logs are checked the first time each one appears.
+- Fixed what the check found:
+  - Rasenshuriken and Paper Bomb Kunai had no explosion (their effect ids didn't exist).
+  - Missing icons: tailed-beast chakra, the Hashirama Cells birth log, the Kurama/Juubi sealed logs.
+  - Blind and Akatsuki showed raw text keys instead of their names.
+  - Missing text for the Palm Rotation cooldown and Exploding Human Technique.
+  - Code checked for traits that don't exist (ice/lava/boil/dust release, Jugo, one_eyed, the cut Avatar form).
+
+PART 2 - BUG FIXES
+------------------
+- Damage every frame. In WorldBox a status "action" with no interval runs EVERY FRAME, so these were instant kills
+  that got stronger on faster PCs:
+  - Amaterasu: was ~600 damage per second for 60 s. Now 3% max health + 6 per second for 12 s (about 40% of a
+    unit's health), -40% speed, -15 armor. Still burns fire-proof units. Strong but survivable.
+  - Palm Rotation (Kaiten): hit every enemy in a huge area every frame. Now 40 damage every 0.5 s, only within 3 tiles.
+  - Adamantine Chains: killed even Kurama in under a second. Now 15% max health on grab (max 250, healing the
+    Uzumaki) then 3% per second (max 40).
+  - Kurama's Chakra Arm Swipe hit a huge area; now 3 tiles around the target.
+- Eight Inner Gates:
+  - Gates now open one by one (1, 2, 3...), up to one gate per level. A level 8 unit used to flip between gate 8
+    and gate 7 on every proc.
+  - Gates 4-8 now hurt the user every second (0.5% to 2.5% of max health). This code existed but was never used.
+  - When gate 5+ closes on its own: 30 s of Eight Gates Strain (weaker, can't reopen gates).
+    The Gate of Death lasts 30 s and leaves the user at 10% health with 90 s of strain, plus a world log.
+  - No more 25% chance of PERMANENT crippling at gate 5.
+- Chakra exhaustion could lock a unit for a very long time. Now it triggers when you spend your last 10% of chakra,
+  chakra still regenerates (slowly) while exhausted, and when it ends you catch a second wind (25% chakra).
+- Armor Break (Taijutsu / Ten-Tails) no longer gives the permanent "crippled" trait. It's now -25 armor and
+  -20% speed for 10 seconds.
+- Removed traits stay removed: Rinnegan, Sannin, Ghost of Uchiha, God of Shinobi, Rinne Sharingan, Mangekyo and
+  Sharingan used to come back 3 seconds after you removed them by hand.
+- The Akatsuki never recruited anyone (the check only ran on existing members). Now evil units aged 28+ and level
+  5+ can be recruited, never more than 10 living members, with a world log.
+- Stun immunity (your AntiStun idea) now covers every unit, not just chakra users.
+- Sounds now work from the Steam Workshop or a renamed GameBanana folder (the path used to be hard-coded).
+- The fire nerf stays, but if your standalone Nerf Fire Damage mod is also installed, ShinobiBox turns its own copy
+  off so burning isn't changed twice.
+- Descriptions now state the real rules: Lee clan, Nine-Tails, Mangekyo, Taijutsu Master, Rinne Sharingan,
+  Akatsuki, Eight Gates, and every text that still mentioned the removed Nature Exp system.
+
+NOT CHANGED YET (on purpose)
+- Susanoo still only lasts 1 second (it's a flash, not a form). That's a design change, so it comes with the
+  Uchiha rework instead of being patched blindly now.
+
+TEST CHECKLIST [NEEDS IN-GAME TEST]
+1. Launch the game, open the log (NML console or Player.log) and search for "[ShinobiBox] Self-check".
+   Send me every line it prints, even if it says "passed".
+2. Amaterasu: spawn Itachi near a village and let him fight. A burning unit should lose about 40% health over
+   12 seconds, not die instantly. Check that the black-flame animation still shows.
+3. Palm Rotation: give a unit Byakugan (level 3+) and let it fight a group. Only enemies right next to it
+   should take damage.
+4. Uzumaki: let an Uzumaki fight Kurama. Kurama should NOT die from the chains.
+5. Eight Gates: give a level 8 unit the Eight Inner Gates trait and let it get hurt. The gate icon should go up
+   1 -> 2 -> 3..., health should tick down from gate 4, and when gate 5+ times out the unit gets
+   "Eight Gates Strain". Gate 8 should post a world log and leave the unit at 10% health when it ends.
+6. Exhaustion: give a unit Mangekyo and watch it fight until it runs low on chakra. "Chakra Exhaustion" should
+   appear and go away after about 10 seconds, with chakra jumping to 25%.
+7. Remove a unit's Sharingan by hand. Wait 10 seconds. It should NOT come back.
+8. Akatsuki: in a world with evil units, let a few years pass. Someone should join (world log), and there should
+   never be more than 10 living members.
+9. Sounds: Kamui / Shadow Clone / Amenotejikara should still make their sound.
+10. If you have the Nerf Fire Damage mod installed, the log should say ShinobiBox's fire nerf was turned off.
+11. Old save: load an existing world. Nothing should break (no ids changed).
+
+
+=====================================================================
+OLDER NOTES (from before the rework, kept as they were)
+=====================================================================
 ShinobiBox Expansion Update Patch Logs
 Fixed Uchiha and Hyuga Not Getting Their Eye Traits
 Minor Tweak To Sharingan Progression Requirements
