@@ -209,6 +209,22 @@ PART 7 - NINE-TAILS AND TEN-TAILS CHAIN
 - Uzumaki jinchuriki hold more tailed-beast chakra (750 instead of 500), so Naruto stays transformed longer.
 - Kurama Avatar is still parked (commented out) until there's art for it.
 
+PART 8 - CHARACTERS AND KINGDOMS
+--------------------------------
+- Heroes: Naruto, Kakashi, Sakura, Hashirama and Hagoromo. Villains: Madara, Sasuke, Itachi (Edo Tensei), Obito
+  and Orochimaru. Kurama and the Ten-Tails stay wild, hostile tailed beasts.
+- Hashirama was in the rogue kingdom by mistake. He's a Konoha hero now.
+- Heroes guard a village: each one picks the nearest village (up to 100 tiles away) and stays within about 25 tiles
+  of it, walking back when they wander off (not while fighting). If that village is destroyed they pick a new one.
+  They're still not citizens (no house, no family): named characters have no species, and putting them inside
+  WorldBox's city system could break it. They protect the village from villains and tailed beasts instead.
+- Villains raid: when they have nothing to fight, every few seconds there's a small chance they march to the
+  nearest village (up to 100 tiles away) and attack it. So heroes and villains actually meet.
+- Spawned characters still start at level 100, as you wanted.
+- Code: ShinobiActors.cs went from about 1,400 to about 830 lines. The ~60 lines every character repeated are now
+  one CreateCharacter function; each character only lists its own stats, traits, weapon and death action.
+  Nothing about the characters changed except Hashirama's side.
+
 CODE CLEANUP
 - ShinobiJutsu.cs rewritten to be easier to read: each jutsu is one block that lists its traits/statuses, and a
   Jutsu has a Cast method like in JinchurikiBox. Same behaviour as Part 5.
@@ -271,6 +287,11 @@ TEST CHECKLIST [NEEDS IN-GAME TEST]
 32. Shadow clones of Naruto dying should NOT spawn Kurama.
 33. Kill the Ten-Tails with a shinobi, then let that jinchuriki fight: its Ten-Tails form should end when the
     tailed-beast chakra hits 0. When the jinchuriki dies, the Ten-Tails comes back.
+34. Spawn Naruto next to a village: he should stay around it. Pick him up and drop him far away: he walks back.
+35. Spawn Madara a bit away from a village: after a while he should walk over and attack it, and heroes guarding
+    the village should fight him.
+36. Spawn Hashirama inside a village: he should NOT attack the villagers.
+37. Spawn every character once: sprites, weapons, names and traits should look exactly like before.
 
 
 =====================================================================
