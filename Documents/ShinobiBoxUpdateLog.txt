@@ -71,6 +71,32 @@ PART 3 - SAGE MODE
   - Wood: roots the target and enemies within 3 tiles in wood.
 - Characters who already have sage traits (Naruto, Sakura, Orochimaru, Hashirama) are perfect sages.
 
+PART 4 - CHAKRA FOUNDATION
+--------------------------
+- Who has chakra: sapient units, ShinobiBox characters and the tailed beasts. Animals don't anymore.
+- Named characters (Naruto, Madara...) have no subspecies, so WorldBox never counted them as "sapient" and some
+  rules skipped them. They now count as shinobi: e.g. Madara killing Kurama makes him its jinchuriki, sages like
+  Naruto meditate, and Sannin can be given to them.
+- Performance: max chakra is calculated once per unit per tick (it was ~6 times), and the four separate loops over
+  every unit are now one.
+- Tailed-beast chakra finally does something:
+  - Nine-Tails forms burn it every second (V2 and Incomplete Beast burn fastest, Kurama Link Mode the slowest)
+    and end when it runs out. A jinchuriki needs a quarter of it to transform.
+  - It refills while not transformed. Normal chakra keeps regenerating during forms now.
+  - Tailed Beast Bombs (140) and the Ten-Tails blast (70) cost tailed-beast chakra instead of normal chakra.
+  - Kurama (2000) and the Juubi (4000) have much bigger pools than their jinchuriki (500 / 1000).
+  - Kurama no longer goes into jinchuriki cloak forms itself.
+- Birth talent (the "middle ground" world): the chakra reserve a unit is born with is its talent.
+  Vast 3%, Greater 7%, High 15%, Low 20%, none 55%. Clan babies always get at least Low.
+  - Natures depend on talent: first nature 50 / 70 / 90 / 100% by tier, extra natures much rarer (4+ is possible
+    but very rare). Ordinary people don't roll natures (but can still inherit them from their parents).
+  - Storm Release: 25% for units born with both Lightning and Water. Yin/Yang: 3% for Greater/Vast talent.
+  - Babies are no longer born as Academy Students; talented units enroll as they grow up.
+  - Birth traits now roll after a baby inherits from its parents (before, clan babies rolled before they even had
+    their clan).
+- Unit window: Tailed-Beast and Sage chakra only show for units that have them (no more 0/0 on everyone), and
+  Blindness only shows for Mangekyo users.
+
 TEST CHECKLIST [NEEDS IN-GAME TEST]
 1. Spawn Naruto and let him fight. When hit he should enter Frog Sage Mode, the Sage Chakra number in his window
    should go down, and the mode should end when it hits 0. Out of combat he should sometimes meditate.
@@ -93,6 +119,13 @@ TEST CHECKLIST [NEEDS IN-GAME TEST]
     Apprentices (world log), meditate, and eventually become sages. Hit an apprentice while it meditates: the
     meditation should stop.
 12. Give a unit Fire Release, Water Release, etc. from the trait menu: names and descriptions should show properly.
+13. Kurama: spawn Kurama and let a level 5+ unit kill it. The killer gets Nine Tails Jinchuriki. In fights it
+    should go into cloak forms, the Tailed-Beast Chakra number should go down, and the form should end at 0.
+    Kurama itself should NOT get a cloak aura.
+14. New world: after ~20-30 years, roughly a third to half of the people should be ranked shinobi, most with 0-1
+    natures, a few with 2-3. Tell me if it feels like too many or too few.
+15. Click a normal villager and an animal: no "0/0" tailed-beast or sage chakra icons. Animals show no chakra.
+16. Old save: existing units keep their traits (they are not re-rolled).
 
 
 =====================================================================
