@@ -1,0 +1,522 @@
+{
+  "Default": {
+    "PivotX": 0.5,
+    "PivotY": 0.2,
+    "Z": 2.0,
+    "RectX": 0,
+    "RectY": 0,
+    "RectZ": 0,
+    "PixelsPerUnit": 1
+  },
+  "Specific": [
+  //Flame Axe-------------------------------------------------------------------------------
+    {
+      "Path": "flame_axe_0.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_axe_1.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_axe_2.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_axe_3.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_axe_4.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_axe_5.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_axe_6.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_axe_7.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+  //Flame Spear-------------------------------------------------------------------------------
+    {
+      "Path": "flame_spear_0.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_spear_1.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_spear_2.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_spear_3.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+  //Flame Bow-------------------------------------------------------------------------------
+    {
+      "Path": "flame_bow_0.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "flame_bow_1.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "flame_bow_2.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "flame_bow_3.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+  //Ice Sword-------------------------------------------------------------------------------
+    {
+      "Path": "ice_sword.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "ice_sword_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+  //Ice Axe-------------------------------------------------------------------------------
+    {
+      "Path": "ice_axe.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_axe_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+  //Ice Spear-------------------------------------------------------------------------------
+    {
+      "Path": "ice_spear.png",
+      "PivotX": 0.75,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_spear_darkC.png",
+      "PivotX": 0.75,
+      "PivotY": 0.3
+    },
+  //Ice Bow-------------------------------------------------------------------------------
+    {
+      "Path": "ice_bow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "ice_bow_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+  //Gold Items (5)-------------------------------------------------------------------------------
+    {
+      "Path": "gold_sword.png",
+      "PivotX": 0.5,
+      "PivotY": 0.1
+    },
+    {
+      "Path": "gold_axe.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "gold_hammer.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "gold_spear.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "gold_bow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+  //Bludgeons-------------------------------------------------------------------------------
+    {
+      "Path": "wood_bludgeon.png",
+      "PivotX": 0.7,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "stone_bludgeon.png",
+      "PivotX": 0.8,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "copper_bludgeon.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "bronze_bludgeon.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "silver_bludgeon.png",
+      "PivotX": 0.5,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "iron_bludgeon.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "steel_bludgeon.png",
+      "PivotX": 0.82,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "mythril_bludgeon.png",
+      "PivotX": 0.67,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "adamantine_bludgeon.png",
+      "PivotX": 0.86,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "flame_bludgeon_0.png",
+      "PivotX": 0.87,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "flame_bludgeon_1.png",
+      "PivotX": 0.87,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "flame_bludgeon_2.png",
+      "PivotX": 0.87,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "flame_bludgeon_3.png",
+      "PivotX": 0.87,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "flame_bludgeon_4.png",
+      "PivotX": 0.87,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "flame_bludgeon_5.png",
+      "PivotX": 0.87,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "ice_bludgeon.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_bludgeon_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+  //Halberds-------------------------------------------------------------------------------
+    {
+      "Path": "wood_halberd.png",
+      "PivotX": 0.65,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "stone_halberd.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "copper_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "bronze_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "silver_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "gold_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "iron_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "steel_halberd.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "mythril_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "adamantine_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "flame_halberd_0.png",
+      "PivotX": 0.55,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_halberd_1.png",
+      "PivotX": 0.55,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_halberd_2.png",
+      "PivotX": 0.55,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_halberd_3.png",
+      "PivotX": 0.55,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_halberd_4.png",
+      "PivotX": 0.55,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_halberd_5.png",
+      "PivotX": 0.55,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "ice_halberd.png",
+      "PivotX": 0.55,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_halberd_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+  //Daggers-------------------------------------------------------------------------------
+    {
+      "Path": "wood_dagger.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "stone_dagger.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "copper_dagger.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "bronze_dagger.png",
+      "PivotX": 0.06,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "silver_dagger.png",
+      "PivotX": 0.06,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "gold_dagger.png",
+      "PivotX": 0.5,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "iron_dagger.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "steel_dagger.png",
+      "PivotX": 0.2,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "mythril_dagger.png",
+      "PivotX": 0.5,
+      "PivotY": 0.05
+    },
+    {
+      "Path": "adamantine_dagger.png",
+      "PivotX": 0.1,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "flame_dagger_0.png",
+      "PivotX": 0.1,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "flame_dagger_1.png",
+      "PivotX": 0.1,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "flame_dagger_2.png",
+      "PivotX": 0.1,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "flame_dagger_3.png",
+      "PivotX": 0.1,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "ice_dagger.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_dagger_darkC.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+  //Crossbows-------------------------------------------------------------------------------
+    {
+      "Path": "wood_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "stone_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "copper_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "bronze_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "iron_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "steel_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "mythril_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "adamantine_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "ice_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "ice_crossbow_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+  //Slingshots
+    {
+      "Path": "silver_slingshot.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "mythril_slingshot.png",
+      "PivotX": 0.5,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "flame_slingshot_0.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "flame_slingshot_1.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "flame_slingshot_2.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_slingshot.png",
+      "PivotX": 0.5,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "ice_slingshot_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.25
+    },
+  //Special Items
+    {
+      "Path": "angle_ruler.png",
+      "PivotX": 0.8,
+      "PivotY": 0.1 
+    },
+    {
+      "Path": "scythe.png",
+      "PivotX": 0.6, //-X right, +x left
+      "PivotY": 0.2  //-y up, +y down
+    }
+  ]
+}

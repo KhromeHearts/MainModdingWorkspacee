@@ -1,0 +1,10 @@
+{
+    "ClanSettings": [
+        {
+            "Id": "ClanHybrids",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "JinchurikiBox:ClanHybridBoolChange"
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+﻿{
+  "name": "120 FPS",
+  "author": "Nikon && Jean-Antoine d'Anglerais",
+  "version": "2.0.0",
+  "description": "This mod increases maximum framerate to 120",
+  "iconPath": "icon.png",
+  "targetGameBuild": 677
+}

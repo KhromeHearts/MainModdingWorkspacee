@@ -1,0 +1,246 @@
+-------------Sasuke/Otutsuki Update------------------
+What is it?
+What does it do?
+How can i make it work?
+TEST AS SOON AS ITS FINISHED
+PUT THINGS IN AN UPDATE LOG AS SOON AS ITS FINISHED
+
+
+---------Sasuke Actor---------
+Spawns in with Kusanagi
+Units that kill sasuke will be given his Rinnegan
+------------------------------------
+
+Kimimaros shi
+Jugo's Sage Transformation
+
+Sasuke Rinnegan Trait
+Won't follow normal progression, only obtained by kill sasuke
+This Rinnegan will have the moves of Ems down to 3 tomoe, and Base Rinnegan
+2 new moves
+
+Kurama Avatar and Baryon Mode
+Sprite icons for kurama avatar and baryon mode
+Kurama Avatar ability
+Summon Kurama Chakra Avatar, recolored base kurama that will work with the unit and his kingdom to take down enemies
+Planetary Rasengan Bomb Ability, Units can throw a big rasengang bomb
+Tailed Beast Bomb Rasenshuriken(its in the name)
+
+Add Aura Effects for both baryon and kurama avatar
+
+---------Otutsuki Clan---------
+1. A Clan With Immense Power
+2. Units Born Into this clan will have a 30% chance to be born with "Six Paths Chakra",
+3. maybe tenseigan
+
+
+
+-------------------------------
+
+---------Rasenshuriken Rework---------
+This is how the move will now work. Units with the move will have a chance to gain a status called rasenshuriken
+This status will display a rasenshuriken animation above the units head and last 3 seconds.
+Using "action_finish" when the move finishes the unit will then throw the rasenshuriken projectile
+---------------------------------------------
+
+---------
+
+
+
+Chakra Genes
+
+Cursed Mark Trait
+
+Shadow Clone Jutsu
+
+
+Drunken Fist Ability for Taijutsu Master
+
+akatsuki members will have a move called gedo statue, it will be a status that activates when hit
+if the unit so happens to be figthing a jinchuriki and they have this status, theres a 10% the akatsuki members
+can steal the tailed beast chakra from the jinchuriki.
+
+Fighting Style Group 
+Fighting styles like:
+Gentle Fist
+
+Taijutsu 
+
+more
+
+
+---------Flying Raijin Ability---------
+1. Ability that can only be used by units with the Flying Thunder God Kunai and the Rasengan Jutsu
+2.
+
+
+----------------------------------------
+Make Sharingan Status Based, and add more/better visual effects
+
+------------------------------------------------------------------------ABILITIES------------------------------------------------------
+
+1 New Wood Release Move: Wood Pierce
+
+1 New Storm Release Move:
+
+1 New Yin Release Move:
+
+1 New Yin Yang Release Move:
+
+Abilities for Snake Sage and maybe also Frog Sage mode also summonings.
+
+possibly rework visual effects plus more icons:
+
+Dont forget all the abilities feddux made and itachi.
+------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------WEAPONS AND ARMOR------------------------------------------------------
+
+---------Akatsuki Cloak---------
+Units with the akatsuki trait automatically get this cloak, it will only gives minor buffs, thats all
+
+---------------------------------
+
+---------Seven Swords Of The Mist---------
+THIS IS STILL A MAYBE
+---------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+Rinnesharingan Rework:
+
+------------------------------------------------------------------------BUG FIXES/TWEAKS------------------------------------------------------
+Current Bug Fixes/Tweaks Needed:
+Set Indra and Asura Traits birth rate to 0 (DONE)
+Kamui should add to the blindness counter(done)
+Describe how infinite tsukyomi works in the locales(done)
+Make Infinite Tsukyomi A World Action Instead of an Attack Action
+Kurama And Ten tails should not be able to steal eyes or have armor or weapons or steal(half done, make srue they cant steal)
+Go through all status effects and rework stats
+Make it so that when units are given stuff, its a one time give. So if players remove it from the unit
+it is not automatically given back. Make it so that when sage mode is given to units, it doesn't switch when lets say
+the unit switches biomes.
+units with MEms kill a MS user they get EMS. Fix: make method check if unit has MEms to begin with.(done)
+Make it easier for units to get rinnegan
+Heavenly Ice chamber move, can be tweaked by using "loopWithBrush" to add snow effect for effectively.(done)
+make sixpathssenjutsu users fly using: actorasset.flying = true;
+I can tweak alot of actorassets like "immune_to_injuries" get creative with this and do it for things like
+nine tails jinchuriki, ten tails jinchuriki, slug sage shit, hashirama cells and more.
+Fix Rasengan Sprite placement
+Add A configurable setting to let players make clans spawn naturally, also allow players to pick the chances they spawn(1-100)
+Units that are jinchuriki has the tile "Jinchuriki" infront of it.
+Rename hagoromo chakra to Six Paths Chakra(done)
+Make Indra Chakra Trait Settle in anyone, not only uchihas.
+Make Asura Chakra Trait Settle in anyone
+Fix How Rasengan Works
+Make things give moe combat skill
+Make kurama And Juubi Spawn Icons smaller
+Make tailed beasts tameable under the influence of sharingans(done)
+Rework tailed beast bomb projectile and how it works, make range much longer, change the math of how it goes from one unit to the other(use god of war for that)
+Make Tailed beasts Level 1 and unable to level up, giev them their own custom trait for abilities and such
+Make a new Kingdom for tailed beasts and make them specifically hate everything good and humans(done)
+Edit the Roughe kingdom and make them unable to kill animals and stuff like that, make them enemies with tailedbeasts(done)
+Go through all status effects and put thought behind them(the little things)
+Go through all Jutsus and put thought behind them(the little thigns)
+For the unit that kills kurama, add a worldlogmessage saying "Kurama has been sealed inside (name)"(done)
+Tweak Nine tails progression requirements once more, specifically intial - v2
+Make ten tails jinchuriki, give the unit a transformation (obito transformation)
+Make Rinnegan Easier to obtain(add more methods/make methods easier)
+Make the progression from Sharingan 3 to EMS make more sense / easier 
+Make it so that Rinnegan creatures are in the same kingdom as unit who spawned them
+Make Kunai Sprites smaller
+Start intergrating stamina into traits more so units can utilize abilities
+Finishing warring states and shinobi flak jacket armor sprites
+Tweak Naraka Path, Make it a move that comes out the ground and stays there instead of following unit
+Make sage mode summoning betetr
+make it so that when units get mastered juubi they dont get theire hp restored
+Units with susanoos will always attack with a susanoo. What i mean is when a unit with susanoo attcks an attack action is activated which will lead to the current susannoo jutsu we have
+The move will take 4 chakra every use, and all susanoo statuses will now last 1 seconds to give off the attacking with susanoo effect.
+use actor.isSapient() to check if units are sapient which will decide if they get chakra and shi like that.
+Rework the 64 Palms Rotation shit move (kaiten) its still broken and does a lot of damage so redo the whole move or change it to something new.
+Make it so that units with hagoromo chakra trait have their first two kids recieve either asura and indra chakra, that part is done but make it so that after the first 2 none  them get the trait anymore.(done)
+check to see what "EquipItem" in shinobiitems  does, if nothing then delete.(done)-----------
+Configurable setting to remove opposites on clans so player can have multiple clans on one
+Move susanoo ribcage up by like 1(done)-----------
+add localization for the tabs.(done)-----------
+replace regen method in main.cs with worldactions attached to the traits. Can set the tick by using a special effect interval.
+Set animation_speed_based_on_walk_speed for tailed beasts to off(done)-----------
+Make sure Madara spawns with ghost of uchiha trait, and Hashirama Spawns with God Of shinobi trait(done)-----------
+Make it so that madara and hashirama can not level up(done)-----------
+make stealing sharigans configurable
+make clan births configurable, and make units able to spawn with more than 1 clan possible
+maybe make six paths sage mode a status
+use action_death for actors giving stuff.
+
+Fixed: when kurama is killed, multiple people gain the nine tails trait
+Fixed: when madara is killed, multiple people gain his stuff
+Fixed: when hashirama is killed, multiple people gain his stuff
+Fixed: when Ten tails is killed, multiple people gain his stuff
+Fixed: Tailed beast bomb glitches when it is shot. Now shoots straight, explosion is bigger and it can be deflected
+Fixed: Tailed beasts can no longer equip items
+Fixed: Units that have any sharingan without being an uchiha will have a status debuff
+Fixed: Kamui move constantly activating
+Fixed: Added Localization for tabs
+Tweak: Tomoe Sharingan is now status based
+Tweak: Eyes are now status based so that means they are only turned on during battle (NEVER MIND ILL ASK YALL)
+Rework: Byakugan now has 2 New Moves scrapped the old ones.
+Fixed: Rasengan, I KNOW IT WAS SHIT BEFORE, IT ACTUALLY WORKS PROPERLY Now
+Fixed: Chidori, IT DIDNT EVEN WORK BEFORE, FIXED IT
+Fixed: When units are auto favorited, and you un-favorite them it actually keeps them UNFAVORITED
+Fixed: When unit gains Sage Mode automatically and you remove it, it actually stays OFF
+Tweak: units cant easily get sage mode anymore, i know that shi was annoying :laughing emoji, haha:
+Tweak: stealing sharingan on kill is less rare (it was almost impossible before)
+Tweak: Units with Madaras Mangekyo can put tailed beasts under a genjutsu to basically work for them
+Tweak: Kamui now lasts 6 seconds, now has sound effects, and cooldown is now 60 seconds. now uses 100 chakra(previously 25)
+Tweak: Units can now be born with chakra ranging from 1-1000, to increase the chances of gifted units that can use cooler abilities.
+Tweak: Nine tails jinchuriki level progression system
+Added: Sakura, Naruto, Sasuke Actors to the game
+Tweak: Tailed beast icons
+Added: Every jutsu plays the jutsu sound and shows a hand sign
+Fixed: Baryon Mode
+Added: New Group Called Transformation Traits. This will include Eight Inner Gates, Jugo Transformation, Cursed Mark Transformation
+Added: Cursed Seal Of Heaven (cursed mark) Trait
+Added: Shikotsumyaku Trait and Kaguya Clan
+Change: Shinobi Jutsus - Shinobi Techniques
+Added: Orochimaru Actor, Kakashi Actor, Obito Actor, Hagoromo Actor and Itachi Actor
+Tweak: Cursed Mark can now be obtained in combat against Orochimaru
+Tweak: Nerfed damage done by unit actors(except tailed beasts) so they do not easily one shot normal humans
+Tweak: Removed Regeneration trait from all actors, except ones that actually have it
+Fixed: If players remove something from a unit, they do not get it back.
+Tweak: small chance senju can get wood release.
+
+
+TODO: REMAKE CHAKRA DRAIN COMPLETELY FROM SCRATCH, MAKE IT A METHOD. 
+TODO: Make Eight gates stamina based so that it drains stamina instead of chakra.
+
+Additions__________________________
+Naruto, Sakura, Itachi and Sasuke actors.
+
+
+
+APRIL22ND
+
+
+What does it do? How can it be obtained? Can it be better?(gameplay and lore wise)? Should it be changed?
+
+
+
+
+
+maybe hamura chakra
+
+
+Tweaked: Actors can no longer level up
+
+
+
+go through all files except shinobitraits.cs and just hammer at it, apply new stuff learnt from god of war box
+Look into sound effects and start addnig them for somethign, this will be like the last thing done(loo kat haydara kara mods for this)
+
+theres still a LOT more things. 
+I dont know how to describe this but i dont want the sage mode progression giver on a loop.
+The reason for this is because players have reached out to me saying that they want to remove sage mode
+from units but since its on a loop, it just gives it back to them.
+

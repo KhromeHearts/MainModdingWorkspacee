@@ -1,0 +1,10 @@
+{
+  "name": "Nerf Fire Damage",
+  "author": "RayTracerX",
+  "version": "1.0.0",
+  "description": "Drastically reduces burning damage.",
+  "iconPath": "icon.png",
+  "GUID": "RTX_NERF_FIRE_DAMAGE",
+  "Dependencies": [],
+  "OptionalDependencies": []
+}

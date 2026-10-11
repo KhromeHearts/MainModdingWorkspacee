@@ -1,0 +1,45 @@
+Patterns
+
+--Trait Patterns
+
+--Status Patterns
+            #region Example Status
+            StatusAsset example = new StatusAsset();
+            example.id = "example";
+            example.path_icon = "example";
+            example.duration = 60f;
+
+            example.animated = true;
+            example.texture = "fx_example";
+            example.sprite_list = SpriteTextureLoader.getSpriteList($"effects/{example.texture}", false);
+            example.material = material;
+
+            example.need_visual_render = true;
+            example.use_parent_rotation = false;
+            example.is_animated_in_pause = false;
+            example.can_be_flipped = true;
+            example.scale = 0.3f;
+            example.render_priority = 5;
+
+            example.base_stats.set("multiplier_damage", 0.01f);
+            example.base_stats.set("multiplier_health", 0.01f);
+            example.base_stats.set("multiplier_speed", 0.01f);
+            example.base_stats.set("critical_chance", 0.01f);
+            example.base_stats.set("critical_damage_multiplier", 0.01f);
+            example.base_stats.set("armor", 1f);
+
+            example.locale_id = "status_title_example";
+            example.locale_description = "status_description_example";
+
+            AssetManager.status.add(example);
+            #endregion
+			
+			
+			
+			world actions
+			
+			        public static bool example(BaseSimObject pTarget, WorldTile pTile = null)
+        {
+            if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
+			Actor a = pTarget.a;
+        }

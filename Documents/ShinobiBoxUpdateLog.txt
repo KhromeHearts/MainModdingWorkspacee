@@ -1,0 +1,35 @@
+ShinobiBox Expansion Update Patch Logs
+Fixed Uchiha and Hyuga Not Getting Their Eye Traits
+Minor Tweak To Sharingan Progression Requirements
+Minor Tweak To Rank Requirements
+Minor Tweak To Clan And Rank Stats
+Fixed Kage Title Not Showing Up
+
+
+One piece mod in new update
+Pirate King Trait
+Conqueror Haki
+
+IDEAS
+
+summoning jutsu for bears, dogs, and snakes, i figure a way you could do this is to add your own bear/snake/dogs to the  
+game with some kinda trait thats only on summoned creatures, and something to make them only attack things not in the village of the summoner 
+(Or only taget things the summoner is targetting). could expand upon this idea with stronger summons depending on the shinobi rank of the person, 
+for example, chunin can only summon medium sized stuff like wolfs and small bears or a python, jonin can summon dire wolves, 
+andocondas, giant bears, and kage+ could summon sage level summons like a bear, snake, or dog the size of gamabunta. 
+
+sage mode system, basically a group of traits that pertain to sage mode. a good way to do it would be to make it 
+a rare trait to be born with and make it so the unit has to be a high level to utilize it. 
+this is accurate to the show because in the show its shown sage mode is really difficult to use unless you have amazing chakra control 
+or you're gifted at it. you could have them start with a basic sage trait that has a small chance every month to evolve into 
+a random animal sage mode trait when said unit is at X level, you could add more to this by having a perfected sage mode and 
+imperfected sage mode, it would be more realistic if to the show if this is a one or the other type of thing because thats 
+just how sage mode is, you're either good at it or you're not. jiraiya knew probably thousands of jutsu and was the most decorated 
+ninja in terms of missions, and still could not master it.
+
+
+Sasuke update update log
+
+
+
+Units with madaras Ems can tame tailed beasts

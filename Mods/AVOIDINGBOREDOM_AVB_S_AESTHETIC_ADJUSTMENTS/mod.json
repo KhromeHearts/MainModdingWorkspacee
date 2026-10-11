@@ -1,0 +1,8 @@
+{
+  "name": "Avb's Aesthetic Adjustments",
+  "author": "AvoidingBoredom",
+  "version": "1.5",
+  "description": "Makes small changes to various visual elements",
+  "targetGameBuild": 719,
+  "iconPath": "icon.png"
+}

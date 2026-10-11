@@ -1,0 +1,67 @@
+Dojutsu bases
+health
+damage
+crit chance
+accuracy 
+chakra
+
+Modes
+Multipliers
+
+Scaling
+
+Low Level Stuff
+Damage: 1-45
+Multipliers: 1-15%
+
+Health: 100 - 500
+Multipliers: 10 - 25%
+
+Chakra: 10 - 200
+Multipliers: 1 - 20%
+-----------------------------------------
+Mid Level Stuff
+Damage: 45 - 135
+Multipliers: 15-45%
+
+Health: 500 - 1250
+Multipliers: 25% - 50%
+
+Chakra: 200 - 400
+Multipliers: 20% - 40%
+--------------------------------------
+High Level Stuff
+Damage: 135 - 300
+Multipliers: 45% - 75%
+
+Health: 1250 - 2500
+Multipliers: 50 - 80%
+
+Chakra: 400 - 1000
+Multipliers: 40% - 80%
+--------------------------------------
+Mythic Level Stuff
+Damage: 300+
+Multipliers: 75%+
+
+Health: 2500+
+Multipliers: 80%+
+
+Chakra: 1000+
+Multipliers: 80%+
+
+Tier 1: cursed_mark1 (The Injection of Power)This represents the partial activation where black markings spread across half the body. The ninja gains a sudden spike in adrenaline, but loses tactical control.Attack Speed & Speed Boost (+20%): The unit moves and strikes noticeably faster to overwhelm opponents early.Damage Increase (+15%): Base melee attacks hit harder.Accuracy Penalty (-10%): The chaotic nature of the chakra makes them reckless, missing shots or strikes slightly more often.The Cost: A minor health strain over time.  Tier 2: cursed_mark2 (The Physical Mutation)This is the classic transformation where their skin turns gray, hair grows out, and they take on demonic features (like Sasuke's wing-hands or Kimimaro's hardened state).Massive Armor & Defense Buff (+35%): Their skin hardens, making them take significantly less damage from standard physical attacks.Knockback Resistance: They become an immovable wall that cannot easily be pushed back by explosions or giant hits.Attack Speed Increase (+40%): They become a frenzied blur in melee combat.Diplomacy Drop (-50): If the unit is a king or a village leader, their corrupted mental state causes their city's loyalty to drop while active.The Cost: Modest health strain over time.  Tier 3: cursed_mark3 (The "Six Paths Mod" Overdrive)Since your file features a custom Tier 3 (cursed_mark3), this can represent a completely unhinged, fully mastered, or dangerously overloaded state customized for your mod's endgame.  Chakra Regeneration Surge: While active, it rapidly recharges their chakra pool, allowing them to spam high-tier jutsus without instantly triggering your chakra_exhaustion state.Life Steal / Vampirism (10% - 15%): To combat the fact that this tier drains 3 HP per tick, give them a life-steal mechanic. Every time they hit an enemy, they absorb a portion of that damage as health. This creates an amazing dynamic: if they stop fighting, the mark eats them alive; if they stay aggressive, they survive.  Madness / Berserk Trait Trigger: There is a small chance while in Tier 3 that they temporarily gain the WorldBox madness trait for a few seconds, causing them to blindly attack anyone nearby—allies, enemies, or structures—before snapping back to reality.Quick Summary Table for StatsStatusAttack / Move SpeedDamage / ArmorUnique Combat Traitcursed_mark1  +20% Speed+15% DamageMinor Accuracy Losscursed_mark2  +40% Speed+35% ArmorKnockback Immunity / Loyalty Penaltycursed_mark3  +60% Speed+50% DamageLife Steal & Chakra Regen SurgeDo you want these buffs to apply passively via the standard WorldBox StatusAsset modifier fields, or are you planning to write custom combat logic hooks for them?
+
+
+Test Ketsuryugan exploding human technique
+
+Test Noobchakra, prochakra and, hackerchakra; Do units obtain them?
+
+Test Sage Mode and its progression and showcase: 
+- See if units successfully start meditating when thresholds are met; Is it hard to reach naturally? Is the chances of meditation happening too rare?
+- What Happens when unit is hit mid meditating; Does it stop or does it count as a finish?
+- What happens if units meditating is disrupted 4 times; Do they meditate ever again?
+- What happens after unit is done meditating; Does worldlog show up? does shockwave show up? do they obtain the trait?
+- Do the sage mode statuses drain chakra?
+- Does Frog Sage Mode randomly us Frog Kumite; Is it often? Is the reach to short or too long? Does it display a custom attack effect?
+- D

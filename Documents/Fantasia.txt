@@ -1,0 +1,218 @@
+Quests, Titles, and Dungeons (God of LitRPG Box)
+Playing vanilla WorldBox is fun, but most of our control over the world is purely physical. We can spawn things, destroy things, and influence civilizations, but we cannot control the system that governs their growth.
+
+This mod suggestion would introduce a LitRPG-style system, allowing players to act as true gods of the system, not just the world itself.
+
+
+---
+
+Levels
+Introduce a leveling system for NPCs.
+
+Features could include:
+
+NPCs gain experience (XP) through actions.
+
+Players can decide the XP required for each level.
+
+Ability to set level caps for certain species or individuals.
+
+Optional control over how fast or slow leveling happens.
+
+
+This would allow civilizations to naturally grow stronger over time.
+
+
+---
+
+Stats
+Each time an NPC levels up, they gain 3 stat points that can be distributed automatically between common RPG attributes, such as:
+
+Strength
+
+Agility
+
+Endurance
+
+Intelligence
+
+Luck (optional)
+
+
+These stats would influence combat ability, survival, and productivity.
+
+
+---
+Quests
+Okay, this needed to be writen separate, this would allow the player (the god) to create quests for NPCs.
+
+Instead of writing quests manually, players would build them using preset quest components.
+
+Example:
+
+Quest: Rat Killer
+
+Objective:
+
+[Kill] – [10] – [Rats]
+
+
+Reward:
+
+50 XP
+
+
+Cooldown:
+
+1 year
+
+
+
+---
+
+Quest: Tend the Fields
+
+Objective:
+
+[Plant] – [50] – [Crops]
+
+
+Reward:
+
+10 XP
+
+
+Cooldown:
+
+10 years
+
+
+
+---
+
+Quests could be assigned to:
+
+The entire world
+
+A specific kingdom
+
+A specific individual
+
+
+This system would allow players to guide the development of their civilizations through effort-based progression.
+
+
+---
+
+Titles
+Titles would act as permanent achievements for NPCs.
+
+Unlike quests:
+
+Titles cannot be repeated
+
+They have specific requirements
+
+They grant special rewards
+
+
+Titles would appear as icons on characters, making it easy to identify exceptional individuals.
+
+Example:
+
+Title: Prodigy
+
+Requirements:
+
+Name: Optional (for specific individuals)
+
+Race: None
+
+Age: 1–10
+
+Level: 10
+
+Required Titles: None
+
+Required Traits: None
+
+
+Rewards:
+
+1000 XP
+
+Trait: Blessed
+
+
+
+---
+
+Title: Demigod
+
+Requirements:
+
+Level: 100
+
+Required Title: Prodigy
+
+
+Rewards:
+
+Multiple traits or large stat bonuses
+
+
+
+---
+
+Dungeons
+Introduce special locations where NPCs can fight monsters and gain XP.
+
+Possible dungeon types:
+
+Classic dungeons
+
+Towers (similar to manhwa-style tower systems)
+
+Random portals that spawn monsters
+
+Periodic world invasions
+
+
+Players could control:
+
+Where dungeons spawn
+
+How often they appear
+
+The difficulty and monster types
+
+
+These areas would act as major sources of experience and adventure for NPCs.
+
+
+---
+
+Conclusion
+
+This mod would allow players to control not only the world, but also the system behind it.
+
+Instead of just shaping geography and civilizations, players could:
+
+Create progression systems
+
+Assign quests
+
+Reward exceptional individuals
+
+Generate challenges like dungeons
+
+(Part 2 of the suggestion) 
+
+
+Rebirth Trait
+Description: One day, you shall walk the earth once again.
+Units that die with this trait can randomly come back through the revive altar
+
+Building
+Revive Altar:
+Units that pass away with the Rebirth trait will be able to be awakened again through this altar

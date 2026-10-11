@@ -1,0 +1,28 @@
+______________________WORLDBOX MODS TODO____________________
+
+1. Finish Nuclear Fallout Mod for the worldbox Mod Jam
+
+2. Start JojoBox, try to implement Star platinum, with its idles, walk and attack animations.
+
+3. Start MoreAges, this mod will most likely be vibecoded, will try to finish it in 1 day
+
+4. Start Fully commiting to Shinobibox Sasuke Update. ~Friday(2 weeks)
+
+5. Once sasuke update is rolled out, GOWB V4 update, will be started.
+
+
+C# Daily Challenge
+
+day 4 - Create Save File system and add sound effects OR Create Flappy Bird OR Grind out RoadMap OR Grind out Exercism 
+
+day 5 - Create a shooting System 
+
+day 6 - create inventory system, units can switch weapons
+
+day 7 - create shop system, players can buy new weapons with points/cash earned
+
+day 8 - c# pro you deserve this break
+
+day 9 - Start Branching out or practice c# with worldbox mods
+
+day 10 - possibly look into terraria modding

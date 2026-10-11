@@ -1,0 +1,10 @@
+{
+  "name": "Main Character Mod",
+  "author": "RayTracerX",
+  "version": "1.0.0",
+  "description": "Adds a survival experience to worldbox!",
+  "iconPath": "icon.png",
+  "GUID": "RTX_MCMod",
+  "Dependencies": [],
+  "OptionalDependencies": []
+}

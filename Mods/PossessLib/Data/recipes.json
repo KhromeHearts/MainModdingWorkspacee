@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "_comment": "auto_from_game_items: every unlocked EquipmentAsset in auto_groups gets a recipe from the game's own item cost (cost_resource_id_1/2 and cost_gold). Results are rolled with the game's item generator (modifiers included). 'recipes' adds or replaces recipes by id; 'disabled' removes recipes by id (auto recipe ids are 'auto:<item id>'). near_buildings: building asset ids, or prefixes ending with '*', that must be within station_radius tiles.",
+  "auto_from_game_items": true,
+  "auto_groups": ["helmet", "armor", "boots", "ring", "amulet", "sword", "axe", "hammer", "spear", "bow"],
+  "auto_require_unlocked": true,
+  "auto_cost_multiplier": 1.0,
+  "auto_charge_money": true,
+  "auto_near_buildings": null,
+  "disabled": [],
+  "recipes": [
+    { "id": "possesslib:wooden_stick", "result_item": "stick_wood", "resources": { "wood": 3 }, "category": "weapon" },
+    { "id": "possesslib:bread", "result_resource": "bread", "count": 1, "resources": { "wheat": 2 }, "category": "misc" }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+    "QoL": "辅助功能",
+    "Optimizations": "优化功能",
+    "Time Stop Projectiles": "真正的暂停",
+    "Time Stop Projectiles Description": "游戏暂停时将弹射物等一起暂停",
+    "Disable Analytics": "禁用分析",
+    "Disable Analytics Description": "离开游戏时不自动发送分析给开发者",
+    "Display FPS Counter": "显示帧数(FPS)",
+    "Display FPS Counter Description": "在屏幕左上方角显示一个帧率计数",
+    "Max Frame Rate": "游戏帧数上限",
+    "Max Frame Rate Description": "用于调整最大帧数上限",
+    "Lazy Zone Camera": "区块懒加载",
+    "Lazy Zone Camera Description": "禁止反复加载可视区域的区块，减少加载负担",
+    "Bug Fixes": "Bug修复",
+    "Hide Welcome Window": "隐藏欢迎窗口",
+    "Hide Welcome Window Description": "自动隐藏游戏启动时出现的“欢迎回来”窗口",
+    "Developer": "开发者",
+    "Developer Mode": "上帝模式",
+    "Developer Mode Description": "在右上角显示上帝模式按钮\n重启后生效"
+}

@@ -1,0 +1,35 @@
+Better WorldBox, Bettermc but worldbox, adds alot of Q.O.L features (BASICALLY LOOK AT THE ONE BETTER WORLDBOX MOD IN DISCORD)
+-able to see dead favourites
+-Merge Kingdoms
+-Merge Villages
+-Leaderboard that ranks stats of units for damage, Health, and more 
+-Able to change age of unit live
+-gender changer dropper
+-job changer dropper
+-Units can deflect projectiles launching them back to sender
+-Units have like an ai where if they go near a camp fire, they can regen faster
+
+THIS MOD WILL INCLUDE:
+
+MORE AGES,
+
+Dead Favorites
+When a favorite dies it logs there info and is basically accessible through a window, where you can
+click on it an spawn it again,
+
+Immersive Trading
+Adds ui that allows kingdoms to trade with each other.
+Possibly wandering traders that wander to other kingdoms to make trades
+
+RTX's World Events
+Solar Eclipses
+Lunar Eclipses 
+Blizzards
+Windy Day(terraria, partnered with my Survival box mod there will a boss)
+
+New Invasion: Like goblin invasion, Nightmare invasion, Real human invasion.
+
+New food, Ores, Resources
+Different ore meteors
+
+There will be a button or trait that a king can get called honorable leader. When they die, the village will either build a nice grave stone or a nice statue of them

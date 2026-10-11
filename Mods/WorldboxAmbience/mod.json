@@ -1,0 +1,10 @@
+{
+  "name": "Worldbox Ambience",
+  "author": "RayTracerX",
+  "version": "1.0.0",
+  "description": "Adds ambience to worldbox",
+  "iconPath": "icon.png",
+  "GUID": "RTX_AMBIENCE",
+  "Dependencies": [],
+  "OptionalDependencies": []
+}

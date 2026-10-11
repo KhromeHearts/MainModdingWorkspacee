@@ -1,0 +1,11 @@
+{
+  "name": "Visible Armors",
+  "author": "RayTracerX",
+  "version": "0.1.0",
+  "description": "Equipped helmets, armor, boots, cloaks and amulets are drawn on the unit's body, Terraria style. The look follows the item's material.",
+  "iconPath": "icon.png",
+  "GUID": "RAYTRACERX_VISIBLEARMORS",
+  "Dependencies": [],
+  "OptionalDependencies": [],
+  "IncompatibleWith": []
+}

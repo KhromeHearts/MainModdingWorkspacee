@@ -1,0 +1,15 @@
+{
+  "VisibleArmors": [
+    { "Id": "va_enabled", "Type": "SWITCH", "BoolVal": true, "Callback": "VisibleArmors.Core.VAConfig:SetEnabled" },
+    { "Id": "va_show_helmet", "Type": "SWITCH", "BoolVal": true, "Callback": "VisibleArmors.Core.VAConfig:SetShowHelmet" },
+    { "Id": "va_show_armor", "Type": "SWITCH", "BoolVal": true, "Callback": "VisibleArmors.Core.VAConfig:SetShowArmor" },
+    { "Id": "va_show_boots", "Type": "SWITCH", "BoolVal": true, "Callback": "VisibleArmors.Core.VAConfig:SetShowBoots" },
+    { "Id": "va_show_cape", "Type": "SWITCH", "BoolVal": true, "Callback": "VisibleArmors.Core.VAConfig:SetShowCape" },
+    { "Id": "va_show_amulet", "Type": "SWITCH", "BoolVal": true, "Callback": "VisibleArmors.Core.VAConfig:SetShowAmulet" },
+    { "Id": "va_ui_avatars", "Type": "SWITCH", "BoolVal": true, "Callback": "VisibleArmors.Core.VAConfig:SetUiAvatars" },
+    { "Id": "va_other_species", "Type": "SWITCH", "BoolVal": true, "Callback": "VisibleArmors.Core.VAConfig:SetOtherSpecies" },
+    { "Id": "va_max_zoom", "Type": "SLIDER", "FloatVal": 80.0, "MinFloatVal": 10.0, "MaxFloatVal": 400.0, "Callback": "VisibleArmors.Core.VAConfig:SetMaxZoom" },
+    { "Id": "va_cache_pages", "Type": "INT_SLIDER", "IntVal": 8, "MinIntVal": 2, "MaxIntVal": 64, "Callback": "VisibleArmors.Core.VAConfig:SetCachePages" },
+    { "Id": "va_debug", "Type": "SWITCH", "BoolVal": false, "Callback": "VisibleArmors.Core.VAConfig:SetDebug" }
+  ]
+}

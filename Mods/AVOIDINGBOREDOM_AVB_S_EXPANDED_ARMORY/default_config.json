@@ -1,0 +1,277 @@
+{
+  "aea_config": [
+    {
+      "Id": "config_rebalanceVanillaWeapons",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconOptions1",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:RebalanceVanillaWeapons"
+    },
+    {
+      "Id": "config_changeRaritySystem",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconOptions3",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:ChangeRaritySystem"
+    },
+    {
+      "Id": "config_changeItemSprites",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconOptions2",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:ChangeItemSprites"
+    },
+    {
+      "Id": "config_spriteColorConsistencyIce",
+      "Type": "SLIDER",
+      "FloatVal": 0,
+      "IconPath": "ui/Icons/iceslider",
+      "Callback": "avbsexpandedarmory.ConfigsAEA:EvalSCCIConfig"
+    },
+    {
+      "Id": "config_nerfSpecialModifiers",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/specialModifierChange",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:RebalanceSpecialModifiers"
+    },
+    {
+      "Id": "config_creatureDefaultWeapons",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/creatureDefaultWeapons",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckCreatureDefaultWeapons"
+    },
+    {
+      "Id": "config_royalGold",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconKings_Gold",
+      "BoolVal": false,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckRoyalGold"
+    },
+    {
+      "Id": "config_abundanceCM",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/abundanceCM",
+      "BoolVal": false,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckAbundanceCM"
+    },
+    {
+      "Id": "config_ageCM",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/ageCM",
+      "BoolVal": false,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckAgeCM"
+    },
+    {
+      "Id": "config_loverDefaultsCM",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/loverDefaults",
+      "BoolVal": false,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckLoverDefaults"
+    },
+    {
+      "Id": "config_bronzeIronSteelAmuRingFix",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/bronzeironsteelamuringfix",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:FixBronzeIronSteelAmuRingRecipeFix"
+    },
+    {
+      "Id": "config_showSomeHiddenStats",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/icon_tech_steal_resources",
+      "BoolVal": false,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:ShowSomeHiddenStats"
+    },
+    {
+      "Id": "config_showSpecialDescription",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/icon_tooltip",
+      "BoolVal": false,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:ShowSpecialDescription"
+    },
+    {
+      "Id": "config_customCategoryColor",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconEquipmentEditor2_Colors",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckCategoryColor"
+    }
+  ],
+  "crafting_toggles": [
+    //Tiers
+    {
+      "Id": "config_flameTierCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconReforge_Red",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckFlameTierCraft"
+    },
+    {
+      "Id": "config_iceTierCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconReforge_Blue",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckIceTierCraft"
+    },
+    {
+      "Id": "config_goldTierCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconReforge_Yellow",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckGoldTierCraft"
+    },
+    //Basic Gear----------------------------------------------------
+    {
+      "Id": "config_helmetCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconHelmetLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckHelmetCraft"
+    },
+    {
+      "Id": "config_headbandCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconHeadbandLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckHeadbandCraft"
+    },
+    {
+      "Id": "config_armorCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconArmorLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckArmorCraft"
+    },
+    {
+      "Id": "config_cloakCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconCloakLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckCloakCraft"
+    },
+    {
+      "Id": "config_bootCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconBootLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckBootCraft"
+    },
+    {
+      "Id": "config_highcleatCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconHighcleatLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckHighcleatCraft"
+    },
+    {
+      "Id": "config_amuletCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconAmuletLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckAmuletCraft"
+    },
+    {
+      "Id": "config_braceletCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconBraceletLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckBraceletCraft"
+    },
+    {
+      "Id": "config_ringCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconRingLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckRingCraft"
+    },
+    {
+      "Id": "config_earringCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconEarringLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckEarringCraft"
+    },
+    //Basic Melee Weapons----------------------------------------------------
+    {
+      "Id": "config_bludgeonCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconBludgeonLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckBludgeonCraft"
+    },
+    {
+      "Id": "config_daggerCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconDaggerLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckDaggerCraft"
+    },
+    {
+      "Id": "config_halberdCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconHalberdLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckHalberdCraft"
+    },
+    //Basic Ranged Weapons----------------------------------------------------
+    {
+      "Id": "config_crossbowCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconCrossbowLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckCrossbowCraft"
+    },
+    {
+      "Id": "config_slingshotCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconSlingshotLovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckSlingshotCraft"
+    },
+    //Original Basic Weapons----------------------------------------------------
+    {
+      "Id": "config_swordCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/culture_trait_sword_lovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckSwordCraft"
+    },
+    {
+      "Id": "config_axeCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/culture_trait_axe_lovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckAxeCraft"
+    },
+    {
+      "Id": "config_hammerCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/culture_trait_hammer_lovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckHammerCraft"
+    },
+    {
+      "Id": "config_spearCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/culture_trait_spear_lovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckSpearCraft"
+    },
+    {
+      "Id": "config_bowCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/culture_trait_bow_lovers",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckBowCraft"
+    },
+    {
+      "Id": "config_stickCraft",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/icon_stick_wood",
+      "BoolVal": true,
+      "Callback": "avbsexpandedarmory.ConfigsAEA:CheckStickCraft"
+    }
+  ]
+}

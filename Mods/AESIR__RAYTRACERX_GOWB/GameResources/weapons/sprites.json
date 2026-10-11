@@ -1,0 +1,69 @@
+{
+  "Default": {
+    "PivotX": 0.5,
+    "PivotY": 0.2,
+    "Z": 2.0,
+    "RectX": 0,
+    "RectY": 0,
+    "RectZ": 0,
+    "PixelsPerUnit": 1
+  },
+  "Specific": [
+    {
+      "Path": "weapon_Draupnir.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2,
+      "RectX": 0,
+      "RectY": 0,
+      "PixelsPerUnit": 1.2
+    },
+    {
+      "Path": "weapon_Gungnir.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2,
+      "RectX": 0,
+      "RectY": 0,
+      "PixelsPerUnit": 1.2
+    },
+    {
+      "Path": "weapon_Leviathan.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2,
+      "RectX": 0,
+      "RectY": 0,
+      "PixelsPerUnit": 1.1
+    },
+    {
+      "Path": "weapon_Mjolnir.png",
+      "PivotX": 0.5,
+      "PivotY": 0.24,
+      "RectX": 0,
+      "RectY": 0,
+      "PixelsPerUnit": 1.5
+    },
+    {
+    "Path": "weapon_talon.png",
+    "PivotX": 0.5,
+    "PivotY": 0.5,
+    "RectX": 0,
+    "RectY": 0,
+    "PixelsPerUnit": 1.0
+    },
+    {
+      "Path": "weapon_VanirGoddessSword.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2,
+      "RectX": 0,
+      "RectY": 0,
+      "PixelsPerUnit": 1.1
+    },
+    {
+      "Path": "weapon_ChaosBlades.png",
+      "PivotX": 0.15,
+      "PivotY": 0.4,
+      "RectX": 0,
+      "RectY": 0,
+      "PixelsPerUnit": 1.1
+    }
+  ]
+}

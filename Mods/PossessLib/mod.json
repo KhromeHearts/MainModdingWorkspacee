@@ -1,0 +1,11 @@
+{
+  "name": "PossessLib",
+  "author": "RayTracerX",
+  "version": "0.1.0",
+  "description": "Play the unit you possess: Terraria-style hotbar, inventory, equipment and HUD. Library for other mods.",
+  "iconPath": "icon.png",
+  "GUID": "RAYTRACERX_POSSESSLIB",
+  "Dependencies": [],
+  "OptionalDependencies": [],
+  "IncompatibleWith": []
+}

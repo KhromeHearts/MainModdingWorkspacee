@@ -1,0 +1,59 @@
+# So Far
+- 4 Clans: Otsutsuki, Aburame, Chinoike, and Kaguya Clans.
+- 3 Dojutsu: Gold Byakugan, Tenseigan, and Sasuke's Rinnegan
+- 1 Special Chakra: Hamura's Chakra
+- 1 Transformation Traits: Cursed Mark
+- More Traits: Shikotsumyaku, Shadow Clone Jutsu
+- Added 8 New Actors: Sasuke, Itachi, Naruto, Kakashi, Obito,
+  Hagoromo, Orochimaru, Sakura
+- Fixed Baryon mode
+- Sound Effects for different stuff ex. sharingan sound, jutsu use sound|
+- Units can't get stunned and fire damage is nerfed by alot
+- Taijutsu master trait tweaked
+- Removed six paths sage mode
+- Lots of little tweaks to existing traits
+- Many new icons
+- Tenseigan Chakra Mode
+- 2 More Clans: Chinoike Clan, Aburame Clan
+
+
+
+-
+
+SEPTEMBER 27TH
+-Fixed: Unit Trait Spawn Rates
+
+
+
+
+# Whats Left
+- Kurama in KCM Mode, KCM users can summon kurama
+
+- More Abilities for KCM mode and Sage Modes
+
+- 3 More Actors: Kaguya Otsutsuki Ten Tails Jinchuriki Madara and Hamura Otsutsuki
+- New Abilities for Yin, Yang, Storm, Wood, Earth and Lightning release (already done just need testing)
+- Sealnig system for tailed beast, I want them to be able to escape break out of a weakened unit
+- GENJUTSU USERS/SYSTEM 
+- ITACHI SUSANOO VARIANT OF THE MANGEKYO
+- FLASH STEP TECHNIQUE
+- REVAMP WHAT RANKS DO FOR UNITS
+
+# it sounds like a lot but we are very close
+## ITS THE DAMN SPRITES and all the previous bugs, made me redo alot of the code because i didnt
+really know what I was doing before :))))
+
+
+#Last few days
+- Fixed up the chakra system, causes less lag, saves when game is closed, 
+actually drains when different modes are active.
+- Animals can no longer use jutsus
+- Added Aburame Clan, they can summon insects to fight along side.
+- Added a ketsuryugan ability, "Exploding Human Technique", if they touch a unit, theres a chance to mark them and after a while the mark 
+could explode the unit.
+- made base mangekyo status based
+- Removed "imperfect sage mode statuses" noone probably noticed them anyway lol
+- Balanced stats for the 100th time
+
+
+

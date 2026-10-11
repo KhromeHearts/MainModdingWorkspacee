@@ -1,0 +1,22 @@
+{
+  "PossessLib": [
+    { "Id": "pl_key_inventory", "Type": "TEXT", "TextVal": "I", "Callback": "PossessLib.Core.PLConfig:SetKeyInventory" },
+    { "Id": "pl_key_drop", "Type": "TEXT", "TextVal": "X", "Callback": "PossessLib.Core.PLConfig:SetKeyDrop" },
+    { "Id": "pl_scroll_hotbar", "Type": "SWITCH", "BoolVal": true, "Callback": "PossessLib.Core.PLConfig:SetScrollHotbar" },
+    { "Id": "pl_ui_scale", "Type": "SLIDER", "FloatVal": 1.0, "MinFloatVal": 0.5, "MaxFloatVal": 2.0, "Callback": "PossessLib.Core.PLConfig:SetUiScale" },
+    { "Id": "pl_hotbar_slots", "Type": "INT_SLIDER", "IntVal": 10, "MinIntVal": 6, "MaxIntVal": 10, "Callback": "PossessLib.Core.PLConfig:SetHotbarSlots" },
+    { "Id": "pl_inventory_rows", "Type": "INT_SLIDER", "IntVal": 3, "MinIntVal": 1, "MaxIntVal": 5, "Callback": "PossessLib.Core.PLConfig:SetInventoryRows" },
+    { "Id": "pl_stack_size", "Type": "INT_SLIDER", "IntVal": 99, "MinIntVal": 10, "MaxIntVal": 999, "Callback": "PossessLib.Core.PLConfig:SetStackSize" },
+    { "Id": "pl_possess_zoom", "Type": "SLIDER", "FloatVal": 11.0, "MinFloatVal": 10.0, "MaxFloatVal": 60.0, "Callback": "PossessLib.Core.PLConfig:SetPossessZoom" },
+    { "Id": "pl_restore_zoom", "Type": "SWITCH", "BoolVal": true, "Callback": "PossessLib.Core.PLConfig:SetRestoreZoom" },
+    { "Id": "pl_hide_native_tips", "Type": "SWITCH", "BoolVal": true, "Callback": "PossessLib.Core.PLConfig:SetHideNativeTips" },
+    { "Id": "pl_enable_eating", "Type": "SWITCH", "BoolVal": true, "Callback": "PossessLib.Core.PLConfig:SetEnableEating" },
+    { "Id": "pl_enable_gathering", "Type": "SWITCH", "BoolVal": true, "Callback": "PossessLib.Core.PLConfig:SetEnableGathering" },
+    { "Id": "pl_enable_crafting", "Type": "SWITCH", "BoolVal": true, "Callback": "PossessLib.Core.PLConfig:SetEnableCrafting" },
+    { "Id": "pl_enable_ground_items", "Type": "SWITCH", "BoolVal": true, "Callback": "PossessLib.Core.PLConfig:SetEnableGroundItems" },
+    { "Id": "pl_ground_despawn_minutes", "Type": "SLIDER", "FloatVal": 10.0, "MinFloatVal": 1.0, "MaxFloatVal": 120.0, "Callback": "PossessLib.Core.PLConfig:SetGroundDespawn" },
+    { "Id": "pl_drop_on_death", "Type": "SWITCH", "BoolVal": true, "Callback": "PossessLib.Core.PLConfig:SetDropOnDeath" },
+    { "Id": "pl_ai_weapon_switch", "Type": "SWITCH", "BoolVal": true, "Callback": "PossessLib.Core.PLConfig:SetAiWeaponSwitch" },
+    { "Id": "pl_debug", "Type": "SWITCH", "BoolVal": false, "Callback": "PossessLib.Core.PLConfig:SetDebug" }
+  ]
+}

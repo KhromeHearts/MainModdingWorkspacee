@@ -1,0 +1,22 @@
+{
+  "mod_config_title": [
+    {
+      "Id": "config_enable_natural_spawns",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "GOWB.GOWConfig:SetNaturalSpawns"
+    },
+    {
+      "Id": "config_unlock_locked_traits",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "GOWB.GOWConfig:SetUnlockLockedTraits"
+    },
+    {
+      "Id": "config_enable_trait_opposites",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "GOWB.GOWConfig:SetTraitOpposites"
+    }
+  ]
+}

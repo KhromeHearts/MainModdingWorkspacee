@@ -1,0 +1,295 @@
+ShinobiBox: Reborn - Design Review (player + designer view)
+============================================================
+Written 2026-10-09 from a full read of the mod's code (Traits, Status, Jutsu Library, Progressions, Chakra System, Events, Actors, Items, Kingdoms, Tab, Main loop) and a skim of JinchurikiBox Reanimated for comparison.
+
+HOW TO READ THIS
+- I READ the code. I did NOT play the mod. Anything marked [VERIFY] is something the code strongly suggests but I have not seen happen in the game. Spawn a unit and check.
+- File names and line numbers are from the copy in Mods/ShinobiBox (version 3.0.0). Lines can drift if you edit.
+- Verdicts: KEEP (good as is), FINISH (worth completing), FIX (broken, easy), CUT (remove or hide), LATER (not now).
+
+
+=====================================================================
+1. THE ONE-PARAGRAPH VERDICT
+=====================================================================
+ShinobiBox has a LOT of content and a strong core idea (status-based eyes, chakra costs, rank costs, kill-to-claim rewards). The reason it feels like a "nothing burger" is not the amount of content. It is three things:
+ (a) A number of features are silently DEAD because of typos in trait IDs, a bracket in the wrong place, or commented-out code. The game never shows an error; the feature just never happens.
+ (b) Abilities almost never fire, because every ability needs a small random roll AND a global 7-second cooldown AND chakra. A player watching a world sees units with Rinnegan do almost nothing.
+ (c) Many traits are only stat sheets. They have a name, an icon and numbers, but no behaviour the player can notice.
+Fixing (a) is cheap and will make the mod feel much bigger right away. (b) and (c) are the real design work.
+
+
+=====================================================================
+2. CONFIRMED BUGS (features that are dead or broken)
+=====================================================================
+Ordered by how much they hurt the experience.
+
+B1. INDRA / ASURA / HAGOROMO / HAMURA CHAKRA CHAIN IS DEAD  (SEVERE)
+  The traits are REGISTERED as:   05_hagoromo_chakra, 06_hamura_chakra, 07_indra_chakra, 08_asura_chakra   (ShinobiTraits.cs ~1041, 1065, 1090, 1117)
+  But most of the code looks for: hagoromo_chakra, hamura_chakra, indra_chakra, asura_chakra   (no number prefix)
+  Where it breaks (the game quietly returns false for an unknown id):
+   - ShinobiEvents.cs 46-60: Hagoromo's children never receive Indra/Asura chakra.
+   - ShinobiEvents.cs 76-84 and 398-405: Otsutsuki babies never get Hagoromo/Hamura chakra.
+   - ShinobiProgression.cs 70-72, 137, 203, 256-259: Rinnegan awakening via Indra/Asura/Hagoromo, the Six Paths Senjutsu status, auto-favorite for these traits.
+   - ChakraSystem.cs 280: Indra's "cheaper abilities" bonus never applies.
+   - ShinobiTraits.cs 1924 (opposites) and 1996-2001 (reincarnation / TransmigrateAction): never matches.
+   - ShinobiActors.cs 38, 41, 933, 1219: Hagoromo and Juubi actors fail to receive hagoromo_chakra.
+  Only a few places use the right id (Sasuke actor line 361, Tenseigan check in ByakuganProgression.cs).
+  Fix: define the trait ids as constants in ONE file and use the constants everywhere (see section 5).
+
+B2. MANGEKYO ABILITIES ARE DECIDED BY A COIN FLIP WHEN THE MOD LOADS  (SEVERE)  ShinobiTraits.cs 539-558
+  `if (Randy.randomChance(0.50f))` runs ONCE while the trait is being registered. About half of the time you launch the game, Mangekyo gets Amaterasu, Susanoo and Kamui. The other half it gets NOTHING but stats (the "else" branch only logs "itachi mangekyo was picked").
+  [VERIFY] Launch the game 4-5 times and check whether Mangekyo units ever use Amaterasu.
+  Fix: remove the coin flip. Give Mangekyo its abilities every time. If you want the Itachi vs Madara variants, make them separate traits (like Madara's EMS) or choose per unit at awakening time, not at load.
+
+B3. CLAN BIRTH RULES ARE NESTED INSIDE THE OTSUTSUKI CHECK  (HIGH)  ShinobiEvents.cs 88-159
+  The Chinoike -> Ketsuryugan, Hyuga -> Byakugan, Lee -> Eight Inner Gates, Kaguya -> Shikotsumyaku and Uchiha -> Sharingan rules are all written INSIDE `if (otsutsuki_clan)`. Clans are mutually exclusive (opposites), so an Otsutsuki baby can never have these clans and the rules never run. Also every Otsutsuki baby always gets some eye (the final else gives Byakugan 100%).
+  Fix: close the Otsutsuki block before the other clan rules. Also check line 109, which mixes `||` and `&&` without brackets.
+
+B4. INFINITE TSUKUYOMI CAN BASICALLY NEVER TRIGGER  (HIGH)  JutsuLibrary.cs 246
+  It requires BOTH `yin_release` AND `yinyang_release`. But YinYangFuse (ShinobiTraits.cs 1863-1875) REMOVES yin and yang when it creates yinyang. A unit can never have both. Your own notes say it should work with yin OR yin-yang.
+  Fix: change `||` logic to "has yin or yinyang". Also the final roll is 1% per attack, 400 chakra, once per unit, which is extremely rare for a headline ability.
+
+B5. ALL THE SAGE MODES (FROG, SLUG, SNAKE, WOOD) DO NOTHING ACTIVE  (HIGH)
+  - Progressions/SageProgression.cs is entirely commented out.
+  - The traits' activation lines are commented (`//frogSage.action_get_hit = ...SenjutsuStatus`, same for snake).
+  - `status_frog_sage`, `status_slug_sage` and `status_snake_sage` exist but NOTHING in the active code applies them.
+  - `status_meditating` is defined, but only SageProgression (commented) used it.
+  - `FrogSummonAction` exists but is never connected to anything.
+  - The "Sage Chakra" bar is displayed in the unit window, but nothing ever spends sage chakra.
+  - Snake Sage trait has no stats and no abilities.
+  - Slug Sage has one tiny proc (7% when hit -> 100 Sealings).
+  - Frog Sage is a stat sheet (+15% damage/health, +40% crit).
+  - Wood Sage is a stat sheet.
+  Result: the "rework" in the notes is marked done, but players get only stat boosts. The sage chain is the biggest "feature that exists on paper".
+
+B6. LEE CLAN HAS NO ABILITY AND NO WAY TO GET ITS TRAITS  (MEDIUM)
+  `ClanProgression.Lee` exists (gives Taijutsu Master and a chance at Eight Inner Gates) but is never attached to the Lee trait. Combined with B3, Lee clan units just have flat stats and -99% chakra.
+
+B7. SIX PATHS TECHNIQUE: ASURA PATH IS UNREACHABLE  (MEDIUM)  JutsuLibrary.cs 364-373
+  `if (roll < 0.35f) human...; if (roll < 0.10f) asura...` The second check can never be true because the first already caught everything under 0.35. So Rinnegan users only ever use the Human Path or Animal Path. (Deva and Naraka are separate.)
+  Fix: order the checks (roll < 0.10 -> Asura first) or use cumulative ranges.
+
+B8. CHAKRA EXHAUSTION CAN LOCK A UNIT FOR A VERY LONG TIME  (MEDIUM, [VERIFY])  Main.cs 68-81, ShinobiStatus.cs 217-235
+  Rule 1: if chakra <= 15% of max, add Exhaustion (10-12 s).
+  Rule 2: chakra only regenerates when the unit does NOT have Exhaustion.
+  When Exhaustion ends, chakra is still <= 15%, so it is applied again immediately. Only one 0.1 s regen tick happens per cycle. Nothing refills chakra at the end of Exhaustion (your notes say that was planned "not done").
+  Exhaustion also gives -30% speed, -20% damage, -40% attack speed and stops movement on receive.
+  Test: spawn a unit with Mangekyo, force it to spend chakra, then watch how long it stays exhausted. If it is a trap, regen should continue (slower) during exhaustion, or exhaustion should end by refilling to a set % (e.g. 35%).
+
+B9. RANK AUTO-PROGRESSION USES THE WRONG CASE FOR NATURES  (LOW)  Progressions/RankProgression.cs
+  It checks `FireN`, `WaterN`, `EarthN`, `WindN`, `LightningN`, but the traits are `fireN`, `waterN`, `earthN`, `windN`, `lightningN`. It also checks `03_great_chakra_reserve` but the trait is `03_greater_chakra_reserve`. So nature users and "greater" chakra users are not counted as "gifted" when the game decides who becomes an Academy Student.
+
+B10. A FEW ACTOR LOADOUT IDS DON'T MATCH  (LOW)  ShinobiActors.cs 31, 34-36
+  `08ghost_of_uchiha` (real: 08rank_ghost_of_uchiha), `shadow_cloneJ` (real: shadow_clonej, case matters).
+
+B11. AKIMICHI PAYS CHAKRA BEFORE CHECKING IF IT CAN TRANSFORM  (LOW)  JutsuLibrary.cs 1265-1290
+  Chakra is consumed first; if the unit is already grown or shrunk the function returns false, but the chakra is already gone.
+
+B12. TAIJUTSU ARMOR BREAK PERMANENTLY CRIPPLES UNITS  (DESIGN RISK)  JutsuLibrary.cs 969-971
+  A 5% proc from Taijutsu Master / Ten Tails / ArmorBreak adds the vanilla `crippled` trait. That trait is permanent. A Taijutsu unit can slowly cripple a whole village. Notes wanted this to be a temporary "gentle fist" effect. Make it a timed status instead.
+
+B13. SMALL ONES
+  - JutsuLibrary.cs CheckAndConsumeChakra logs two Debug.Log lines on every ability use (log spam).
+  - Hamura's Chakra is an exact copy of Hagoromo's Chakra (same stats, same icon).
+  - `ui/icons/WIP` is still the icon for Flak Jacket and Warring States Armor (ShinobiItems.cs 403, 428).
+  - MadaraPerfectSusanoo has a comment saying "500 chakra" but actually costs 15.
+  - Main.cs ShinobiLoop visits EVERY unit every 0.1 s and every 3 s. Fine in small worlds, likely laggy in big ones. [VERIFY]
+  - Taijutsu Master gets `takeAwayItems()` every 5 s (ShinobiProgression.cs removeWeapon). Check whether this also strips armor/rings, not just weapons.
+
+
+=====================================================================
+3. SYSTEM-LEVEL DESIGN PROBLEMS
+=====================================================================
+
+S1. ABILITIES ARE RARE AND INVISIBLE (the "nothing happens" problem)
+  Almost every ability follows the same pattern:  attack -> small random roll -> chakra check -> add a status.
+  Examples of the roll: Amaterasu 3%, Rinnegan Meteor 0.8%, Palm Rotation 3%, Infinite Tsukuyomi 1%, Frog Summon 2%, Kamui 10%, most others 5-10%.
+  On top of that, CheckAndConsumeChakra gives the unit a 7-second global cooldown (`status_ability_cooldown`) after ANY ability. So one unit can use at most one ability per 7 seconds across its entire kit.
+  What the player sees: a legendary Rinnegan user mostly just hits things like a normal fighter.
+  Better pattern (used by good combat mods):
+   - Give each ability a purpose and a condition (use Shinra Tensei when surrounded or low health; use Amaterasu on strong enemies; use Chidori to close distance), instead of a flat random chance.
+   - Use a per-ability cooldown, not one cooldown for the whole unit.
+   - Make the trigger rate feel right: signature moves should appear a few times per fight.
+   - Add clear feedback: a world log line for first use, a visible effect, a sound that is different per move (right now every ability plays the same `jutsu_use.wav` and `jutsuuse` status).
+
+S2. MANY TRAITS ARE JUST STAT SHEETS
+  These have numbers but no behaviour a player can notice: Hagoromo, Hamura, Indra, Asura chakra (mostly), Otsutsuki clan, Senju clan (its action is commented out; it only regenerates 1 HP/s plus rare cells), Uchiha clan (all the power comes from eye progression), ranks (apart from a small chakra-cost discount), Golden Byakugan, Tenseigan, Kaguya clan until Shikotsumyaku, Wood Sage, Frog Sage, Yang Release, Yin-Yang Release, Ten Tails Jinchuriki on its own.
+  Rule I suggest: every trait needs ONE thing a player can see or read in a sentence ("Heals nearby allies", "Steals chakra on hit", "Cannot be knocked back").
+
+S3. STATS ARE NOT ON ONE SCALE
+  Your scaling guide says damage tiers 1-45 / 45-135 / 135-300 / 300+. The traits mix flat and multiplier stats very differently:
+   - Storm Release gives accuracy +30 (most others +0.15 to +4).
+   - Eyes like Mangekyo/EMS give flat +142 to +304 damage AND +23-28% damage multiplier AND crit.
+   - Kage has `scale +0.03`, `cities +2`, `loyalty_traits +100`.
+  A single unit can stack clan + rank + eye + chakra reserve + nature + Jinchuriki form + status, so the totals explode. Consider a stat budget per tier and a quick spreadsheet to check the worst-case stack.
+
+S4. THE MOD HAS ONE LONG CHAIN WHERE EACH LINK SILENTLY DEPENDS ON THE NEXT
+  Example: Hagoromo -> (blessing) -> Indra/Asura -> Rinnegan -> Rinnesharingan. B1 broke the first link, so everything after it is gated behind god powers only.
+  Fix: after repairing, build a short "progression map" for every chain and test each arrow.
+
+S5. DEAD OR COMMENTED-OUT CONTENT
+  Commented out or never reached: SageProgression, Itachi Mangekyo, Drunken Fist trait, Jugo Transformation trait, Kurama Avatar ability, Bijuu Bite, Yin-Yang attack, FrogSummonAction, parts of Senju clan. Several have "WIP" icons.
+  Either finish them or delete them. Commented code makes the mod feel finished when it is not, and makes you tired when you read it.
+
+S6. ONLY FOUR SETTINGS
+  Config: clan names, auto ranking, auto favorite, world tips. Your notes asked for: clan spawn chance, remove opposites, steal-eye toggle, birth toggles. A few more toggles would help players who want a calmer or harder game.
+
+S7. NO "SAFETY NET" FOR TYPOS
+  All the id bugs in section 2 are the same bug: the game takes any string and silently says "no" if it doesn't exist. This is the single biggest reason features break without you noticing. See section 5, fix F1.
+
+
+=====================================================================
+4. FEATURE-BY-FEATURE REVIEW
+=====================================================================
+Format: what a player experiences now | what is missing | suggestion | verdict
+
+--- CHAKRA SYSTEM (Chakra/ChakraSystem.cs, Main.cs loop) ---
+Now: Every sapient unit has a chakra pool (birth roll + level*42 + kills*10, capped 4200, then trait multipliers). Shown in the unit window. Abilities cost chakra. Ranks reduce cost (Academy x1.18 ... God of Shinobi x0.84). Eyes and forms drain chakra over time. Exhaustion when low.
+Good: rank-based cost discount is a real, readable rank benefit. Special reserves (tailed beast, sage) are separate bars.
+Missing: exhaustion recovery (B8), a clear reason to care about chakra mid-fight, and any visible chakra bar except in the unit window. 50% of units have 0 birth chakra, so a level-1 human has only ~42.
+Suggestion: show a small chakra indicator when a unit is selected or hovered (JinchurikiBox does chakra bars in the hover tooltip). Add a "chakra low" visual or status icon. Add your planned "chakra-infused attacks" (more damage above 50%, less below 10%).
+Verdict: FINISH (this is the foundation).
+
+--- RANKS (Academy, Genin, Chunin, Jonin, Anbu, Kage, Sannin, Ghost of Uchiha, God of Shinobi) ---
+Now: Ranks give stat multipliers and a cost discount. Auto progression by level/kills. Kings get Kage. Anbu/Jonin join armies.
+Missing: A rank should change how a unit behaves or what it can learn. Right now Chunin vs Jonin is "+3% damage".
+Suggestion: tie ranks to learnable techniques (Genin: Shadow Clone; Chunin: nature release; Jonin: one signature jutsu; Anbu: stealth/assassination bonus; Kage: village buffs). Fix B9 (case bug). Add "Former Kage" (planned) and remove Kage when no longer king.
+Verdict: FINISH.
+
+--- CLANS ---
+Hyuga: gets Byakugan automatically at birth. Byakugan has Palm Rotation and 64 Palms. OK. Verdict: KEEP.
+Uzumaki: tough, long life, +4 HP/s regen, Adamantite Chains (drain 25% max HP and heal). Good identity. Missing: sealing visuals. Verdict: KEEP, polish.
+Senju: +1 HP/s and rare Wood Release / Hashirama cells. Ability commented out. Missing: any signature action. Suggestion: Wood Release as the clan power (see Wood). Verdict: FINISH.
+Uchiha: no clan action; power comes from Sharingan progression. OK conceptually. Missing: clan-wide identity beyond stats. Verdict: KEEP.
+Otsutsuki: pure stat sheet (1000 intelligence, stamina, chakra). Missing: behaviour. Verdict: LATER (needs the chain from B1 first).
+Kaguya: gets Shikotsumyaku almost certainly within minutes (1% chance every 7 s until awakened). Shikotsumyaku has Bone Shot and a defensive reaction. Missing: it's effectively "all Kaguya have it". Verdict: KEEP, tune the chance.
+Akimichi: grow/shrink (Expansion). Nice idea. Fix B11. Verdict: KEEP.
+Lee: no ability (B6). Verdict: FIX then KEEP. Natural fit: Taijutsu Master + Eight Gates.
+Chinoike: Ketsuryugan automatically. Verdict: KEEP.
+Aburame: swarm summons on being hit (spawns scorpions with 10% max HP). Placeholder "insects" are scorpions. Verdict: KEEP, replace the summon with real insects when possible.
+Overall: clans being mutually exclusive is a fine rule, but your own note says to make that configurable. Add the toggle.
+
+--- DOJUTSU ---
+Sharingan 1-3 tomoe: status-based (only active in battle), progression by kills/age. Genjutsu 1-3 do exist. A good, readable ladder. Verdict: KEEP (best-designed pillar).
+Mangekyo: strong and exciting, but B2 can remove its abilities. Blindness after 25 uses is a great trade-off mechanic (shown in the unit window). Verdict: FIX then KEEP.
+Eternal Mangekyo (generic) / Madara's EMS: Madara's has Tengai Shinsei, Perfect Susanoo, genjutsu on tailed beasts. The generic one has Amaterasu, Perfect Susanoo, Kamui. Verdict: KEEP.
+Rinnegan: Meteor (0.8%), Naraka heal, Six Paths Technique, Shinra Tensei. Awakening depends on the broken B1 chain, so naturally it almost never appears. Verdict: FIX then FINISH.
+Sasuke's Rinnegan: same as Rinnegan + EMS moves + genjutsu on tailed beasts + Amenotejikara. Verdict: KEEP (kill-to-claim reward).
+Rinnesharingan: only Infinite Tsukuyomi (broken, B4) and Heavenly Ice Chamber. Verdict: FIX.
+Byakugan / Golden Byakugan / Tenseigan: Byakugan is solid. Golden Byakugan = same moves with higher stats. Tenseigan has a drain mode (tenseigan_cm). Verdict: KEEP Byakugan; Golden and Tenseigan need their own visible ability to justify existing.
+Ketsuryugan: has two abilities (status and an EHT debuff). Verdict: KEEP.
+Eye stealing (0.9% on kill): neat risk/reward. Verdict: KEEP, add the config toggle you listed.
+
+--- SPECIAL CHAKRA TRAITS (Hagoromo, Hamura, Indra, Asura) ---
+Now: Broken chain (B1). Even when repaired they are mostly stat sheets, except Indra (cheaper abilities, per code) and the reincarnation-on-death idea.
+Idea: Indra = aggressive, +damage, ability cost discount; Asura = defensive/support, heals allies; both pass to heirs when the holder dies (the reincarnation mechanic is a great story hook). Hamura needs its own identity or should be dropped.
+Verdict: FIX B1, then FINISH or CUT Hamura.
+
+--- NATURES AND RELEASES ---
+Fire (auto fireball + burn), Earth (rock weight on self), Water (water prison + drowning), Wind (auto wind cutter), Lightning (lightning strike), Storm (lightning + torch), Wood (Mokuton tree status + damage), Yin (fuses with Yang), Yang (nothing), Yin-Yang (nothing; attack commented out).
+Good: Each of the first six has a distinct move.
+Missing: Yang and Yin-Yang do nothing. Natures have no learning/exp loop yet (planned "nature exp").
+Verdict: FINISH Yin/Yang/Yin-Yang or cut them. Keep the rest.
+
+--- JINCHURIKI AND TAILED BEASTS ---
+Nine Tails: eight form statuses by level (initial release -> V1 -> V2 -> beast -> KCM1 -> KCM2 -> avatar -> baryon), drains chakra for early forms, extra "tailed beast chakra" bar, world logs for key forms, tailed beast bomb, arm swipe, lifespan drain at Baryon. Actors Kurama and Juubi exist; killing them grants the jinchuriki trait. Madara can tame them with EMS genjutsu.
+Good: This is the most complete progression and has real behaviour per form.
+Missing: Avatar status exists but its ability is commented out (so Avatar form and KCM2 behave the same). Ten Tails is only stats plus bomb/blast. Only 2 of 9 beasts exist.
+Suggestion: finish Avatar (Chakra Avatar is exactly what EffectsLib would be for), make sure KCM -> Baryon death logic is tested. Do not add more beasts until the Nine-Tails chain feels great.
+Verdict: KEEP and FINISH (flagship feature).
+
+--- SENJUTSU ---
+See B5. Whole chain is dead. Verdict: either REBUILD cleanly (small version: Frog + Slug only, a simple meditate -> status -> chakra drain loop) or CUT from the next version. Wood Sage and Six Paths Sage are statuses/traits that can wait.
+
+--- TRANSFORMATIONS ---
+Eight Inner Gates: gates 1-8 by level when hurt, strain damage, crippled risk at gate 5. Nice mechanic. Verdict: KEEP, connect Lee clan (B6).
+Cursed Mark: three tiers of status, chance to gain it from Orochimaru. Verdict: KEEP.
+Shikotsumyaku: Bone Shot and defense. Verdict: KEEP.
+Jugo Transformation / Drunken Fist: commented out. Verdict: CUT for now.
+
+--- JUTSU TRAITS ---
+Rasengan (status then bonus damage on hit), Rasenshuriken (projectile), Chidori (two hits + lightning), Shadow Clone (multiple clones with shared chakra, dies in 12 s). Rasenshuriken has a 7 s auto attack. Shadow Clone is the most elaborate (copies traits and items). Verdict: KEEP.
+Missing: a way for units to LEARN these (currently 15% chance when a unit with wind/lightning nature is born).
+
+--- AKATSUKI / WILL OF FIRE / CURSE OF HATRED ---
+Akatsuki: evil + age 28 + 1% chance every 20 s becomes Akatsuki; stats, but no cloak, techniques or invasion event yet. Verdict: LATER.
+Will of Fire / Curse of Hatred: on death, nearby citizens get a buff or a curse. A nice emotional mechanic. Verdict: KEEP.
+Hashirama Cells: +100% health, 5 HP/s regen, removes crippling. Verdict: KEEP.
+
+--- ACTORS (12 spawnable: Hashirama, Madara, Sasuke, Orochimaru, Kakashi, Itachi, Naruto, Obito, Hagoromo, Sakura, Kurama, Juubi; plus Jinchuriki Obito/Madara variants) ---
+Now: Each has a trait loadout, kill rewards, and a god power button. Several still use placeholder sprites. Some loadout ids are wrong (B1, B10).
+Idea: they are the most "player-visible" content, so fixing the ids and sprites gives a big visible payoff.
+Verdict: KEEP, fix ids.
+
+--- ITEMS ---
+9 weapons (Triple Scythe, Kusanagi, Kunai, Gunbai, Paper Bomb Kunai, Executioner Blade, Hagoromo Staff, Yin/Yang Staff, FTG Kunai) and 3 armors (Flak Jacket, Warring States, Madara Six Paths Cloak). Two armors still have WIP icons. Weapons need sprites in-game. The armors will look great with Visible Armors.
+Verdict: KEEP, finish icons/sprites.
+
+--- KINGDOMS ---
+Rogue ninja, Tailed Beasts, Konoha. Tailed beasts hate civs; rogues attack everyone. Verdict: KEEP. Konoha is "neutral" and has the human tag; make sure it's actually used when villages form.
+
+--- UI / GOD POWERS ---
+12 spawn buttons in the Shinobi tab, chakra and blindness icons in the unit window, world logs for milestones. Verdict: KEEP. Add god powers for giving/removing traits quickly (players asked for clean "give/remove" so auto-give loops don't fight them).
+
+--- EVENTS / INVASIONS ---
+Not implemented yet (only planned). Verdict: LATER.
+
+
+=====================================================================
+5. FIX LIST (in the order I would do it)
+=====================================================================
+These are mostly small, and several would make the mod feel much richer in an afternoon.
+
+F1. ONE FILE OF ID CONSTANTS. (biggest value)
+    Create `Ids.cs` with `public const string IndraChakra = "07_indra_chakra";` etc. Use the constants for every addTrait/hasTrait/hasStatus. A typo then becomes a compile error, not a silent dead feature. Also fixes B1, B9, B10 in one pass.
+F2. STARTUP SELF-CHECK. After all assets load, loop through your list of ids and log an error for any id that does not exist in AssetManager.traits / status / actors / items. Takes 20 lines, finds the next typo before players do.
+F3. Fix B2 (Mangekyo coin flip). 5 minutes.
+F4. Fix B3 (brace scope in GuaranteedInheritancePatch). 10 minutes.
+F5. Fix B4 (Infinite Tsukuyomi condition) and B7 (Six Paths roll order). 10 minutes.
+F6. Hook up Lee clan (B6) and the Senju clan action.
+F7. Fix Exhaustion (B8): regen during exhaustion at a reduced rate, or refill to a fixed % when exhaustion ends.
+F8. Replace the global 7 s ability cooldown with per-ability cooldowns, and raise key proc chances so signature moves are visible (S1).
+F9. Make Armor Break a timed status instead of permanent crippling (B12).
+F10. Decide on Sage Modes: rebuild small, or cut. Delete the commented-out sage code either way.
+F11. Remove dead/commented content you have decided to cut (S5). Fewer files to scroll, less guilt.
+F12. Add the config toggles you asked for (clan opposites, eye stealing, birth chances).
+
+After F1-F7, re-test: Hagoromo blessing, Rinnegan awakening, Mangekyo abilities, Lee clan, Infinite Tsukuyomi, Exhaustion.
+
+
+=====================================================================
+6. WHAT TO BORROW FROM JINCHURIKIBOX (REANIMATED)
+=====================================================================
+Caveat: I only looked at JinchurikiBox's file layout, asset names and its progress notes. I did NOT read its logic closely and have not played it, so I can't say it is "better". From the names and notes, these are ideas worth looking at:
+- Separate Mangekyo/eye variants per character (Itachi, Madara, Indra eyes with their own statuses and Susanoo versions). ShinobiBox tried this (the coin flip) and dropped it; separate traits are the clean way.
+- Reincarnation traits (Itachi, Indra's, Madara's) and "Sealed Fate": a story-driven way to pass legendary powers on.
+- Individual jinchuriki traits for all nine beasts (One-Tails ... Nine-Tails). A large, separate content line, only after your Nine Tails is finished.
+- Hover tooltips for chakra (the notes describe moving chakra info into the unit hover popup using TipButton, with chakra, tailed beast chakra and nature energy bars).
+- Otsutsuki blood tiers (otsutsuki20/40/60/80), a nice way to scale power instead of a single on/off clan trait.
+- A "Chakra Rain" god power and a "Focus Point" status.
+- Statuses named for each stage of its Karma line (Boruto content): a good example of a self-contained "line" of features.
+My suggestion: read JinchurikiBox for ideas, but don't copy code. Both mods are community projects; check the authors' permissions before reusing anything.
+
+
+=====================================================================
+7. IF YOU REBUILD (ShinobiBox 4 core)
+=====================================================================
+A lean first release that is finished is better than the current wide one. A suggested core:
+ 1. Chakra system + exhaustion fixed + rank cost discount + hover/UI display.
+ 2. Ranks with real unlocks.
+ 3. Uchiha line: Sharingan 1-3 -> Mangekyo (+blindness) -> EMS, with Amaterasu, Kamui and Susanoo done properly.
+ 4. Hyuga: Byakugan with its two moves.
+ 5. One more clan done well (Senju or Uzumaki).
+ 6. Nine Tails jinchuriki chain (the flagship).
+ 7. Spawnable actors for the above (Naruto, Sasuke, Kurama, Madara, Hashirama).
+ Defer: sage modes, Otsutsuki, Akatsuki, events, extra clans.
+Keep the existing art and many definitions. Rewrite the trigger logic using the lessons in section 3.
+
+
+=====================================================================
+8. QUESTIONS FOR YOU
+=====================================================================
+1. Do you want the next step to be (a) fix the bugs in the current mod, (b) start the lean rebuild, or (c) both (fix the current mod first, then rebuild)?
+2. Is the Rinnegan / Otsutsuki / Hagoromo story chain important to you, or would you rather simplify it?
+3. Sage modes: rebuild small or cut?
+4. What is your favourite part of the mod to see in action? That is the part to polish first.

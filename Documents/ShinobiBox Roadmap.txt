@@ -1,0 +1,170 @@
+ShinobiBox Roadmap
+==================
+(Consolidated from: ShinobiBox.txt, ShinobiBoxUpdateLog.txt, Shinobi Box Scaling Guide.txt, SasukeUpdate.txt, sasukeupdate2.txt, invasions.txt, invasionupdate.txt, TODO.txt. Written 2026-10-09. Old files are untouched; this one is the clean version.)
+
+Mod: "ShinobiBox: Reborn" v3.0.0 by RayTracerX. About 11.7k lines of C#. Naruto mod, inspired by JinchurikiBox / NarutoBox.
+
+
+THE REAL PROBLEM (in my own words)
+----------------------------------
+I added a lot without fleshing out each thing, so much of the mod is a "nothing burger." Then every update I wanted to add more, but I realized the old stuff was never finished. That led to a hiatus, missed deadlines, broken promises to the community, and burnout. Cleaning the whole mod feels like a huge chore.
+
+The cause is BREADTH WITHOUT DEPTH. The fix is not "more features" and not necessarily "rewrite everything." The fix is: fewer things, each one fully finished.
+
+
+STEP 0: STOP THE BLEEDING (do this first, costs almost nothing)
+--------------------------------------------------------------
+- Stop giving the community dates. Say something like: "ShinobiBox is being reworked for quality. No release dates. Bug-fix patches only until then."
+- Freeze new features in the current mod. Only fix bugs players report.
+- Keep the current version online as-is so players still have something.
+- This removes the pressure, which is what made things worse.
+
+
+DEFINITION OF "FLESHED OUT"
+---------------------------
+A feature is only "done" when ALL of these are true. (This is my own template from SasukeUpdate.txt: what is it / what does it do / how does it work.)
+1. WHAT IS IT? One sentence. Lore-accurate and clear to a player.
+2. HOW IS IT OBTAINED? A clear, explicit rule (level, kills, clan, item, event). Written in the in-game description with exact numbers.
+3. WHAT DOES IT DO? Real effects: stats, an ability, a status, a visible effect. Not just a stat bump.
+4. HOW DOES IT INTERACT? With chakra, ranks, clans, opposites, other traits. Rules for conflicts, removal and inheritance.
+5. CAN IT BE LOST / REMOVED? Removing it by hand must stick (no auto-give loops).
+6. IS IT PRESENTED? Icon (not a placeholder), localization text, a visual effect or animation, a sound, a world-log message if it is a big moment.
+7. IS IT BALANCED? Fits the stat tiers in "Shinobi Box Scaling Guide.txt" (Low / Mid / High / Mythic).
+8. IS IT TESTED? Spawned, observed, edge cases checked (death, save/load, removal, non-sapient units).
+If a feature cannot reach all 8, it gets CUT or hidden, not shipped half-done.
+
+
+STEP 1: FEATURE AUDIT (one afternoon, no coding)
+------------------------------------------------
+Go through every feature below and mark it:
+  KEEP-AND-FINISH  - core to the mod, worth completing
+  KEEP-AS-IS       - already good enough
+  CUT              - delete it (code and assets)
+  LATER            - good idea, but not in the core
+
+Ask Opus to do the first pass with you: list every trait, status, jutsu, actor, item, clan, and event in the code and score each one against the 8-point checklist above. Then YOU decide. Cutting is allowed and healthy.
+
+
+THE PILLARS (what the mod is made of)
+-------------------------------------
+Status notes come from my own to-do files. "Needs" = what I have to figure out to flesh it out.
+
+1. CHAKRA SYSTEM (the foundation, everything depends on it)
+   - Status: reworked several times; scale squished; chakra exhaustion is a status; moves cost chakra; UI bar. TODO files still list "remake chakra drain from scratch."
+   - Needs: ONE final design. Decide: regen rate, how moves cost chakra, what happens at 0, and what max chakra is based on. Ideas from my notes: damage multiplier (above 50% = 1.5x, below 10% = 0.5x); each ultimate move has a chakra cost.
+   - Rule: finish this pillar FIRST. Everything else (dojutsu, modes, abilities) hangs off it.
+
+2. RANKS (Academy, Genin, Chunin, Jonin, Anbu, Kage)
+   - Status: automatic ranks exist; some professions patched; Kage removed when no longer king.
+   - Needs: make auto ranks configurable; define what each rank actually gives.
+
+3. CLANS: Uchiha, Hyuga, Senju, Uzumaki, Otsutsuki, Kaguya (Namikaze maybe, Akimichi exists)
+   - Status: clans exist with some abilities; configurable births and removal of opposites were planned.
+   - Needs: each clan gets ONE signature thing that is finished (Hyuga = Byakugan moves, Senju = wood/regen, Uzumaki = seals/regen, Uchiha = Sharingan line).
+
+4. DOJUTSU LINE (Sharingan 1/2/3 tomoe, Mangekyo, Eternal Mangekyo, Rinnegan, Rinnesharingan, Byakugan)
+   - Status: lots built; Sharingan partly status-based; blindness counter; eye stealing; infinite Tsukuyomi.
+   - Needs: a clean progression chain, clear obtain rules, a visual effect and a distinct ability for each stage. This is the best candidate for the FIRST fully finished pillar.
+
+5. JINCHURIKI AND TAILED BEASTS (nine-tails forms: initial release, V1, V2, beast, KCM1, KCM2, Avatar, Six Paths Sage Mode, Baryon)
+   - Status: many forms exist; drain rules decided (only early forms drain chakra); kill-to-seal flow works; multiple bugs fixed.
+   - Needs: keep it as a short chain of forms that are all finished. Notes already say "rework nine tails trait again, maybe statuses."
+
+6. SENJUTSU / SAGE MODES (frog, slug, snake, wood, six paths)
+   - Status: reworked: random gain at level 3, perfect sage needs chakra and level. Snake sage is undefined. Auto-give loop bug was fixed.
+   - Needs: decide the final set. Snake sage has no design yet, so either design it properly or cut it.
+
+7. ABILITIES / JUTSU (Rasengan, Chidori, Kamui, Kaiten, 64 Palms, Susanoo, nature releases, and so on)
+   - Status: many exist; some were reworked; sounds and hand signs were added.
+   - Needs: a consistent template (cooldown, chakra cost, effect, sound, hand sign). Cut abilities that cannot be made distinct.
+
+8. ACTORS (Naruto, Sakura, Sasuke, Itachi, Kakashi, Obito, Orochimaru, Hagoromo, Hashirama, Madara, tailed beasts)
+   - Status: many placeholder sprites; rules for rewards on kill.
+   - Needs: sprites, or fewer actors.
+
+9. WEAPONS AND ARMOR (Kunai, Kusanagi, Samehada, Executioner Blade, Akatsuki cloak, flak jacket, Warring States armor)
+   - Status: partly built; several sprites and fixes unfinished.
+   - Needs: a short list that is fully finished. Visible Armors (my other mod) may be able to draw them on units later.
+
+10. EVENTS / INVASIONS (Akatsuki, rogue ninja, Otsutsuki, tailed beast spawns, Hagoromo blessing)
+   - Status: planned, partly built.
+   - Needs: later. Only after the core is finished.
+
+
+THE BIG DECISION: FIX THE OLD MOD, OR REMAKE IT?
+------------------------------------------------
+My honest read:
+- A full rewrite from scratch is risky. Big rewrites often stall in the same way, because you rebuild everything again and burn out before the new version catches up.
+- "Fix the old mod feature by feature" is also draining, because you are cleaning code you don't like.
+
+A MIDDLE PATH that fits both worries:
+1. Leave the current mod online, bug-fix only (Step 0).
+2. Start a NEW clean mod project ("ShinobiBox 4" or similar). Do NOT port code first.
+3. Build a small core first (see "Version 4 plan" below). Reuse old data and sprites, but re-write any code you don't trust, using what you know now (Harmony, status-based design, NML conventions).
+4. Bring old features over one at a time, ONLY if they pass the 8-point checklist.
+5. When the new mod covers what players care about, release it as the main version and retire the old one.
+
+This way the old mod is never abandoned, the new one is never overloaded, and you can stop at any milestone and still have something good.
+
+
+VERSION 4 PLAN (small, finished, shippable)
+-------------------------------------------
+Milestone 1 - FOUNDATION (no flashy features)
+  - Chakra system (final design), ranks, config options, localization, clean project layout.
+  - One clean "template" for traits, statuses and abilities, so every feature is built the same way.
+Milestone 2 - FIRST FINISHED PILLAR: UCHIHA / SHARINGAN LINE
+  - Sharingan (1-3 tomoe) -> Mangekyo -> Susanoo -> Eternal Mangekyo. Each stage with an ability, visuals, sound, clear rules.
+  - This is the quality bar for everything after it.
+Milestone 3 - SECOND PILLAR: A CLAN OF CHOICE (Hyuga or Senju)
+Milestone 4 - JINCHURIKI CHAIN (cut it down to the forms I can finish)
+Milestone 5 - SAGE MODES (only the ones I have real designs for)
+Milestone 6+ - everything else (Rinnegan, Akatsuki, Otsutsuki, events), one pillar per release.
+
+Rule: one pillar per update. No new pillar until the previous one passes the checklist. Smaller updates, more often, with fewer promises.
+
+
+THINGS THAT ARE ALREADY GOOD (keep these ideas)
+------------------------------------------------
+- Status-based eyes and abilities (only on during battle) instead of permanent traits.
+- Explicit obtain-conditions with exact numbers in descriptions.
+- Blindness counter for Mangekyo overuse.
+- Scaling guide with four stat tiers.
+- Kill-to-claim rewards for actors, with "give once, don't give back if removed."
+- Configurable clan spawn chances and opposites.
+
+
+LEARNED / TECHNICAL NOTES TO KEEP
+---------------------------------
+- Early-exit chance pattern: if (UnityEngine.Random.value > 0.05f) return false; (5% success; use 0.01 for 1%, 0.10 for 10%, 0.25 for 25%).
+- Restore health: actor.restoreHealthPercent(pVal) / restoreHealth(int).
+- Use actor.isSapient() before giving chakra or shinobi traits.
+- Replace per-frame regen loops with WorldActions on traits using the effect interval.
+- Use action_death for kill rewards (avoids multiple units receiving the same reward).
+- Flying: actorasset.flying = true; other ActorAsset flags can be tweaked (immune_to_injuries, etc.).
+- Use "loopWithBrush" for area effects like snow.
+- Projectile example: World.world.projectiles.spawn(pSelf, pTarget, "firebomb", pSelf.current_tile.posV3, pTarget.current_tile.posV3);
+- NML Mod ID/GUID and folder names must be unique per mod.
+
+
+IDEAS PARKED FOR ShinobiBox (not in the core)
+---------------------------------------------
+- Summoning jutsu (bears, dogs, snakes; stronger summons by rank; summoned units only attack the summoner's enemies).
+- Seven Swordsmen of the Mist, Akatsuki techniques, Gedo statue and tailed beast chakra stealing.
+- Otsutsuki update: Hamura, Kaguya, Tenseigan, six paths chakra blessing every 12 years.
+- Boruto expansion, souls update (Indra, Asura, Kaguya, Hagoromo, Pain), eight gates, ten tails.
+- Chakra nature EXP system and nature-based jutsu.
+- Fighting Style group (Gentle Fist, Taijutsu, Drunken Fist).
+- Shadow Clone Jutsu, Flying Raijin, Shinobi Dojutsu group refactors.
+- Jutsu inventory with an AI that buys jutsu with gold or ryo (note from past me: "this is too much, don't").
+- Update checker, Gamabunta summon.
+- One Piece crossover (Pirate King trait, Conqueror's Haki): a separate mod idea, not part of ShinobiBox.
+- A boss every 12 years (configurable).
+- Sprites for mini Bijuu bomb, Kurama avatar, and so on.
+
+
+HOW THIS CONNECTS TO MY OTHER MODS
+----------------------------------
+- Visible Armors may eventually draw Shinobi armor (Akatsuki cloak, flak jacket, Warring States armor) on units.
+- PossessLib may later let a possessed unit trigger jutsu with keys.
+- EffectsLib (idea) could handle Susanoo, Kurama avatar and summons as attached companions.
+- These are optional extras. ShinobiBox should stand alone first.

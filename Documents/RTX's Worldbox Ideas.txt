@@ -1,0 +1,131 @@
+RTX's Worldbox Ideas
+====================
+Cleaned-up master list. Last updated 2026-10-09.
+(ShinobiBox has its own file: "ShinobiBox Roadmap.txt". Raw old notes are still in your other .txt files.)
+
+
+HOW I WORK (rules for myself)
+-----------------------------
+1. FLESH OUT BEFORE ADDING. A feature isn't done until it has: a clear purpose, a clear way to get it, real effects, interactions, an icon/text/visual, balance and testing. No more half-built features. (ShinobiBox taught me this.)
+2. ONE PROJECT AT A TIME. One "active" mod, everything else waits.
+3. NO DEADLINES TO THE PUBLIC. Share progress, not dates.
+4. SMALL RELEASES. Ship small finished things often.
+5. OPUS AS A BUILDER AND TEACHER. Watching Opus build my dream mods is motivating and teaches me how things work in WorldBox. That is a fine way to learn IF I also: read what it wrote, ask it to explain files I don't understand, and make small edits myself. Goal: I understand every file I ship.
+6. LIBRARIES FOLLOW REAL NEEDS. Only put something in a library mod if two or more mods need it.
+
+
+CURRENT STATE OF EACH PROJECT
+-----------------------------
+BUILT BY OPUS (reference versions, for motivation + learning)
+- PossessLib       (Mods/PossessLib, ~7.9k lines)  Possess a unit, Terraria-style hotbar/inventory/equipment/HUD, crafting, ground items, library API for other mods.
+- Visible Armors   (Mods/VisibleArmors, ~2.9k lines) Armor, helmets, boots, cloaks, amulets drawn on units' bodies; look follows item material.
+
+MINE / PUBLISHED
+- WorldboxAmbience (small, ~380 lines, partly vibe-coded, updates planned, neglected for now)
+- ShinobiBox: Reborn (see ShinobiBox Roadmap.txt; on hiatus, remake planned)
+- Nerf Fire Damage (done)
+- Nuclear Fallout mod (jam entry, half-finished)
+- GOWB / AESIR (God of War mod, collab)
+- Lineage (done)
+
+OTHER
+- Main Character Mod = the old version of PossessLib (keep for reference, then archive)
+- NML Workshop mod browser: prompt written for Opus; not confirmed started.
+
+
+NEXT STEPS (suggested order)
+----------------------------
+1. SETTLE the two Opus mods. Play them, note what is wrong, ask Opus to fix and explain. No new features for a while.
+2. ShinobiBox Step 0 only: post "no dates, bug fixes only" to the community. Then do the feature audit when I have energy.
+3. ONE small fun win: a few Ages (see "World atmosphere" below). Quick, visible, good for learning Harmony and statuses.
+4. First Stand for JojoBox (trait + PossessLib controls). Build EffectsLib only from what the Stand needs.
+5. SurvivalBox, built on the finished pieces, last.
+(NML Workshop browser is separate. Do it when I want a break from game content.)
+
+
+LIBRARIES
+---------
+PossessLib - player-facing layer: possession controls, inventory, equipment, crafting, key bindings, HUD, API for other mods.
+  - Old notes still relevant: view a unit's inventory from its window without possessing, coins slot, eating, gathering, level-up indicator, armor stat readout.
+  - Old bug to check: a "cursed" weapon stays equipped no matter which hotbar slot is selected.
+  - Ask Opus for a direction review: what's solid, what's fragile, ranked roadmap, shippable v1.0.
+
+Visible Armors - armor drawn on units. Ideas from old notes: set bonuses (3 matching pieces give a status bonus), easy for other mods to register their own armor looks, default to normal look when art is missing, community vanities (custom accessories overlaid on units) later.
+
+EffectsLib (IDEA) - helps modders add things around or on a unit (Stands, armor/accessory effects, summons, pets).
+  - Statuses are a good foundation (StatusAsset supports sprites with offset, scale, rotation, animation, light glow, override callbacks, periodic actions, stat changes, duration, saving, UI icons).
+  - Two layers: (1) status-based effects (auras, glows, orbiting things, buffs); (2) companion entities (Stands, summons, pets with their own movement/attack).
+  - Don't build it first. Build the first Stand or accessory effect, then pull out what is reusable.
+  - Open question: mainly visual, or does it also handle summon behaviour?
+
+NML Workshop Mod Browser - in-game Workshop browser for NeoModLoader, like tModLoader.
+  - NML already has: ModWorkshopService (+Windows/Unix backends), a subscribed-only list window, upload windows. Tags: "Mod", "Unverified Mod", "Mod Loader".
+  - Needs: browse ALL Workshop mods, search/sort/filter, install, update, enable/disable, "Download All" (installed but left disabled for safety), dependency handling.
+  - Game uses Facepunch.Steamworks, AppID 1206560.
+
+
+MOD LINES (my old ideas, merged)
+--------------------------------
+JOJOBOX
+  - Hamon, Spin, only 5 Stands on release: Star Platinum, Star Platinum: The World, The World, King Crimson, Golden Experience. "Characters" trait: Joseph Joestar's tendency (his infamous run).
+  - Stand = TRAIT (belongs to the person; can't be dropped/stolen like a weapon). Visual Stand = a separate sprite/entity that follows the unit.
+  - PossessLib = control layer: "E to summon/dismiss", keys for abilities. AI-controlled units summon and fight on their own.
+  - Each Stand has a few signature moves (Star Platinum rapid punches, The World time stop). Start with 2-3 Stands.
+  - Open questions: which Stands first; how Stands enter the world (god power, awakening, Arrow item, inheritance); full JoJo setting or just a Stand power system; normal-world play vs possession play (both matter).
+
+SURVIVALBOX (the big one, built last)
+  - Inspired by Terraria, Minecraft, Naraka Bladepoint, Dawncraft, Cisco's RPG, Casket of Reveries, Unturned.
+  - Includes: World Bosses (invasions, Wither, creepers, Terraria mobs, trophies on death), progression system (merge of: RTX's Skill Tree, Better Levels, Fantasia/LitRPG, RPGBox), new foods/ores/resources, potions, campfire regen AI, units can drop items, hardcore mode ideas (thirst, buffed animals), accessories (Terraria style).
+  - PROGRESSION MODULE (merge): XP from many actions, level stats, skill tree, quests (preset components: [Kill] [10] [Rats], rewards, cooldowns), titles (permanent achievements with requirements and rewards, shown as icons), dungeons/towers/portals, Rebirth trait + Revive Altar.
+  - Accessories: start with Ring and Amulet equipment types (they already exist in the game). Terraria-style multiple accessory slots go into PossessLib later.
+
+GEAR AND ITEMS (one mod, merged)
+  - Armor+ (set bonuses), Shields (vanilla resources, chance to block/deflect), Mythical Rank (purple aura; other modders can use it), Mythical Weapons (Excalibur in a stone building, Orbital Cannon, and so on), RTX's Weapons (EnderPearl bow, Terraria/Calamity/anime weapons), Ice and Fire Overhaul (ice/fire weapons + 2 ice and 2 fire mobs).
+
+WORLD ATMOSPHERE (best "small win" candidate)
+  - More Ages: Stars (stargazing buffs), Fog (ghosts, spooked), Lushness (more fruit/flowers), Drought (thirsty/overheating), Fall, Fun (fireworks), Eclipse, Fairytales, Heroes, Evil, Titans/Gigantism, Lava (volcanoes), Corrosion (acid rain), Battles, Sand (sandstorms), Wind (tornadoes). Maybes: Idleness, Floods, Rain.
+  - Better Weather (heavy rain, blizzards), Crazy Weather (needs Day/Night/Seasons), Day/Night/Seasons, Better Volcanoes (dormant, rare eruptions, livable lava terrain), Ambience compat with all of it.
+  - New tiles: Mud (pigs love it, units get stuck).
+  - Horse and pig civilizations.
+
+KINGDOM AND ECONOMY (later)
+  - RTX's NPCs / Awful Wandering Trader (spawns in kingdoms with 10K+ gold; rude dialogue; buy resources with kingdom gold), World News (mailbox), Jobs+ (police and jail, bridge builders), Gold+ (Terraria-style coins, tax collectors), Immersive Trading, wills/inheritance, Retired Job (units retire at 3/4 of life), Power Rankings leaderboard, Hardcore Worldbox.
+
+BETTER WORLDBOX (a grab-bag, ship the parts as small mods)
+  - Dead Favorites window (respawn a dead favorite), merge kingdoms, merge villages, leaderboards, change age/gender/job live, deflect projectiles, honorable leader (grave/statue), World Events (solar/lunar eclipses, blizzards, windy day), new invasions (goblin, nightmare, real human), new ores/meteors.
+  - Rule: each of these is its own small mod. Don't wait for "Better Worldbox" to be complete.
+
+QUALITY-OF-LIFE / TOOLS
+  - Unit Stat Editor, Useful Things (clear all trees/bushes/units button), Better Heals, Unit Hair Customizer (only if BeserkGuy doesn't make it), Community Vanities, More Statues/Relics (fountains, ore statues, modder statues), Music Mod (Terraria/Minecraft soundtrack, toggleable).
+  - WorldBox modding tutorial (good for the community, and for my own learning).
+
+
+PARKED (good ideas, big cost, not now)
+--------------------------------------
+- Jukebox building with Spotify hook.
+- Skies Alive (birds and flying mobs).
+- PrehistoricBox (3 ages, 80+ mobs).
+- Modpack that updates old abandoned mods.
+- Minimap (maybe a separate mod).
+- Visible backpacks.
+- Farming and fishing systems.
+- Bounties (probably scrap).
+- One Piece crossover (Pirate King, Conqueror's Haki).
+
+
+CROSS-MOD NOTES
+---------------
+- Visible Armors + PossessLib are the base for gear: items someone possessing can wear and others can see.
+- Ambience + Ages + Weather are one atmosphere line.
+- JojoBox and ShinobiBox both want "things attached to a unit" (Stands, Susanoo, Kurama avatar, summons). That is the signal that EffectsLib is worth building later.
+- Compatibility goals: Better WorldBox, WorldboxAmbience, PossessLib.
+
+
+WORKING WITH OPUS (TIPS)
+------------------------
+- Small/clear tasks: talk to Opus directly.
+- Big/vague tasks: give the goal, where the files are, what "done" looks like, and ask it to say what it could not verify.
+- After a mod is built, keep iterating in the SAME session. Paste screenshots and log errors.
+- New session: tell it to read docs/DESIGN.md and the mod folder first.
+- Keep a backup (copy the folder or use git) before big changes. Close WorldBox before builds.
+- To learn: ask Opus to walk through each file it wrote, then change one small thing by hand each session.

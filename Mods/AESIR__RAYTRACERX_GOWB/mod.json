@@ -1,0 +1,9 @@
+{
+  "name": "GOWB",
+  "author": "AESIR, RayTracerX",
+  "version": "3.3.0",
+  "startPoint": "Main.cs",
+  "description": "If you like god of war, then this mod is for you!",
+  "iconPath": "icon.png",
+  "targetGameBuild": 558
+}

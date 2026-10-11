@@ -1,0 +1,54 @@
+Main Character Mod
+
+SO FAR
+---------------
+Customized health bar, moved up to the top right
+Added a custom row for statuses to be displayed while unit is possessed
+*NOT FINISHED* inventory system, press I to open.
+*NOT FINISHED* Hotbar system
+*NOT FINISHED* Armor/Equipment Slots
+(alot more has been added/chanfged ill update this later)
+
+WHATS NEXT ( alot has changed i havent updated this)
+------------- 
+Make it so that items actually show in inventory and hotbar
+ADD a small ui that shows the units armor stat (think terraria)
+Make it so that inventory/hotbar can hold multiple weapons armors, and any resource
+ADD A PANEL FOR CRAFTING STUFF (armors and more)
+make it so that players can eat some food resources (either for hunger or for health has not been decided yet)
+might add it so that certain foods give certain buffs,
+Add a system for cutting down trees, harvesting bushes, and mining resources
+MINIMAP (but i might make it a seperate mod, think xaeros minimap mod)(or maybe i should put it in this mod)
+Watch terraria/minecraft gameplay for more ideas (or just play it myself).
+(maybe) Move equipment slots to the far right of the screen
+Make it so that items are moveable through slots for both inventory and hotbar
+Make it so that Actors inventory can be accessed through the actors window, without them being possesed
+Add a coins slot (like terraria)
+(Maybe future) add compatibility with Worldbox ambience to play different biome music.
+*BIG MAYBE* Add a farming system and a fishing system.
+Units have like an ai where if they go near a camp fire, they can regen faster
+Add an icon that shows levels, and a cool ui animation on the screen when unit levels up(ui animation part is still a maybe)
+add an icon that shows the units "defense" like in terraria. in worldbox's case it would be their "armor" stat value
+Maybe ways to have backpacks and have them visble(but i might it a seperate mod, think minecraft backpack mod) 
+Make it so that units can consume/use certain resources
+add a settings icon in the bottom right(not sure where i want it yet)
+
+PRIORITY BUGS
+
+WHEN A WEAPON IS "CURSED" UNIT WILL ALWAYS HAVE IT EQUIPPED NO MATTER WHAT HOTBAR IS CHOSEN, FIX THIS
+
+Whats actually next.
+Ability to see units inventory without possessing them. So in their actor window, there will be a button where their inventory can be displayed when picked
+
+
+
+
+
+RTX's Better Gold
+Give gold more uses. Allow units to do stuff with their gold
+
+Rework Combat system
+
+My own custom hooks in a new files called MCHooks or MCMethods (first check with ai if similar methods already exist within the game) 
+SetZoom()
+Allows modders to easily change the fov / zoom of the unit

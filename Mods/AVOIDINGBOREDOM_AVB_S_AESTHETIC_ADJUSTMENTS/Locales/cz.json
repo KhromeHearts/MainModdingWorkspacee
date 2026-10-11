@@ -1,0 +1,16 @@
+{
+  "Avb's Aesthetic Adjustments_cz": "Avb的审美调整",
+  "This mod makes several changes to certain visual elements._cz": "在一些视觉元素上进行了调整",
+  
+  "aaa_config": "审美调整选项",
+  "config_unevo": "普通动物调整",
+  "config_unevo Description": "启用后普通动物的贴图会被此模组替换，默认启用\n重启游戏，以便配置生效",
+  "config_evo": "进化动物调整",
+  "config_evo Description": "启用后进化动物的贴图会被此模组替换\n重启游戏，以便配置生效！",
+  "config_phenoSort": "Phenotype Sort",
+  "config_phenoSort Description": "Sorts phenotypes based on color instead of name",
+  "config_phenoPlates": "Phenotype Nameplates",
+  "config_phenoPlates Description": "Nameplates that feature a species's icon will have that icon match the color of the respective subspecies's phenotype",
+  
+  "sponge": "扫帚"
+}

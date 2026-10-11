@@ -1,0 +1,12 @@
+{
+    "name": "WarBox",
+    "author": "Erex147",
+    "version": "0.4.0",
+    "description": "This mod adds primarily warfare related content such as guns, bunkers and more!",
+    "GUID": "Erex147WarBox",
+    "iconPath": "icon.png",
+    "RepoUrl": "https://github.com/Erex147/WarBox",
+    "Dependencies": [],
+    "OptionalDependencies": [],
+    "IncompatibleWith": []
+}

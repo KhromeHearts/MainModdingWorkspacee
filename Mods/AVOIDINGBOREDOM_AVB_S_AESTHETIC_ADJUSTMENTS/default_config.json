@@ -1,0 +1,32 @@
+{
+  "aaa_config": [
+    {
+      "Id": "config_unevo",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconFoxNew",
+      "BoolVal": true,
+      "Callback": "Configs:TurnOffUnevoColor"
+    },
+    {
+      "Id": "config_evo",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/civ_foxNew",
+      "BoolVal": false,
+      "Callback": "Configs:TurnOffEvoColor"
+    },
+    {
+      "Id": "config_phenoSort",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/iconPhenoSort",
+      "BoolVal": true,
+      "Callback": "Configs:SortPheno"
+    },
+    {
+      "Id": "config_phenoPlates",
+      "Type": "SWITCH",
+      "IconPath": "ui/Icons/phenoPlates",
+      "BoolVal": false,
+      "Callback": "Configs:CheckPhenoNameplates"
+    }
+  ]
+}

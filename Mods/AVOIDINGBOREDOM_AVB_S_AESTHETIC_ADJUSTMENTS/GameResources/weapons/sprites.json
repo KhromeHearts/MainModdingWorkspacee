@@ -1,0 +1,63 @@
+{
+  // "Default": {
+  //   "PivotX": 0.5,
+  //   "PivotY": 0.2,
+  //   "Z": 2.0,
+  //   "RectX": 0,
+  //   "RectY": 0,
+  //   "RectZ": 0,
+  //   "PixelsPerUnit": 1
+  // },
+  "Specific": [
+    {
+      "Path": "sword_iron.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "axe_iron.png",
+      "PivotX": 0.5,
+      "PivotY": 0.35
+    },
+    {
+      "Path": "hammer_iron.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "spear_iron.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "bow_iron.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "sword_steel.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "axe_steel.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "hammer_steel.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "spear_steel.png",
+      "PivotX": 0.35,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "bow_steel.png",
+      "PivotX": 0.5,
+      "PivotY": 0.47
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "VisibleArmors": "Visible Armors",
+  "Visible Armors": "Visible Armors",
+  "Equipped helmets, armor, boots, cloaks and amulets are drawn on the unit's body, Terraria style. The look follows the item's material.": "Equipped helmets, armor, boots, cloaks and amulets are drawn on the unit's body, Terraria style. The look follows the item's material.",
+
+  "va_enabled": "Show armor on units",
+  "va_show_helmet": "Helmets",
+  "va_show_armor": "Body armor and cloaks",
+  "va_show_boots": "Boots",
+  "va_show_cape": "Capes (cloaks and ornate armor)",
+  "va_show_amulet": "Amulets",
+  "va_ui_avatars": "Also in the unit window portrait",
+  "va_other_species": "Other species (animal civs, bandits, mages...)",
+  "va_max_zoom": "Hide armor when zoomed out further than (camera size)",
+  "va_cache_pages": "Sprite cache size (512x512 pages, 1 MB each)",
+  "va_debug": "Debug logging and statistics"
+}

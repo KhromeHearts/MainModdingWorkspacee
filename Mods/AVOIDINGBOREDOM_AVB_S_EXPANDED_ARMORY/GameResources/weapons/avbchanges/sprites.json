@@ -1,0 +1,669 @@
+{
+  // "Default": {
+  //   "PivotX": 0.5,
+  //   "PivotY": 0.2,
+  //   "Z": 2.0,
+  //   "RectX": 0,
+  //   "RectY": 0,
+  //   "RectZ": 0,
+  //   "PixelsPerUnit": 1
+  // },
+  "Specific": [
+    //Swords-------------------------------------------------------------------------------
+    {
+      "Path": "sword_wood.png",
+      "PivotX": 0.5,
+      "PivotY": 0.1
+    },
+    {
+      "Path": "sword_stone.png",
+      "PivotX": 0.5,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "sword_copper.png",
+      "PivotX": 0.5,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "sword_bronze.png",
+      "PivotX": 0.5,
+      "PivotY": 0.1
+    },
+    {
+      "Path": "sword_silver.png",
+      "PivotX": 0.5,
+      "PivotY": 0.1
+    },
+    {
+      "Path": "sword_iron.png",
+      "PivotX": 0.5,
+      "PivotY": 0.1
+    },
+    {
+      "Path": "sword_steel.png",
+      "PivotX": 0.5,
+      "PivotY": 0.1
+    },
+    {
+      "Path": "sword_mythril.png",
+      "PivotX": 0.5,
+      "PivotY": 0.1
+    },
+    {
+      "Path": "sword_adamantine.png",
+      "PivotX": 0.5,
+      "PivotY": 0.1
+    },
+    {
+      "Path": "flame_sword_0.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_sword_1.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_sword_2.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_sword_3.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "ice_sword.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "ice_sword_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    //Axes-------------------------------------------------------------------------------
+    {
+      "Path": "axe_wood.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "axe_stone.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "axe_copper.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "axe_bronze.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "axe_silver.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "axe_iron.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "axe_steel.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "axe_mythril.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "axe_adamantine.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_axe.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_axe_dackC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    //Hammers-------------------------------------------------------------------------------
+    {
+      "Path": "hammer_wood.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "hammer_stone.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "hammer_copper.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "hammer_bronze.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "hammer_silver.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "hammer_iron.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "hammer_steel.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "hammer_mythril.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "hammer_adamantine.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_hammer.png",
+      "PivotX": 0.5,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "ice_hammer_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.25
+    },
+    //Spears-------------------------------------------------------------------------------
+    {
+      "Path": "spear_wood.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "spear_stone.png",
+      "PivotX": 0.71,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "spear_copper.png",
+      "PivotX": 0.32,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "spear_bronze.png",
+      "PivotX": 0.72,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "spear_silver.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "spear_iron.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "spear_steel.png",
+      "PivotX": 0.3,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "spear_mythril.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "spear_adamantine.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_spear.png",
+      "PivotX": 0.75,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_spear_darkC.png",
+      "PivotX": 0.75,
+      "PivotY": 0.3
+    },
+    //Bludgeons-------------------------------------------------------------------------------
+    {
+      "Path": "wood_bludgeon.png",
+      "PivotX": 0.7,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "stone_bludgeon.png",
+      "PivotX": 0.8,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "copper_bludgeon.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "bronze_bludgeon.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "silver_bludgeon.png",
+      "PivotX": 0.5,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "iron_bludgeon.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "steel_bludgeon.png",
+      "PivotX": 0.82,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "adamantine_bludgeon.png",
+      "PivotX": 0.86,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_bludgeon.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_bludgeon_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    //Halberds-------------------------------------------------------------------------------
+    {
+      "Path": "wood_halberd.png",
+      "PivotX": 0.65,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "stone_halberd.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "copper_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "bronze_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "silver_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "gold_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "iron_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "steel_halberd.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "mythril_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "adamantine_halberd.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "flame_halberd_0.png",
+      "PivotX": 0.55,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_halberd_1.png",
+      "PivotX": 0.55,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_halberd_2.png",
+      "PivotX": 0.55,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_halberd_3.png",
+      "PivotX": 0.55,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_halberd_4.png",
+      "PivotX": 0.55,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "flame_halberd_5.png",
+      "PivotX": 0.55,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "ice_halberd.png",
+      "PivotX": 0.55,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_halberd_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    //Daggers-------------------------------------------------------------------------------
+    {
+      "Path": "wood_dagger.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "stone_dagger.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "copper_dagger.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "bronze_dagger.png",
+      "PivotX": 0.06,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "silver_dagger.png",
+      "PivotX": 0.06,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "gold_dagger.png",
+      "PivotX": 0.5,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "iron_dagger.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "steel_dagger.png",
+      "PivotX": 0.2,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "mythril_dagger.png",
+      "PivotX": 0.5,
+      "PivotY": 0.05
+    },
+    {
+      "Path": "adamantine_dagger.png",
+      "PivotX": 0.1,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "flame_dagger_0.png",
+      "PivotX": 0.1,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "flame_dagger_1.png",
+      "PivotX": 0.1,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "flame_dagger_2.png",
+      "PivotX": 0.1,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "flame_dagger_3.png",
+      "PivotX": 0.1,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "ice_dagger.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "ice_dagger_darkC.png",
+      "PivotX": 0.6,
+      "PivotY": 0.3
+    },
+    //Bows-------------------------------------------------------------------------------
+    {
+      "Path": "bow_wood.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "bow_copper.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "bow_bronze.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "bow_silver.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "bow_iron.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "bow_steel.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "bow_mythril.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "bow_adamantine.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "ice_bow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    {
+      "Path": "ice_bow_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.5
+    },
+    //Crossbows-------------------------------------------------------------------------------
+    {
+      "Path": "wood_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "stone_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "copper_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "bronze_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "silver_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "iron_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "steel_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "mythril_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "adamantine_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "ice_crossbow.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "ice_crossbow_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    //Slingshots-------------------------------------------------------------------------------
+    {
+      "Path": "wood_slingshot.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "stone_slingshot.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "copper_slingshot.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "bronze_slingshot.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "silver_slingshot.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "iron_slingshot.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "steel_slingshot.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "adamantine_slingshot.png",
+      "PivotX": 0.5,
+      "PivotY": 0.2
+    },
+    {
+      "Path": "ice_slingshot.png",
+      "PivotX": 0.5,
+      "PivotY": 0.25
+    },
+    {
+      "Path": "ice_slingshot_darkC.png",
+      "PivotX": 0.5,
+      "PivotY": 0.25
+    },
+    //Staffs-------------------------------------------------------------------------------
+    {
+      "Path": "stick_wood.png",
+      "PivotX": 0.7,
+      "PivotY": 0.4
+    },
+    {
+      "Path": "necromancer_staff.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "evil_staff.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "white_staff.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "plague_doctor_staff.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    },
+    {
+      "Path": "druid_staff.png",
+      "PivotX": 0.5,
+      "PivotY": 0.3
+    }
+  ]
+}

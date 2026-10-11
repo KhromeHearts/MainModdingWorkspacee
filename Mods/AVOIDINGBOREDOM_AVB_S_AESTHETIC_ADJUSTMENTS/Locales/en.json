@@ -1,0 +1,13 @@
+{
+  "aaa_config": "Aesthetic Options (restart)",
+  "config_unevo": "Classic Animal Recolors",
+  "config_unevo Description": "Unevoled animals now match the palette of their evolved forms (recommended)",
+  "config_evo": "Evolved Animal Recolors",
+  "config_evo Description": "Evoled animals now match the palette of their unevolved forms",
+  "config_phenoSort": "Phenotype Sort",
+  "config_phenoSort Description": "Sorts phenotypes based on color instead of name",
+  "config_phenoPlates": "Phenotype Nameplates",
+  "config_phenoPlates Description": "Nameplates that feature a species's icon will have that icon match the color of the respective subspecies's phenotype",
+
+  "sponge": "Broom"
+}

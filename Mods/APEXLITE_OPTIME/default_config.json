@@ -1,0 +1,100 @@
+{
+    "qol": [
+        {
+            "Id": "qol.hideWelcomeWindow",
+            "Type": "SWITCH",
+            "BoolVal": false,
+            "Callback": "HideWelcomeWindow:SetLoaded"
+        },
+        {
+            "Id": "qol.timeStopProjectiles",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "TimeStopProjectiles:SetLoaded"
+        },
+        {
+            "Id": "qol.disableAnalytics",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "DisableAnalytics:SetLoaded"
+        },
+        {
+            "Id": "qol.displayFPS",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "FPSCounter:SetLoaded"
+        },
+        {
+            "Id": "qol.maxFrameRate",
+            "Type": "INT_SLIDER",
+            "IntVal": 60,
+            "MinIntVal": 60,
+            "MaxIntVal": 240,
+            "Callback": "Optime.QoL.FPS:SetFrameRate"
+        }
+    ],
+    "optimizations": [
+        {
+            "Id": "optimizations.actorJobFlatten",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "ActorJobFlatten:SetLoaded"
+        },
+        {
+            "Id": "optimizations.drawMapLayerThrottle",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "DrawMapLayerThrottle:SetLoaded"
+        },
+        {
+            "Id": "optimizations.fastMinimapRenderer",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "FastMinimapRenderer:SetLoaded"
+        },
+        {
+            "Id": "optimizations.lazyZoneCamera",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "LazyZoneCamera:SetLoaded"
+        },
+        {
+            "Id": "optimizations.mouseCursorFix",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "MouseCursorFix:SetLoaded"
+        },
+        {
+            "Id": "optimizations.powerButtonSelectorFix",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "PowerButtonSelectorFix:SetLoaded"
+        },
+        {
+            "Id": "optimizations.powersTabUpdateThrottle",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "PowersTabUpdateThrottle:SetLoaded"
+        },
+        {
+            "Id": "optimizations.quantumSpriteThrottle",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "QuantumSpriteThrottle:SetLoaded"
+        },
+        {
+            "Id": "optimizations.uiWorldAgeFix",
+            "Type": "SWITCH",
+            "BoolVal": true,
+            "Callback": "UiWorldAgeFix:SetLoaded"
+        }
+    ],
+    "developer": [
+        {
+            "Id": "developer.developerMode",
+            "Type": "SWITCH",
+            "BoolVal": false,
+            "Callback": "DeveloperMode:SetLoaded"
+        }
+    ]
+}

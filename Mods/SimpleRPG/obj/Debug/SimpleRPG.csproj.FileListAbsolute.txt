@@ -1,0 +1,10 @@
+C:\Unity\WB\WorldBox\SimpleRPG\obj\Debug\SimpleRPG.csproj.AssemblyReference.cache
+C:\Unity\WB\WorldBox\SimpleRPG\obj\Debug\SimpleRPG.csproj.CoreCompileInputs.cache
+C:\Unity\WB\WorldBox\SimpleRPG\obj\Debug\SimpleRPG.dll
+C:\Unity\WB\WorldBox\SimpleRPG\obj\Debug\SimpleRPG.pdb
+C:\Program Files (x86)\Steam\steamapps\common\worldbox\BepInEx\plugins\SimpleRPG.dll
+C:\Program Files (x86)\Steam\steamapps\common\worldbox\BepInEx\plugins\SimpleRPG.pdb
+C:\Unity\WB\WorldBox\SimpleRPG\obj\Debug\SimpleRPG.Properties.Resources.resources
+C:\Unity\WB\WorldBox\SimpleRPG\obj\Debug\SimpleRPG.csproj.GenerateResource.cache
+C:\Program Files (x86)\Steam\steamapps\common\worldbox\BepInEx\scripts\SimpleRPG.dll
+C:\Program Files (x86)\Steam\steamapps\common\worldbox\BepInEx\scripts\SimpleRPG.pdb

@@ -1,0 +1,7 @@
+{
+  "name": "Render fix",
+  "author": "dwwite",
+  "version": "1.2.0",
+  "targetGameBuild": 719,
+  "description": "Guards WorldBox minimap and wild kingdom building update paths, and retries missing unit/building sprites so broken or half-initialized mod assets stop causing crash loops or invisible render states."
+}

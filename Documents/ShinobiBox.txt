@@ -1,0 +1,451 @@
+SHINOBIBOX
+
+Status Effects
+Stat Effects
+[Clans]
+Hyuga
+Senju
+Uchiha
+Uzumaki
+Otsutsuki
+
+[Traits]
+Chakra Enhancers
+--Chakra Natures--
+Fire, Earth, Lightning, Wind, Water
+--Rankings--
+Starter,Chunin, Genin, Jonin, Anbu,
+
+
+
+Ideas
+Tailed Beasts And Jinchuriki Ability
+Dojutsu(Eye Power)
+Sharingan 1-3 Tomoe
+Rinnegan
+RinneSharingan
+Byakugan
+Toad Sage Mode
+
+Modes
+Sage Mode
+Kurama Link Mode
+Sage Of Six Paths
+
+Weapons
+Truth Seeking Rods
+Chakra Reciever
+Kunai
+Grass Blade
+
+idea at the back of my head
+every 12 years a boss will spawn(can be configured)
+and ill just make new bosses for the mod as updates with special traits (like dragonslayer trait)
+
+
+
+
+
+
+
+One Tomoe Sharingan 
+The Uchiha Clan, their abilities progress differently then the other traits. Being based off of kills instead, and the first tomoe being easy to achieve, as if a unit is below 10 kills it automatically gets this trait when in battle, which has an ability to put a status effect on other units called genjutsu which does things to them like slows them down and there attack speed
+
+Two Tomoe Sharingan
+This eye is achieved when the user reaches 10 kills or higher, does the same as 1 tomoe with slightly more stats.
+
+Three Tomoe Sharingan
+This eye is achieved when the unit reaches at least 21 kills or higher and level 5. This allows them to activate  the eye during battle.
+
+Mangekyo Sharingan
+This eye is achieved after a unit reaches 30 kills and level 7, Ability to use amateratsu on other units which will be a status effect ofcourse
+
+Rinnegan
+Able to Achieve after a unit reaches 40 kills and level 7, all abilities of the previous sharingan, with boosted stats
+
+Rinnesharingan
+If unit has the trait "Mangekyo" with the "Rinnegan" trait, it auto equips the rinnesharingan allowing unit to drop small meteors
+
+
+
+
+
+Trait Name,ID,Damage Bonus,Health Bonus,Speed,Crit Chance,Special Effect
+Jinchuriki Base,jinchuriki_base,+100,+200,+5,+3%,Evolves by Level
+Tail 1,nine_tails_mode_1,+150,+250,+3,+6%,- +1 armor +5% stamina
+Tail 2,nine_tails_mode_2,+200,+350,+6,+9%,- +2 armor +10 intelligence +5% stamina
+Tail 3,nine_tails_mode_3,+250,+450,+9,+12%,- +3 armor +15 intelligence +5% stamina
+Tail 4,nine_tails_mode_4,+350,+600,+12,15%,Drains Chakra +4 armor and +20 intelligence +15% stamina
+Tail 5 - 9,nine_tails_mode_X,+50 per lvl,+75 per lvl,+3 per lvl,+2% per lvl,High Drain add +2 armor +10%accuracy +20% stamina
+Tail 10 (KCM),nine_tails_mode_10,+200,+2500,+15,+25%,Massive Drain +20 armor +50 inteligence +50 accuracy +30% stamina
+Uchiha Clan,uchiha_clan,+75,+200,+5,+5%,Unlocks Sharingan add +10 armor
+Sharingan 1T,sharingan_1t,+5,+0,+5,+10%,Evolves at 15 Kills add +15% accuracy
+Sharingan 2T,sharingan_2t,+10,+0,+10,+20%,Evolves at 30 Kills add +40% accuracy
+Sharingan 3T,sharingan_3t,+25,+0,+20,+40%,Max Form (for now) add +60% accuracy
+Exhaustion,chakra_exhaustion,-300,-100,-20,-100%,Punishment add -50% armor and -50%accuracy
+add +10% mana to all of them
+
+Ok so now, before we are done i wanna go over some things i want to bsaically make the forms a little more like the show now
+you know like how theres the tails and then theres like version two and theres like kcm1 kcm 2 sixpath sage mode baryon and all that
+i dont know all there names and the correct order so if you can helpe me with that. I'm going to get into traits i want now, 
+I want a Sage Mode trait, we will get into the stats after, ill need a table so i can write all of it down, another trait i'll need is
+an "Akatsuki Member" Trait, Will of Fire: When this unit dies, all nearby allies gain a massive Inspiration and Attack buff.
+Chakra Fruit Eater(Legendary Trait): The unit gains +1 to every stat for every 5 kills it gets. No cap. A "High Chakra Reserve" Legendary trait that 
+gives 10k chakra.If possible we need progression after 3 tomoe, so mangekyo. I want mangekyo to be able to inflict a status effect on other
+units like amaterasu, or an ability for its self like kamui. A seperate legendary dojutsu we can add too is Rinnegan which has high stats and can also summon like a small meteorote. if a user
+has the rinnegan and mangekyo and maybe some requirements they can obtain another trait called rinnesharingan which is the two traits combined. Make
+a "Shinobi Dojutsu" group to put the eyes. If you have more ideas dont be afraid to say and implement you can go wild. I want a good first release,
+make sure to do what i said and take your time ask questions if needed, make table for stats and yeah thats all man. Oh yeah dontb e afraid to use the damn
+assemblycsharp. Ill send all the files we have so far incase you need them.
+
+Initial Cloak Zero-Tails 
+
+Demon Fox Coat 1-3 Tails version
+
+Version 2 Shroud (The dark/blackened chakra) which should be like 4-6
+
+Beast Manifestation (6-8 Tails / Skeletal growth)
+
+KCM1 (Nine-Tails Chakra Mode)
+
+Kurama Link Mode (KCM2 / Full cooperation)
+
+Tailed Beast Avatar (Giant chakra form)
+
+Six Paths Sage Mode (The God-tier buff)
+
+Baryon Mode (The ultimate final form)
+
+Next Update(Shinobi Expansion), then (boruto expansion), then (World Expansion)
+Shinobi Souls group, where i put traits that resemble a character from the show and gives heavy buffs
+All i have right now are
+Indra’s Soul: High chance to spawn with Sharingan; +Ambitious. peace can only be achieved through strength and soul
+Kaguya's Soul: Gauranteed Perfect Byukan and heavy buffs
+Hagoromo's Soul: Gauranteed Rinnesharingan and heavy buffs
+Pain's Soul: High Health, High Speed earthquake ability
+Asura’s Soul: High +Health; naturally develops Wood Release. peace can only be achieved through unity and cooperation 
+Clans
+Uzumaki, Hyuga(and byakugan dojutsu), Senju, Otsutsuki
+Yin Yang Release
+5 Elemental Release
+Six Paths Power
+Sage Of Six Paths Power
+Armor
+Akatsuki Cloak
+Six Paths Cloack
+Battle Armour
+eventually different mangekyos = different susanoo colors
+tenseigan evolved from having byakugan and otsutsuki blood, otsutsuki blood will evolve things in the future
+
+
+NEXT UPDATE ACTUALLY
+Introducing Clans and respective powers for those clans.(Hyuga,Uzumaki,Senju, maybe Namikaze)
+Byakugan, Rinne-Sharingan and more dojutsus and abilities if i can think.
+Akatsuki is not a clan but i will be adding it
+might add susanoo and kurama avatar(if not added on release)
+i dont know what else to add in the update, give me tips/advice/help
+i dont know if the six paths update will come with this or not, what do you think?
+Six Paths + Yin, Yang Release. Six Paths Sage Mode
+possibly new weapons. Definetly Armor, just not sure what armor.
+Possible stat changes, might rework chakra system or might even remove it(not sure)
+i want this out in 2 weeks or less you know but we will be taking a break right now
+
+I want you to apply all fixes and changes, its 12:00 am on a school night on tuesday, i will be gonig to bed now, but at school ill be writing down stat changes for everything and ideas to make the bland things right now pop more so they dont feel so basic, after all its a naruto mod  meant to surpass the 2 old big ones, jinchurikibox(which doesnt even work with the current worldbox) and narutobox which is where i basically am kind of learning how to code in worldbox because if you didnt know, i only recently started this maybe like 1 month and a half ago, so yeah i only understand the basics of C# and how to read alot of it, just cant write it, thats why i use you. I forgot to explain it to you or maybe i did, but the mods first release is basically going to be what we have right now, like an "early release" then i plan to add the basic clans and items and basic things every naruto mod should have on release on the update after that, just to get the mod seen first you know. you'll have to help me every step of the way and we will have our up and downs but we can do it.
+
+
+
+Patch update
+Chakra Natures, Rinnesharingan, Namikaze clan, with minatos kunai 
+this update includes powers for the senju
+
+
+
+
+
+Byakugan ability
+
+Uzumaki Ability
+--Ability to use a seal tecnique
+--Ability to use a repear death seal technique which removes the 90% of the opponents health 90% of their speed
+and 90% of their damage for 999 seconds but it also removes 50% of the users health and damage permanently
+these are maybes
+Crowd Control (CC): In a game like WorldBox, this could manifest as a "Stun" or "Root" effect where golden chains sprout to hold an enemy in place.
+Suppression: You could code it so that while a target is chained, their own special abilities (Chakra) are disabled.
+
+
+
+
+
+NOTESSSSSSSSSSSSSSSS REMEMBER THIS
+
+When im reworking the chakra system (at the end when ive implemented all the things for this update) i plan on adding these 2 features.
+but the chakra rework needs to also include how it regens, the value and jst the thing in general.
+"Chakra Infused Attacks" (The Damage Multiplier)
+
+Concept: If a unit has > 50% Chakra, they deal 1.5x Damage. If they have < 10% Chakra, they deal 0.5x Damage.
+
+Why it works: It makes Chakra directly affect every single fight. Watching a unit run out of Chakra means watching them suddenly become weak and start losing the fight.
+
+"Jutsu Cost" (The Gatekeeper)
+
+Concept: Right now, traits like kcm1 drain Chakra over time.
+
+Change: Make specific attacks cost Chakra. Example: The Rinnegan Meteor costs 500 Chakra. If they don't have 500, the meteor never drops.
+
+Why it works: It stops units from spamming ultimate moves endlessly.
+
+future updates. After this (shinobiexpansion), The patch update(rinnesharingan and em), The six paths update, the eight gates update, 2nd patch update that adds jutsus, the otsutsuki update, the boruto update, the "souls" update, the ten tails update, more tails
+
+
+COME BACK TO CheckRankProgression() in Shinobi to add more traits to the t "isunranked" part
+Move Nine Tails trait into new group Called "Nine Tails Jinchuriki" DONE------------------------------------------
+SInce Ill be adding Clans We will be moving clans into the group called "Shinobi Bloodlines" DONE---------------------------------------
+And since I am adding more Dojutusus we will be creating a new group Called "Dojutsu" which will be holding the dojutsus(i hope you know sage mode is not a dojutsu) DoNE----------------------------
+The rest of the traits will still stay in "Shinobi Traits" DONE---------------------------------------------------
+We are adding Uzumaki, Hyuga, and Senju Clans DONE--------------------------------------------------
+These clans have their own unique traits obviously
+Same way being in the uchiha clan allows access to sharingan, being in the hyuga will give byakugan
+The byakugan can be accessed right from birth if unit is part of the hyuga clan.---------------------------- DONE--
+For the byakugan special ability I intend for 2 abilities which ill get into wayyyy later when im done with everything else.
+Uzumaki clan will obviously have longer lifespans, faster health regen. They'll also have 2 abilities we will get into later when we do the byakugn ones,
+but i still need to figure out how to implement the uzumakis abilities so dont worry
+For Senju Clan, you are going to need to help me get creative with this one. I think it strongly relies on Chakra natures but i dont wanna add that till after this second update
+So youll have to help me. I intend to add chakra natures in a patch a few days after the this second update so dont worry about it, im just informing you.
+We already added the weapons and armor so thats good
+just informing you but i need to think of a way to rework the chakrasystem can you help me with ideas, cause idk i feel its not integrated into the game enough, if we cant get it
+to a point where im satisfied, it will be removed.
+
+
+TODO
+-----
+
+New Chakra System
+Ideas:
+
+
+-----
+Susanoo and Avatar
+for avatar, have it use certain body parts like ribcage susanoo, but then the tailed beast form is a full kurama avatar
+-----
+Byakugan ability
+Ideas:
+Eight Triagrams: Palm Rotation
+
+Eight Triagrams: 64 Palms
+Freezes the enemy unit in the green yin and yang cirlce thing and, repeatedly does damage
+
+Uzumaki and Senju Regen Ability Test
+
+
+might add chakra natures (NEVER MIND IM NOT ADDING THESE, TOO MUCH TO CODE, IF HAVE TIME WHEN IM DONE WITH EVERYTHING THEN ILL COME BACK)
+if so 
+Fire Nautre: grants ability to use fire in battles
+Water Nature: Custom Water Bubble Prison Jutsu (applies a -999 speed stun to enemy) with a water ball around them
+Earth Nature: I'll seee if i can code in like a stone wall shootign up from the ground that damages enemies
+Wind Nature: I'll add in rasen shuriken as there ability, if there less than 40 they use some other wind attack
+Lightning Nature: They have a chance to electrocute enemies or cast lightning
+
+Fix: Armors, make sure to add group id and review other code for help.
+Armors:
+Warring States Armor (Hashirama and Madara Armor)
+Flak Jacket(Basic Jonin armor)
+
+Weapons
+Kusanagi (Sasuke Sword) (NOT DONE)
+Samehada
+Executioner Blade
+
+_______________________TRAIT RELATED THINGS______________________________________
+-High Chakra Reserve will only give a +50% max chakra while Low Chakra Reserve will give a -50% max(not done)
+-Possibly Removing Taijutsu master for rework(not done)
+-Fire Nature, Water Nature, Earth Nature, Wind Nature, Lightning Nature
+Fire Nature:(not done)
+Water Nature:(not done)
+Earth Nature:(not done)
+Wind Nature:(not done)
+Lightning Nature:(not done)
+New Trait: Asura's Chakra: a trait that boosts chakra capabilities and lets you access rinnegan
+unit must be born or given it. In future update, it can also be obtained by talking to unit with
+asura's soul(Not Done)
+Blind: Happens when unit goes blind from mangekyo overuse.
+
+
+
+_______________________CLANS AND CLAN ABILITIES__________________________________
+__Hyuga Clan__
+Byakugan(Not done, finishing tweaking base stats)
+Eight Trigrams: Palm Rotation(DONE) (NOT TESTED)
+Eight Trigrams: 64 Palms(DONE) (NOT TESTED)
+
+__Senju Clan__
+MOVES NOT PLANNED YET
+
+FAST REGEN(DONE) (NOT TESTED)
+(UNFINISHED)
+
+__Uzumaki Clan__
+--Ability to use a repear death seal technique which removes the 90% of the opponents health 90% of their speed
+and 90% of their damage for 999 seconds but it also removes 50% of the users health and damage permanently
+these are maybes(NOT DONE)
+Normal Seal(NOT DONE)
+Fast Regen(DONE) (NOT TESTED)
+
+_______________________SHARINGAN RELATED THINGS__________________________________
+
+When Rinnegan user drops meteor, that little message side bar thingy will show "AHHHH...(rinnegan user) Has Summoned A Meteor!(not done)
+Adding Eternal Mangekyo Sharingan, Will come with new Kamui move, and will come with full susanoo(not done)
+Mangekyo users will now have a chance to go blind after using moves too much, the blind status effect will just stop them from benig able to use moves for 300 seconds(not done)
+Mangeyko Sharingan will be getting the partial Susanoo(not done)
+To Obtain Rinnegan, One must have mangeyko and new trait Asura's Chakra
+If mangekyo users kill a unit with mangekyo they can evolve to Eternal Mangekyo and if a blind unit
+also kills a mangekyo user, same thign happens.(not done)
+
+_______________________NINE TAILS RELATED THINGS__________________________________
+9 Tails modes will now only drain chakra from anything below KCM1 (NOT DONE)
+Kurama Avatar Appears for some attacks like narutobox susanoo (NOT DONE)
+__BARYON MODE REWORK__
+Reworking and fixing death logic(NOT DONE)
+Adding another ability(NOT DONE)
+Tweaking basestats(NOT DONE)
+
+Might tweak stats a little bit(NOT DONE)
+
+
+_______________________CHAKRA SYSTEM RELATED THINGS_______________________________
+
+ChakraSystem Getting reworked
+-new icon(not done)
+-values will now have a lower scale and a user regens about 100 every 10 seconds(not done)
+-The value will now have live regen when the user has the window open(not done)
+-Chakra drain is much more slower and, Now it actually regens to max when unit gets chakra exhaustion(not done)
+-Moves will now take away chakra(values that make sense)(not done)
+-Any 9 Tails Modes before Kcm1 and after jinchuriki base will drain chakra(not done)
+-High Chakra Reserve will only give a +50% max chakra while Low Chakra Reserve will give a -50% max(not done)
+-
+
+__PLAYER REQUESTS THAT I HAVE TAKEN__
+Turn the birth rate of jinchurick and uchiha to 0
+
+indra chakra + asura chakra = rinnegan
+hagoromo chakra = rinnegan
+
+a unit with hagoromo chakra can only give birth to units with indra or asura chakra, it cant be passed down
+
+Jinchurick trait can be obtained if a unit seal a custom beast unit or if it kills it jinchurick trait can't be inherited, only its chackra, when the jinchurick dies, one unit with the beast chakra will be the new jinchurick. When no jinchurick or units with its chakra exists, the custom beast unit returns ito the world
+Note from me: i liked this idea but this is very hard to implement and further leads to other issues, what if others don't want this? but yeah give me your take on this
+
+
+Replace Sage mode trait for Senjutsu Trait
+Senjutsu Trait can evolve to = 
+Default sage
+Frog sage
+Slug sage
+Snake sage
+Wood sage
+Custom sage (OC)
+Depending on which "scroll trait" they got or which specifc trait they have
+(WE ARE ONLY DOING SAGE MODE(THE ONE NARUTO HAS) AND WOOD SAGE FOR THIS UPDATE)
+
+Scroll trait = 
+option 1- Senjutsu users will have a random chance during his lives to get one scroll which will turn their sage mode into one of the "evolved" traits mentioned
+Note from me: me personally i like this idea, definetly a more sensible way to implement this, id hope you can use this and suggest more sensible ways to apply stuff
+
+Yeah thats basically all i wrote just dumping ideas here and there, you can help me filter the useless or bad ideas and filter in better ideas and I really want you to help me do that.
+
+
+
+Chakra System: Refactor CalculateBaseMaxChakra to use a "Squished Scale" (Base: 100, Max: ~5,000) instead of massive numbers.
+
+Chakra System: Remove Random.Range from the calculation loop to fix UI flickering.
+
+Chakra System: Implement percentage-based modifiers for high_chakra_reserve (+50% Total) and low_chakra_reserve (-50% Total).
+
+UI: Implement a real-time update patch for the Unit Window so the Chakra bar refreshes while open.
+
+Professions: Patch rank_anbu, rank_jonin, and rank_kage to force UnitProfession.Warrior so they join armies.
+
+Ranks: Optimize CheckRankProgression so Kings gain rank_kage much faster.
+
+Jinchuriki: Auto-favorite any unit that gains the jinchuriki_base trait.
+
+Indra’s Chakra: Add Explicit Trait. Effect: Reduces Chakra Drain costs by 50% (No max chakra boost).
+
+Asura’s Chakra: Add Explicit Trait. Effect: Adds flat Max Chakra (scaled to new system).
+
+Hashirama Cells: Add Trait. Buff: Massive Health Regen. Risk: Chance to turn into a tree/die if low level/intelligence.
+
+Rinnegan Evolution: Logic: Unit needs indra_chakra + asura_chakra OR indra_chakra + hashirama_cells.
+
+Rinnegan Meteor: Add custom WorldTip message: "AHHHH... [Unit Name] Has Summoned A Meteor!"
+
+Senju Clan: Add "Wood Release" ability.
+
+Uzumaki Clan: Add 1-2 placeholder abilities (TBD) and ensure fast regen works.
+
+Sage Mode: Implement Toad Sage Mode (Intellect/Age based).
+
+Blindness Counter: Add hidden data tracking (ms_usage). Increment when using Susanoo/Amaterasu.
+
+Blindness Trigger: If ms_usage > 50 -> Remove mangekyo_sharingan, Add trait_blind (Stats plummet, no abilities).
+
+EMS Evolution: Trigger: Mangekyo user kills another Mangekyo user OR Blind user kills a Mangekyo user.
+
+Susanoo: Implement Base Susanoo ability (Mangekyo).
+
+Perfect Susanoo: Implement Perfect Susanoo ability (EMS).
+
+Byakugan: Tweak Eight Trigrams: Palm Rotation (AoE Knockback) and 64 Palms (Stun) to fit new stats.
+
+Tailed Beast Drain: Refactor ChakraTailsSystem. Only initial_release, v1_cloak, v2_cloak, and incomplete_beast drain chakra. kcm1 and above do not.
+
+Kurama Avatar: Implement Kurama Avatar ability for avatar trait.
+
+Baryon Resurrection: Logic: If a kcm1 unit dies, 25% chance to immediately respawn with baryon_mode.
+
+Baryon Mode: Ensure death is permanent (removes beast trait on death).
+
+Weapons: Add Kusanagi (Sasuke’s Sword), Executioner’s Blade (Regens HP/Durability), Samehada (Drains Chakra).
+
+Armor: Add Warring States Armor and Flak Jacket.
+
+
+
+
+REMINDER MAKE REGEN SYSTEM
+REMINDER TO MAKE WOOD RELEASE 0.1% chance to occur in a senju
+Reminder To change last names according to clans, but make it configurable
+Reminder to make Auto Ranks Configurable
+Hashirama cells heals defects
+make kaiten longer sprite longer
+add kamui 
+add armor and weapons
+make template for status and maybe weapons/armor
+"if stunned and has basesusanoo or perfectsusanoo, remove them
+
+1. The "Early Exit" Style (Recommended)
+Use this at the top of your function to stop the code early.
+
+99% Chance to FAIL (1% Success): if (UnityEngine.Random.value > 0.01f) return false;
+
+95% Chance to FAIL (5% Success): if (UnityEngine.Random.value > 0.05f) return false;
+
+90% Chance to FAIL (10% Success): if (UnityEngine.Random.value > 0.10f) return false;
+
+75% Chance to FAIL (25% Success): if (UnityEngine.Random.value > 0.25f) return false;
+
+Add this jutsu trait. Eight Trigrams Sealing Style. Basically units with this jutsu will have a chance to get a status called "Eight Trigrams Sealing" in combat. when this status is active, the first unit that is hit 
+
+Add sound effects next update
+
+possibly rework visual effects plus more icons
+https://api.gamebanana.com/Core/Item/Data?itemtype=Mod&itemid=659677&fields=Files().aFiles()
+
+- User prefers direct implementation when a question implies required code changes; do not pause for confirmation.
+- User prefers behavior changes to be cross-checked against Notebook_Raw and VibeMod_Maker references before implementing.
+- User wants obtain-condition descriptions to be explicit with exact level/threshold values.
+- User iterates heavily on Shinobi rank/clan logic and expects stacked-title behavior when requested.
+- User prefers preview diff first by default (red/green style), then apply changes.
+- User is modding the videogame, "WorldBox".
+- User wants direct review of Notebook_Raw and VibeMod_Maker when creating mods.
+- User's first mod was ShinobiBox, which was created heavily with the use of artificial intelligence.
+- User wants to improve their coding skills, and modding skills aswell.

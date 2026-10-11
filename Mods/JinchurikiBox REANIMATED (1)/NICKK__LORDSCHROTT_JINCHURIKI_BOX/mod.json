@@ -1,0 +1,9 @@
+{
+    "name": "Jinchuriki-Box",
+    "author": "Nickk, LordSchrott",
+    "version": "1.1.0",
+    "startPoint": "Main.cs",
+    "description": "A mod that adds tailed beast and a few other stuff. Have fun!",
+    "targetGameBuild": 558,
+    "iconPath": "icon.png"
+}

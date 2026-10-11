@@ -1,0 +1,11 @@
+{
+  "name": "生物属性编辑器",
+  "author": "康康(Q群:923773102)",
+  "version": "1.1.1",
+  "description": "生物旁边有齿轮点击打开属性编辑(Q群:923773102)",
+  "iconPath": "icon.png",
+  "targetGameBuild": 115,
+  "GUID": "CHAR_DATA_EDIT",
+  "Dependencies": [],
+  "OptionalDependencies": []
+}

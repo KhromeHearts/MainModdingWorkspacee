@@ -1,0 +1,56 @@
+{
+  "_readme": "Maps items to looks. Edit freely; see README.md 'Adding armor art'. Styles: helmets/<style>.png, armor/<style>.png, boots_styles below. Palettes: materials/<palette>.png.",
+
+  "fallback_palette": "steel",
+  "keep_king_crown": true,
+
+  "materials": {
+    "leather":    { "helmet": "cap",        "armor": "vest",         "boots": "shoes",      "amulet": "pendant" },
+    "copper":     { "helmet": "helm",       "armor": "mail",         "boots": "greaves",    "amulet": "pendant" },
+    "bronze":     { "helmet": "plumed",     "armor": "scale",        "boots": "greaves",    "amulet": "pendant" },
+    "silver":     { "helmet": "winged",     "armor": "breastplate",  "boots": "greaves",    "amulet": "pendant" },
+    "iron":       { "helmet": "nasal",      "armor": "breastplate",  "boots": "sabatons",   "amulet": "pendant" },
+    "steel":      { "helmet": "great_helm", "armor": "plate",        "boots": "greaves",    "amulet": "pendant" },
+    "mythril":    { "helmet": "crested",    "armor": "plate",        "boots": "greaves",    "amulet": "pendant" },
+    "adamantine": { "helmet": "horned",     "armor": "plate_ornate", "boots": "greaves",    "amulet": "pendant" },
+    "gold":       { "helmet": "plumed",     "armor": "breastplate",  "boots": "greaves",    "amulet": "pendant" },
+    "bone":       { "helmet": "horned",     "armor": "vest",         "boots": "shoes",      "amulet": "pendant" },
+    "default":    { "helmet": "helm",       "armor": "breastplate",  "boots": "greaves",    "amulet": "pendant" }
+  },
+
+  "keywords": [
+    { "match": "headband",  "slot": "helmet", "style": "headband" },
+    { "match": "hood",      "slot": "helmet", "style": "cap" },
+    { "match": "cloak",     "slot": "armor",  "style": "cloak" },
+    { "match": "robe",      "slot": "armor",  "style": "cloak" },
+    { "match": "cape",      "slot": "armor",  "style": "cloak" },
+    { "match": "highcleat", "slot": "boots",  "style": "tall_boots" },
+    { "match": "ice_",      "palette": "ice" },
+    { "match": "scale_",    "palette": "scale" },
+    { "match": "gold_",     "palette": "gold" }
+  ],
+
+  "items": {
+  },
+
+  "boots_styles": {
+    "shoes":      { "height": 1, "shade": 2, "top_shade": 2 },
+    "greaves":    { "height": 2, "shade": 3, "top_shade": 5 },
+    "sabatons":   { "height": 2, "shade": 2, "top_shade": 4 },
+    "tall_boots": { "height": 3, "shade": 2, "top_shade": 4, "accent_cuff": true }
+  },
+
+  "capes": {
+    "cloak": "kingdom",
+    "plate_ornate": "kingdom"
+  },
+
+  "species": {
+    "human": "humanoid",
+    "elf": "humanoid",
+    "orc": "humanoid",
+    "dwarf": "humanoid",
+    "zombie": "humanoid",
+    "default": "auto"
+  }
+}

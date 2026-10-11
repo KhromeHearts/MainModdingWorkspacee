@@ -1,0 +1,69 @@
+Invasions Update
+
+Akatsuki actors will be added
+Expand on akatsuki clan trait, add akatsuki techniques
+The Akatsuki, but instead of just adding the members, add the traits (eg. Art of Explosion, Jashin Worshipper, Earth Grudge Fear, Red Secret Technique, etc.)
+will probably add seven swords man of the mist sword
+
+More Otutsuki units (Hagoromo, Hamura, Kaguya)
+
+every 12 years hagoromo will bless a random unit, giving them six paths chakra
+Hagoromo has blessed {unit name}!
+
+every 20 years the akatsuki will invade the world and try to destroy it
+every 80 years a random tailed beast will be spawned in the world
+every 5 years, a group a rouge ninjas wil just be spawned
+every 19 years a random otsutsuki will invade the world
+after some years hamura and his moon people will invade
+kaguya will invade
+seven swordsmen of the mist will be added and they can invade
+
+2 new tailed beast (shukaku and eight tails)
+maybe susanoo progression will be a thing for example
+lvl 1 = ribcage, 2 = skeleton, 3 = humanoid and so on.
+
+Gedo Statue Building will have a chance to spawn akatsuki memebers near by
+Akatsuki Members will have the ability to take a way tailed beast chakras
+
+ten tails jinchuriki madara, kaguya, and more.
+drunken fist technique, six paths sage mode complete rework, jugo transformation rework, possible nature exp rework, better/creative jutsu move for chakra natures,
+snake sage mode moveset, slug sage mode rework.
+Seperate naruto into base naruto and EOS naruto, do same for sakura and sasuke.
+add "Soul" traits in the special dont touch so that i can assign powers to actors better
+add swim animations for the actors
+Rouge ninja trait
+make the good naruto actors civilized actors
+add former kage trait
+use harmony to add Last names to units(this is to practice harmony skills
+Borutos Karma ability(research first)
+Otsutsuki dna
+add otsutsuki kingdom and otsutsuki subspecies
+Chakra Genes
+---------Flying Raijin Ability---------
+1. Ability that can only be used by units with the Flying Thunder God Kunai and the Rasengan Jutsu
+1 New Wood Release Move: Wood Pierce
+
+1 New Storm Release Move:
+
+1 New Yin Release Move:
+
+1 New Yin Yang Release Move:
+
+Abilities for Snake Sage and maybe also Frog Sage mode also summonings.
+
+possibly rework visual effects plus more icons:
+
+Dont forget all the abilities feddux made and itachi.
+---------------------------------------------------------
+---------Akatsuki Cloak---------
+Units with the akatsuki trait automatically get this cloak, it will only gives minor buffs, thats all
+---------Seven Swords Of The Mist---------
+THIS IS STILL A MAYBE
+make sixpathssenjutsu users fly using: actorasset.flying = true;
+I can tweak alot of actorassets like "immune_to_injuries" get creative with this and do it for things like
+nine tails jinchuriki, ten tails jinchuriki, slug sage shit, hashirama cells and more.
+Fix Rasengan Sprite placement
+add chidori sound effect
+Add A configurable setting to let players make clans spawn naturally, also allow players to pick the chances they spawn(1-100)
+Tweak Naraka Path, Make it a move that comes out the ground and stays there instead of following unit (make it into a building)
+make it so that units spawn with natures easier (patch spawnunit)

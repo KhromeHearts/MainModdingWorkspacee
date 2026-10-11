@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "_comment": "Gathering with the possessed unit's real attacks. Keys of 'rules' are BuildingType names. Tools are optional: holding a weapon whose group is in tool_groups uses hits_with_tool instead of hits. The last hit calls the game's building.extractResources and gives the building's resources_given. building_overrides is keyed by building asset id.",
+  "reach_bonus": 2.0,
+  "progress_timeout": 8.0,
+  "rules": {
+    "Building_Tree":    { "hits": 4, "hits_with_tool": 2, "tool_groups": ["axe"], "experience": 1, "hit_sound": "event:/SFX/OTHER/Punch", "finish_sound": "event:/SFX/NATURE/TreeFall" },
+    "Building_Mineral": { "hits": 5, "hits_with_tool": 2, "tool_groups": ["hammer"], "experience": 2, "hit_sound": "event:/SFX/HIT/HitStone" },
+    "Building_Fruits":  { "hits": 1, "hits_with_tool": 1 },
+    "Building_Plant":   { "hits": 1, "hits_with_tool": 1 },
+    "Building_Wheat":   { "hits": 1, "hits_with_tool": 1 },
+    "Building_Hives":   { "hits": 2, "hits_with_tool": 1 },
+    "Building_Poops":   { "hits": 1, "hits_with_tool": 1 }
+  },
+  "building_overrides": {}
+}

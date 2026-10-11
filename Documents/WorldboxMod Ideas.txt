@@ -1,0 +1,287 @@
+MOD IDEAS
+
+
+
+More Ages
+
+Age of stars
+grants cool statuses like,
+stargazing status: grants minor buffs
+Inspire: based of beeswarm, gives buffs/boosts
+fairy/twinkle mobs spawn
+
+Age Of Fog
+The area becomes foggy and ghosts might start to linger around
+Spooked status: when a unit sees a ghost
+
+Age Of Idleness(maybe)
+Age Of Lushness
+Fruit Bushes, flowers and fruit trees spawn rates are tripled
+
+Age Of Floods(maybe)
+
+Age Of Drougth
+Water is scarce and units will recieve statuses like
+Thirsty:
+Overheating:
+
+Age Of rain(maybe)
+usually comes after the age of drought
+
+Age Of Fall
+A calm fall season
+
+Age Of Fun
+Fireworks and all sorts of fun stufff for the units
+
+Age of eclipse
+Solar eclipse where interesting mobs come out to play
+
+Age Of Fairytales
+Unicorns, fairies and more
+
+Age Of Heroes
+More units will step up to be heroes and wear knightly armor
+
+Age Of Evil
+Cold towers, Hell towers and those evil stuff will form on the map
+bringing in otherworldly evil
+
+Age Of Titans - Age Of Gigantism
+Titans will awaken in certain units causing them to grow largely in 
+size
+
+Age Of Lava
+Dormant Volcanoes will spawn in and awaken!
+
+Age Of Corrosion
+Acid rain will start to pour everywhere!
+
+Age Of Battles
+Kingdoms feel more inclined to battle for resources
+
+Age Of Sand
+Sandstorms will hit the map causing desert and dusty creatures
+to spawn in
+
+Age Of Wind
+Windy day terraria basically, but theres tornadoes?!!
+
+Horses and Horse Civilization
+Pigs and pig civilization
+
+New tiles: Mud
+Pigs love mud but units can get stuck in it
+
+Retired Job
+Units that have reach 3/4 of there life will automatically retire
+which means no more work unless forced into war
+
+Immortatlity can be passed down 
+
+Modpack full of old mods that dont get updates basically ill update those mods and add some original creations
+
+RPGBox (now survival box)
+Same idea as Better Worldbox but rpg shi
+doing certain things give you stats in certain places appliable to skill tree mod
+
+
+
+
+RTX's Weapons
+literalyl just adds weapons
+Looking at mods from minecraft(casket of reveries), terraria, terraria Calamity, anime and more
+EnderPearl bow
+Will add more destruction methods
+
+
+Music Mod
+If players suggest more music, ill add and make it toggleable 
+Terreria Sound Track, Minecraft SoundTrack
+
+Better Levels
+Worldbox levels are terrible, so ill make them affect things, make it easier for units to level up
+Add many ways they can level up. Killing units will drop exp
+
+
+
+
+
+
+
+
+Ambient Sounds Mod (DONE)
+Ambient sounds for different ages 
+
+Main Character mod (STARTED)
+You could select any unit in the world to be your main character, which will allow
+You (not fully thought through)
+
+Lineage (DONE)
+Might pitch this idea to xavii for his family mod, but basically you can select a special ability(trait)
+that is passed down through a family (not fully thought through)
+
+Hardcore Worldbox
+A mod that just makes units lives basically on hardcore. Randomed Buffed Animals can spawn,
+crazy stuff just happens, and a unit just has to survive, gain skills, and advance. If it becomes its own mod, could add thirst features
+and just things to make the game hard for units, but rewarding if they survive
+
+Unit Hair customizer mod (IF BESERK GUY DOESNT MAKE IT)
+
+Some cool idea that noone has done, or some copy of a minecraft mod/modpack just something creative
+
+Ice And Fire Overhaul
+Add more Ice Weapons and Fire weapons, add 2 ice mobs and 2 fire mobs
+
+Armor Display
+Vanilla armor will now display on units when worn, so when unit wears the iron helmet
+it will show an there body. I think i have to manually draw it every time. (nevermind)
+i thought of a better way, i can just make the armors overlay over the units smoothly and make the overlay slightly transparent so i dont have to
+redraw all of them and so that its easier for other mods armor to be displayed too
+We will make it easy and understandable so that other people can implement there own armors
+from other mods into it. and if its an armor we dont have it will just default to the the normal actor
+Will also add armor bonuses, if someone has on 3 matching pieces, they get like some status effect bonus
+
+Community Vanities
+Like that one community vanities mod in terraria, basically when i add a character customization system which will probably connect with the 
+Unit hair customizer mod idea, i want people to be able to put vanities like custom made accessories on units and itll basically
+overlay over the unit and yeah its interesting i might draw a concept to show what it would look like
+
+Unit Stat Editor
+Allows you to edit any stat
+  
+Better Weather
+Heavy Rain and Blizzards, better rain effects and snow effects, winter and rain ambience
+
+WORLD NEWS MOD
+Cool fun mod, Units can build a mailbox in their kingdom which allwos kingdoms to get "World News"
+World News can be any event that 
+
+RTX's Npcs
+Mod that makes it so that random npcs can spawn in kingdoms(similar to terraria) if conditions are right.
+You can click on them to talk to them and get stuff from them for the kingdoms they are in or to summon events or other things
+Could merge this with Better Gold mod and Better WorldBox
+Awful Wandering Trader. A trader has a chance tp spawn in kingdoms that have a wealth of over 10K Gold coins
+When clicked he gives some dialogues but he comes of as a rude bitch, but you can buy resources for the kingdom
+using the kingdom gold
+
+Better Volcanoes
+When enabled, volcanoes are dormant most of the time. Eruptions are rare and have varying strengths. 
+All volcanoes erupt violently during the Chaos Era, destroying nearby villages. 
+Lava flows faster and cools into livable terrain, making volcanic islands possible.
+
+Fantasia + Better WorldBox
+Huge Overhaul Mod that will add alot of new features to worldbox
+IDEAS
+Units have like an ai where if they go near a camp fire, they can regen faster
+New Invasion: Like goblin invasion, Nightmare invasion, Real human invasion.
+New food, Ores, Resources
+Different ore meteors
+Units can drop exp clumps like minecraft
+Units can drop items now
+
+
+
+Skies Alive
+Adds birds, and many more things that fly around, even like custom mobs and stuff
+Cool invasion events where flocks of birds just fly around and shit on units.
+Units will get statuses like cursing at the birds, which would make a bird more inclined
+to shit on the unit.
+to shit on the unit.
+
+More Statues/Relics mod
+Units can build more statues
+Fountains
+ore statues
+statues of modders
+
+PrehistoricBox
+3 New Ages
+1 New Biome
+80+ New mobs
+The new ages are: the Age of Terrible Lizards, in which dinosaurs-inspired creatures spawns around your world, the Age of Ancestors, in which giant mammals and hominids roam around, and the Age of Origins, in which you can see ancient beasts everywhere.
+
+The Prehistoric Valley biome is the most flourishing Biome during the Age of Terrible Lizards and the Age of Origins, while the already existing Permafrost Biome is the most prominent one in the Age of Ancestors.
+
+In Age of Terrible Lizards and in Age of Ancestors is common to find fossil ores that can be used to extract bones. I'm planning to add Amber too, since it could be used to make jewels.
+
+In Age of Ancestors Tar pits can naturally spawn. This structure is highly flameable and splits out some oil particles. If they hit an entity it would give the "Inked" status that affects negatively percepition, speed and speed attack, and health. If the oil particles hit the ground or the water, they would stain it and make it also very flameable.
+
+In Age of Terrible Lizards creatures have a 1% chance to spawn with the trait "Unlucky" and the new trait "Meteor Magnet" which gives a 100% chance to summon a meteor after death.
+
+In Age of Ancestors, caveman naturally spawn from caves. They are not a proper civilization but they can form small settlements, build tents and bonfire and develop few culture knowledge.
+
+The "Relic" or "Living Fossil" trait would be given to a naturally occuring entity that makes it to another Age, in which It doesn't spawn naturally. This trait affects positively the lifespan, the health and nerfs the fertility.
+
+The "Endling" trait is given when an entity is the last of his Clan, Family or Subspecie and It increase the health, the attack, the lifespan and the fertility.
+
+What do you think about it? Did you recognize every new creature? Let me know what's your opinioni about it
+https://www.reddit.com/r/Worldbox/comments/1eudygf/suggestion_prehistoric_features_3_new_ages_1_new/#lightbox
+
+JojoBox
+Hamon
+Spin
+Only 5 stands on release: Star Platinum and Star Platinum: The World, The World, King Crimson, Golden Experience
+"Characters" trait: Tendency of Joseph joestar(his infamous run)
+
+Jukebox mod
+literally allows players to drop a building thats basically a jukebox
+if you click on the gc, a window pops up where users can select whatever sounds they want
+the juke box will be able to play pre-added music. If possible we can hooke the spotify api to it so that we can
+allow users to play their spotify stuff on there
+
+Nerfed Fire Damage (DONE)
+quality of life mod
+Fire does so much damage, i need to see what the damge intervals are and make it do much less. 
+
+Shields
+Adds shields to the game, uses vanilla resources to craft, increases chancing of deflecting/blocking moves.
+
+Armor+ (could be merged with better worldbox)
+Armor Sets will give armor set bonus statuses.
+
+Inheriting wealth features, basically wills.
+
+Power Rankings Leaderboard mod.
+
+Jobs+
+Police: can arrest units that commit petty crimes and send them
+to jail for indefinite time
+
+Bridge Builders: units located on islands can take up the job to build
+bridges to connect islands
+
+Gold+ (MAKE IT LIKE TERRARIA COINS)
+Tax Collecters can collect gold from units
+
+Better Heals - Quality of life mod
+units onpy heal naturally when they have 
+
+Mythical Rank - QOL
+Mythical items get the purple aura around the trait/item 
+Modders who download this mod can use it to integrate their own mythical weapons
+
+Mythical Weapons - 5 mythical weapons that can be obtained by units 
+Excalibur, 1 random excalibur building (sword inside stone) will spawn somewhere random in the map, units worthy enough can pull it out and gain the weapon
+Orbital Cannon, what i said
+
+
+Useful Things
+A bunch of thigns that can assist me as i mod, like a clear all trees,bushes,minerals,units button
+traits that give large stats in random areas and more. Check out daybreaks mod to see if it helps.
+
+PRIOTIZE:
+MAIN CHARACTER MOD
+FINISH SPRINT 
+ADD A SECTION ON THE SIDE THAT SHOWS ACTIVE STATUSes
+START HOTBAR/INVENTORY
+
+
+DISPLAY ARMOR MOD (OPTIONAL COMPAT WITH MAIN CHARACTER MOD)
+WORLDBOX MODDING TUTORIAL
+DAY, NIGHTS, AND SEASONS
+CRAZY WEATHER MOD (REQUIRES DAY NIGHTS AND SEASONS)
+WORLDBOX AMBIENCE COMPAT WITH DAYS NIGHTS AND SEASONS
+MAYBE SHINOBIBOX UPDATE
+NEOMODLOADER STEAM WORKSHOP MODS IN GAME 
+SURVIVAL BOX

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "_comment": "Eating with left click while a food is selected. The game's own consumeFoodResource is always applied (nutrition, restore_health %, favourite food, trait/status rolls). These numbers are an extra heal on top. allow_any_game_food: any resource with food=true can be eaten even without an entry here.",
+  "allow_any_game_food": true,
+  "default": { "cooldown": 0.8, "bonus_heal_flat": 0, "bonus_heal_percent": 0.0 },
+  "foods": {
+    "berries":           { "bonus_heal_flat": 3 },
+    "desert_berries":    { "bonus_heal_flat": 3 },
+    "bananas":           { "bonus_heal_flat": 3 },
+    "coconut":           { "bonus_heal_flat": 4 },
+    "lemons":            { "bonus_heal_flat": 2 },
+    "mushrooms":         { "bonus_heal_flat": 2 },
+    "herbs":             { "bonus_heal_flat": 5, "cooldown": 0.5 },
+    "honey":             { "bonus_heal_flat": 4 },
+    "fish":              { "bonus_heal_flat": 6 },
+    "meat":              { "bonus_heal_flat": 8 },
+    "bread":             { "bonus_heal_flat": 10 },
+    "sushi":             { "bonus_heal_flat": 12 },
+    "pie":               { "bonus_heal_flat": 14 },
+    "burger":            { "bonus_heal_flat": 15 },
+    "jam":               { "bonus_heal_flat": 10 },
+    "cider":             { "bonus_heal_flat": 6, "cooldown": 1.2 },
+    "ale":               { "bonus_heal_flat": 5, "cooldown": 1.2 },
+    "tea":               { "bonus_heal_flat": 6, "cooldown": 1.0 },
+    "candy":             { "bonus_heal_flat": 4 },
+    "celestial_avocado": { "bonus_heal_flat": 25, "bonus_heal_percent": 0.1 }
+  },
+  "blocked": ["wood", "stone", "gold", "common_metals", "silver", "mythril", "adamantine", "gems", "bones", "leather", "dragon_scales", "fertilizer"]
+}
