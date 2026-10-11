@@ -394,10 +394,9 @@ namespace ShinobiBox
             StatusAsset amaterasu = new StatusAsset();
             amaterasu.id = StatusIds.Amaterasu;
             amaterasu.base_stats = new BaseStats();
-            amaterasu.base_stats.set("multiplier_speed", -0.90f);
-            amaterasu.base_stats.set("armor", -50f);
-            amaterasu.base_stats.set("multiplier_attack_speed", -0.90f);
-            amaterasu.duration = 60f;
+            amaterasu.base_stats.set("multiplier_speed", -0.40f);
+            amaterasu.base_stats.set("armor", -15f);
+            amaterasu.duration = 12f;
             amaterasu.path_icon = "effects/amaterasu";
 
             amaterasu.animated = true;
@@ -413,6 +412,8 @@ namespace ShinobiBox
             amaterasu.scale = 0.4f;
             amaterasu.locale_id = "status_title_status_amaterasu";
             amaterasu.locale_description = "status_description_status_amaterasu";
+            // A status "action" with no interval runs EVERY FRAME. Always set action_interval when adding an action.
+            amaterasu.action_interval = 1f;
             amaterasu.action = (WorldAction)Delegate.Combine(amaterasu.action, new WorldAction(amaterasu_burn));
 
             AssetManager.status.add(amaterasu);
@@ -608,6 +609,7 @@ namespace ShinobiBox
             kaiten.locale_id = "status_title_kaiten";
             kaiten.locale_description = "status_description_kaiten";
 
+            kaiten.action_interval = 0.5f;
             kaiten.action = (WorldAction)Delegate.Combine(kaiten.action, new WorldAction(KaitenShredAction));
 
             AssetManager.status.add(kaiten);
@@ -639,7 +641,6 @@ namespace ShinobiBox
             gettingHit.locale_id = "status_title_64_palms";
             gettingHit.locale_description = "status_description_64_palms";
 
-            gettingHit.action = (WorldAction)Delegate.Combine(gettingHit.action, new WorldAction(EightTrigrams64Palms));
 
             AssetManager.status.add(gettingHit);
             #endregion
@@ -848,6 +849,7 @@ namespace ShinobiBox
 
             kamui.locale_id = "status_title_kamui_intangibility";
             kamui.locale_description = "status_description_kamui_intangibility";
+            kamui.action_interval = 0.5f;
             kamui.action = (WorldAction)Delegate.Combine(kamui.action, new WorldAction(action_freeze));
 
             AssetManager.status.add(kamui);
@@ -1219,6 +1221,7 @@ namespace ShinobiBox
             chains.locale_id = "status_title_adamantite_chains";
             chains.locale_description = "status_description_adamantite_chains";
 
+            chains.action_interval = 1f;
             chains.action = (WorldAction)Delegate.Combine(chains.action, new WorldAction(AdamantiteDrainAction));
 
             AssetManager.status.add(chains);
@@ -1393,6 +1396,7 @@ namespace ShinobiBox
             infiniteTsukuyomi.locale_id = "status_title_infinite_tsukuyomi";
             infiniteTsukuyomi.locale_description = "status_description_infinite_tsukuyomi";
             infiniteTsukuyomi.action_on_receive = (WorldAction)Delegate.Combine(infiniteTsukuyomi.action_on_receive, new WorldAction(action_freeze));
+            infiniteTsukuyomi.action_interval = 1f;
             infiniteTsukuyomi.action = (WorldAction)Delegate.Combine(infiniteTsukuyomi.action, new WorldAction(action_freeze));
             AssetManager.status.add(infiniteTsukuyomi);
             #endregion
@@ -2205,7 +2209,10 @@ namespace ShinobiBox
         public static bool amaterasu_burn(BaseSimObject pTarget, WorldTile pTile)
         {
             if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
-            pTarget.getHit(10f, true, AttackType.Fire, null, true, false);
+            // Black flames: 3% of max health + 6 every second for 12 seconds (about 40% of a unit's health).
+            // AttackType.Other on purpose, so fire-proof units still burn.
+            float burn = pTarget.a.getMaxHealth() * 0.03f + 6f;
+            pTarget.getHit(burn, true, AttackType.Other, null, true, false);
             return true;
         }
 
@@ -2214,29 +2221,14 @@ namespace ShinobiBox
         {
             if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
 
-            var nearbyUnits = Finder.getUnitsFromChunk(pTarget.current_tile, 1);
-
-            if (nearbyUnits.Any())
+            // Only units within 3 tiles get shredded (the third argument). Without it this hit a 3x3 block of chunks.
+            foreach (Actor unit in Finder.getUnitsFromChunk(pTarget.current_tile, 1, 3f))
             {
-                foreach (var unit in nearbyUnits)
-                {
-                    if (unit.a == pTarget.a || (pTarget.a.kingdom != null && unit.a.kingdom == pTarget.a.kingdom)) continue;
-                    if (!unit.a.isAlive()) continue;
+                if (unit == pTarget.a || (pTarget.a.kingdom != null && unit.kingdom == pTarget.a.kingdom)) continue;
+                if (!unit.isAlive()) continue;
 
-                    unit.a.getHit(40f, true, AttackType.Fire, pTarget.a, true);
-
-                }
+                unit.getHit(40f, true, AttackType.Other, pTarget.a, true);
             }
-            return true;
-        }
-
-        // Eight Trigrams: 64 Palms
-        public static bool EightTrigrams64Palms(BaseSimObject pTarget, WorldTile pTile)
-        {
-            if (pTarget == null || pTarget.a == null) return false;
-
-            //pTarget.a.getHit(0.5f, true, AttackType.Fire, null, false);
-
             return true;
         }
 
@@ -2244,7 +2236,8 @@ namespace ShinobiBox
         {
             if (pTarget == null || !pTarget.a.isAlive()) return false;
 
-            float damage = pTarget.a.getMaxHealth() * 0.05f;
+            // 3% of max health per second, never more than 40, so huge units like Kurama aren't melted.
+            float damage = Mathf.Min(pTarget.a.getMaxHealth() * 0.03f, 40f);
             pTarget.a.getHit(damage, true, AttackType.Other, null, true);
 
             return true;

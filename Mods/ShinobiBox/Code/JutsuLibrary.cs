@@ -648,7 +648,7 @@ namespace ShinobiBox
 
             if (!pTarget.a.hasStatus(StatusIds.Amaterasu))
             {
-                pTarget.a.addStatusEffect(StatusIds.Amaterasu, 60f);
+                pTarget.a.addStatusEffect(StatusIds.Amaterasu);
 
                 // Blindness Logic
                 ChakraSystem.AddMangekyoUsage(pSelf.a, 1);
@@ -1096,20 +1096,16 @@ namespace ShinobiBox
             if (!CheckAndConsumeChakra(pSelf.a, 50f)) return false;
 
             EffectsLibrary.spawnAtTile(EffectIds.ChakraArm, pSelf.current_tile, 0.1f);
-            var nearbyUnits = Finder.getUnitsFromChunk(pTarget.current_tile, 1);
-
-            if (nearbyUnits.Any())
+            // Only units within 3 tiles of the target. Without the radius this hit a 3x3 block of chunks.
+            foreach (Actor unit in Finder.getUnitsFromChunk(pTarget.current_tile, 1, 3f))
             {
-                foreach (var unit in nearbyUnits)
-                {
-                    if (unit.a == pSelf.a || (pSelf.a.kingdom != null && unit.a.kingdom == pSelf.a.kingdom)) continue;
-                    if (!unit.a.isAlive()) continue;
+                if (unit == pSelf.a || (pSelf.a.kingdom != null && unit.kingdom == pSelf.a.kingdom)) continue;
+                if (!unit.isAlive()) continue;
 
-                    unit.a.getHit(250f, true, AttackType.Other, pSelf.a, true);
-                    World.world.applyForceOnTile(unit.current_tile, 5, 1f, true, 0);
-                    EffectsLibrary.spawnExplosionWave(pTarget.current_tile.posV3, 2f, 0.5f);
-                }
+                unit.getHit(250f, true, AttackType.Other, pSelf.a, true);
+                World.world.applyForceOnTile(unit.current_tile, 5, 1f, true, 0);
             }
+            EffectsLibrary.spawnExplosionWave(pTarget.current_tile.posV3, 2f, 0.5f);
             return true;
         }
         #endregion
@@ -1124,7 +1120,8 @@ namespace ShinobiBox
 
             pTarget.a.addStatusEffect(StatusIds.AdamantiteChains);
 
-            float drain = pTarget.a.getMaxHealth() * 0.25f;
+            // 15% of the target's max health, at most 250, and the Uzumaki heals that much.
+            float drain = Mathf.Min(pTarget.a.getMaxHealth() * 0.15f, 250f);
             pTarget.a.getHit(drain, true, AttackType.Other, pSelf.a, true);
             pSelf.a.restoreHealth((int)drain);
 
