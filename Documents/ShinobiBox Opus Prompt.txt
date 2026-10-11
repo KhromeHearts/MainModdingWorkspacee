@@ -1,0 +1,70 @@
+PROMPT FOR OPUS 5.5 - SHINOBIBOX CREATIVE OWNERSHIP PASS
+(Paste everything below the line into a fresh session opened on the MainModdingWorkspacee repo.)
+=====================================================================
+
+You are taking over design and engineering ownership of a WorldBox mod called ShinobiBox: Reborn (Mods/ShinobiBox, v3.0.0, NeoModLoader/C#, roughly 11.7k lines). I am the mod's author. I am not asking you for one specific feature. I am asking you to decide what makes this mod best for the players and then do it: rework systems, finish half-built features, add traits, fix bugs, clean code, cut dead weight, whatever you judge most valuable. Use real creative freedom. The one hard constraint is that the code must keep matching the mod's existing style so it does not look pasted in.
+
+----------------------------------------------------------------
+1. WHO I AM AND HOW THIS MOD GOT HERE
+----------------------------------------------------------------
+- ShinobiBox was my first mod, started in January. I could not write C# then and leaned on AI for anything I did not understand, so large parts of the code are sloppy, duplicated, or only half understood by me.
+- I am now an early-intermediate C# programmer. I can read and write ordinary code easily. Explain anything clever or unusual, and prefer plain, readable code over cleverness.
+- The deeper problem is design, not typing: BREADTH WITHOUT DEPTH. I kept adding traits, statuses and jutsu without finishing the ones I already had. Updates shipped lackluster, I kept announcing dates and missing them, and my community has been waiting. I burned out the last time I tried to rework things.
+- So the goal is NOT "add more." The goal is fewer things, each one fully finished and actually visible in play. Cutting is allowed and encouraged when something cannot be made good.
+- My .txt files in Documents/ are brain dumps of every idea I ever had, implemented or not. Treat them as a wish list and a record of intent, never as a spec. Do not feel obliged to build any of it.
+
+----------------------------------------------------------------
+2. WHAT TO READ FIRST (in this order)
+----------------------------------------------------------------
+1. Documents/ShinobiBox Roadmap.txt - my "Definition of Fleshed Out" 8-point checklist, the pillar list, and the technical notes. Hold every feature you touch to that checklist.
+2. Documents/ShinobiBox Design Review.txt - a code-reading audit from an earlier session: confirmed bugs (B1-B13), system-level problems (S1-S7), per-feature verdicts, and a fix list (F1-F12). It was written from reading code only and nothing was playtested. Some items have since been fixed (for example the 05_hagoromo_chakra ids now appear consistent in ShinobiActors.cs and ShinobiEvents.cs), so VERIFY each item against the current code before acting on it.
+3. Documents/Shinobi Box Scaling Guide.txt - four stat tiers (Low/Mid/High/Mythic). Use these when balancing.
+4. Documents/ShinobiBox.txt and ShinobiBoxUpdateLog.txt - raw ideas and the latest patch notes (summoning jutsu, sage mode system, Pirate King/Haki idea, Madara EMS taming tailed beasts, and so on).
+5. Mods/ShinobiBox/Code/prompt.txt - the handoff prompt I gave a previous AI. It lists what I wanted removed and reworked (duplicate code, Nature Exp removal, sage mode rebuild, ClanProgression merged into birth logic, kingdoms so the good-guy characters live with normal humans while villains are separate, en.json cleanup, Mangekyo review). Find out which of those were completed and which were not. Do not blindly redo finished work and do not assume anything in it was done.
+6. Then the code itself. Biggest files: ShinobiStatus.cs (2290 lines), ShinobiTraits.cs (2045), JutsuLibrary.cs (1695), ShinobiActors.cs (1375). Also Main.cs, ChakraSystem/, Progressions/, ShinobiEvents.cs, ShinobiProgression.cs, ShinobiKingdoms.cs, Locales/*.json, GameResources/.
+
+Reference material in the repo (read-only unless I say otherwise):
+- Mods/JinchurikiBox REANIMATED (1)/ - an unreleased update to JinchurikiBox, the mod that inspired ShinobiBox. Its original devs gave it to me as a tester and have stopped working on it. It is good in places and I tried to imitate its systems (chakra, sage modes, Sharingan variants, reincarnation traits, hover tooltips, Otsutsuki blood tiers). It also contains a lot of useless code. Borrow IDEAS and structure, and write the implementation in ShinobiBox's own style. Do not do wholesale copy-paste of their files; if you think copying something large is the right call, ask me first.
+- Worldbox_code/ - the decompiled WorldBox game source. Use it to see how vanilla does things (ActorAsset, traits, statuses, kingdoms/civ rules, projectiles) before inventing your own approach.
+- NeoModLoader/ - the mod loader. Other mods in Mods/ are useful for patterns only (VisibleArmors, PossessLib, EffectsLib-style effects).
+
+----------------------------------------------------------------
+3. WHAT I WANT YOU TO DO
+----------------------------------------------------------------
+Step A - Understand before touching anything.
+Read the code broadly, then write me a short state-of-the-mod report: what is solid, what is dead or commented out, what silently does nothing, what is duplicated, and your honest opinion of the biggest design problems. I want your real opinion, including if you think a pillar should be cut or the architecture should change.
+
+Step B - Propose a plan and ask me what you need.
+Give a ranked plan of what you intend to do and why, aimed at what players will actually notice and enjoy. Include a scope estimate for each item. Then ask me every question you have, up front, in one batch. I would rather answer twenty questions than have you guess about lore, balance preferences, or what I consider important. Questions about my vision, what I want kept, and what players have asked for are welcome.
+
+Step C - Do the work, in small verified pieces.
+Suggested priorities (override them if you disagree and tell me why):
+1. Safety net first: central trait/status/actor id constants and a startup self-check that logs any id that does not exist, so typos stop silently killing features. Fix whatever it finds.
+2. Confirmed dead or broken features from the Design Review that still reproduce (Mangekyo ability coin flip at registration, clan birth rules nested inside the Otsutsuki check, Infinite Tsukuyomi condition, Six Paths roll order, exhaustion lock, rank progression case bugs, Lee clan hookup, permanent-cripple armor break).
+3. The ability feel problem: abilities are rare (tiny random roll plus one global 7 second cooldown plus chakra), so strong units mostly fight like normal units. Redesign triggering so signature moves are visible, situational and distinct (per-ability cooldowns, conditions, distinct sound/effect/world-log). This is likely the single biggest player-facing improvement.
+4. Sage modes: the whole chain is commented out. Either rebuild a small version properly (for example Frog and Slug first) or cut it, and delete the dead code either way.
+5. Finish the flagship Nine-Tails/Jinchuriki chain before adding any other content (Avatar form's ability is commented out).
+6. Pick the best-fleshed-out pillar (Uchiha/Sharingan line is my guess) and bring it to the full 8-point standard as the quality bar for everything else.
+7. Duplicate code cleanup, dead/commented code removal, localization (en.json) cleanup with missing keys added, config toggles that players would want.
+8. Anything else you judge more valuable: new traits, new jutsu, new actors, events, kingdom behavior, UI - as long as it is finished, not half-built. If you add content, it must meet the 8-point checklist in the Roadmap. If it cannot, do not ship it.
+
+Rules for how you work:
+- Match the mod's existing style: naming, structure, comment density, the way traits/statuses/actions are registered. When the existing style is itself a problem, tell me and fix it consistently rather than creating a second style.
+- Keep changes reviewable: group by theme, commit in small logical commits with clear messages, and keep a running changelog in Documents/ that I can read in plain language (what changed, why, what to test in-game). Update the Update Log/Roadmap files instead of creating new ones where possible.
+- You cannot run WorldBox from here. Do not claim something works because it compiles or looks right. Check whether the project can be compiled in this environment and do so if it can. For everything else, mark it [NEEDS IN-GAME TEST] and give me a short test checklist (what to spawn, what to watch for, edge cases like death, save/load, trait removal by hand, non-sapient units).
+- Do not break save compatibility casually. If you rename ids, say so and tell me what existing saves will lose.
+- Be careful with permanent effects and anything that auto-gives traits: manual removal by the player must stick (no auto-give loops).
+- Performance matters: Main.cs loops over every unit on timers. Avoid adding heavy per-unit-per-tick work.
+- Do not touch the other mods in Mods/ or the reference folders, and do not push anywhere except the branch you are given.
+- If you are about to make a call that is hard to reverse, big, or about my lore or balance taste, ask first. Otherwise just make the call, explain it in one or two sentences, and keep going.
+
+----------------------------------------------------------------
+4. WHAT "DONE" LOOKS LIKE
+----------------------------------------------------------------
+- A player can see and feel the difference in an ordinary world within a few minutes of playing, without reading patch notes.
+- Every trait/ability you touched has: a clear one-sentence description with exact obtain rules, a real effect, a proper icon (no WIP placeholder), localization, a sound or visual, and sane balance for its tier.
+- No new silent failures: bad ids are caught at startup.
+- The codebase is smaller and clearer than when you started, not bigger and messier.
+- I can read your changelog, understand each change, and test it in-game quickly.
+
+Start with Step A and Step B. Do not begin large edits until I have answered your questions.
