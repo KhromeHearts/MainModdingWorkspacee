@@ -152,7 +152,7 @@ namespace ShinobiBox
             if (actor.asset.id == ShinobiActors.JuubiActorId) return 4000f;
             if (actor.asset.id == ShinobiActors.KuramaActorId) return 2000f;
             if (actor.hasTrait("ten_tails_jinchuriki")) return 1000f;
-            if (actor.hasTrait("nine_tails_jinchuriki")) return 500f;
+            if (actor.hasTrait("nine_tails_jinchuriki")) return actor.hasTrait("uzumaki_clan") ? 750f : 500f;
             return 0f;
         }
 
@@ -188,6 +188,8 @@ namespace ShinobiBox
             if (actor.hasStatus("status_jinchuriki_kcm1")) return 6f;
             if (actor.hasStatus("status_jinchuriki_initial_release")) return 4f;
             if (actor.hasStatus("status_jinchuriki_kcm2")) return 3f;
+            if (actor.hasStatus("juubi2")) return 8f;
+            if (actor.hasStatus("juubi1")) return 5f;
             return 0f;
         }
 
@@ -236,6 +238,8 @@ namespace ShinobiBox
                     {
                         SetTailedBeastChakra(actor, 0f);
                         ShinobiProgression.RemoveLowerForms(actor);
+                        actor.finishStatusEffect("juubi1");
+                        actor.finishStatusEffect("juubi2");
                     }
                 }
                 else if (!actor.hasStatus("status_jinchuriki_baryon_mode"))

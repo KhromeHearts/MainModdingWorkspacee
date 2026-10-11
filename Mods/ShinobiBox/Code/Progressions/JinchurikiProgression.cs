@@ -19,6 +19,11 @@ namespace ShinobiBox
             if (ShinobiActors.IsTailedBeast(actor)) return false;
             if (actor.hasStatus("status_jinchuriki_baryon_mode")) return false;
 
+            if (actor.data.health <= 0)
+            {
+                return BaryonMode(pSelf);
+            }
+
             int level = actor.data.level;
             bool hasAttackTarget = actor.has_attack_target;
 
@@ -124,6 +129,7 @@ namespace ShinobiBox
             if (actor.data.level < 7) return false;
             if (actor.hasStatus("status_jinchuriki_baryon_mode")) return false;
             if (UnityEngine.Random.value > 0.45f) return false;
+            ClearNineTailsStatuses(actor);
             //Actor baryonUnit = World.world.units.createNewUnit(actor.asset.id, actor.current_tile, true, 1f);
 
             /*
@@ -155,6 +161,46 @@ namespace ShinobiBox
             return true;
         }
 
+        public static bool ReleaseKurama(BaseSimObject pSelf, WorldTile pTile = null)
+        {
+            if (pSelf?.a == null) return false;
+            Actor host = pSelf.a;
+
+            if (ShinobiActors.IsTailedBeast(host) || host.isClone()) return false;
+            if (host.hasStatus("status_jinchuriki_baryon_mode")) return false;
+
+            return ReleaseTailedBeast(host, ShinobiActors.KuramaActorId, "Kurama", "log_kurama_released", "worldlog_kurama_released", "ui/icons/9Tails");
+        }
+
+        public static bool ReleaseJuubi(BaseSimObject pSelf, WorldTile pTile = null)
+        {
+            if (pSelf?.a == null) return false;
+            Actor host = pSelf.a;
+
+            if (ShinobiActors.IsTailedBeast(host) || host.isClone()) return false;
+
+            return ReleaseTailedBeast(host, ShinobiActors.JuubiActorId, "Ten-Tails", "log_juubi_released", "worldlog_juubi_released", "ui/icons/10Tails");
+        }
+
+        private static bool ReleaseTailedBeast(Actor host, string beastId, string beastName, string logId, string localeId, string icon)
+        {
+            WorldTile tile = host.current_tile;
+            if (tile == null) return false;
+
+            Actor beast = World.world.units.createNewUnit(beastId, tile, true, 3f);
+            if (beast == null) return false;
+
+            ShinobiActors.EnsureRequiredTraits(beast);
+            beast.data.level = 100;
+            beast.setName(beastName);
+
+            if (ShinobiConfig.EnableWorldTips)
+            {
+                ShinobiWorldLogs.AddWorldLog(logId, localeId, icon, beast);
+            }
+            return true;
+        }
+
         public static void PostBaryonExhaustion(Actor actor)
         {
             if (actor == null || !actor.isAlive()) return;
@@ -176,15 +222,15 @@ namespace ShinobiBox
             if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
 
             Actor actor = pSelf.a;
+            if (ShinobiActors.IsTailedBeast(actor)) return false;
 
-            float maxHealth = actor.getMaxHealth();
-
-            float healthPct = actor.data.health / maxHealth;
             int level = actor.data.level;
 
             bool hasJuubi1 = actor.hasStatus("juubi1");
             bool hasJuubi2 = actor.hasStatus("juubi2");
             bool hasSps = actor.hasStatus("status_six_paths_senjutsu");
+
+            if (!hasJuubi1 && !hasJuubi2 && ChakraSystem.GetTailedBeastChakra(actor) < ChakraSystem.GetMaxTailedBeastChakra(actor) * 0.25f) return false;
 
             if (!hasJuubi2 && level >= 5 && hasJuubi1)
             {

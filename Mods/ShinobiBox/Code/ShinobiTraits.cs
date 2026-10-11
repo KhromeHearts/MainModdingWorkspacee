@@ -1407,7 +1407,7 @@ namespace ShinobiBox
             ninetailsjinchuriki.base_stats.set("health", 128f);
             ninetailsjinchuriki.base_stats.set("chakra", 106f);
             ninetailsjinchuriki.action_get_hit = (GetHitAction)Delegate.Combine(ninetailsjinchuriki.action_get_hit, new GetHitAction(Jinchuriki.NineTailsJinchuriki));
-            ninetailsjinchuriki.action_death = (WorldAction)Delegate.Combine(ninetailsjinchuriki.action_death, new WorldAction(Jinchuriki.BaryonMode));
+            ninetailsjinchuriki.action_death = new WorldAction(Jinchuriki.ReleaseKurama);
 
 
             addTraitToGame(ninetailsjinchuriki);
@@ -1427,6 +1427,7 @@ namespace ShinobiBox
             tentailsjinchuriki.base_stats.set("multiplier_health", 0.5f);
 
             tentailsjinchuriki.action_get_hit = new GetHitAction(Jinchuriki.TenTailsJinchuriki);
+            tentailsjinchuriki.action_death = new WorldAction(Jinchuriki.ReleaseJuubi);
 
             addTraitToGame(tentailsjinchuriki);
             #endregion
