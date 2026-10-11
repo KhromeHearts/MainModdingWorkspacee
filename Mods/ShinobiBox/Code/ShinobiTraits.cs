@@ -963,8 +963,7 @@ namespace ShinobiBox
                 path_icon = "ui/icons/LowChakraReserve",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                rate_inherit = rare,
-                rate_birth = 2
+                rate_inherit = rare
             };
             low_chakra.base_stats = new BaseStats();
             low_chakra.base_stats.set("multiplier_chakra", -0.10f);
@@ -979,8 +978,7 @@ namespace ShinobiBox
                 path_icon = "ui/icons/HighChakraReserve",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                rate_inherit = rare,
-                rate_birth = 2
+                rate_inherit = rare
             };
             high_chakra.base_stats = new BaseStats();
             high_chakra.base_stats.set("chakra", 100f);
@@ -996,8 +994,7 @@ namespace ShinobiBox
                 path_icon = "ui/icons/GreaterChakraReserve",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                rate_inherit = rare,
-                rate_birth = veryRare
+                rate_inherit = rare
             };
             greater_chakra.base_stats = new BaseStats();
             greater_chakra.base_stats.set("chakra", 200f);
@@ -1013,8 +1010,7 @@ namespace ShinobiBox
                 path_icon = "ui/icons/VastChakraReserve",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                rate_inherit = rare,
-                rate_birth = 1
+                rate_inherit = rare
             };
             vast_chakra.base_stats = new BaseStats();
             vast_chakra.base_stats.set("chakra", 300f);
@@ -1228,9 +1224,7 @@ namespace ShinobiBox
                 path_icon = "ui/icons/fire_nature",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                rate_birth = rare,
                 rate_inherit = highChance
-
             };
             fire.base_stats = new BaseStats();
             fire.base_stats.set("multiplier_damage", 0.08f);
@@ -1252,9 +1246,7 @@ namespace ShinobiBox
                 path_icon = "ui/icons/earth_nature",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                rate_birth = rare,
                 rate_inherit = highChance
-
             };
             earth.base_stats = new BaseStats();
             earth.base_stats.set("multiplier_damage", 0.15f);
@@ -1276,7 +1268,6 @@ namespace ShinobiBox
                 path_icon = "ui/icons/water_nature",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                rate_birth = rare,
                 rate_inherit = highChance
             };
             water.base_stats = new BaseStats();
@@ -1300,7 +1291,6 @@ namespace ShinobiBox
                 path_icon = "ui/icons/wind_nature",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                rate_birth = rare,
                 rate_inherit = highChance
             };
             wind.base_stats = new BaseStats();
@@ -1323,7 +1313,6 @@ namespace ShinobiBox
                 path_icon = "ui/icons/lightning_nature",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                rate_birth = rare,
                 rate_inherit = highChance
             };
             lightning.base_stats = new BaseStats();
@@ -1345,9 +1334,7 @@ namespace ShinobiBox
                 path_icon = "ui/icons/storm_release",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                rate_birth = 2,
-                rate_inherit = alwaysChance
-
+                rate_inherit = 30
             };
             storm.base_stats = new BaseStats();
             storm.base_stats.set("multiplier_damage", 0.17f);
@@ -1396,7 +1383,6 @@ namespace ShinobiBox
                 path_icon = "ui/icons/yin_release",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                rate_birth = 2,
                 rate_inherit = highChance
             };
             yin.base_stats = new BaseStats();
@@ -1422,7 +1408,6 @@ namespace ShinobiBox
                 path_icon = "ui/icons/yang_release",
                 can_be_given = true,
                 needs_to_be_explored = false,
-                rate_birth = 2,
                 rate_inherit = highChance
             };
             yang.base_stats = new BaseStats();

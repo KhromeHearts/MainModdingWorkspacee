@@ -47,6 +47,7 @@ namespace ShinobiBox
             int level = actor.data.level;
             int kills = actor.data.kills;
             int age = actor.data.getAge();
+            BirthTraits.AssignOnce(actor);
             ApplyNames(actor);
             ApplyAutoFavorite(actor);
             ApplyPassives(actor);

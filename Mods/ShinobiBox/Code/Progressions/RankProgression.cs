@@ -23,7 +23,7 @@ namespace ShinobiBox
 
             bool anyChakraNature = JutsuLibrary.HasAnyNatureTrait(a);
 
-            bool gifted = a.hasTrait("02_high_chakra_reserve") || a.hasTrait("will_of_fire") || a.hasTrait("curse_of_hatred") ||
+            bool gifted = a.hasTrait("01_low_chakra_reserve") || a.hasTrait("02_high_chakra_reserve") || a.hasTrait("will_of_fire") || a.hasTrait("curse_of_hatred") ||
             a.hasTrait("03_greater_chakra_reserve") ||
             a.hasTrait("04_vast_chakra_reserve") || a.hasTrait("genius") || anyChakraNature;
 

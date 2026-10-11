@@ -270,30 +270,13 @@ namespace ShinobiBox
 
     // creds to clonedschrott for this code
     #region Unit Maker
-    [HarmonyPatch(typeof(Actor), "generatePersonality")]
-    public static class GeneratePersonalityPatch
+    [HarmonyPatch(typeof(BabyHelper), "traitsInherit")]
+    public static class BirthTraitsPatch
     {
         [HarmonyPostfix]
-        public static void generatePersonality_Postfix(Actor __instance)
+        public static void traitsInherit_Postfix(Actor pActorTarget)
         {
-            if (__instance.hasTrait("wind_release") && !__instance.hasTrait("rasenganJ") && Randy.randomChance(0.15f))
-                __instance.addTrait("rasenganJ");
-
-            if (__instance.hasTrait("lightning_release"))
-            {
-                if (!__instance.hasTrait("chidoriJ") && Randy.randomChance(0.15f))
-                {
-                    __instance.addTrait("chidoriJ");
-                }
-            }
-
-            if (__instance.data["birth_traits_assigned"] < 0.5f)
-            {
-                BirthTraits.AssignChakraTrait(__instance);
-                BirthTraits.ApplyTraitsOnBirth(__instance);
-
-                try { __instance.data.set("birth_traits_assigned", 1); } catch { }
-            }
+            BirthTraits.AssignOnce(pActorTarget);
         }
     }
     #endregion
@@ -309,6 +292,38 @@ namespace ShinobiBox
             "04_vast_chakra_reserve"
         };
 
+        private static readonly string[] BaseNatures =
+        {
+            "fire_release", "earth_release", "water_release", "wind_release", "lightning_release"
+        };
+
+        private static readonly string[] ClanTraits =
+        {
+            "uchiha_clan", "hyuga_clan", "uzumaki_clan", "senju_clan", "akimichi_clan",
+            "lee_clan", "kaguya_clan", "otsutsuki_clan", "chinoike_clan", "aburame_clan"
+        };
+
+        private static readonly float[] FirstNatureChance = { 0f, 0.50f, 0.70f, 0.90f, 1.00f };
+        private static readonly float[] ExtraNatureChance = { 0f, 0.10f, 0.20f, 0.35f, 0.50f };
+
+        public static void AssignOnce(Actor actor)
+        {
+            if (actor == null || actor.data == null) return;
+
+            actor.data.get("birth_traits_assigned", out int assigned);
+            if (assigned > 0) return;
+            actor.data.set("birth_traits_assigned", 1);
+
+            AssignChakraTrait(actor);
+            ApplyTraitsOnBirth(actor);
+
+            if (actor.hasTrait("wind_release") && !actor.hasTrait("rasenganJ") && Randy.randomChance(0.15f))
+                actor.addTrait("rasenganJ");
+
+            if (actor.hasTrait("lightning_release") && !actor.hasTrait("chidoriJ") && Randy.randomChance(0.15f))
+                actor.addTrait("chidoriJ");
+        }
+
         public static void AssignChakraTrait(Actor actor)
         {
             if (actor == null || !actor.isSapient()) return;
@@ -320,41 +335,51 @@ namespace ShinobiBox
 
             float roll = UnityEngine.Random.value;
             string selectedTrait = null;
-            if (roll < 0.10f) selectedTrait = "04_vast_chakra_reserve";
-            else if (roll < 0.30f) selectedTrait = "03_greater_chakra_reserve";
-            else if (roll < 0.65f) selectedTrait = "02_high_chakra_reserve";
-            else if (roll < 0.90f) selectedTrait = "01_low_chakra_reserve";
+            if (roll < 0.03f) selectedTrait = "04_vast_chakra_reserve";
+            else if (roll < 0.10f) selectedTrait = "03_greater_chakra_reserve";
+            else if (roll < 0.25f) selectedTrait = "02_high_chakra_reserve";
+            else if (roll < 0.45f) selectedTrait = "01_low_chakra_reserve";
+            else if (HasClan(actor)) selectedTrait = "01_low_chakra_reserve";
 
             if (!string.IsNullOrEmpty(selectedTrait)) actor.addTrait(selectedTrait);
+        }
+
+        public static int GetTalentTier(Actor actor)
+        {
+            for (int i = ChakraReserveTraits.Length - 1; i >= 0; i--)
+            {
+                if (actor.hasTrait(ChakraReserveTraits[i])) return i + 1;
+            }
+            return 0;
+        }
+
+        private static bool HasClan(Actor actor)
+        {
+            foreach (string clan in ClanTraits)
+            {
+                if (actor.hasTrait(clan)) return true;
+            }
+            return false;
         }
 
         public static void ApplyTraitsOnBirth(Actor actor)
         {
             if (!actor.isSapient()) return;
 
-            string[] commonElements = { "fire_release", "earth_release", "water_release", "wind_release", "lightning_release" };
-            int elementCount = 0;
-            foreach (var element in commonElements)
+            int tier = GetTalentTier(actor);
+            if (tier > 0 && !actor.hasTrait("lee_clan"))
             {
-                if (actor.hasTrait(element)) continue;
-                float chance = elementCount >= 3 ? 0.05f : 0.30f;
-                if (Randy.randomChance(chance))
+                RollNatures(actor, tier);
+
+                if (tier >= 3 && Randy.randomChance(0.03f))
                 {
-                    actor.addTrait(element);
-                    elementCount++;
+                    actor.addTrait(Randy.randomBool() ? "yin_release" : "yang_release");
                 }
             }
 
-            if (!actor.hasTrait("storm_release"))
+            if (!actor.hasTrait("storm_release") && actor.hasTrait("lightning_release") && actor.hasTrait("water_release") && Randy.randomChance(0.25f))
             {
-                float stormChance = elementCount >= 3 ? 0.02f : 0.10f;
-                if (Randy.randomChance(stormChance))
-                    actor.addTrait("storm_release");
-            }
-
-            if (Randy.randomChance(0.15f))
-            {
-                actor.addTrait("01rank_academy_student");
+                actor.addTrait("storm_release");
             }
 
             if (actor.hasTrait("senju_clan"))
@@ -390,6 +415,32 @@ namespace ShinobiBox
                 {
                     actor.addTrait(actor.hasTrait("06_hamura_chakra") ? "byakugan" : "rinnegan");
                 }
+            }
+        }
+
+        private static void RollNatures(Actor actor, int tier)
+        {
+            int count = 0;
+            foreach (string nature in BaseNatures)
+            {
+                if (actor.hasTrait(nature)) count++;
+            }
+
+            List<string> missing = new List<string>();
+            foreach (string nature in BaseNatures)
+            {
+                if (!actor.hasTrait(nature)) missing.Add(nature);
+            }
+
+            while (missing.Count > 0)
+            {
+                float chance = count == 0 ? FirstNatureChance[tier] : ExtraNatureChance[tier] / Mathf.Pow(2f, count - 1);
+                if (!Randy.randomChance(chance)) break;
+
+                int index = UnityEngine.Random.Range(0, missing.Count);
+                actor.addTrait(missing[index]);
+                missing.RemoveAt(index);
+                count++;
             }
         }
     }
