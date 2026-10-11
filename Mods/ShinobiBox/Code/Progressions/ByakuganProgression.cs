@@ -12,9 +12,9 @@ namespace ShinobiBox
             int level = a.data.level;
             int kills = a.data.kills;
 
-            if (!a.hasStatus("byakuganP") && (level >= 3 || kills >= 3))
+            if (!a.hasStatus(StatusIds.ByakuganActive) && (level >= 3 || kills >= 3))
             {
-                a.addStatusEffect("byakuganP", 45f);
+                a.addStatusEffect(StatusIds.ByakuganActive, 45f);
                 return true;
             }
 
@@ -29,10 +29,10 @@ namespace ShinobiBox
             a.data.get("tenseigan_done", out done);
             if (done) return false;
 
-            if (a.hasTrait("06_hamura_chakra") && !a.hasTrait("tenseigan"))
+            if (a.hasTrait(TraitIds.HamuraChakra) && !a.hasTrait(TraitIds.Tenseigan))
             {
-                a.removeTrait("byakugan");
-                a.addTrait("tenseigan");
+                a.removeTrait(TraitIds.Byakugan);
+                a.addTrait(TraitIds.Tenseigan);
 
                 if (ShinobiConfig.EnableWorldTips)
                 {
@@ -49,9 +49,9 @@ namespace ShinobiBox
             if (pSelf == null || pSelf.a == null || pSelf.a.data == null) return false;
 
             Actor a = pSelf.a;
-            if (!a.hasStatus("tenseigan_cm"))
+            if (!a.hasStatus(StatusIds.TenseiganChakraMode))
             {
-                a.addStatusEffect("tenseigan_cm", 60f);
+                a.addStatusEffect(StatusIds.TenseiganChakraMode, 60f);
                 return true;
             }
 

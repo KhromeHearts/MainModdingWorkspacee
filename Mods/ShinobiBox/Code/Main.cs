@@ -47,9 +47,19 @@ namespace ShinobiBox
         private float clearTimer = 0f;
         private float regenTimer = 0f;
         private float progressionTimer = 0f;
+        private bool startupChecksDone = false;
 
         void Update()
         {
+            if (!Config.game_loaded) return;
+
+            // Runs once, after every mod and the game itself have finished loading.
+            if (!startupChecksDone)
+            {
+                startupChecksDone = true;
+                ShinobiSelfCheck.Run();
+            }
+
             if (World.world.isPaused()) return;
 
             JutsuLibrary.TickWorldAgeRevert(Time.deltaTime);
@@ -67,22 +77,22 @@ namespace ShinobiBox
                     ChakraSystem.UpdateSpecialResources(actor, 0.1f);
 
                     // Chakra Regen
-                    if (!ShinobiProgression.IsModeActive(actor) && !actor.hasStatus("chakra_exhaustion"))
+                    if (!ShinobiProgression.IsModeActive(actor) && !actor.hasStatus(StatusIds.ChakraExhaustion))
                     {
                         ChakraSystem.AddChakra(actor, ChakraSystem.GetRegenRate(actor) * 0.1f);
                     }
 
                     float exhaustionThreshold = ChakraSystem.GetMax(actor) * 0.15f;
                     if (ChakraSystem.GetCurrent(actor) <= exhaustionThreshold &&
-                        !actor.hasTrait("taijutsu_master") &&
-                        !actor.hasStatus("chakra_exhaustion"))
+                        !actor.hasTrait(TraitIds.TaijutsuMaster) &&
+                        !actor.hasStatus(StatusIds.ChakraExhaustion))
                     {
-                        actor.addStatusEffect("chakra_exhaustion", 12f);
+                        actor.addStatusEffect(StatusIds.ChakraExhaustion, 12f);
                     }
 
                     if (actor.hasStatusStunned())
                     {
-                        actor.finishStatusEffect("stunned");
+                        actor.finishStatusEffect(StatusIds.Stunned);
                     }
                 }
                 timer = 0f;
@@ -95,10 +105,10 @@ namespace ShinobiBox
                 {
                     if (a.isAlive())
                     {
-                        if (a.hasTrait("uzumaki_clan") && a.data.health < a.getMaxHealth()) a.restoreHealth(4);
-                        if (a.hasTrait("senju_clan") && a.data.health < a.getMaxHealth()) a.restoreHealth(1);
-                        if (a.hasTrait("hashi_cells") && a.data.health < a.getMaxHealth()) a.restoreHealth(5);
-                        if (a.hasTrait("06rank_kage") && a.data.health < a.getMaxHealth()) a.restoreHealth(1);
+                        if (a.hasTrait(TraitIds.UzumakiClan) && a.data.health < a.getMaxHealth()) a.restoreHealth(4);
+                        if (a.hasTrait(TraitIds.SenjuClan) && a.data.health < a.getMaxHealth()) a.restoreHealth(1);
+                        if (a.hasTrait(TraitIds.HashiramaCells) && a.data.health < a.getMaxHealth()) a.restoreHealth(5);
+                        if (a.hasTrait(TraitIds.Kage) && a.data.health < a.getMaxHealth()) a.restoreHealth(1);
                     }
                 }
                 regenTimer = 0f;

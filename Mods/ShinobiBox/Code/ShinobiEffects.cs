@@ -28,7 +28,7 @@ namespace ShinobiBox
         {
             // KCM/BARYON EXPLOSION
             EffectAsset antimatter = new EffectAsset();
-            antimatter.id = "fx_shinobi_antimatter";
+            antimatter.id = EffectIds.ShinobiAntimatter;
             antimatter.use_basic_prefab = true;
             antimatter.prefab_id = "effects/prefabs/PrefabAntimatterEffect";
             antimatter.sprite_path = "effects/antimatterEffect";
@@ -57,7 +57,7 @@ namespace ShinobiBox
             #region Bijuu Bite Effect
             // no sprite yet
             EffectAsset bite = new EffectAsset();
-            bite.id = "fx_bijuu_bite";
+            bite.id = EffectIds.BijuuBite;
             bite.use_basic_prefab = true;
             bite.prefab_id = "effects/prefabs/PrefabSimpleEffect";
             bite.sprite_path = "effects/fx_bijuu_bite";
@@ -70,7 +70,7 @@ namespace ShinobiBox
 
             #region Chakra Arm Effect
             EffectAsset arm = new EffectAsset();
-            arm.id = "fx_chakra_arm";
+            arm.id = EffectIds.ChakraArm;
             arm.use_basic_prefab = true;
             arm.sprite_path = "effects/fx_chakra_arm";
             arm.sorting_layer_id = "EffectsTop";
@@ -81,7 +81,7 @@ namespace ShinobiBox
 
             #region King of Hell Effect
             EffectAsset koh = new EffectAsset();
-            koh.id = "fx_king_of_hell";
+            koh.id = EffectIds.KingOfHell;
             koh.use_basic_prefab = true;
             koh.sprite_path = "effects/fx_king_of_hell";
             koh.sorting_layer_id = "EffectsTop";
@@ -92,7 +92,7 @@ namespace ShinobiBox
 
             #region Yellow Flash Effect
             EffectAsset customTeleportEffect = new EffectAsset();
-            customTeleportEffect.id = "fx_teleport_yellow";
+            customTeleportEffect.id = EffectIds.TeleportYellow;
             customTeleportEffect.use_basic_prefab = true;
             customTeleportEffect.draw_light_size = 1.0f;
             customTeleportEffect.sorting_layer_id = "EffectsTop";
@@ -102,7 +102,7 @@ namespace ShinobiBox
 
             #region Katon
             EffectAsset katonJutsu = new EffectAsset();
-            katonJutsu.id = "fx_katon";
+            katonJutsu.id = EffectIds.Katon;
             katonJutsu.use_basic_prefab = true;
             katonJutsu.draw_light_size = 1.0f;
             katonJutsu.sorting_layer_id = "EffectsTop";
@@ -112,7 +112,7 @@ namespace ShinobiBox
 
             #region Beast Charge
             EffectAsset beastCharge = new EffectAsset();
-            beastCharge.id = "fx_beastcharge";
+            beastCharge.id = EffectIds.BeastCharge;
             beastCharge.use_basic_prefab = true;
             beastCharge.draw_light_size = 1.0f;
             beastCharge.sorting_layer_id = "EffectsTop";
@@ -122,7 +122,7 @@ namespace ShinobiBox
 
             #region Naruto Smoke
             EffectAsset substitutionSmoke = new EffectAsset();
-            substitutionSmoke.id = "fx_smoke";
+            substitutionSmoke.id = EffectIds.Smoke;
             substitutionSmoke.use_basic_prefab = true;
             substitutionSmoke.draw_light_size = 1.0f;
             substitutionSmoke.sorting_layer_id = "EffectsTop";

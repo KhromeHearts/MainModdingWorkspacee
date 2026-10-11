@@ -13,19 +13,19 @@ namespace ShinobiBox
 
             if (Randy.randomChance(0.35f))
             {
-                if (level >= 7 && !actor.hasStatus("cursed_mark3"))
+                if (level >= 7 && !actor.hasStatus(StatusIds.CursedMark3))
                 {
-                    actor.addStatusEffect("cursed_mark3", 185f);
+                    actor.addStatusEffect(StatusIds.CursedMark3, 185f);
                     return true;
                 }
-                else if (level > 4 && level < 7 && !actor.hasStatus("cursed_mark2"))
+                else if (level > 4 && level < 7 && !actor.hasStatus(StatusIds.CursedMark2))
                 {
-                    actor.addStatusEffect("cursed_mark2", 145f);
+                    actor.addStatusEffect(StatusIds.CursedMark2, 145f);
                     return true;
                 }
-                else if (level <= 4 && !actor.hasStatus("cursed_mark1"))
+                else if (level <= 4 && !actor.hasStatus(StatusIds.CursedMark1))
                 {
-                    actor.addStatusEffect("cursed_mark1", 95f);
+                    actor.addStatusEffect(StatusIds.CursedMark1, 95f);
                     return true;
                 }
             }
@@ -40,9 +40,9 @@ namespace ShinobiBox
 
             int damageAmount = 0;
 
-            if (actor.hasStatus("cursed_mark3")) damageAmount = 3 * (int)(actor.getMaxHealth() * 0.01f);
-            else if (actor.hasStatus("cursed_mark2")) damageAmount = 2 * (int)(actor.getMaxHealth() * 0.01f);
-            else if (actor.hasStatus("cursed_mark1")) damageAmount = 1 * (int)(actor.getMaxHealth() * 0.01f);
+            if (actor.hasStatus(StatusIds.CursedMark3)) damageAmount = 3 * (int)(actor.getMaxHealth() * 0.01f);
+            else if (actor.hasStatus(StatusIds.CursedMark2)) damageAmount = 2 * (int)(actor.getMaxHealth() * 0.01f);
+            else if (actor.hasStatus(StatusIds.CursedMark1)) damageAmount = 1 * (int)(actor.getMaxHealth() * 0.01f);
 
             if (damageAmount > 0)
             {
@@ -60,10 +60,10 @@ namespace ShinobiBox
 
             if (pSelf.a.asset.id != ShinobiActors.OrochimaruActorId) return false;
 
-            if (pTarget.a.hasTrait("cursed_mark")) return false;
+            if (pTarget.a.hasTrait(TraitIds.CursedMark)) return false;
             if (UnityEngine.Random.value > 0.20f) return false;
 
-            pTarget.a.addTrait("cursed_mark");
+            pTarget.a.addTrait(TraitIds.CursedMark);
             return true;
         }
     }

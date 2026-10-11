@@ -17,9 +17,9 @@ namespace ShinobiBox
 
             if (done) return false;
 
-            if (!a.hasTrait("shikotsumyaku") && Randy.randomChance(0.01f))
+            if (!a.hasTrait(TraitIds.Shikotsumyaku) && Randy.randomChance(0.01f))
             {
-                a.addTrait("shikotsumyaku");
+                a.addTrait(TraitIds.Shikotsumyaku);
                 a.data.set("shiko_awk", true);
                 return true;
             }
@@ -33,15 +33,15 @@ namespace ShinobiBox
         {
             if (pTarget == null || !pTarget.isAlive()) return false;
             Actor a = pTarget.a;
-            if (!a.hasTrait("hyuga_clan")) return false;
-            if (a.hasTrait("byakugan")) return false;
+            if (!a.hasTrait(TraitIds.HyugaClan)) return false;
+            if (a.hasTrait(TraitIds.Byakugan)) return false;
             bool done = false;
 
             a.data.get("byakugan_awk", out done, false);
 
             if (done) return false;
 
-            a.addTrait("byakugan");
+            a.addTrait(TraitIds.Byakugan);
             a.data.set("byakugan_awk", true);
 
             return true;
@@ -55,7 +55,7 @@ namespace ShinobiBox
             Actor a = pTarget.a;
             int level = a.data.level;
             int age = a.data.getAge();
-            if (!a.hasTrait("lee_clan")) return false;
+            if (!a.hasTrait(TraitIds.LeeClan)) return false;
             bool done = false;
 
             // One-time roll when the unit becomes an adult. (This hook runs every few seconds, so a plain
@@ -65,9 +65,9 @@ namespace ShinobiBox
             if (age >= 18 && !gatesRolled)
             {
                 a.data.set("lee_gates_rolled", true);
-                if (!a.hasTrait("eight_inner_gates") && Randy.randomChance(0.01f))
+                if (!a.hasTrait(TraitIds.EightInnerGates) && Randy.randomChance(0.01f))
                 {
-                    a.addTrait("eight_inner_gates");
+                    a.addTrait(TraitIds.EightInnerGates);
                     return true;
                 }
             }
@@ -75,9 +75,9 @@ namespace ShinobiBox
             a.data.get("EIG_awakened", out done, false);
             if (done) return false;
 
-            if (level >= 3 && !a.hasTrait("taijutsu_master"))
+            if (level >= 3 && !a.hasTrait(TraitIds.TaijutsuMaster))
             {
-                a.addTrait("taijutsu_master");
+                a.addTrait(TraitIds.TaijutsuMaster);
                 a.data.set("EIG_awakened", true);
                 return true;
             }
@@ -92,7 +92,7 @@ namespace ShinobiBox
             if (pTarget == null || !pTarget.isAlive()) return false;
             Actor a = pTarget.a;
 
-            if (!a.hasTrait("otsutsuki_clan")) return false;
+            if (!a.hasTrait(TraitIds.OtsutsukiClan)) return false;
 
             bool done = false;
             a.data.get("otsutsuki_birth_done", out done, false);
@@ -102,19 +102,19 @@ namespace ShinobiBox
 
             if (roll < 0.05f)
             {
-                a.addTrait("rinnegan");
+                a.addTrait(TraitIds.Rinnegan);
             }
             else if (roll < 0.10f)
             {
-                a.addTrait("golden_byakugan");
+                a.addTrait(TraitIds.GoldenByakugan);
             }
-            else if (roll < 0.30f && a.hasTrait("06_hamura_chakra"))
+            else if (roll < 0.30f && a.hasTrait(TraitIds.HamuraChakra))
             {
-                a.addTrait("tenseigan"); 
+                a.addTrait(TraitIds.Tenseigan); 
             }
             else
             {
-                a.addTrait("byakugan");
+                a.addTrait(TraitIds.Byakugan);
                 a.data.set("otsutsuki_birth_done", true);
                 return true;
             }
@@ -135,7 +135,7 @@ namespace ShinobiBox
 
             if (done) return false;
 
-            a.addTrait("ketsuryugan");
+            a.addTrait(TraitIds.Ketsuryugan);
             a.data.set("chinoike_awk", true);
 
             return true;

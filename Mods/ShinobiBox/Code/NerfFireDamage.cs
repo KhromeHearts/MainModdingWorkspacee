@@ -22,7 +22,7 @@ public static class BurningEffectPatch
 
         if (pTarget.isActor() && pTarget.a.asset.has_skin && Randy.randomBool())
         {
-            pTarget.a.addInjuryTrait("skin_burns");
+            pTarget.a.addInjuryTrait(TraitIds.SkinBurns);
         }
 
         int damage = Mathf.Max(1, pTarget.getMaxHealthPercent(BurnPercentPerTick));

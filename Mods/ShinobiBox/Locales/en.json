@@ -265,7 +265,6 @@
   "trait_fireN": "Fire Nature",
   "trait_fireN_info": "Chakra affinity for fire release.",
   "trait_fireN_info_2": "At 125 Nature Exp, Unit will unlock Fire Ball Jutsu.",
-
   "trait_golden_byakugan": "Golden Byakugan",
   "trait_golden_byakugan_info": "A rare Byakugan enhanced by Otutsuki Power.",
   "trait_golden_byakugan_info_2": "Small chance for Otsutsuki Members to be born with it. Can also be stolen from Otsutsuki members.",
@@ -490,5 +489,9 @@
   "worldlog_snake_sage_mode": "$name$ has achieved Snake Sage Mode!",
   "worldlog_tengai_shinsei": "$name$ has summoned Tengai Shinsei!",
   "worldlog_tenseigan": "$name$ has awakened the Tenseigan!",
-  "worldlog_wood_release": "$name$ was born with Wood Release"
+  "worldlog_wood_release": "$name$ was born with Wood Release",
+  "status_title_kaiten_cooldown": "Palm Rotation Cooldown",
+  "status_description_kaiten_cooldown": "This unit's Palm Rotation is recovering.",
+  "status_title_ketsuryuganEHT": "Exploding Human Technique",
+  "status_description_ketsuryuganEHT": "Their blood has been turned against them. They take damage over time and may explode when this ends."
 }

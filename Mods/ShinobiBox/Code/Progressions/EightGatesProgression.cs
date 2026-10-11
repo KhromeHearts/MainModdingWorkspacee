@@ -10,8 +10,8 @@ namespace ShinobiBox
             Actor actor = pSelf.a;
 
             // Simple Gate Checks
-            if (!actor.hasTrait("eight_inner_gates")) return false;
-            if (actor.hasStatus("status_ability_cooldown")) return false;
+            if (!actor.hasTrait(TraitIds.EightInnerGates)) return false;
+            if (actor.hasStatus(StatusIds.AbilityCooldown)) return false;
 
             // Only activates if health drops below 70%
             float maxHealth = actor.getMaxHealth();
@@ -20,64 +20,64 @@ namespace ShinobiBox
             if (UnityEngine.Random.value > 0.20f) return false;
 
             // Gate 8: Death Gate
-            if (!actor.hasStatus("inner_gate_8") && actor.data.level >= 8)
+            if (!actor.hasStatus(StatusIds.InnerGate8) && actor.data.level >= 8)
             {
                 removeAllGates(actor);
-                actor.addStatusEffect("inner_gate_8", 45f);
+                actor.addStatusEffect(StatusIds.InnerGate8, 45f);
                 return true;
             }
             // Gate 7: Wonder Gate
-            else if (!actor.hasStatus("inner_gate_7") && actor.data.level >= 7)
+            else if (!actor.hasStatus(StatusIds.InnerGate7) && actor.data.level >= 7)
             {
                 removeAllGates(actor);
-                actor.addStatusEffect("inner_gate_7", 60f);
+                actor.addStatusEffect(StatusIds.InnerGate7, 60f);
                 return true;
             }
             // Gate 6: View Gate
-            else if (!actor.hasStatus("inner_gate_6") && actor.data.level >= 6)
+            else if (!actor.hasStatus(StatusIds.InnerGate6) && actor.data.level >= 6)
             {
                 removeAllGates(actor);
-                actor.addStatusEffect("inner_gate_6", 55f);
+                actor.addStatusEffect(StatusIds.InnerGate6, 55f);
                 return true;
             }
             // Gate 5: Limit Gate
-            else if (!actor.hasStatus("inner_gate_5") && actor.data.level >= 5)
+            else if (!actor.hasStatus(StatusIds.InnerGate5) && actor.data.level >= 5)
             {
                 removeAllGates(actor);
-                actor.addStatusEffect("inner_gate_5", 50f);
-                if (UnityEngine.Random.value < 0.25f && !actor.hasTrait("crippled"))
+                actor.addStatusEffect(StatusIds.InnerGate5, 50f);
+                if (UnityEngine.Random.value < 0.25f && !actor.hasTrait(TraitIds.Crippled))
                 {
-                    actor.addTrait("crippled");
+                    actor.addTrait(TraitIds.Crippled);
                 }
                 return true;
             }
             // Gate 4: Wound Gate
-            else if (!actor.hasStatus("inner_gate_4") && actor.data.level >= 4)
+            else if (!actor.hasStatus(StatusIds.InnerGate4) && actor.data.level >= 4)
             {
                 removeAllGates(actor);
-                actor.addStatusEffect("inner_gate_4", 45f);
+                actor.addStatusEffect(StatusIds.InnerGate4, 45f);
                 return true;
             }
             // Gate 3: Life Gate
-            else if (!actor.hasStatus("inner_gate_3") && actor.data.level >= 3)
+            else if (!actor.hasStatus(StatusIds.InnerGate3) && actor.data.level >= 3)
             {
                 removeAllGates(actor);
-                actor.addStatusEffect("inner_gate_3", 40f);
+                actor.addStatusEffect(StatusIds.InnerGate3, 40f);
                 return true;
             }
             // Gate 2: Healing Gate
-            else if (!actor.hasStatus("inner_gate_2") && actor.data.level >= 2)
+            else if (!actor.hasStatus(StatusIds.InnerGate2) && actor.data.level >= 2)
             {
                 removeAllGates(actor);
-                actor.addStatusEffect("inner_gate_2", 35f);
+                actor.addStatusEffect(StatusIds.InnerGate2, 35f);
                 actor.restoreHealth((int)(maxHealth * 0.20f));
                 return true;
             }
             // Gate 1: Opening Gate
-            else if (!actor.hasStatus("inner_gate_1") && actor.data.level >= 1)
+            else if (!actor.hasStatus(StatusIds.InnerGate1) && actor.data.level >= 1)
             {
                 removeAllGates(actor);
-                actor.addStatusEffect("inner_gate_1", 30f);
+                actor.addStatusEffect(StatusIds.InnerGate1, 30f);
                 return true;
             }
 
@@ -91,11 +91,11 @@ namespace ShinobiBox
 
             int damageAmount = 0;
 
-            if (actor.hasStatus("inner_gate_8")) damageAmount = 25;
-            else if (actor.hasStatus("inner_gate_7")) damageAmount = 12;
-            else if (actor.hasStatus("inner_gate_6")) damageAmount = 8;
-            else if (actor.hasStatus("inner_gate_5")) damageAmount = 5;
-            else if (actor.hasStatus("inner_gate_4")) damageAmount = 2;
+            if (actor.hasStatus(StatusIds.InnerGate8)) damageAmount = 25;
+            else if (actor.hasStatus(StatusIds.InnerGate7)) damageAmount = 12;
+            else if (actor.hasStatus(StatusIds.InnerGate6)) damageAmount = 8;
+            else if (actor.hasStatus(StatusIds.InnerGate5)) damageAmount = 5;
+            else if (actor.hasStatus(StatusIds.InnerGate4)) damageAmount = 2;
 
             if (damageAmount > 0)
             {
@@ -113,14 +113,14 @@ namespace ShinobiBox
 
         public static void removeAllGates(Actor actor)
         {
-            actor.finishStatusEffect("inner_gate_1");
-            actor.finishStatusEffect("inner_gate_2");
-            actor.finishStatusEffect("inner_gate_3");
-            actor.finishStatusEffect("inner_gate_4");
-            actor.finishStatusEffect("inner_gate_5");
-            actor.finishStatusEffect("inner_gate_6");
-            actor.finishStatusEffect("inner_gate_7");
-            actor.finishStatusEffect("inner_gate_8");
+            actor.finishStatusEffect(StatusIds.InnerGate1);
+            actor.finishStatusEffect(StatusIds.InnerGate2);
+            actor.finishStatusEffect(StatusIds.InnerGate3);
+            actor.finishStatusEffect(StatusIds.InnerGate4);
+            actor.finishStatusEffect(StatusIds.InnerGate5);
+            actor.finishStatusEffect(StatusIds.InnerGate6);
+            actor.finishStatusEffect(StatusIds.InnerGate7);
+            actor.finishStatusEffect(StatusIds.InnerGate8);
         }
     }
 }

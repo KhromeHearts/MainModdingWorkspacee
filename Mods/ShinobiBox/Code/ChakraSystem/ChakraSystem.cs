@@ -29,7 +29,7 @@ namespace ShinobiBox
                 AssetManager.base_stats_library.add(new BaseStatAsset
                 {
                     id = "tailed_beast_chakra",
-                    icon = "ui/icons/Seal",
+                    icon = "ui/icons/9Tails",
                     normalize = true,
                     normalize_min = 0f,
                     sort_rank = 896,
@@ -117,8 +117,8 @@ namespace ShinobiBox
         public static float GetMaxTailedBeastChakra(Actor actor)
         {
             if (actor == null || !actor.isAlive()) return 0f;
-            if (actor.hasTrait("ten_tails_jinchuriki")) return 1000f;
-            if (actor.hasTrait("nine_tails_jinchuriki")) return 500f;
+            if (actor.hasTrait(TraitIds.TenTailsJinchuriki)) return 1000f;
+            if (actor.hasTrait(TraitIds.NineTailsJinchuriki)) return 500f;
             return 0f;
         }
 
@@ -140,8 +140,8 @@ namespace ShinobiBox
         public static float GetMaxSageChakra(Actor actor)
         {
             if (actor == null || !actor.isAlive()) return 0f;
-            if (actor.hasTrait("frog_sage_mode") || actor.hasTrait("snake_sage_mode") ||
-                actor.hasTrait("slug_sage_mode") || actor.hasTrait("wood_sage_mode")) return 300f;
+            if (actor.hasTrait(TraitIds.FrogSage) || actor.hasTrait(TraitIds.SnakeSage) ||
+                actor.hasTrait(TraitIds.SlugSage) || actor.hasTrait(TraitIds.WoodSage)) return 300f;
             return 0f;
         }
 
@@ -229,12 +229,12 @@ namespace ShinobiBox
             baseRate += Mathf.Min(6f, GetMax(actor) * 0.004f);
             baseRate += GetActorStatValue(actor, "chakra_regen");
 
-            if (actor.hasStatus("status_frog_sage") || actor.hasStatus("status_slug_sage") || actor.hasStatus("status_snake_sage"))
+            if (actor.hasStatus(StatusIds.FrogSage) || actor.hasStatus(StatusIds.SlugSage) || actor.hasStatus(StatusIds.SnakeSage))
             {
                 baseRate *= 1.35f;
             }
 
-            if (actor.hasStatus("chakra_exhaustion"))
+            if (actor.hasStatus(StatusIds.ChakraExhaustion))
             {
                 baseRate *= 0.35f;
             }
@@ -246,15 +246,15 @@ namespace ShinobiBox
         {
             if (actor == null) return 1f;
 
-            if (actor.hasTrait("09rank_god_of_shinobi")) return 0.84f;
-            if (actor.hasTrait("08rank_ghost_of_uchiha")) return 0.88f;
-            if (actor.hasTrait("07rank_sannin")) return 0.90f;
-            if (actor.hasTrait("06rank_kage")) return 0.92f;
-            if (actor.hasTrait("05rank_anbu")) return 0.96f;
-            if (actor.hasTrait("04rank_jonin")) return 1.00f;
-            if (actor.hasTrait("03rank_chunin")) return 1.05f;
-            if (actor.hasTrait("02rank_genin")) return 1.10f;
-            if (actor.hasTrait("01rank_academy_student")) return 1.18f;
+            if (actor.hasTrait(TraitIds.GodOfShinobi)) return 0.84f;
+            if (actor.hasTrait(TraitIds.GhostOfUchiha)) return 0.88f;
+            if (actor.hasTrait(TraitIds.Sannin)) return 0.90f;
+            if (actor.hasTrait(TraitIds.Kage)) return 0.92f;
+            if (actor.hasTrait(TraitIds.Anbu)) return 0.96f;
+            if (actor.hasTrait(TraitIds.Jonin)) return 1.00f;
+            if (actor.hasTrait(TraitIds.Chunin)) return 1.05f;
+            if (actor.hasTrait(TraitIds.Genin)) return 1.10f;
+            if (actor.hasTrait(TraitIds.AcademyStudent)) return 1.18f;
 
             return 1.22f;
         }
@@ -274,10 +274,10 @@ namespace ShinobiBox
         public static bool TryConsume(Actor actor, float cost)
         {
             if (actor == null || !actor.isAlive() || !IsChakraUser(actor)) return false;
-            if (actor.hasStatus("chakra_exhaustion")) return false;
+            if (actor.hasStatus(StatusIds.ChakraExhaustion)) return false;
             if (cost <= 0f) return true;
 
-            if (actor.hasTrait("07_indra_chakra"))
+            if (actor.hasTrait(TraitIds.IndraChakra))
             {
                 cost *= 0.4f;
             }
@@ -330,8 +330,8 @@ namespace ShinobiBox
 
             float multiplier = 1.0f + traitChakraMultiplier;
 
-            if (actor.hasTrait("frog_sage_mode") && actor.hasStatus("status_frog_sage")) multiplier += 0.20f;
-            if (actor.hasTrait("slug_sage_mode") && actor.hasStatus("status_slug_sage")) multiplier += 0.20f;
+            if (actor.hasTrait(TraitIds.FrogSage) && actor.hasStatus(StatusIds.FrogSage)) multiplier += 0.20f;
+            if (actor.hasTrait(TraitIds.SlugSage) && actor.hasStatus(StatusIds.SlugSage)) multiplier += 0.20f;
 
             float tsukuyomiBonusMultiplier = 0f;
             actor.data.get("it_bonus_multiplier", out tsukuyomiBonusMultiplier);
@@ -379,7 +379,7 @@ namespace ShinobiBox
 
         public static void AddMangekyoUsage(Actor actor, int amount = 1)
         {
-            if (actor == null || !actor.hasTrait("mangekyo_sharingan")) return;
+            if (actor == null || !actor.hasTrait(TraitIds.Mangekyo)) return;
 
             int currentUsage = 0;
             actor.data.get("ms_usage", out currentUsage);
@@ -388,8 +388,8 @@ namespace ShinobiBox
 
             if (newUsage >= 25)
             {
-                actor.removeTrait("mangekyo_sharingan");
-                actor.addTrait("trait_blind");
+                actor.removeTrait(TraitIds.Mangekyo);
+                actor.addTrait(TraitIds.Blind);
             }
         }
 
@@ -404,27 +404,27 @@ namespace ShinobiBox
             float drainPerSecond = 0f;
 
             // Nine Tails Jinchuriki
-            if (actor.hasStatus("status_jinchuriki_initial_release")) { drainPerSecond += 1f; drainsChakra = true; }
-            if (actor.hasStatus("status_jinchuriki_v1_cloak")) { drainPerSecond += 2f; drainsChakra = true; }
-            if (actor.hasStatus("status_jinchuriki_v2_cloak")) { drainPerSecond += 4f; drainsChakra = true; }
-            if (actor.hasStatus("status_jinchuriki_incomplete_beast")) { drainPerSecond += 8f; drainsChakra = true; }
-            if (actor.hasStatus("status_jinchuriki_kcm1")) { drainPerSecond += 10f; drainsChakra = true; }
+            if (actor.hasStatus(StatusIds.NineTailsInitialRelease)) { drainPerSecond += 1f; drainsChakra = true; }
+            if (actor.hasStatus(StatusIds.NineTailsV1Cloak)) { drainPerSecond += 2f; drainsChakra = true; }
+            if (actor.hasStatus(StatusIds.NineTailsV2Cloak)) { drainPerSecond += 4f; drainsChakra = true; }
+            if (actor.hasStatus(StatusIds.NineTailsIncompleteBeast)) { drainPerSecond += 8f; drainsChakra = true; }
+            if (actor.hasStatus(StatusIds.NineTailsKcm1)) { drainPerSecond += 10f; drainsChakra = true; }
 
             float eyeDrain = 0f;
             bool hasActiveEyeStatus = false;
             
             // Sharingan
-            if (actor.hasStatus("status_sharingan_1t")) { eyeDrain += 0.2f; hasActiveEyeStatus = true; }
-            if (actor.hasStatus("status_sharingan_2t")) { eyeDrain += 0.5f; hasActiveEyeStatus = true; }
-            if (actor.hasStatus("status_sharingan_3t")) { eyeDrain += 1.0f; hasActiveEyeStatus = true; }
-            if (actor.hasStatus("status_mangekyo")) { eyeDrain += 3.0f; hasActiveEyeStatus = true; }
-            if (actor.hasStatus("byakuganP")) { eyeDrain += 0.8f; hasActiveEyeStatus = true; } 
-            if (actor.hasStatus("tenseigan_cm")) { eyeDrain += 10f; hasActiveEyeStatus = true; }
+            if (actor.hasStatus(StatusIds.Sharingan1Tomoe)) { eyeDrain += 0.2f; hasActiveEyeStatus = true; }
+            if (actor.hasStatus(StatusIds.Sharingan2Tomoe)) { eyeDrain += 0.5f; hasActiveEyeStatus = true; }
+            if (actor.hasStatus(StatusIds.Sharingan3Tomoe)) { eyeDrain += 1.0f; hasActiveEyeStatus = true; }
+            if (actor.hasStatus(StatusIds.Mangekyo)) { eyeDrain += 3.0f; hasActiveEyeStatus = true; }
+            if (actor.hasStatus(StatusIds.ByakuganActive)) { eyeDrain += 0.8f; hasActiveEyeStatus = true; } 
+            if (actor.hasStatus(StatusIds.TenseiganChakraMode)) { eyeDrain += 10f; hasActiveEyeStatus = true; }
 
 
             if (hasActiveEyeStatus)
             {
-                if (!actor.hasTrait("uchiha_clan"))
+                if (!actor.hasTrait(TraitIds.UchihaClan))
                 {
                     eyeDrain *= 2.0f;
                 }
@@ -433,11 +433,10 @@ namespace ShinobiBox
             }
 
             // Sage Mode / Senjutsu
-            if (actor.hasStatus("status_frog_sage") || actor.hasStatus("status_snake_sage") || actor.hasStatus("status_slug_sage"))
+            if (actor.hasStatus(StatusIds.FrogSage) || actor.hasStatus(StatusIds.SnakeSage) || actor.hasStatus(StatusIds.SlugSage))
             {
 
-                float sageCost = actor.hasTrait("jugo_transformation") ? 0.5f : 2.0f;
-                drainPerSecond += sageCost;
+                drainPerSecond += 2.0f;
                 drainsChakra = true;
             }
 
@@ -451,21 +450,21 @@ namespace ShinobiBox
 
             if (!hasEnoughChakra)
             {
-                if (!actor.hasTrait("taijutsu_master") && !actor.hasStatus("chakra_exhaustion"))
+                if (!actor.hasTrait(TraitIds.TaijutsuMaster) && !actor.hasStatus(StatusIds.ChakraExhaustion))
                 {
-                    actor.addStatusEffect("chakra_exhaustion", 15f);
+                    actor.addStatusEffect(StatusIds.ChakraExhaustion, 15f);
                 }
 
                 ShinobiProgression.RemoveLowerForms(actor);
-                actor.finishStatusEffect("status_sharingan_1t");
-                actor.finishStatusEffect("status_sharingan_2t");
-                actor.finishStatusEffect("status_sharingan_3t");
-                actor.finishStatusEffect("status_mangekyo");
-                actor.finishStatusEffect("byakuganP");
-                actor.finishStatusEffect("status_frog_sage");
-                actor.finishStatusEffect("status_snake_sage");
-                actor.finishStatusEffect("status_slug_sage");
-                actor.finishStatusEffect("tenseigan_cm");
+                actor.finishStatusEffect(StatusIds.Sharingan1Tomoe);
+                actor.finishStatusEffect(StatusIds.Sharingan2Tomoe);
+                actor.finishStatusEffect(StatusIds.Sharingan3Tomoe);
+                actor.finishStatusEffect(StatusIds.Mangekyo);
+                actor.finishStatusEffect(StatusIds.ByakuganActive);
+                actor.finishStatusEffect(StatusIds.FrogSage);
+                actor.finishStatusEffect(StatusIds.SnakeSage);
+                actor.finishStatusEffect(StatusIds.SlugSage);
+                actor.finishStatusEffect(StatusIds.TenseiganChakraMode);
             }
         }
     }

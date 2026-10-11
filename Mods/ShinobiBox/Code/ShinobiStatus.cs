@@ -39,7 +39,7 @@ namespace ShinobiBox
             #region Will of Fire
             // Will of fire
             StatusAsset willPower = new StatusAsset();
-            willPower.id = "power_up";
+            willPower.id = StatusIds.WillOfFireBuff;
             willPower.animated = false;
             willPower.path_icon = "ui/icons/will_of_fire";
             willPower.duration = 15f;
@@ -58,7 +58,7 @@ namespace ShinobiBox
             #region Kurama Sage Mode Effect
             // Kurama Sage Mode
             StatusAsset kuramaSage = new StatusAsset();
-            kuramaSage.id = "kurama_sage_mode";
+            kuramaSage.id = StatusIds.KuramaSageMode;
             kuramaSage.base_stats = new BaseStats();
             kuramaSage.base_stats.set("damage", 250f);
             kuramaSage.base_stats.set("multiplier_damage", 0.05f);
@@ -87,7 +87,7 @@ namespace ShinobiBox
             #region Gentle Fist Technique (Armor Break)
             // Armor Break
             StatusAsset armorBreak = new StatusAsset();
-            armorBreak.id = "chakra_break";
+            armorBreak.id = StatusIds.ChakraBreak;
             armorBreak.path_icon = "ui/icons/chakra_exhaustion";
             armorBreak.base_stats = new BaseStats();
             armorBreak.base_stats.set("armor", -25f);
@@ -100,7 +100,7 @@ namespace ShinobiBox
 
             #region Rasengan and Chidori Statuses
             StatusAsset rasengan = new StatusAsset();
-            rasengan.id = "status_rasengan";
+            rasengan.id = StatusIds.Rasengan;
             rasengan.path_icon = "ui/icons/rasengan";
             rasengan.duration = 5f;
             rasengan.base_stats = new BaseStats();
@@ -128,7 +128,7 @@ namespace ShinobiBox
             AssetManager.status.add(rasengan);
 
             StatusAsset chidori = new StatusAsset();
-            chidori.id = "status_chidori";
+            chidori.id = StatusIds.Chidori;
             chidori.path_icon = "ui/icons/chidori";
             chidori.duration = 4f;
             chidori.base_stats = new BaseStats();
@@ -154,7 +154,7 @@ namespace ShinobiBox
 
             #region Shadow Clone Status
             StatusAsset shadowClone = new StatusAsset();
-            shadowClone.id = "shadow_clone";
+            shadowClone.id = StatusIds.ShadowClone;
             shadowClone.duration = 20f;
             shadowClone.animated = false;
             shadowClone.path_icon = "ui/icons/shadowclone";
@@ -175,7 +175,7 @@ namespace ShinobiBox
             #region Rinne-Cooldown
             // Rinnegan Cooldown
             StatusAsset rinneCooldown = new StatusAsset();
-            rinneCooldown.id = "rinne_cooldown";
+            rinneCooldown.id = StatusIds.RinneCooldown;
             rinneCooldown.duration = 120f;
             rinneCooldown.animated = false;
             rinneCooldown.path_icon = "ui/icons/rinnegan";
@@ -188,7 +188,7 @@ namespace ShinobiBox
 
             #region Rinnegan Controlled
             StatusAsset rinneganControlled = new StatusAsset();
-            rinneganControlled.id = "status_rinnegan_controlled";
+            rinneganControlled.id = StatusIds.RinneganControlled;
             rinneganControlled.duration = 120f;
             rinneganControlled.animated = false;
             rinneganControlled.path_icon = "ui/icons/rinnegan";
@@ -200,7 +200,7 @@ namespace ShinobiBox
             AssetManager.status.add(rinneganControlled);
 
             StatusAsset madaraTamed = new StatusAsset();
-            madaraTamed.id = "status_madara_tamed";
+            madaraTamed.id = StatusIds.MadaraTamed;
             madaraTamed.duration = 15f;
             madaraTamed.animated = false;
             madaraTamed.path_icon = "ui/icons/madara_ems";
@@ -215,7 +215,7 @@ namespace ShinobiBox
             #region Chakra Exhaustion
             // Chakra Exhaustion
             StatusAsset exhaustion = new StatusAsset();
-            exhaustion.id = "chakra_exhaustion";
+            exhaustion.id = StatusIds.ChakraExhaustion;
             exhaustion.base_stats = new BaseStats();
             exhaustion.base_stats.set("multiplier_speed", -0.30f);
             exhaustion.base_stats.set("multiplier_damage", -0.20f);
@@ -235,7 +235,7 @@ namespace ShinobiBox
             #region Genjutsu Effect
             // Genjutsu 1: Daze
             StatusAsset genjutsu1 = new StatusAsset();
-            genjutsu1.id = "genjutsu_1";
+            genjutsu1.id = StatusIds.Genjutsu1;
             genjutsu1.base_stats = new BaseStats();
             genjutsu1.base_stats.set("multiplier_speed", -0.20f);
             genjutsu1.base_stats.set("armor", -5f);
@@ -261,7 +261,7 @@ namespace ShinobiBox
 
             // Genjutsu 2: Illusion
             StatusAsset genjutsu2 = new StatusAsset();
-            genjutsu2.id = "genjutsu_2";
+            genjutsu2.id = StatusIds.Genjutsu2;
             genjutsu2.base_stats = new BaseStats();
             genjutsu2.base_stats.set("multiplier_speed", -0.50f);
             genjutsu2.base_stats.set("armor", -10f);
@@ -287,7 +287,7 @@ namespace ShinobiBox
 
             // Genjutsu 3: Paralysis
             StatusAsset genjutsu3 = new StatusAsset();
-            genjutsu3.id = "genjutsu_3";
+            genjutsu3.id = StatusIds.Genjutsu3;
             genjutsu3.base_stats = new BaseStats();
             genjutsu3.base_stats.set("multiplier_speed", -1.0f);
             genjutsu3.duration = 10f;
@@ -313,7 +313,7 @@ namespace ShinobiBox
 
             #region Sharingan 1 - 3 Tomoe
             StatusAsset sharingan1 = new StatusAsset();
-            sharingan1.id = "status_sharingan_1t";
+            sharingan1.id = StatusIds.Sharingan1Tomoe;
             sharingan1.base_stats = new BaseStats();
             sharingan1.base_stats.set("damage", 31f);
             sharingan1.base_stats.set("multiplier_damage", 0.02f);
@@ -330,7 +330,7 @@ namespace ShinobiBox
             AssetManager.status.add(sharingan1);
 
             StatusAsset sharingan2 = new StatusAsset();
-            sharingan2.id = "status_sharingan_2t";
+            sharingan2.id = StatusIds.Sharingan2Tomoe;
             sharingan2.base_stats = new BaseStats();
             sharingan2.base_stats.set("damage", 65f);
             sharingan2.base_stats.set("multiplier_damage", 0.07f);
@@ -349,7 +349,7 @@ namespace ShinobiBox
             AssetManager.status.add(sharingan2);
 
             StatusAsset sharingan3 = new StatusAsset();
-            sharingan3.id = "status_sharingan_3t";
+            sharingan3.id = StatusIds.Sharingan3Tomoe;
             sharingan3.base_stats = new BaseStats();
             sharingan3.base_stats.set("damage", 91f);
             sharingan3.base_stats.set("multiplier_damage", 0.10f);
@@ -370,7 +370,7 @@ namespace ShinobiBox
 
             #region Mangekyo Sharingan
             StatusAsset mangekyo = new StatusAsset();
-            mangekyo.id = "status_mangekyo";
+            mangekyo.id = StatusIds.Mangekyo;
             mangekyo.base_stats = new BaseStats();
             mangekyo.base_stats.set("damage", 150f);
             mangekyo.base_stats.set("multiplier_damage", 0.20f);
@@ -392,7 +392,7 @@ namespace ShinobiBox
             #region Amaterasu Effect
             // Amaterasu
             StatusAsset amaterasu = new StatusAsset();
-            amaterasu.id = "status_amaterasu";
+            amaterasu.id = StatusIds.Amaterasu;
             amaterasu.base_stats = new BaseStats();
             amaterasu.base_stats.set("multiplier_speed", -0.90f);
             amaterasu.base_stats.set("armor", -50f);
@@ -420,7 +420,7 @@ namespace ShinobiBox
 
             #region Weak Eye Effect
             StatusAsset weakEye = new StatusAsset();
-            weakEye.id = "weak_eye";
+            weakEye.id = StatusIds.WeakEye;
             weakEye.base_stats = new BaseStats();
             weakEye.duration = 999f;
             weakEye.path_icon = "ui/icons/blind";
@@ -432,7 +432,7 @@ namespace ShinobiBox
             #region Suanoo Ribcage Effect
             // Susanoo Ribcage
             StatusAsset ribcage = new StatusAsset();
-            ribcage.id = "susanoo_ribcage";
+            ribcage.id = StatusIds.SusanooRibcage;
             ribcage.base_stats = new BaseStats();
             ribcage.base_stats.set("armor", 20f);
             ribcage.duration = 10f;
@@ -457,7 +457,7 @@ namespace ShinobiBox
 
             #region KCM Aura Effect
             StatusAsset kcmAura = new StatusAsset();
-            kcmAura.id = "kcm_aura";
+            kcmAura.id = StatusIds.KcmAura;
             kcmAura.path_icon = "ui/icons/kcm2";
             kcmAura.animated = true;
             kcmAura.duration = 2f;
@@ -481,7 +481,7 @@ namespace ShinobiBox
 
             #region V1 Aura Effect
             StatusAsset v1Aura = new StatusAsset();
-            v1Aura.id = "v1_aura";
+            v1Aura.id = StatusIds.V1Aura;
             v1Aura.path_icon = "ui/icons/initial_release";
             v1Aura.animated = true;
             v1Aura.duration = 2f;
@@ -505,7 +505,7 @@ namespace ShinobiBox
             #region Baryon Life Decay
             // Baryon Life Decay
             StatusAsset baryonDecay = new StatusAsset();
-            baryonDecay.id = "baryon_life_decay";
+            baryonDecay.id = StatusIds.BaryonLifeDecay;
             baryonDecay.path_icon = "ui/icons/baryon";
             baryonDecay.base_stats = new BaseStats();
             baryonDecay.base_stats.set("multiplier_lifespan", -0.50f);
@@ -519,7 +519,7 @@ namespace ShinobiBox
 
             #region Cursed Mark
             StatusAsset cursedMark1 = new StatusAsset();
-            cursedMark1.id = "cursed_mark1";
+            cursedMark1.id = StatusIds.CursedMark1;
             cursedMark1.path_icon = "ui/icons/curse";
             cursedMark1.duration = 95f;
             cursedMark1.base_stats = new BaseStats();
@@ -532,14 +532,14 @@ namespace ShinobiBox
             cursedMark1.base_stats.set("multiplier_lifespan", -0.05f);
             cursedMark1.base_stats.set("chakra", 150f);
             cursedMark1.action = new WorldAction(CursedMarkProgression.CurseMarkStrain);
-            cursedMark1.remove_status = new string[] { "cursed_mark2", "cursed_mark3" };
+            cursedMark1.remove_status = new string[] { StatusIds.CursedMark2, StatusIds.CursedMark3 };
             cursedMark1.action_interval = 1.5f;
             cursedMark1.locale_id = "status_title_cursed_mark1";
             cursedMark1.locale_description = "status_description_cursed_mark1";
             AssetManager.status.add(cursedMark1);
 
             StatusAsset cursedMark2 = new StatusAsset();
-            cursedMark2.id = "cursed_mark2";
+            cursedMark2.id = StatusIds.CursedMark2;
             cursedMark2.path_icon = "ui/icons/curse2";
             cursedMark2.duration = 145f;
             cursedMark2.base_stats = new BaseStats();
@@ -551,7 +551,7 @@ namespace ShinobiBox
             cursedMark2.base_stats.set("attack_speed", 0.10f);
             cursedMark2.base_stats.set("multiplier_lifespan", -0.10f);
             cursedMark2.base_stats.set("chakra", 275f);
-            cursedMark2.remove_status = new string[] { "cursed_mark1", "cursed_mark3" };
+            cursedMark2.remove_status = new string[] { StatusIds.CursedMark1, StatusIds.CursedMark3 };
             cursedMark2.action = new WorldAction(CursedMarkProgression.CurseMarkStrain);
             cursedMark2.action_interval = 1.5f;
             cursedMark2.locale_id = "status_title_cursed_mark2";
@@ -559,7 +559,7 @@ namespace ShinobiBox
             AssetManager.status.add(cursedMark2);
 
             StatusAsset cursedMark3 = new StatusAsset();
-            cursedMark3.id = "cursed_mark3";
+            cursedMark3.id = StatusIds.CursedMark3;
             cursedMark3.path_icon = "ui/icons/curse3";
             cursedMark3.duration = 185f;
             cursedMark3.base_stats = new BaseStats();
@@ -571,7 +571,7 @@ namespace ShinobiBox
             cursedMark3.base_stats.set("attack_speed", 0.15f);
             cursedMark3.base_stats.set("multiplier_lifespan", -0.15f);
             cursedMark3.base_stats.set("chakra", 425f);
-            cursedMark3.remove_status = new string[] { "cursed_mark1", "cursed_mark2" };
+            cursedMark3.remove_status = new string[] { StatusIds.CursedMark1, StatusIds.CursedMark2 };
             cursedMark3.action = new WorldAction(CursedMarkProgression.CurseMarkStrain);
             cursedMark3.action_interval = 1.5f;
             cursedMark3.locale_id = "status_title_cursed_mark3";
@@ -582,7 +582,7 @@ namespace ShinobiBox
             #region Kaiten (Eight Trigrams: Palm Rotation)
             // Kaiten
             StatusAsset kaiten = new StatusAsset();
-            kaiten.id = "status_kaiten";
+            kaiten.id = StatusIds.Kaiten;
             kaiten.base_stats = new BaseStats();
             kaiten.base_stats.set("armor", 250f);
             kaiten.base_stats.set("multiplier_speed", -1f);
@@ -614,10 +614,12 @@ namespace ShinobiBox
 
             // Cooldown
             StatusAsset kaitenCD = new StatusAsset();
-            kaitenCD.id = "kaiten_cooldown";
+            kaitenCD.id = StatusIds.KaitenCooldown;
             kaitenCD.path_icon = "effects/byakugan_cooldown";
             kaitenCD.duration = 15f;
             kaitenCD.animated = false;
+            kaitenCD.locale_id = "status_title_kaiten_cooldown";
+            kaitenCD.locale_description = "status_description_kaiten_cooldown";
             AssetManager.status.add(kaitenCD);
             #endregion
 
@@ -625,7 +627,7 @@ namespace ShinobiBox
 
             #region Eight Trigrams: 64 Palms (Hit)
             StatusAsset gettingHit = new StatusAsset();
-            gettingHit.id = "status_getting_hit_64";
+            gettingHit.id = StatusIds.Hit64Palms;
             gettingHit.duration = 5f;
             gettingHit.animated = false;
             gettingHit.path_icon = "ui/icons/byakugan";
@@ -644,7 +646,7 @@ namespace ShinobiBox
 
             #region Eight Trigrams: 64 Palms (Attack)
             StatusAsset eightAttack = new StatusAsset();
-            eightAttack.id = "eightAttack";
+            eightAttack.id = StatusIds.Attack64Palms;
             eightAttack.path_icon = "effects/byakugan";
             eightAttack.duration = 5f;
 
@@ -674,7 +676,7 @@ namespace ShinobiBox
 
             #region Mokuton Tree
             StatusAsset mokuton = new StatusAsset();
-            mokuton.id = "status_mokuton_tree";
+            mokuton.id = StatusIds.MokutonTree;
             mokuton.base_stats = new BaseStats();
             mokuton.base_stats.set("speed", -999f);
             mokuton.base_stats.set("attack_speed", -999f);
@@ -707,7 +709,7 @@ namespace ShinobiBox
 
             #region Water Prison
             StatusAsset waterPrison = new StatusAsset();
-            waterPrison.id = "water_prison";
+            waterPrison.id = StatusIds.WaterPrison;
             waterPrison.base_stats = new BaseStats();
             waterPrison.base_stats.set("speed", -999f);
             waterPrison.base_stats.set("attack_speed", -999f);
@@ -733,7 +735,7 @@ namespace ShinobiBox
 
             #region Base Susanoo (Mangekyo)
             StatusAsset baseSusanoo = new StatusAsset();
-            baseSusanoo.id = "status_base_susanoo";
+            baseSusanoo.id = StatusIds.BaseSusanoo;
             baseSusanoo.base_stats = new BaseStats();
             baseSusanoo.base_stats.set("armor", 35f);
             baseSusanoo.base_stats.set("damage", 150f);
@@ -764,7 +766,7 @@ namespace ShinobiBox
 
             #region Perfect Susanoo (EMS)
             StatusAsset perfectSusanoo = new StatusAsset();
-            perfectSusanoo.id = "status_perfect_susanoo";
+            perfectSusanoo.id = StatusIds.PerfectSusanoo;
             perfectSusanoo.base_stats = new BaseStats();
             perfectSusanoo.base_stats.set("armor", 75f);
             perfectSusanoo.base_stats.set("damage", 500f);
@@ -823,7 +825,7 @@ namespace ShinobiBox
             #region Kamui
             // Kamui
             StatusAsset kamui = new StatusAsset();
-            kamui.id = "kamui_intangibility";
+            kamui.id = StatusIds.Kamui;
             kamui.base_stats = new BaseStats();
             kamui.base_stats.set("armor", 999f);
             kamui.base_stats.set("speed", -999f);
@@ -853,7 +855,7 @@ namespace ShinobiBox
 
             #region Justsu Global Cooldown
             StatusAsset JutsuCD = new StatusAsset();
-            JutsuCD.id = "status_ability_cooldown";
+            JutsuCD.id = StatusIds.AbilityCooldown;
             JutsuCD.path_icon = "effects/abilitycooldown";
             JutsuCD.duration = 4f;
             JutsuCD.animated = false;
@@ -866,7 +868,7 @@ namespace ShinobiBox
 
             #region Eight Inner Gates Statuses
             StatusAsset gate1 = new StatusAsset();
-            gate1.id = "inner_gate_1";
+            gate1.id = StatusIds.InnerGate1;
             gate1.base_stats = new BaseStats();
             gate1.base_stats.set("multiplier_speed", 0.05f);
             gate1.base_stats.set("multiplier_attack_speed", 0.05f);
@@ -892,7 +894,7 @@ namespace ShinobiBox
             AssetManager.status.add(gate1);
 
             StatusAsset gate2 = new StatusAsset();
-            gate2.id = "inner_gate_2";
+            gate2.id = StatusIds.InnerGate2;
             gate2.base_stats = new BaseStats();
             gate2.base_stats.set("multiplier_damage", 0.05f);
             gate2.base_stats.set("multiplier_speed", 0.08f);
@@ -919,7 +921,7 @@ namespace ShinobiBox
             AssetManager.status.add(gate2);
 
             StatusAsset gate3 = new StatusAsset();
-            gate3.id = "inner_gate_3";
+            gate3.id = StatusIds.InnerGate3;
             gate3.base_stats = new BaseStats();
             gate3.base_stats.set("multiplier_damage", 0.10f);
             gate3.base_stats.set("multiplier_speed", 0.10f);
@@ -946,7 +948,7 @@ namespace ShinobiBox
             AssetManager.status.add(gate3);
 
             StatusAsset gate4 = new StatusAsset();
-            gate4.id = "inner_gate_4";
+            gate4.id = StatusIds.InnerGate4;
             gate4.base_stats = new BaseStats();
             gate4.base_stats.set("multiplier_damage", 0.18f);
             gate4.base_stats.set("multiplier_speed", 0.15f);
@@ -973,7 +975,7 @@ namespace ShinobiBox
             AssetManager.status.add(gate4);
 
             StatusAsset gate5 = new StatusAsset();
-            gate5.id = "inner_gate_5";
+            gate5.id = StatusIds.InnerGate5;
             gate5.base_stats = new BaseStats();
             gate5.base_stats.set("multiplier_damage", 0.25f);
             gate5.base_stats.set("multiplier_speed", 0.20f);
@@ -1001,7 +1003,7 @@ namespace ShinobiBox
             AssetManager.status.add(gate5);
 
             StatusAsset gate6 = new StatusAsset();
-            gate6.id = "inner_gate_6";
+            gate6.id = StatusIds.InnerGate6;
             gate6.base_stats = new BaseStats();
             gate6.base_stats.set("multiplier_damage", 0.35f);
             gate6.base_stats.set("multiplier_speed", 0.26f);
@@ -1029,7 +1031,7 @@ namespace ShinobiBox
             AssetManager.status.add(gate6);
 
             StatusAsset gate7 = new StatusAsset();
-            gate7.id = "inner_gate_7";
+            gate7.id = StatusIds.InnerGate7;
             gate7.base_stats = new BaseStats();
             gate7.base_stats.set("multiplier_damage", 0.50f);
             gate7.base_stats.set("multiplier_speed", 0.32f);
@@ -1057,7 +1059,7 @@ namespace ShinobiBox
             AssetManager.status.add(gate7);
 
             StatusAsset gate8 = new StatusAsset();
-            gate8.id = "inner_gate_8";
+            gate8.id = StatusIds.InnerGate8;
             gate8.base_stats = new BaseStats();
             gate8.base_stats.set("multiplier_damage", 0.80f);
             gate8.base_stats.set("multiplier_speed", 0.40f);
@@ -1085,7 +1087,7 @@ namespace ShinobiBox
             AssetManager.status.add(gate8);
 
             StatusAsset gateStrain = new StatusAsset();
-            gateStrain.id = "eight_gate_strain";
+            gateStrain.id = StatusIds.EightGateStrain;
             gateStrain.base_stats = new BaseStats();
             gateStrain.base_stats.set("multiplier_damage", -0.20f);
             gateStrain.base_stats.set("multiplier_speed", -0.25f);
@@ -1101,7 +1103,7 @@ namespace ShinobiBox
 
             #region 100 Sealings Technique
             StatusAsset oneHundredSealings = new StatusAsset();
-            oneHundredSealings.id = "status_100_sealings";
+            oneHundredSealings.id = StatusIds.HundredSeals;
             oneHundredSealings.base_stats = new BaseStats();
             oneHundredSealings.base_stats.set("multiplier_damage", 0.05f);
             oneHundredSealings.base_stats.set("multiplier_speed", 0.05f);
@@ -1150,7 +1152,7 @@ namespace ShinobiBox
             */
             #region Perfect Frog Sage
             StatusAsset perfectFrog = new StatusAsset();
-            perfectFrog.id = "status_frog_sage";
+            perfectFrog.id = StatusIds.FrogSage;
             perfectFrog.base_stats = new BaseStats();
             perfectFrog.base_stats.set("multiplier_damage", 0.15f);
             perfectFrog.base_stats.set("multiplier_health", 0.15f);
@@ -1171,7 +1173,7 @@ namespace ShinobiBox
 
             #region Perfect Slug Sage
             StatusAsset perfectSlug = new StatusAsset();
-            perfectSlug.id = "status_slug_sage";
+            perfectSlug.id = StatusIds.SlugSage;
             perfectSlug.base_stats = new BaseStats();
             perfectSlug.base_stats.set("armor", 20f);
             perfectSlug.base_stats.set("multiplier_health", 0.20f);
@@ -1185,7 +1187,7 @@ namespace ShinobiBox
 
             #region Perfect Snake Sage
             StatusAsset perfectSnake = new StatusAsset();
-            perfectSnake.id = "status_snake_sage";
+            perfectSnake.id = StatusIds.SnakeSage;
             perfectSnake.base_stats = new BaseStats();
             perfectSnake.base_stats.set("multiplier_speed", 0.15f);
             perfectSnake.base_stats.set("multiplier_damage", 0.18f);
@@ -1200,7 +1202,7 @@ namespace ShinobiBox
 
             #region Uzumaki Ability: Adamantite Sealing Chains
             StatusAsset chains = new StatusAsset();
-            chains.id = "status_adamantite_chains";
+            chains.id = StatusIds.AdamantiteChains;
             chains.base_stats = new BaseStats();
             chains.base_stats.set("multiplier_speed", -0.99f);
             chains.base_stats.set("attack_speed", -10f);
@@ -1224,7 +1226,7 @@ namespace ShinobiBox
 
             #region King Of Hell
             StatusAsset koh = new StatusAsset();
-            koh.id = "koh_sprite";
+            koh.id = StatusIds.KingOfHell;
             koh.path_icon = "ui/icons/rinnegan";
             koh.animated = true;
             koh.duration = 4f;
@@ -1252,7 +1254,7 @@ namespace ShinobiBox
 
             #region Akimichi Grown Status
             StatusAsset akimichiGrown = new StatusAsset();
-            akimichiGrown.id = "status_akimichi_grown";
+            akimichiGrown.id = StatusIds.AkimichiGrown;
             akimichiGrown.path_icon = "effects/akimichi_grown";
             akimichiGrown.duration = 15f;
 
@@ -1283,7 +1285,7 @@ namespace ShinobiBox
 
             #region Akimichi Shrunk Status
             StatusAsset akimichiShrunk = new StatusAsset();
-            akimichiShrunk.id = "status_akimichi_shrunk";
+            akimichiShrunk.id = StatusIds.AkimichiShrunk;
             akimichiShrunk.path_icon = "effects/akimichi_shrunk";
             akimichiShrunk.duration = 15f;
 
@@ -1316,7 +1318,7 @@ namespace ShinobiBox
 
             #region Six Paths Senjutsu Status
             StatusAsset sixPathsSenjutsu = new StatusAsset();
-            sixPathsSenjutsu.id = "status_six_paths_senjutsu";
+            sixPathsSenjutsu.id = StatusIds.SixPathsSenjutsu;
             sixPathsSenjutsu.path_icon = "ui/icons/sixpathssenjutsu";
             sixPathsSenjutsu.duration = 999f;
 
@@ -1351,7 +1353,7 @@ namespace ShinobiBox
 
             #region Truth Seeking Orb Shield Status
             StatusAsset tsoShield = new StatusAsset();
-            tsoShield.id = "status_tso_shield";
+            tsoShield.id = StatusIds.TruthSeekingShield;
             tsoShield.path_icon = "ui/icons/sixpathssenjutsu";
             tsoShield.duration = 2f;
 
@@ -1375,7 +1377,7 @@ namespace ShinobiBox
 
             #region Infinite Tsukuyomi Status
             StatusAsset infiniteTsukuyomi = new StatusAsset();
-            infiniteTsukuyomi.id = "status_infinite_tsukuyomi";
+            infiniteTsukuyomi.id = StatusIds.InfiniteTsukuyomi;
             infiniteTsukuyomi.path_icon = "ui/icons/rinne_sharingan";
             infiniteTsukuyomi.duration = 60f;
 
@@ -1397,7 +1399,7 @@ namespace ShinobiBox
 
             #region Truth Seeking Balls Status
             StatusAsset TSBalls = new StatusAsset();
-            TSBalls.id = "tsballs";
+            TSBalls.id = StatusIds.TruthSeekingBalls;
             TSBalls.path_icon = "tsBalls";
             TSBalls.duration = 60f;
 
@@ -1422,7 +1424,7 @@ namespace ShinobiBox
             #region Ten Tails Jinchuriki
 
             StatusAsset juubi1 = new StatusAsset();
-            juubi1.id = "juubi1";
+            juubi1.id = StatusIds.Juubi1;
             juubi1.path_icon = "ui/icons/10Tails";
             juubi1.duration = 60f;
 
@@ -1450,7 +1452,7 @@ namespace ShinobiBox
             AssetManager.status.add(juubi1);
 
             StatusAsset juubi2 = new StatusAsset();
-            juubi2.id = "juubi2";
+            juubi2.id = StatusIds.Juubi2;
             juubi2.path_icon = "ui/icons/10Tails";
             juubi2.duration = 60f;
 
@@ -1482,7 +1484,7 @@ namespace ShinobiBox
             #region Madaras Eternal Mangekyo Sharingan Jutsus
             //Madaras Perfect Susanoo
             StatusAsset madaraPS = new StatusAsset();
-            madaraPS.id = "madara_ps";
+            madaraPS.id = StatusIds.MadaraPerfectSusanoo;
             madaraPS.path_icon = "ui/icons/madara_ems";
             madaraPS.duration = 1f;
 
@@ -1513,7 +1515,7 @@ namespace ShinobiBox
 
             // TENGAI SHINSEIIII
             StatusAsset tengaiShinsei = new StatusAsset();
-            tengaiShinsei.id = "tengai_shinsei";
+            tengaiShinsei.id = StatusIds.TengaiShinsei;
             tengaiShinsei.path_icon = "ui/icons/madara_ems";
             tengaiShinsei.duration = 1f;
 
@@ -1539,7 +1541,7 @@ namespace ShinobiBox
 
             // Susanoo Ribcage but madaras variant
             StatusAsset madaraRibcage = new StatusAsset();
-            madaraRibcage.id = "susanoo_ribcage_madara";
+            madaraRibcage.id = StatusIds.MadaraSusanooRibcage;
             madaraRibcage.base_stats = new BaseStats();
             madaraRibcage.base_stats.set("armor", 20f);
             madaraRibcage.duration = 10f;
@@ -1565,7 +1567,7 @@ namespace ShinobiBox
 
             #region Justsu Global Cooldown
             StatusAsset kamuiCD = new StatusAsset();
-            kamuiCD.id = "kamui_cooldown";
+            kamuiCD.id = StatusIds.KamuiCooldown;
             kamuiCD.path_icon = "effects/abilitycooldown";
             kamuiCD.duration = 60f;
             kamuiCD.animated = false;
@@ -1578,7 +1580,7 @@ namespace ShinobiBox
 
             #region Fire Nature: Katon
             StatusAsset katon = new StatusAsset();
-            katon.id = "katon_burn";
+            katon.id = StatusIds.KatonBurn;
             katon.path_icon = "ui/icons/fire_nature";
             katon.duration = 2f;
             katon.material = material;
@@ -1594,7 +1596,7 @@ namespace ShinobiBox
 
             #region Added weight Rock Technique
             StatusAsset weightRock = new StatusAsset();
-            weightRock.id = "weight_rock";
+            weightRock.id = StatusIds.WeightRock;
             weightRock.path_icon = "ui/icons/earth_nature";
             weightRock.duration = 5f;
 
@@ -1624,7 +1626,7 @@ namespace ShinobiBox
 
             #region Tenseigan Chakra Mode
             StatusAsset tenseiganCM = new StatusAsset();
-            tenseiganCM.id = "tenseigan_cm";
+            tenseiganCM.id = StatusIds.TenseiganChakraMode;
             tenseiganCM.path_icon = "ui/icons/tenseiganCM";
             tenseiganCM.duration = 45f;
 
@@ -1657,7 +1659,7 @@ namespace ShinobiBox
 
             #region Ketsuryugan
             StatusAsset ketsuryugan = new StatusAsset();
-            ketsuryugan.id = "status_ketsuryugan";
+            ketsuryugan.id = StatusIds.Ketsuryugan;
             ketsuryugan.path_icon = "ui/icons/ketsuryugan";
             ketsuryugan.duration = 60f;
 
@@ -1676,7 +1678,7 @@ namespace ShinobiBox
 
             #region Ketsuryugan Exploding Human Technique
             StatusAsset ketsEHT = new StatusAsset();
-            ketsEHT.id = "status_ketsuryuganEHT";
+            ketsEHT.id = StatusIds.KetsuryuganExplodingHuman;
             ketsEHT.path_icon = "ui/icons/ketsuryugan";
             ketsEHT.duration = 45f;
 
@@ -1692,7 +1694,7 @@ namespace ShinobiBox
 
             #region Aburame Mark
             StatusAsset aburameMark = new StatusAsset();
-            aburameMark.id = "status_aburame_mark";
+            aburameMark.id = StatusIds.AburameMark;
             aburameMark.path_icon = "ui/icons/aburame_clan";
             aburameMark.duration = 10f;
 
@@ -1743,7 +1745,7 @@ namespace ShinobiBox
         {
             #region Intial Release
             StatusAsset initialReleaseForm = new StatusAsset();
-            initialReleaseForm.id = "status_jinchuriki_initial_release";
+            initialReleaseForm.id = StatusIds.NineTailsInitialRelease;
             initialReleaseForm.path_icon = "ui/icons/initial_release";
             initialReleaseForm.duration = -1f;
             initialReleaseForm.base_stats = new BaseStats();
@@ -1767,9 +1769,9 @@ namespace ShinobiBox
             initialReleaseForm.removed_on_damage = false;
             initialReleaseForm.opposite_status =
             [
-                "status_jinchuriki_v1_cloak", "status_jinchuriki_v2_cloak",
-                "status_jinchuriki_incomplete_beast", "status_jinchuriki_kcm1",
-                "status_jinchuriki_kcm2"
+                StatusIds.NineTailsV1Cloak, StatusIds.NineTailsV2Cloak,
+                StatusIds.NineTailsIncompleteBeast, StatusIds.NineTailsKcm1,
+                StatusIds.NineTailsKcm2
             ];
 
             initialReleaseForm.locale_id = "status_title_jinchuriki_initial_release";
@@ -1781,7 +1783,7 @@ namespace ShinobiBox
 
             #region Nine Tails V1 Cloak
             StatusAsset v1CloakForm = new StatusAsset();
-            v1CloakForm.id = "status_jinchuriki_v1_cloak";
+            v1CloakForm.id = StatusIds.NineTailsV1Cloak;
             v1CloakForm.path_icon = "ui/icons/v1";
             v1CloakForm.duration = -1f;
             v1CloakForm.base_stats = new BaseStats();
@@ -1815,7 +1817,7 @@ namespace ShinobiBox
 
             #region Nine Tails V2 Cloak
             StatusAsset v2CloakForm = new StatusAsset();
-            v2CloakForm.id = "status_jinchuriki_v2_cloak";
+            v2CloakForm.id = StatusIds.NineTailsV2Cloak;
             v2CloakForm.path_icon = "ui/icons/v2";
             v2CloakForm.duration = -1f;
             v2CloakForm.base_stats = new BaseStats();
@@ -1851,7 +1853,7 @@ namespace ShinobiBox
 
             #region Incomplete Beast
             StatusAsset incompleteBeastForm = new StatusAsset();
-            incompleteBeastForm.id = "status_jinchuriki_incomplete_beast";
+            incompleteBeastForm.id = StatusIds.NineTailsIncompleteBeast;
             incompleteBeastForm.path_icon = "ui/icons/incomplete";
             incompleteBeastForm.duration = -1f;
             incompleteBeastForm.base_stats = new BaseStats();
@@ -1875,7 +1877,7 @@ namespace ShinobiBox
 
             #region Kurama Chakra Mode
             StatusAsset kcm1Form = new StatusAsset();
-            kcm1Form.id = "status_jinchuriki_kcm1";
+            kcm1Form.id = StatusIds.NineTailsKcm1;
             kcm1Form.path_icon = "ui/icons/kcm1";
             kcm1Form.duration = -1f;
             kcm1Form.base_stats = new BaseStats();
@@ -1912,7 +1914,7 @@ namespace ShinobiBox
 
             #region Kurama Link Mode
             StatusAsset kcm2Form = new StatusAsset();
-            kcm2Form.id = "status_jinchuriki_kcm2";
+            kcm2Form.id = StatusIds.NineTailsKcm2;
             kcm2Form.path_icon = "ui/icons/kcm2";
             kcm2Form.duration = -1f;
             kcm2Form.base_stats = new BaseStats();
@@ -1976,7 +1978,7 @@ namespace ShinobiBox
 
             #region Baryon Mode
             StatusAsset baryonModeForm = new StatusAsset();
-            baryonModeForm.id = "status_jinchuriki_baryon_mode";
+            baryonModeForm.id = StatusIds.NineTailsBaryon;
             baryonModeForm.path_icon = "ui/icons/baryon";
             baryonModeForm.duration = 36f;
             baryonModeForm.base_stats = new BaseStats();
@@ -1996,9 +1998,9 @@ namespace ShinobiBox
             baryonModeForm.base_stats.set("chakra", 3200f);
             baryonModeForm.opposite_status =
             [
-                "status_jinchuriki_initial_release", "status_jinchuriki_v1_cloak", "status_jinchuriki_v2_cloak",
-                "status_jinchuriki_incomplete_beast", "status_jinchuriki_kcm1",
-                "status_jinchuriki_kcm2"
+                StatusIds.NineTailsInitialRelease, StatusIds.NineTailsV1Cloak, StatusIds.NineTailsV2Cloak,
+                StatusIds.NineTailsIncompleteBeast, StatusIds.NineTailsKcm1,
+                StatusIds.NineTailsKcm2
             ];
 
             baryonModeForm.locale_id = "status_title_jinchuriki_baryon_mode";
@@ -2011,7 +2013,7 @@ namespace ShinobiBox
 
             #region Jutsu Use Status
             StatusAsset jutsuuse = new StatusAsset();
-            jutsuuse.id = "jutsuuse";
+            jutsuuse.id = StatusIds.JutsuUse;
             jutsuuse.path_icon = "effects/baseseal";
             jutsuuse.duration = 1f;
 
@@ -2033,30 +2035,9 @@ namespace ShinobiBox
             AssetManager.status.add(jutsuuse);
             #endregion
 
-            #region Byakugan
-            StatusAsset byakugan = new StatusAsset();
-            byakugan.id = "byakugan";
-            byakugan.path_icon = "ui/icons/byakugan";
-            byakugan.duration = 60f;
-            byakugan.material = material;
-            byakugan.opposite_status = new[] { "byakuganP", "byakuganG" };
-
-            byakugan.base_stats.set("damage", 40f);
-            byakugan.base_stats.set("accuracy", 0.30f);
-            byakugan.base_stats.set("critical_chance", 0.12f);
-            byakugan.base_stats.set("critical_damage_multiplier", 0.12f);
-            byakugan.base_stats.set("skill_combat", 0.12f);
-            byakugan.base_stats.set("chakra", 32f);
-
-            byakugan.locale_id = "status_title_byakugan";
-            byakugan.locale_description = "status_description_byakugan";
-
-            AssetManager.status.add(byakugan);
-            #endregion
-
             #region Pure Byakugan
             StatusAsset byakuganP = new StatusAsset();
-            byakuganP.id = "byakuganP";
+            byakuganP.id = StatusIds.ByakuganActive;
             byakuganP.path_icon = "ui/icons/byakugan";
             byakuganP.duration = 60f;
 
@@ -2132,10 +2113,10 @@ namespace ShinobiBox
         public static bool TruthSeekingOrbShield(BaseSimObject pSelf, BaseSimObject pAttackedBy, WorldTile pTile = null)
         {
             if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
-            if (pSelf.a.hasStatus("status_tso_shield")) return false;
+            if (pSelf.a.hasStatus(StatusIds.TruthSeekingShield)) return false;
             if (UnityEngine.Random.value > 0.10f) return false;
 
-            pSelf.a.addStatusEffect("status_tso_shield", 2f);
+            pSelf.a.addStatusEffect(StatusIds.TruthSeekingShield, 2f);
             return true;
         }
 
@@ -2150,18 +2131,18 @@ namespace ShinobiBox
         public static bool RasenganAA(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
             if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
-            if (!pSelf.a.hasStatus("status_rasengan")) return false;
+            if (!pSelf.a.hasStatus(StatusIds.Rasengan)) return false;
 
-            pSelf.a.finishStatusEffect("status_rasengan");
+            pSelf.a.finishStatusEffect(StatusIds.Rasengan);
             return true;
         }
 
         public static bool ChidoriAA(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile)
         {
             if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive()) return false;
-            if (!pSelf.a.hasStatus("status_chidori")) return false;
+            if (!pSelf.a.hasStatus(StatusIds.Chidori)) return false;
 
-            pSelf.a.finishStatusEffect("status_chidori");
+            pSelf.a.finishStatusEffect(StatusIds.Chidori);
             return true;
         }
 
@@ -2172,7 +2153,7 @@ namespace ShinobiBox
 
             if (Randy.randomChance(0.15f))
             {
-                pSelf.finishStatusEffect("shadow_clone");
+                pSelf.finishStatusEffect(StatusIds.ShadowClone);
 
                 return true;
             }
@@ -2189,7 +2170,7 @@ namespace ShinobiBox
             actor.die();
             if (targetTile != null)
             {
-                EffectsLibrary.spawnAtTile("fx_smoke", targetTile, 0.05f);
+                EffectsLibrary.spawnAtTile(EffectIds.Smoke, targetTile, 0.05f);
                 JutsuLibrary.PlayWavSound("shadow_clone_spawn.wav", targetTile.posV3);
             }
 
