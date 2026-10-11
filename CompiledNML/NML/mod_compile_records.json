@@ -1,0 +1,58 @@
+{
+  "AVOIDINGBOREDOM_AVB_S_EXPANDED_ARMORY": {
+    "dependencies": [],
+    "disabled": false,
+    "mod_id": "AVOIDINGBOREDOM_AVB_S_EXPANDED_ARMORY",
+    "optional_dependencies": [],
+    "timestamp": 639201624488624360
+  },
+  "BOUNTIES": {
+    "dependencies": [],
+    "disabled": false,
+    "mod_id": "BOUNTIES",
+    "optional_dependencies": [],
+    "timestamp": 639235438978713978
+  },
+  "COM_YOURNAME_HELLOBOX": {
+    "dependencies": [],
+    "disabled": false,
+    "mod_id": "COM_YOURNAME_HELLOBOX",
+    "optional_dependencies": [],
+    "timestamp": 639260799510039981
+  },
+  "EREX147WARBOX": {
+    "dependencies": [],
+    "disabled": false,
+    "mod_id": "EREX147WARBOX",
+    "optional_dependencies": [],
+    "timestamp": 639261340374413614
+  },
+  "NICKK__LORDSCHROTT_JINCHURIKI_BOX": {
+    "dependencies": [],
+    "disabled": false,
+    "mod_id": "NICKK__LORDSCHROTT_JINCHURIKI_BOX",
+    "optional_dependencies": [],
+    "timestamp": 639267009727194937
+  },
+  "RAYTRACERX_SHINOBIBOX__REBORN": {
+    "dependencies": [],
+    "disabled": false,
+    "mod_id": "RAYTRACERX_SHINOBIBOX__REBORN",
+    "optional_dependencies": [],
+    "timestamp": 639267301927245421
+  },
+  "RTX_AMBIENCE": {
+    "dependencies": [],
+    "disabled": false,
+    "mod_id": "RTX_AMBIENCE",
+    "optional_dependencies": [],
+    "timestamp": 639244119778523203
+  },
+  "RTX_MCMOD": {
+    "dependencies": [],
+    "disabled": false,
+    "mod_id": "RTX_MCMOD",
+    "optional_dependencies": [],
+    "timestamp": 639264317019463472
+  }
+}
