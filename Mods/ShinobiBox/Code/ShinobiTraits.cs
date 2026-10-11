@@ -1683,8 +1683,7 @@ namespace ShinobiBox
             akatsuki.base_stats.set("diplomacy", -100f);
             akatsuki.base_stats.set("loyalty_traits", -100f);
             akatsuki.base_stats.set("stewardship", -50f);
-            akatsuki.special_effect_interval = 20f;
-            akatsuki.action_special_effect = new WorldAction(AkatsukiAwaken);
+            // Recruitment happens in ShinobiProgression.CheckProgression.
 
             addTraitToGame(akatsuki);
             #endregion
@@ -1842,23 +1841,6 @@ namespace ShinobiBox
         }
 
         #region Helpers
-
-        public static bool AkatsukiAwaken(BaseSimObject pTarget, WorldTile pTile)
-        {
-            if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive()) return false;
-
-            if (pTarget.a.hasTrait(TraitIds.Evil) && !pTarget.a.hasTrait(TraitIds.Akatsuki) && pTarget.a.getAge() >= 28)
-            {
-                if (UnityEngine.Random.value < 0.01f)
-                {
-                    pTarget.a.addTrait(TraitIds.Akatsuki);
-                    return true;
-                }
-
-            }
-
-            return false;
-        }
 
         #region YinYang Release Fusion
         public static bool YinYangFuse(BaseSimObject pTarget, WorldTile pTile)

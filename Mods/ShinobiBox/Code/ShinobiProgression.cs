@@ -24,6 +24,10 @@ namespace ShinobiBox
 {
     public class ShinobiProgression
     {
+        // Living Akatsuki members, counted by ShinobiLoop on every progression pass.
+        public static int AkatsukiMembers = 0;
+        private const int MaxAkatsukiMembers = 10;
+
         private static readonly string[] JinchurikiFormStatuses =
         {
             StatusIds.NineTailsInitialRelease,
@@ -81,15 +85,11 @@ namespace ShinobiBox
                 (hasAsura && hasMangekyo) ||
                 (hasIndra && hasAsura);
 
-            if (canAwakenRinnegan)
+            if (canAwakenRinnegan && GiveOnce(actor, TraitIds.Rinnegan))
             {
-                if (!actor.hasTrait(TraitIds.Rinnegan))
-                {
-                    actor.removeTrait(TraitIds.Blind);
-                    actor.addTrait(TraitIds.Rinnegan);
-                    actor.restoreHealth(actor.getMaxHealth());
-                    ShinobiWorldLogs.AddWorldLog("log_awaken_rinnegan", "worldlog_awaken_rinnegan", "ui/icons/rinnegan", actor);
-                }
+                actor.removeTrait(TraitIds.Blind);
+                actor.restoreHealth(actor.getMaxHealth());
+                ShinobiWorldLogs.AddWorldLog("log_awaken_rinnegan", "worldlog_awaken_rinnegan", "ui/icons/rinnegan", actor);
             }
 
             if (actor.hasTrait(TraitIds.Kage) || hasKageInName)
@@ -97,10 +97,8 @@ namespace ShinobiBox
                 actor.data.set("was_kage", 1);
             }
 
-            if (level >= 10 && hasAnySenjutsu && !actor.hasTrait(TraitIds.Sannin) && actor.isSapient())
+            if (level >= 10 && hasAnySenjutsu && actor.isSapient() && GiveOnce(actor, TraitIds.Sannin))
             {
-                actor.addTrait(TraitIds.Sannin);
-
                 if (ShinobiConfig.EnableWorldTips)
                 {
                     ShinobiWorldLogs.AddWorldLog("log_became_sannin", "worldlog_became_sannin", "ui/icons/rank_sannin", actor);
@@ -109,9 +107,8 @@ namespace ShinobiBox
 
             // Ghost Of Uchiha Giver thingy thangy
             bool hasEternalEyes = actor.hasTrait(TraitIds.MadaraEternalMangekyo) || actor.hasTrait(TraitIds.EternalMangekyo);
-            if (level >= 7 && actor.hasTrait(TraitIds.UchihaClan) && hasEternalEyes && !actor.hasTrait(TraitIds.GhostOfUchiha))
+            if (level >= 7 && actor.hasTrait(TraitIds.UchihaClan) && hasEternalEyes && GiveOnce(actor, TraitIds.GhostOfUchiha))
             {
-                actor.addTrait(TraitIds.GhostOfUchiha);
                 if (ShinobiConfig.EnableWorldTips)
                 {
                     ShinobiWorldLogs.AddWorldLog("log_ghost_of_uchiha", "worldlog_ghost_of_uchiha", "ui/icons/ghostofuchiha", actor);
@@ -124,9 +121,8 @@ namespace ShinobiBox
             int wasKage = 0;
             actor.data.get("was_kage", out wasKage);
             bool qualifiesPastKage = actor.hasTrait(TraitIds.Kage) || hasKageInName || wasKage > 0;
-            if (qualifiesPastKage && level >= 5 && hasAllFiveNatures && !actor.hasTrait(TraitIds.GodOfShinobi))
+            if (qualifiesPastKage && level >= 5 && hasAllFiveNatures && GiveOnce(actor, TraitIds.GodOfShinobi))
             {
-                actor.addTrait(TraitIds.GodOfShinobi);
                 if (ShinobiConfig.EnableWorldTips)
                 {
                     ShinobiWorldLogs.AddWorldLog("log_god_of_shinobi", "worldlog_god_of_shinobi", "ui/icons/godofshinobi", actor);
@@ -138,9 +134,8 @@ namespace ShinobiBox
                 actor.addStatusEffect(StatusIds.SixPathsSenjutsu, 30f);
             }
 
-            if (actor.hasTrait(TraitIds.TenTailsJinchuriki) && actor.hasTrait(TraitIds.Rinnegan) && !actor.hasTrait(TraitIds.RinneSharingan))
+            if (actor.hasTrait(TraitIds.TenTailsJinchuriki) && actor.hasTrait(TraitIds.Rinnegan) && GiveOnce(actor, TraitIds.RinneSharingan))
             {
-                actor.addTrait(TraitIds.RinneSharingan);
                 if (!actor.hasStatus(StatusIds.SixPathsSenjutsu))
                 {
                     actor.addStatusEffect(StatusIds.SixPathsSenjutsu, -1f);
@@ -177,11 +172,10 @@ namespace ShinobiBox
                 // Mangekyo Awakening
                 if (!actor.hasTrait(TraitIds.Mangekyo) && !actor.hasTrait(TraitIds.Blind) && !hasEternalEyes && hasThreeTomoe)
                 {
-                    if (HasTrauma(actor))
+                    if (HasTrauma(actor) && GiveOnce(actor, TraitIds.Mangekyo))
                     {
                         JutsuLibrary.ClearSharinganTomoeStatuses(actor);
 
-                        actor.addTrait(TraitIds.Mangekyo);
                         actor.addStatusEffect(StatusIds.WillOfFireBuff);
                         ShinobiWorldLogs.AddWorldLog("log_mangekyo_awakened", "worldlog_mangekyo_awakened", "ui/icons/mangekyo", actor);
                     }
@@ -189,9 +183,21 @@ namespace ShinobiBox
 
                 if (!actor.hasTrait(TraitIds.Sharingan) && !HasBetterEye(actor, 1))
                 {
-                    if (kills >= 1 || (age >= 12 && UnityEngine.Random.value < 0.001f)) actor.addTrait(TraitIds.Sharingan);
+                    if (kills >= 1 || (age >= 12 && UnityEngine.Random.value < 0.001f)) GiveOnce(actor, TraitIds.Sharingan);
                 }
 
+            }
+
+            // Akatsuki recruitment: evil, experienced adults. The organisation never has more than 10 living members.
+            if (age >= 28 && level >= 5 && actor.isSapient() && actor.hasTrait(TraitIds.Evil) &&
+                AkatsukiMembers < MaxAkatsukiMembers && UnityEngine.Random.value < 0.0015f &&
+                GiveOnce(actor, TraitIds.Akatsuki))
+            {
+                AkatsukiMembers++;
+                if (ShinobiConfig.EnableWorldTips)
+                {
+                    ShinobiWorldLogs.AddWorldLog("log_joined_akatsuki", "worldlog_joined_akatsuki", "ui/icons/akatsuki", actor);
+                }
             }
 
             #region Ten Tails Progression Stuff
@@ -206,6 +212,23 @@ namespace ShinobiBox
             
             #endregion
             
+        }
+        #endregion
+
+        #region GiveOnce
+        // Gives a progression trait only once per unit. If the player removes it by hand, it stays removed.
+        // Returns true only when the trait was actually given just now.
+        public static bool GiveOnce(Actor actor, string traitId)
+        {
+            string key = "given_" + traitId;
+            actor.data.get(key, out bool alreadyGiven, false);
+            if (alreadyGiven) return false;
+
+            actor.data.set(key, true);
+            if (actor.hasTrait(traitId)) return false;
+
+            actor.addTrait(traitId);
+            return actor.hasTrait(traitId);
         }
         #endregion
 

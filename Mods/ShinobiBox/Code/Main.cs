@@ -111,13 +111,16 @@ namespace ShinobiBox
             progressionTimer += Time.deltaTime;
             if (progressionTimer >= 3.0f)
             {
+                int akatsukiMembers = 0;
                 foreach (Actor a in MapBox.instance.units)
                 {
                     if (a.isAlive())
                     {
                         ShinobiProgression.CheckProgression(a);
+                        if (a.hasTrait(TraitIds.Akatsuki)) akatsukiMembers++;
                     }
                 }
+                ShinobiProgression.AkatsukiMembers = akatsukiMembers;
                 progressionTimer = 0f;
             }
 
