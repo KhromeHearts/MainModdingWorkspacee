@@ -91,6 +91,7 @@ namespace ShinobiBox
             if (actor.data.health > barelyAlive) actor.data.health = barelyAlive;
 
             actor.addStatusEffect("eight_gate_strain", 90f);
+            actor.addTrait("crippled");
             return true;
         }
 
