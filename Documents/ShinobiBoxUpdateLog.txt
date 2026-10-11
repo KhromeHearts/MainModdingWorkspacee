@@ -97,6 +97,78 @@ PART 4 - CHAKRA FOUNDATION
 - Unit window: Tailed-Beast and Sage chakra only show for units that have them (no more 0/0 on everyone), and
   Blindness only shows for Mangekyo users.
 
+PART 5 - JUTSU SYSTEM
+---------------------
+- Every jutsu now goes through one system (new file Code/ShinobiJutsu.cs). Each jutsu has one line there with its
+  chakra cost, cooldown, chance, range and whether it's a "signature" move, so balancing is one place now.
+- Cooldowns: every jutsu has its own cooldown. The old shared 7-second lockout after ANY jutsu is gone; instead
+  there's a short 1.5 s pause between two jutsu. Strong shinobi with many jutsu now mix them in a fight instead of
+  using one and then standing around.
+- Chakra is checked first and only paid when the jutsu actually happens. Before, some jutsu took the chakra and
+  then did nothing (e.g. Amaterasu on a target that was already burning).
+- The rank discount (Academy Student pays 18% more, God of Shinobi 16% less) and Indra's 60% discount now apply
+  to every jutsu, Shadow Clone included. Indra's discount still applies to eye drains too.
+- When jutsu fire:
+  - Most attack jutsu: after the unit lands a hit.
+  - Defensive jutsu (Kamui, Shinra Tensei, Susanoo Ribcage, Naraka Path, Shadow Clone, Insect Swarm, Shiko
+    Defense, Ketsuryugan, Amenotejikara, Taijutsu counter-punch): when the unit gets hit.
+  - Ranged jutsu (Fireball, Wind Cutter, Rasengan charge, Rasenshuriken, Truth-Seeking Orbs, Tailed Beast Bomb):
+    checked twice a second while the unit is fighting, if the target is in range.
+- Hand seals and sounds only on signature jutsu (the big, named ones). Sounds only play when the fight is on your
+  screen, and never more than one every 0.3 s, so big wars don't turn into noise.
+- Nine-Tails: Tailed Beast Bombs now only come from V2 onward (V2, Incomplete Beast, both Kurama modes) and are
+  fired from range. A plain jinchuriki or the Initial/V1 cloak punches instead. Kurama itself throws bombs and
+  Chakra Arm Swipes; the Juubi throws bombs and Ten-Tails blasts.
+- Amenotejikara: when Sasuke (Rinnegan) is hit while fleeing, he swaps places with a random unit within 30 tiles.
+  It used to pick anyone on the whole map and fire without being hit.
+- Insect Swarm no longer breaks when the Aburame is hurt by something that isn't a unit.
+- Rasengan doesn't re-charge (and re-pay) while the unit is already holding one.
+- Paper Bomb and Flying Raijin kunai have their own short cooldowns and no longer block the thrower's jutsu.
+- Palm Rotation and Kamui cooldowns are now hidden timers, so the "cooldown" status icon no longer shows.
+- After Baryon Mode the unit still can't use any jutsu for 300 s, like before.
+
+JUTSU TABLE (cost is normal chakra unless marked, cooldown in seconds, chance per trigger; * = signature)
+  Sharingan genjutsu 1/2/3 ........ 20/30/50, cd 12, 25% (one per tomoe level)
+  Amaterasu* ...................... 120, cd 30, 30%
+  Susanoo* (Mangekyo) ............. 100, cd 25, 20%
+  Perfect Susanoo* (EMS, Madara) .. 40, cd 15, 30%
+  Susanoo Ribcage* (below 35% hp) . 75, cd 30, always
+  Kamui* .......................... 100, cd 60, 15% when hit
+  Amenotejikara* .................. 25, cd 20, when hit while fleeing
+  Tengai Shinsei* (Madara) ........ 500, cd 120, 15%
+  Tailed-beast genjutsu* .......... 50, cd 30, 30% (only on tailed beasts)
+  Rinnegan meteor* ................ 300, cd 120, 10%
+  Naraka Path* (below 30% hp) ..... 300, cd 90, 50% when hit
+  Six Paths technique* ............ 100, cd 20, 20%
+  Shinra Tensei* .................. 80, cd 15, 25% when hit
+  Infinite Tsukuyomi* ............. 400, cd 600, 0.5% (still once per user, needs Yin/Yin-Yang)
+  Heavenly Ice Chamber* ........... 200, cd 45, 15%
+  Truth-Seeking Orbs .............. free, cd 6, 50%, range 24 (Six Paths Senjutsu)
+  Palm Rotation* / 64 Palms* ...... 80, cd 15 / 20, 15% / 20%
+  Ketsuryugan awakening ........... 50, cd 45, when hit (level 2+)
+  Exploding Human* ................ 75, cd 30, 15%
+  Adamantine Chains* .............. 100, cd 25, 20%
+  Akimichi Expansion* ............. 100, cd 40, 30%
+  Insect Swarm* ................... 100, cd 25, 30% when hit
+  Shiko Defense / Bone Shot ....... 45 / 25, cd 15 / 4, 35%
+  Fireball, Wind Cutter ........... 50, cd 8, 30%, range 24
+  Added Weight Rock ............... 60, cd 20, 20%
+  Water Prison .................... 50, cd 15, 20%
+  Lightning strike ................ 60, cd 10, 20%
+  Storm Release ................... 80, cd 12, 25%
+  Wood Release bind ............... 50, cd 15, 25%
+  Rasengan* ....................... 50, cd 10, 60%
+  Chidori* ........................ 50, cd 10, 40%
+  Rasenshuriken* .................. 100, cd 20, 40%, range 24
+  Shadow Clone* ................... 25 per clone, cd 30, 30% when hit
+  Armor Break / counter-punch ..... 40 / 10, cd 10 / 6, 15% / 20%
+  Tailed Beast Bomb* .............. 140 tailed-beast chakra, cd 20, 30%, range 40
+  Ten-Tails / beast blast* ........ 70 tailed-beast chakra, cd 12, 25%
+  Chakra Arm Swipe* ............... 50 tailed-beast chakra, cd 10, 30%
+  Baryon drain .................... free, cd 8, 30%
+  Frog Kumite / Snake Bite ........ 15 sage chakra, cd 4 / 6, 25% / 20%
+  Wood Sage bind* ................. 15 sage chakra, cd 12, 15%
+
 TEST CHECKLIST [NEEDS IN-GAME TEST]
 1. Spawn Naruto and let him fight. When hit he should enter Frog Sage Mode, the Sage Chakra number in his window
    should go down, and the mode should end when it hits 0. Out of combat he should sometimes meditate.
@@ -126,6 +198,16 @@ TEST CHECKLIST [NEEDS IN-GAME TEST]
     natures, a few with 2-3. Tell me if it feels like too many or too few.
 15. Click a normal villager and an animal: no "0/0" tailed-beast or sage chakra icons. Animals show no chakra.
 16. Old save: existing units keep their traits (they are not re-rolled).
+17. Spawn Sasuke and let him fight a village. He should use several different jutsu in one fight, not the same
+    one twice in a row. Hand seals and sounds should only show on the big ones.
+18. Give a unit Fire Release and put it near enemies: it should throw fireballs from a distance, not every second.
+19. Naruto: he should charge Rasengan when fighting and make Shadow Clones when hit, at most once every 30 s.
+20. Nine-Tails: in V2 or later the jinchuriki should throw Tailed Beast Bombs from range (tailed-beast chakra drops
+    by 140). In Initial Release or V1 it should not throw bombs.
+21. Spawn Kurama next to a village: it should throw Tailed Beast Bombs.
+22. Throw Paper Bomb and Flying Raijin kunai: they should still work, and the thrower should still use jutsu.
+23. Sounds: zoom out or look away from a big fight. You shouldn't hear jutsu sounds from fights off screen.
+24. A big war with lots of shinobi shouldn't lag more than before.
 
 
 =====================================================================
